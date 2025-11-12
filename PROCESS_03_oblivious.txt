@@ -54,7 +54,8 @@ PHASE: 1 → 3 STEPS
 Action: Split single vision into three fundamental action steps
 Method: Identify primary trichotomy (beginning/middle/end, setup/execute/verify)
 Modified Fibonacci: Starting sequence
-Result: 3 action steps total
+Formula: [EXPAND]03 = 01 STAPPENPLAN + 02 STAPPENPLAN
+Result: 3 STAPPENPLAN total
 Naming: Use numbered list (1-3) at this phase
 Category: Action expansion phase
 
@@ -62,7 +63,8 @@ PHASE: 3 → 5 STEPS
 Action: Add two more action steps to existing three
 Method: Split most complex step or add critical intermediate steps
 Modified Fibonacci: 3 + 2 = 5
-Result: 5 action steps total
+Formula: [EXPAND]05 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN
+Result: 5 STAPPENPLAN total
 Naming: Use numbered list (1-5) at this phase
 Category: Action expansion phase
 
@@ -70,7 +72,8 @@ PHASE: 5 → 8 STEPS
 Action: Add three more action steps to existing five
 Method: Strategic splits or reveal dependencies
 Fibonacci: 5 + 3 = 8
-Result: 8 action steps total
+Formula: [EXPAND]08 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN
+Result: 8 STAPPENPLAN total
 Naming: Use numbered list (1-8) at this phase
 Category: Action expansion phase
 
@@ -78,7 +81,8 @@ PHASE: 8 → 13 STEPS
 Action: Add five more action steps to existing eight
 Method: Split complex steps or expose hidden dependencies
 Fibonacci: 8 + 5 = 13
-Result: 13 action steps total
+Formula: [EXPAND]13 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN + 05 STAPPENPLAN
+Result: 13 STAPPENPLAN total
 Naming: Use numbered list (1-13) at this phase
 Category: Action expansion phase
 
@@ -86,9 +90,10 @@ PHASE: 13 → 21 STEPS
 Action: Add eight more action steps to existing thirteen
 Method: Break down all remaining complex activities
 Fibonacci: 13 + 8 = 21 (final action expansion)
-Result: 21 action steps total
+Formula: [EXPAND]21 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN + 05 STAPPENPLAN + 08 STAPPENPLAN
+Result: 21 STAPPENPLAN total
 Naming: Use numbered list (1-21) at this phase
-Note: This completes action/execution step growth
+Note: This completes STAPPENPLAN action/execution step growth
 Category: Action expansion phase (final)
 
 -----
@@ -96,20 +101,22 @@ Category: Action expansion phase (final)
 [PHASE-SPECIFIC INSTRUCTIONS - CHECKPOINT SATURATION]
 
 PHASE: 21 → 24 STEPS (INITIAL CHECKPOINTS)
-Action: Keep all 21 action steps, insert 3 validation checkpoints
+Action: Keep all 21 STAPPENPLAN, insert 3 validation checkpoints
 Method: Place checkpoints at early critical junctions (foundation, configuration, initial infrastructure)
-Result: 21 actions + 3 validations = 24 steps total
+Formula: [INIT]24 = [21 STAPPENPLAN] + 03 CHECKLIST
+Result: 21 STAPPENPLAN + 3 validations = 24 steps total
 Checkpoint format: Test file path, atomic tests, 1-test-1-validation, TDD cycle
 Naming: Continue numbered list incorporating checkpoints
 Category: Checkpoint insertion phase (initial)
-Transition: From action expansion to validation saturation
+Transition: From STAPPENPLAN expansion to validation saturation
 
 PHASE: 24 → 32 STEPS (CHECKPOINT SATURATION)
-Action: Keep all 21 action steps and 3 existing checkpoints, add 8 more checkpoints
-Method: Achieve high validation density, checkpoint after every 2-3 critical actions
+Action: Keep all 21 STAPPENPLAN and 3 existing checkpoints, add 8 more checkpoints
+Method: Achieve high validation density, checkpoint after every 2-3 critical STAPPENPLAN
 Coverage: Directory structure, formats, naming, CI negative, CI positive, hashes, tree, determinism, changelog, versioning, upload, compliance
-Result: 21 actions + 11 validations = 32 steps total
-Checkpoint density: Approximately 1 checkpoint per 2 action steps
+Formula: [SATURATE]32 = [21 STAPPENPLAN] + 03 CHECKLIST + 08 CHECKLIST
+Result: 21 STAPPENPLAN + 11 validations = 32 steps total
+Checkpoint density: Approximately 1 checkpoint per 2 STAPPENPLAN
 Naming: Continue numbered list with all 11 checkpoints integrated
 Category: Checkpoint saturation phase (final)
 Note: This completes validation insertion
@@ -119,9 +126,10 @@ Note: This completes validation insertion
 [PHASE-SPECIFIC INSTRUCTIONS - GATEWAY COMPLETION]
 
 PHASE: 32 → 34 STEPS (INITIAL GATEWAYS)
-Action: Keep all 32 steps (21 actions + 11 validations), insert 2 release gateways
+Action: Keep all 32 steps (21 STAPPENPLAN + 11 validations), insert 2 release gateways
 Method: Place gateways at major milestone boundaries
 Gateway positions: Foundation complete, core system functional
+Formula: [INIT]34 = [21 STAPPENPLAN + 11 CHECKLIST] + 02 GATEWAY
 Result: 32 steps + 2 gateways = 34 items total
 Gateway format: Aggregates multiple checkpoints, adds integration tests, blocks progression
 Naming: Steps remain numbered, gateways use GATEWAY_01, GATEWAY_02
@@ -129,9 +137,10 @@ Category: Gateway insertion phase (initial)
 Transition: From checkpoint saturation to release verification
 
 PHASE: 34 → 38 STEPS (GATEWAY COMPLETION)
-Action: Keep all 32 steps (21 actions + 11 validations), expand to 6 gateways total
+Action: Keep all 32 steps (21 STAPPENPLAN + 11 validations), expand to 6 gateways total
 Method: Add 4 more gateways for staged release verification path
 Gateway positions: Foundation, validation infrastructure, core system, integration, pre-production, production
+Formula: [COMPLETE]38 = [21 STAPPENPLAN + 11 CHECKLIST] + 02 GATEWAY + 04 GATEWAY
 Result: 32 steps + 6 gateways = 38 items total
 Gateway types: Each has automated tests and manual review criteria
 Naming: GATEWAY_01 through GATEWAY_06, all items renumbered STEP_01 through STEP_38
@@ -199,14 +208,14 @@ Gateway completion phase:
 Hybrid PROCESS_03 progression map:
 
 Phase 1 - Action Expansion (Modified Fibonacci):
-1 → 3 → 5 → 8 → 13 → 21 steps
-Pure action/execution steps, no validation yet
-Goal: Decompose implementation into 21 actionable steps
+1 → 3 → 5 → 8 → 13 → 21 STAPPENPLAN
+Pure action/execution STAPPENPLAN, no validation yet
+Goal: Decompose implementation into 21 actionable STAPPENPLAN
 
 Phase 2 - Checkpoint Saturation:
 21 → 24 → 32 steps
 Add 3 initial checkpoints, then saturate with 8 more
-Goal: Ensure comprehensive validation coverage
+Goal: Ensure comprehensive validation coverage for STAPPENPLAN
 
 Phase 3 - Gateway Completion:
 32 → 34 → 38 steps
@@ -214,7 +223,7 @@ Add 2 initial gateways, then expand to 6 total
 Goal: Create staged release verification path
 
 Final composition at 38 steps:
-- 21 implementation/action steps
+- 21 implementation/action STAPPENPLAN
 - 11 validation checkpoint steps
 - 6 release gateway steps
 - Total: 38 items
@@ -239,17 +248,17 @@ PROCESS_2 (1→2→3→5→8→13→21→34→36→42→48→52→56):
 
 PROCESS_03 (1→3→5→8→13→21→24→32→34→38):
 - Hybrid Fibonacci + saturation
-- Reaches 21 implementation steps + 11 validations + 6 gateways
-- Best for: Projects prioritizing validation density over action granularity
+- Reaches 21 implementation STAPPENPLAN + 11 validations + 6 gateways
+- Best for: Projects prioritizing validation density over STAPPENPLAN granularity
 - Best for: Regulated environments requiring extensive checkpoints
-- Total: 38 items (21 actions + 11 validations + 6 gateways)
+- Total: 38 items (21 STAPPENPLAN + 11 validations + 6 gateways)
 
 Recommend PROCESS_03 when:
 - Quality gates more critical than implementation detail
-- Team prefers fewer but well-validated action steps
+- Team prefers fewer but well-validated STAPPENPLAN
 - Project has high compliance requirements
 - Staged release verification path important
-- 21 action steps provide sufficient granularity
+- 21 STAPPENPLAN provide sufficient granularity
 
 -----
 
@@ -257,11 +266,11 @@ Recommend PROCESS_03 when:
 
 When 38 steps reached:
 1. Announce: "HYBRID PROCESS COMPLETE. Implementation plan contains:"
-2. Detail: "- 21 action/execution steps"
+2. Detail: "- 21 action/execution STAPPENPLAN"
 3. Detail: "- 11 validation checkpoint steps"
 4. Detail: "- 6 release gateway steps"
 5. Detail: "- Total: 38 items following hybrid progression (1→3→5→8→13→21→24→32→34→38)"
-6. Suggest: "Ready to begin STEP_01 execution, or require further refinement?"
+6. Suggest: "Ready to begin STEP_01 execution of STAPPENPLAN, or require further refinement?"
 7. Do NOT proceed to execution without explicit user instruction
 
 -----

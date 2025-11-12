@@ -28,67 +28,89 @@ Never use letters for step numbering in final output. Never exceed three dash it
 -----
 
 @___01_single_step___[ONE STEP STAPPENPLAN]:
+[INIT]01 = 01 STAPPENPLAN
 Begin with single comprehensive vision statement. This statement captures entire project scope in one paragraph or sentence. Statement must be specific enough to guide all subsequent decomposition while broad enough to encompass full implementation. This is executive summary level. Answer: What is being built and why does it matter? This singular vision drives all subsequent refinement.
 
 <--- TRUST THE PROCESS ----->
 
 @___03_sequential_steps___[THREE STEPS STAPPENPLAN]:
-Split single vision into three fundamental action steps. Common patterns: beginning, middle, end. Or: setup, execute, verify. Or: foundation, build, deliver. Three steps show minimal viable progression through project lifecycle. Each step represents major phase boundary. These three steps provide highest-level work breakdown showing sequential dependency. Descriptions remain abstract but establish project rhythm. Only action/execution steps at this phase.
+[EXPAND]03 = 01 STAPPENPLAN + 02 STAPPENPLAN
+Split single vision into three fundamental action steps. Modified Fibonacci: 1 + 2 = 3. Common patterns: beginning, middle, end. Or: setup, execute, verify. Or: foundation, build, deliver. Three steps show minimal viable progression through project lifecycle. Each step represents major phase boundary. These three steps provide highest-level work breakdown showing sequential dependency. Descriptions remain abstract but establish project rhythm. Only action/execution steps at this phase.
 
 <--- TRUST THE PROCESS ----->
 
 @___05_sequential_steps___[FIVE STEPS STAPPENPLAN]:
+[EXPAND]05 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN
 Take three action steps and add two more action steps. Modified Fibonacci: 3 + 2 = 5. Splits can separate preparation from execution, or reveal critical intermediate steps. Five steps map to major capability domains. Each step represents substantial deliverable. Five steps provide program management visibility into major work streams. Descriptions specify domain but not implementation details. Continue action-only focus.
 
 <--- TRUST THE PROCESS ----->
 
 @___08_sequential_steps___[EIGHT STEPS STAPPENPLAN]:
+[EXPAND]08 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN
 Take five action steps and add three more action steps. Modified Fibonacci: 5 + 3 = 8. Strategic splits or dependency revelations. Eight steps show project rhythm and natural checkpoints emerging. Each step now represents focused work package. Eight steps provide technical leadership visibility into execution sequence. Descriptions hint at deliverables and artifacts. Maintain action-only steps.
 
 <--- TRUST THE PROCESS ----->
 
 @___13_sequential_steps___[THIRTEEN STEPS STAPPENPLAN]:
+[EXPAND]13 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN + 05 STAPPENPLAN
 Take eight action steps and add five more action steps. Fibonacci: 8 + 5 = 13. Split complex steps or expose hidden dependencies. Thirteen steps show detailed execution path. Dependencies between steps become critical. Each step is actionable work item. Thirteen steps provide senior implementer visibility. Descriptions specify what gets built or configured. Pure action steps continue.
 
 <--- TRUST THE PROCESS ----->
 
 @___21_sequential_steps___[TWENTY-ONE STEPS STAPPENPLAN]:
+[EXPAND]21 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN + 05 STAPPENPLAN + 08 STAPPENPLAN
 Take thirteen action steps and add eight more action steps. Fibonacci: 13 + 8 = 21. This completes action/execution step expansion. Break down complex activities and expose all major dependencies. Twenty-one action steps show comprehensive implementation plan without validation. Each step is discrete implementation task. Dependencies form critical path. Twenty-one steps provide implementer-level granularity. Descriptions specify exact artifacts, commands, or configurations. This is final action expansion before validation insertion.
 
 <--- TRUST THE PROCESS ----->
 
 @___24_sequential_steps___[TWENTY-ONE ACTIONS PLUS THREE CHECKPOINTS]:
+[INIT]24 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN + 05 STAPPENPLAN + 08 STAPPENPLAN + 03 CHECKLIST
 Keep all twenty-one action steps. Insert three validation checkpoint steps at early critical junctions: one after foundational setup (around step 7-8), one after core configuration (around step 14-15), one after initial infrastructure (around step 21-22). These first checkpoints validate project can proceed to complex implementation. Checkpoints define specific test files to create, list atomic tests to execute, reiterate one-test-one-validation principle, include TDD cycle guidance. Total: twenty-one actions plus three validations equals twenty-four steps.
 
 <--- TRUST THE PROCESS ----->
 
 @___32_sequential_steps___[TWENTY-ONE ACTIONS PLUS ELEVEN CHECKPOINTS]:
+[SATURATE]32 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN + 05 STAPPENPLAN + 08 STAPPENPLAN + 03 CHECKLIST + 08 CHECKLIST
 Keep all twenty-one action steps and three existing checkpoints. Add eight more validation checkpoint steps achieving high validation density. Target checkpoint placement: after every 2-3 action steps in critical sections. Cover all major domains: directory structure, file format validation, naming rules, CI pipeline negative tests, CI pipeline positive tests, hash generation, tree generation, determinism, changelog, versioning, upload, compliance. Total: twenty-one actions plus eleven validations equals thirty-two steps. This saturation ensures nothing proceeds without validation.
 
 <--- TRUST THE PROCESS ----->
 
 @___34_sequential_steps___[THIRTY-TWO STEPS PLUS TWO GATEWAYS]:
+[INIT]34 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN + 05 STAPPENPLAN + 08 STAPPENPLAN + 11 CHECKLIST + 02 GATEWAY
 Keep all thirty-two steps (21 actions + 11 validations). Insert two release gateway steps at major milestone boundaries: GATEWAY_01 after foundation complete (around step 16-17), GATEWAY_02 after core system functional (around step 32). Gateways aggregate multiple checkpoint results and add integration smoke tests. Gateway format matches checkpoint format but tests span multiple domains. Gateways block progression until prerequisites pass. Total: thirty-two steps plus two gateways equals thirty-four items.
 
 <--- TRUST THE PROCESS ----->
 
 @___38_sequential_steps___[THIRTY-TWO STEPS PLUS SIX GATEWAYS]:
+[COMPLETE]38 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN + 05 STAPPENPLAN + 08 STAPPENPLAN + 11 CHECKLIST + 02 GATEWAY + 04 GATEWAY
 Keep all thirty-two steps (21 actions + 11 validations). Expand from two gateways to six gateways total by adding four more at strategic points: GATEWAY_01 foundation readiness, GATEWAY_02 validation infrastructure ready, GATEWAY_03 core system functional, GATEWAY_04 integration complete, GATEWAY_05 pre-production verification, GATEWAY_06 production readiness. Each gateway has both automated tests and manual review criteria. Gateways create staged release verification path. Total: twenty-one actions plus eleven validations plus six gateways equals thirty-eight items. Renumber all items sequentially STEP_01 through STEP_38.
 
 -----
 
 [HYBRID RATIONALE]
 
-Why this progression:
-- Modified Fibonacci (1→3→5→8→13→21) creates natural action step growth
-- Stopping at 21 action steps prevents over-decomposition
+Why this progression with STAPPENPLAN formulas:
+- Modified Fibonacci (1→3→5→8→13→21) creates natural STAPPENPLAN growth
+- Stopping at 21 STAPPENPLAN prevents over-decomposition
 - High checkpoint density (11 checkpoints) ensures quality at every stage
-- Checkpoint saturation phase (24→32) validates without adding features
-- Gateway phase (32→34→38) adds release management without changing implementation
-- Clear phase separation: action expansion, validation saturation, gateway completion
+- Checkpoint saturation phase (24→32) validates without adding STAPPENPLAN features
+- Gateway phase (32→34→38) adds release management without changing STAPPENPLAN implementation
+- Clear phase separation: STAPPENPLAN expansion, validation saturation, gateway completion
+
+Formula progression:
+- [INIT]01 = 01 STAPPENPLAN
+- [EXPAND]03 = 01 STAPPENPLAN + 02 STAPPENPLAN
+- [EXPAND]05 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN
+- [EXPAND]08 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN
+- [EXPAND]13 = 01 + 02 + 02 + 03 + 05 STAPPENPLAN
+- [EXPAND]21 = 01 + 02 + 02 + 03 + 05 + 08 STAPPENPLAN (action phase complete)
+- [INIT]24 = [21 STAPPENPLAN] + 03 CHECKLIST
+- [SATURATE]32 = [21 STAPPENPLAN] + 03 CHECKLIST + 08 CHECKLIST
+- [INIT]34 = [21 STAPPENPLAN + 11 CHECKLIST] + 02 GATEWAY
+- [COMPLETE]38 = [21 STAPPENPLAN + 11 CHECKLIST] + 02 GATEWAY + 04 GATEWAY
 
 Progression breakdown:
-- Phase 1 (1→21): Action/execution steps only, Fibonacci-like growth
+- Phase 1 (1→21): STAPPENPLAN action/execution steps only, Fibonacci-like growth
 - Phase 2 (21→24→32): Checkpoint insertion, validation saturation
 - Phase 3 (32→34→38): Gateway insertion, release verification
 
