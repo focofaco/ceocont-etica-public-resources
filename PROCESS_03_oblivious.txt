@@ -1,5 +1,5 @@
 [INTRODUCTION]:
-This document defines a hybrid methodology combining Fibonacci-like growth for execution steps with systematic checkpoint and gateway insertion. Action steps grow organically, then validation checkpoints are inserted achieving saturation, finally release gateways complete the plan. Every step must be tangible, measurable, and executable. No ambiguity permitted.
+This document defines a hybrid methodology combining organic growth for execution steps with systematic checkpoint and gateway insertion. Action steps grow organically, then validation checkpoints are inserted achieving saturation, finally release gateways complete the plan. Every step must be tangible, measurable, and executable. No ambiguity permitted.
 
 [WRITING STYLE/TONE/VOICE]:
 Assertive. Deterministic. Direct. Pragmatic. Hands-on. Zero fluff. Commands not suggestions. Facts not opinions. Concrete not abstract. Executable not theoretical. Present tense imperative. No optional elements. No maybe. No perhaps. Only MUST and MUST NOT.
@@ -13,7 +13,7 @@ This is an interactive execution guide. When user says "next phase" or "proceed"
 5. Execute that section's instructions
 6. Add results below last "<--- TRUST THE PROCESS --->" separator in IMPLEMENTATION-PLAN.md
 7. Commit and push
-8. Fibonacci-like expansion for actions, then checkpoint saturation, then gateway completion. Maintain all previous steps when expanding. Use STEP_XX numbering for final itemization. Validation steps specify exact test files with atomic test definitions. Apply TDD cycle to every validation. One test equals one validation. Maximum three dash items per checkpoint unless fourth is TDD cycle guidance. Plain text with dashes only. No backticks. No code blocks in steps.
+8. Organic expansion for actions, then checkpoint saturation, then gateway completion. Maintain all previous steps when expanding. Use STEP_XX numbering for final itemization. Validation steps specify exact test files with atomic test definitions. Apply TDD cycle to every validation. One test equals one validation. Maximum three dash items per checkpoint unless fourth is TDD cycle guidance. Plain text with dashes only. No backticks. No code blocks in steps.
 
 [SYNTAX]:
 Phase separator: <--- TRUST THE PROCESS --->
@@ -26,7 +26,7 @@ Validation structure:
 - TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 
 [PATTERNS]:
-Start minimal, grow organically to 21 action steps following modified Fibonacci. After 21 steps, saturate with checkpoints. After 32 steps, add release gateways. Early validation prevents late failures. High checkpoint density ensures quality. Gateway pattern enables staged release verification. Action/validation/gateway separation creates clear phase boundaries.
+Start minimal, grow organically through action steps. After action expansion, saturate with checkpoints. After checkpoint saturation, add release gateways. Early validation prevents late failures. High checkpoint density ensures quality. Gateway pattern enables staged release verification. Action/validation/gateway separation creates clear phase boundaries.
 
 [ANTIPATTERNS]:
 Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria. Never mix action steps with validation steps in same expansion phase.
@@ -92,47 +92,6 @@ Keep all thirty-two steps (21 actions + 11 validations). Insert two release gate
 @___38_sequential_steps___[THIRTY-TWO STEPS PLUS SIX GATEWAYS]:
 [COMPLETE]38 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN + 05 STAPPENPLAN + 08 STAPPENPLAN + 11 CHECKLIST + 02 GATEWAY + 04 GATEWAY
 Keep all thirty-two steps (21 actions + 11 validations). Expand from two gateways to six gateways total by adding four more at strategic points: GATEWAY_01 foundation readiness, GATEWAY_02 validation infrastructure ready, GATEWAY_03 core system functional, GATEWAY_04 integration complete, GATEWAY_05 pre-production verification, GATEWAY_06 production readiness. Each gateway has both automated tests and manual review criteria. Gateways create staged release verification path. Total: twenty-one actions plus eleven validations plus six gateways equals thirty-eight items. Renumber all items sequentially STEP_01 through STEP_38.
-
------
-
-[HYBRID RATIONALE]
-
-Why this progression with STAPPENPLAN formulas:
-- Modified Fibonacci (1→3→5→8→13→21) creates natural STAPPENPLAN growth
-- Stopping at 21 STAPPENPLAN prevents over-decomposition
-- High checkpoint density (11 checkpoints) ensures quality at every stage
-- Checkpoint saturation phase (24→32) validates without adding STAPPENPLAN features
-- Gateway phase (32→34→38) adds release management without changing STAPPENPLAN implementation
-- Clear phase separation: STAPPENPLAN expansion, validation saturation, gateway completion
-
-Formula progression:
-- [INIT]01 = 01 STAPPENPLAN
-- [EXPAND]03 = 01 STAPPENPLAN + 02 STAPPENPLAN
-- [EXPAND]05 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN
-- [EXPAND]08 = 01 STAPPENPLAN + 02 STAPPENPLAN + 02 STAPPENPLAN + 03 STAPPENPLAN
-- [EXPAND]13 = 01 + 02 + 02 + 03 + 05 STAPPENPLAN
-- [EXPAND]21 = 01 + 02 + 02 + 03 + 05 + 08 STAPPENPLAN (action phase complete)
-- [INIT]24 = [21 STAPPENPLAN] + 03 CHECKLIST
-- [SATURATE]32 = [21 STAPPENPLAN] + 03 CHECKLIST + 08 CHECKLIST
-- [INIT]34 = [21 STAPPENPLAN + 11 CHECKLIST] + 02 GATEWAY
-- [COMPLETE]38 = [21 STAPPENPLAN + 11 CHECKLIST] + 02 GATEWAY + 04 GATEWAY
-
-Progression breakdown:
-- Phase 1 (1→21): STAPPENPLAN action/execution steps only, Fibonacci-like growth
-- Phase 2 (21→24→32): Checkpoint insertion, validation saturation
-- Phase 3 (32→34→38): Gateway insertion, release verification
-
-Comparison to other processes:
-- PROCESS_1 (doubling): More systematic, reaches 48 action steps
-- PROCESS_2 (pure Fibonacci): More organic, reaches 34 action steps
-- PROCESS_03 (hybrid): Balanced at 21 actions, emphasizes validation density
-
-When to use PROCESS_03:
-- Projects where quality gates are critical
-- Regulated environments requiring extensive validation
-- High-risk implementations needing staged verification
-- Teams preferring more checkpoints over more action granularity
-- When 21 action steps sufficient but validation must be comprehensive
 
 -----
 

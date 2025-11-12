@@ -1,5 +1,5 @@
 [INTRODUCTION]:
-This document defines an alternative Fibonacci-based methodology for planning complex implementation projects through organic growth. Start with single vision statement, expand following Fibonacci sequence for natural complexity scaling, then transition to checkpoint insertion pattern. Every step must be tangible, measurable, and executable. No ambiguity permitted.
+This document defines a methodology for planning complex implementation projects through organic growth. Start with single vision statement, expand through natural complexity scaling, then transition to checkpoint insertion pattern. Every step must be tangible, measurable, and executable. No ambiguity permitted.
 
 [WRITING STYLE/TONE/VOICE]:
 Assertive. Deterministic. Direct. Pragmatic. Hands-on. Zero fluff. Commands not suggestions. Facts not opinions. Concrete not abstract. Executable not theoretical. Present tense imperative. No optional elements. No maybe. No perhaps. Only MUST and MUST NOT.
@@ -13,7 +13,7 @@ This is an interactive execution guide. When user says "next phase" or "proceed"
 5. Execute that section's instructions
 6. Add results below last "<--- TRUST THE PROCESS --->" separator in IMPLEMENTATION-PLAN.md
 7. Commit and push
-8. Fibonacci expansion creates organic complexity growth. After completing Fibonacci expansion, switch to checkpoint insertion pattern. Use STEP_XX numbering for final itemization. Validation steps specify exact test files with atomic test definitions. Apply TDD cycle to every validation. One test equals one validation. Maximum three dash items per checkpoint unless fourth is TDD cycle guidance. Plain text with dashes only. No backticks. No code blocks in steps.
+8. Organic expansion creates natural complexity growth. After completing execution expansion, switch to checkpoint insertion pattern. Use STEP_XX numbering for final itemization. Validation steps specify exact test files with atomic test definitions. Apply TDD cycle to every validation. One test equals one validation. Maximum three dash items per checkpoint unless fourth is TDD cycle guidance. Plain text with dashes only. No backticks. No code blocks in steps.
 
 [SYNTAX]:
 Phase separator: <--- TRUST THE PROCESS --->
@@ -26,10 +26,10 @@ Validation structure:
 - TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 
 [PATTERNS]:
-Start minimal, grow organically following Fibonacci. Each expansion adds previous two step counts worth of detail. Early phases grow slowly, middle phases accelerate. After completing execution steps, switch to checkpoint insertion. Fibonacci creates natural information density progression. Later phases focus on validation and quality gates rather than feature expansion.
+Start minimal, grow organically. Each expansion adds detail based on previous step counts. Early phases grow slowly, middle phases accelerate. After completing execution steps, switch to checkpoint insertion. Natural information density progression emerges. Later phases focus on validation and quality gates rather than feature expansion.
 
 [ANTIPATTERNS]:
-Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria. Never force Fibonacci when checkpoints make more sense.
+Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria.
 
 [PHASE BREAKER]: "<--- TRUST THE PROCESS --->"
 
@@ -110,48 +110,6 @@ Keep all forty-eight steps from previous phase. Insert four release gateway step
 @___56_sequential_steps___[FORTY-EIGHT STEPS PLUS EIGHT GATEWAYS]:
 [EXPAND]56 = 48 STEPS + 08 GATEWAY
 Keep all forty-eight steps. Split four gateways into eight sub-gateways: automated verification gateway and manual review gateway for each milestone. Automated gateways run deterministic tests. Manual gateways require human sign-off on: documentation completeness, architecture review, security audit, performance benchmarks. Each manual gateway specifies exact review checklist. Total: forty-eight steps plus eight gateways equals fifty-six steps. Renumber gateways as GATEWAY_01 through GATEWAY_08.
-
------
-
-[FIBONACCI RATIONALE]
-
-Why Fibonacci progression for STAPPENPLAN:
-- Mirrors natural problem complexity growth in STAPPENPLAN decomposition
-- Early STAPPENPLAN stay abstract longer (1, 2, 3, 5)
-- Middle STAPPENPLAN show acceleration (8, 13, 21)
-- Final STAPPENPLAN reaches comprehensive detail (34)
-- Prevents premature over-specification of STAPPENPLAN
-- Allows organic discovery of hidden complexity in STAPPENPLAN
-- Each expansion builds on sum of previous two expansions
-- Creates natural information density gradient across STAPPENPLAN
-
-Formula progression for pure Fibonacci:
-- [INIT]01 = 01 STAPPENPLAN
-- [FIBONACCI]02 = 01 STAPPENPLAN + 01 STAPPENPLAN (1+1=2)
-- [FIBONACCI]03 = 01 STAPPENPLAN + 02 STAPPENPLAN (1+2=3)
-- [FIBONACCI]05 = 02 STAPPENPLAN + 03 STAPPENPLAN (2+3=5)
-- [FIBONACCI]08 = 03 STAPPENPLAN + 05 STAPPENPLAN (3+5=8)
-- [FIBONACCI]13 = 05 STAPPENPLAN + 08 STAPPENPLAN (5+8=13)
-- [FIBONACCI]21 = 08 STAPPENPLAN + 13 STAPPENPLAN (8+13=21)
-- [FIBONACCI]34 = 13 STAPPENPLAN + 21 STAPPENPLAN (13+21=34, final implementation)
-- [INIT]36 = 34 STAPPENPLAN + 02 CHECKLIST
-- [EXPAND]42 = 36 STAPPENPLAN + 06 CHECKLIST
-- [EXPAND]48 = 36 STAPPENPLAN + 12 CHECKLIST
-- [INIT]52 = [48 STEPS] + 04 GATEWAY
-- [EXPAND]56 = [48 STEPS] + 08 GATEWAY
-
-When to use Fibonacci vs doubling:
-- Use Fibonacci when problem complexity not fully understood at start
-- Use doubling when problem well-defined and systematic decomposition possible
-- Fibonacci better for exploratory or research-heavy projects
-- Doubling better for production implementations of known patterns
-
-Transition point (34 → 36 → 42 → 48):
-- After 34 steps, feature set complete
-- Remaining expansions add quality gates, not features
-- Validation and release management follow different scaling logic
-- Checkpoint counts (2, 6, 12) follow triangular pattern
-- Gateway counts (4, 8) follow doubling pattern
 
 -----
 
