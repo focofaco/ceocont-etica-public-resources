@@ -1,0 +1,16 @@
+online-resources/raw-text/
+├── callouts/
+├── data/
+├── diagrams/
+├── disclaimers/
+├── docks/
+├── faqs/
+├── meta/
+│   ├── TREE.txt
+│   ├── abbr.json.txt
+│   ├── glossario.json.txt
+│   └── integrity.txt
+├── others/
+├── plaintext/
+├── tables/
+└── tradeoffs/

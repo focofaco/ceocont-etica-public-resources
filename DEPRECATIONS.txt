@@ -1,0 +1,8 @@
+# DEPRECATIONS
+
+This file tracks deprecated paths and their replacements.
+
+Format: old_path → new_path (removed in vX.Y.Z)
+
+## v1.0.0
+No deprecations in initial release.
