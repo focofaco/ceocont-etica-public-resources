@@ -18,7 +18,7 @@ Validation structure:
 - TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 
 [PATTERNS]:
-Start vague, end precise. Six becomes twelve becomes twenty-four. Identify complex steps, split them. Insert checkpoints after logical completion points. Every sixth final step gets validation. Validation steps are not implementation steps. Keep ratios: implementation to validation approximately 3:1. Checkpoints validate cumulative work, not single steps. Group validations by domain: structure, configuration, CI, integrity, release, publishing.
+Start vague, end precise. One becomes three becomes six becomes twelve becomes twenty-four. Identify complex steps, split them. Insert checkpoints after logical completion points. Every sixth final step gets validation. Validation steps are not implementation steps. Keep ratios: implementation to validation approximately 3:1. Checkpoints validate cumulative work, not single steps. Group validations by domain: structure, configuration, CI, integrity, release, publishing.
 
 [ANTIPATTERNS]:
 Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never batch multiple implementations into one step at final level. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria. Never reference tools that don't exist yet.
@@ -27,8 +27,18 @@ Never use letters for step numbering in final output. Never exceed three dash it
 
 -----
 
+@___01_single_step___[ONE STEP STAPPENPLAN]:
+Begin with single comprehensive vision statement. This statement captures entire project scope in one paragraph or sentence. Statement must be specific enough to guide all subsequent decomposition while broad enough to encompass full implementation. This is executive summary level. Answer: What is being built and why does it matter? This singular vision drives all subsequent refinement.
+
+<--- TRUST THE PROCESS ----->
+
+@___03_sequential_steps___[THREE STEPS STAPPENPLAN]:
+Take the single vision and split into three fundamental phases. Common patterns: beginning, middle, end. Or: setup, execute, verify. Or: foundation, build, deliver. Three steps show minimal viable progression through project lifecycle. Each step represents major phase boundary. These three steps provide highest-level work breakdown showing sequential dependency. Descriptions remain abstract but establish project rhythm.
+
+<--- TRUST THE PROCESS ----->
+
 @___06_sequential_steps___[SIX STEPS STAPPENPLAN]:
-Begin with six high-level phases that map the entire journey from initial setup to final delivery. Each phase represents a major capability milestone. Phases must be sequential and build upon each other. No phase can start before its predecessor completes. These six phases provide executive-level visibility into project structure without implementation details. Use simple present tense descriptions focusing on outcomes not methods.
+Take the three fundamental phases and double to six high-level steps that map the entire journey from initial setup to final delivery. Each step represents a major capability milestone. Steps must be sequential and build upon each other. No step can start before its predecessor completes. These six steps provide executive-level visibility into project structure without implementation details. Use simple present tense descriptions focusing on outcomes not methods.
 
 <--- TRUST THE PROCESS ----->
 

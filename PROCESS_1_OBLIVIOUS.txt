@@ -1,6 +1,6 @@
 [INTERACTIVE EXECUTION GUIDE]
 
-This document guides step-by-step execution when running the PROCESS.txt methodology interactively. Use this when implementing a project phase by phase, with human review between phases.
+This document guides step-by-step execution when running the PROCESS_1.txt methodology interactively. Use this when implementing a project phase by phase, with human review between phases.
 
 -----
 
@@ -13,6 +13,8 @@ Before proceeding to next phase, AI agent MUST:
 - Determine next phase based on step count
 
 Phase identification table:
+- 1 step present → Next: expand to 3 steps
+- 3 steps present → Next: expand to 6 steps
 - 6 steps present → Next: expand to 12 steps
 - 12 steps present → Next: expand to 24 steps
 - 24 steps present → Next: expand to 36 steps
@@ -31,7 +33,7 @@ When user says "next phase" or "continue" or "proceed":
 STEP 1: Read current IMPLEMENTATION-PLAN.md
 STEP 2: Identify current step count
 STEP 3: Announce: "Current state: X steps detected. Next phase: expand to Y steps."
-STEP 4: Execute appropriate expansion from PROCESS.txt methodology
+STEP 4: Execute appropriate expansion from PROCESS_1.txt methodology
 STEP 5: Update IMPLEMENTATION-PLAN.md with new phase below last separator
 STEP 6: Add new "<--- TRUST THE PROCESS --->" separator before new content
 STEP 7: Commit with message describing phase transition (X → Y steps)
@@ -41,6 +43,19 @@ STEP 9: Announce completion: "Phase complete. Now at Y steps. Ready for next pha
 -----
 
 [PHASE-SPECIFIC INSTRUCTIONS]
+
+PHASE: 1 → 3 STEPS
+Action: Take single vision statement and split into three fundamental phases
+Result: 3 steps total
+Naming: Use numbered list (1-3) at this phase
+Patterns: beginning/middle/end, setup/execute/verify, foundation/build/deliver
+Preserve: Original 1 step visible above separator
+
+PHASE: 3 → 6 STEPS
+Action: Take each of 3 steps, double to 6 high-level steps
+Result: 6 steps total
+Naming: Use numbered list (1-6) at this phase
+Preserve: All original 3 steps visible above separator
 
 PHASE: 6 → 12 STEPS
 Action: Take each of 6 steps, split into 2 steps each
@@ -122,6 +137,8 @@ If IMPLEMENTATION-PLAN.md missing or corrupted:
 
 [COMMIT MESSAGE TEMPLATES]
 
+1→3: "docs: split vision into 3 fundamental phases"
+3→6: "docs: expand to 6 high-level steps"
 6→12: "docs: expand to 12 steps with sub-phase breakdown"
 12→24: "docs: expand to 24 granular implementation steps"
 24→36: "docs: expand complex steps to 36 total steps"
