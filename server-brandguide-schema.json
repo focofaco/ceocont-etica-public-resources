@@ -1,0 +1,356 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Server-Side Brand Guide (raw-text)",
+  "description": "Parâmetros validáveis do guia de marca textual para o repositório server-side de conteúdo cru.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "voice",
+    "language",
+    "categories",
+    "naming",
+    "limits",
+    "compliance"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "description",
+        "scope"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 3
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "online-resources/raw-text"
+          ]
+        }
+      }
+    },
+    "voice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "persona",
+        "tone",
+        "allowed_modals",
+        "forbidden_modals"
+      ],
+      "properties": {
+        "persona": {
+          "type": "string",
+          "enum": [
+            "impessoal-assertiva-direta"
+          ]
+        },
+        "tone": {
+          "type": "string",
+          "enum": [
+            "normativo-tecnico-autoritario-profissional-serio"
+          ]
+        },
+        "allowed_modals": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden_modals": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "language": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "encoding",
+        "rules"
+      ],
+      "properties": {
+        "encoding": {
+          "type": "string",
+          "const": "utf8-lf"
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "categories": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed",
+        "faq_pairing",
+        "tradeoff_prefixes",
+        "tsv_policy",
+        "dot_policy"
+      ],
+      "properties": {
+        "allowed": {
+          "type": "array",
+          "minItems": 10,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "plaintext",
+              "callouts",
+              "docks",
+              "tradeoffs",
+              "tables",
+              "data",
+              "faqs",
+              "diagrams",
+              "disclaimers",
+              "others",
+              "meta"
+            ]
+          }
+        },
+        "faq_pairing": {
+          "type": "object",
+          "required": [
+            "question",
+            "answer"
+          ],
+          "properties": {
+            "question": {
+              "type": "string",
+              "const": "q.txt"
+            },
+            "answer": {
+              "type": "string",
+              "const": "a.txt"
+            }
+          }
+        },
+        "tradeoff_prefixes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string"
+          }
+        },
+        "tsv_policy": {
+          "type": "object",
+          "required": [
+            "extension",
+            "delimiter",
+            "header_required",
+            "decimal"
+          ],
+          "properties": {
+            "extension": {
+              "type": "string",
+              "const": ".tsv.txt"
+            },
+            "delimiter": {
+              "type": "string",
+              "const": "\\t"
+            },
+            "header_required": {
+              "type": "boolean",
+              "const": true
+            },
+            "decimal": {
+              "type": "string",
+              "const": "."
+            }
+          }
+        },
+        "dot_policy": {
+          "type": "object",
+          "required": [
+            "extension",
+            "one_graph_per_file"
+          ],
+          "properties": {
+            "extension": {
+              "type": "string",
+              "const": ".dot.txt"
+            },
+            "one_graph_per_file": {
+              "type": "boolean",
+              "const": true
+            }
+          }
+        }
+      }
+    },
+    "naming": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug_style",
+        "no_parents",
+        "no_leading_slash"
+      ],
+      "properties": {
+        "slug_style": {
+          "type": "string",
+          "const": "lowercase-hyphen"
+        },
+        "no_parents": {
+          "type": "boolean",
+          "const": true
+        },
+        "no_leading_slash": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_file_kb",
+        "max_line_chars"
+      ],
+      "properties": {
+        "max_file_kb": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_line_chars": {
+          "type": "integer",
+          "minimum": 40
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checklist"
+      ],
+      "properties": {
+        "checklist": {
+          "type": "array",
+          "minItems": 6,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "meta": {
+        "id": "server-brandguide",
+        "name": "Guia de Marca do Repositório de Texto",
+        "description": "Voz, tom e regras textuais para o repositório online-resources/raw-text.",
+        "scope": "online-resources/raw-text"
+      },
+      "voice": {
+        "persona": "impessoal-assertiva-direta",
+        "tone": "normativo-tecnico-autoritario-profissional-serio",
+        "allowed_modals": [
+          "deve",
+          "é obrigatório",
+          "é vedado",
+          "proíbe-se",
+          "pode desde que"
+        ],
+        "forbidden_modals": [
+          "deveria",
+          "busca-se",
+          "pretende-se",
+          "espera-se",
+          "almeja-se"
+        ]
+      },
+      "language": {
+        "encoding": "utf8-lf",
+        "rules": [
+          "Frases curtas e verbo forte.",
+          "Sem HTML, scripts ou shortcodes.",
+          "Definir siglas na primeira ocorrência."
+        ]
+      },
+      "categories": {
+        "allowed": [
+          "plaintext",
+          "callouts",
+          "docks",
+          "tradeoffs",
+          "tables",
+          "data",
+          "faqs",
+          "diagrams",
+          "disclaimers",
+          "others",
+          "meta"
+        ],
+        "faq_pairing": {
+          "question": "q.txt",
+          "answer": "a.txt"
+        },
+        "tradeoff_prefixes": [
+          "+",
+          "−"
+        ],
+        "tsv_policy": {
+          "extension": ".tsv.txt",
+          "delimiter": "\\t",
+          "header_required": true,
+          "decimal": "."
+        },
+        "dot_policy": {
+          "extension": ".dot.txt",
+          "one_graph_per_file": true
+        }
+      },
+      "naming": {
+        "slug_style": "lowercase-hyphen",
+        "no_parents": true,
+        "no_leading_slash": true
+      },
+      "limits": {
+        "max_file_kb": 64,
+        "max_line_chars": 100
+      },
+      "compliance": {
+        "checklist": [
+          "Voz e tom verificados.",
+          "Sem HTML.",
+          ".txt UTF-8 LF válido.",
+          "Categorias corretas.",
+          "TSV com cabeçalho.",
+          "DOT válido."
+        ]
+      }
+    }
+  ]
+}
