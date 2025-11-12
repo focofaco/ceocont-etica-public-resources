@@ -60,8 +60,17 @@ timestamp: 2025-11-12T17:42:18Z
 
 <--- TRUST THE PROCESS --->
 
+1. Verify existing repository structure and branch strategy
+2. Set up .gitignore and repository documentation files
+3. Create README with contract overview and CDN usage
+4. Establish documentation templates for releases
+5. Initialize online-resources directory structure
+6. Create raw-text subdirectory with proper permissions
+7. Create content category directories (plaintext, callouts, docks, tradeoffs, tables, data, faqs, diagrams, disclaimers, others)
+8. Create meta directory for integrity and tree files
 9a. Specify UTF-8 encoding validation and BOM detection logic
 9b. Define line ending normalization rules and CRLF rejection
+10. Specify size limits and naming convention patterns
 11a. Create GitHub Actions YAML workflow structure
 11b. Define workflow triggers and runner environment
 12a. Implement format-specific validation gates (TSV, DOT, JSON)
@@ -74,6 +83,7 @@ timestamp: 2025-11-12T17:42:18Z
 15b. Implement directory structure serialization logic
 16a. Design integrity.txt hash manifest format
 16b. Implement file hash pairing and output generation
+17. Define tag naming convention and versioning policy
 18a. Document semantic versioning rules and examples
 18b. Create helper scripts for tag creation and validation
 19a. Parse commit history and categorize by type
@@ -82,5 +92,7 @@ timestamp: 2025-11-12T17:42:18Z
 20b. Generate release notes with categorized changes
 21a. Select CDN provider and configure authentication
 21b. Set up bucket/storage structure and access policies
+22. Define deployment paths and versioning strategy
 23a. Write tag detection and artifact preparation logic
 23b. Implement CDN upload and version pinning mechanism
+24. Configure CDN cache invalidation and verification
