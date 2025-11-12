@@ -52,6 +52,78 @@ Transition strategy:
 - Gateway insertion phase: add release verification after checkpoints complete
 - Never mix execution expansion with validation insertion in same phase
 
+[RUNTIME CHECKPOINT POLICY]:
+Objective: Define checkpoint creation policy during execution sequence of implementation steps and gateways.
+
+Step counting:
+- Counting is 1-based: step 1, step 2, step 3, …
+- Each execution of implementation step or gateway increments count by +1
+- Checkpoint occurs at end of designated step, after successful execution
+- Single unified counter: implementation steps and gateways both increment same counter
+
+Phase 1 - Initial checkpoint after 4 steps:
+- Rule: execute 4 steps without checkpoint, create checkpoint at end of 5th step
+- Formula: if current_step = 5 → create checkpoint
+- Usage: this initial phase applies only once at beginning of execution flow
+- Rationale: larger initial window reduces checkpoint overhead when flow is still stable
+
+Phase 2 - Checkpoints every 2 steps:
+- After first checkpoint from Phase 1, pattern changes
+- Rule: create checkpoint whenever 2 steps have executed since last checkpoint
+- Equivalently: every interval of 2 steps, next step creates new checkpoint
+- Formula:
+  • Let k = step number where last checkpoint occurred
+  • Next checkpoint must occur at step k + 3
+  • After that, new k becomes this step number, repeat rule
+- Practical interpretation: between one checkpoint and next, exactly 2 "pure" execution steps exist
+- Sequence pattern: exec → exec → checkpoint → exec → exec → checkpoint → …
+- Rationale: smaller window increases safety in critical or long execution phases
+
+Timeline example (implementation steps):
+Legend: E = normal execution step, C = execution with checkpoint creation at end
+
+Step:   1  2  3  4  5  6  7  8  9  10 11 12 13 14 15
+Action: E  E  E  E  C  E  E  C  E  E  C  E  E  C  E
+
+Explanation:
+- Steps 1–4: 4 executions without checkpoint (Phase 1)
+- Step 5: execution + checkpoint (first checkpoint, ends Phase 1)
+- Steps 6–7: 2 "pure" executions after checkpoint
+- Step 8: execution + checkpoint
+- Steps 9–10: 2 "pure" executions after checkpoint
+- Step 11: execution + checkpoint
+- Steps 12–13: 2 "pure" executions after checkpoint
+- Step 14: execution + checkpoint
+- Pattern continues indefinitely
+
+Application to gateways:
+- Gateways follow same counting and checkpoint policy as implementation steps
+- Each gateway passage counts as 1 execution step
+- Step counter does NOT differentiate between implementation step and gateway
+- Implementation step or gateway both increment by +1
+- Checkpoints occur at same step indices (5, 8, 11, 14, …) regardless of element type
+
+Mixed example (implementation steps + gateways):
+Step:      1    2      3  4    5      6  7    8
+Element:   step step   gw step step   gw step step
+Type:      E    E      E  E    C      E  E    C
+
+- Steps 1–4: any combination of implementation steps/gateways, no checkpoint
+- Step 5: element (implementation step or gateway) executes and creates checkpoint
+- After: maintains "2 executions between checkpoints" rule
+
+Operational summary:
+- Initialize step_counter = 0
+- At each execution of implementation step or gateway:
+  1) step_counter ← step_counter + 1
+  2) if step_counter = 5 → create checkpoint (end Phase 1)
+  3) after first checkpoint:
+     - maintain last_checkpoint = step where checkpoint occurred
+     - if step_counter = last_checkpoint + 3 → create new checkpoint
+     - update last_checkpoint ← step_counter
+
+MUST follow this policy. No exceptions. No deviations. Deterministic checkpoint creation ensures consistent recovery points throughout execution flow.
+
 [SYNTAX]:
 Phase separator: <--- TRUST THE PROCESS --->
 Step format implementation: STEP_XX: Brief imperative description
