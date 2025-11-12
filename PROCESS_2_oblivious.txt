@@ -50,87 +50,99 @@ STEP 9: Announce completion: "Phase complete. Now at Y steps. Ready for next Fib
 PHASE: 1 → 2 STEPS
 Action: Split single vision into two fundamental phases
 Method: Identify primary dichotomy (prep/exec, design/implement, etc.)
-Result: 2 steps total
+Formula: [FIBONACCI]02 = 01 STAPPENPLAN + 01 STAPPENPLAN
+Result: 2 STAPPENPLAN total
 Naming: Use numbered list (1-2) at this phase
-Fibonacci: Starting sequence
+Fibonacci: Starting sequence (1+1=2)
 
 PHASE: 2 → 3 STEPS
 Action: Add one step to existing two
 Method: Insert intermediate step or add follow-up step
+Formula: [FIBONACCI]03 = 01 STAPPENPLAN + 02 STAPPENPLAN
 Fibonacci: 1 + 2 = 3
-Result: 3 steps total
+Result: 3 STAPPENPLAN total
 Naming: Use numbered list (1-3) at this phase
 
 PHASE: 3 → 5 STEPS
 Action: Add two steps to existing three
 Method: Split most complex step or add two critical dependencies
+Formula: [FIBONACCI]05 = 02 STAPPENPLAN + 03 STAPPENPLAN
 Fibonacci: 2 + 3 = 5
-Result: 5 steps total
+Result: 5 STAPPENPLAN total
 Naming: Use numbered list (1-5) at this phase
 
 PHASE: 5 → 8 STEPS
 Action: Add three steps to existing five
 Method: Strategic splits of complex steps or reveal hidden dependencies
+Formula: [FIBONACCI]08 = 03 STAPPENPLAN + 05 STAPPENPLAN
 Fibonacci: 3 + 5 = 8
-Result: 8 steps total
+Result: 8 STAPPENPLAN total
 Naming: Use numbered list (1-8) at this phase
 
 PHASE: 8 → 13 STEPS
 Action: Add five steps to existing eight
 Method: Split complex steps or expose all hidden dependencies
+Formula: [FIBONACCI]13 = 05 STAPPENPLAN + 08 STAPPENPLAN
 Fibonacci: 5 + 8 = 13
-Result: 13 steps total
+Result: 13 STAPPENPLAN total
 Naming: Use numbered list (1-13) at this phase
 
 PHASE: 13 → 21 STEPS
 Action: Add eight steps to existing thirteen
 Method: Break down complex activities, expose all major dependencies
+Formula: [FIBONACCI]21 = 08 STAPPENPLAN + 13 STAPPENPLAN
 Fibonacci: 8 + 13 = 21
-Result: 21 steps total
+Result: 21 STAPPENPLAN total
 Naming: Use numbered list (1-21) at this phase
 
 PHASE: 21 → 34 STEPS
 Action: Add thirteen steps to existing twenty-one
 Method: Split remaining complex steps into atomic actions
+Formula: [FIBONACCI]34 = 13 STAPPENPLAN + 21 STAPPENPLAN
 Fibonacci: 13 + 21 = 34 (final Fibonacci expansion)
-Result: 34 steps total
+Result: 34 STAPPENPLAN total
 Naming: Use numbered list (1-34) at this phase
-Note: This completes Fibonacci progression, next phases add quality gates
+Note: This completes Fibonacci STAPPENPLAN progression, next phases add quality gates
 
 -----
 
 [PHASE-SPECIFIC INSTRUCTIONS - CHECKPOINT INSERTION]
 
 PHASE: 34 → 36 STEPS (ADD INITIAL CHECKPOINTS)
-Action: Keep all 34 steps, add 2 validation checkpoints at early critical junctions
-Result: 34 implementation + 2 validation = 36 steps total
+Action: Keep all 34 STAPPENPLAN, add 2 validation checkpoints at early critical junctions
+Formula: [INIT]36 = 34 STAPPENPLAN + 02 CHECKLIST
+Result: 34 STAPPENPLAN + 2 validation = 36 steps total
 Checkpoint positions: After foundation setup, after configuration complete
 Checkpoint format: Must include test file path, atomic tests list, 1-test-1-validation reminder
 Naming: Continue numbered list incorporating checkpoints
-Transition: Fibonacci expansion complete, begin checkpoint insertion pattern
+Transition: Fibonacci STAPPENPLAN expansion complete, begin checkpoint insertion pattern
 
 PHASE: 36 → 42 STEPS (EXPAND TO SIX CHECKPOINTS)
-Action: Keep all 34 implementation steps and 2 existing checkpoints, add 4 more checkpoints
-Result: 34 implementation + 6 validation = 40 steps, round to 42 for progression
+Action: Keep 34 STAPPENPLAN and 2 existing checkpoints, add 2 STAPPENPLAN and 4 more checkpoints
+Formula: [EXPAND]42 = 36 STAPPENPLAN + 06 CHECKLIST
+Result: 36 STAPPENPLAN + 6 validation = 42 steps total
 Checkpoint positions: After CI pipeline, after integrity system, after release automation, after publishing
 Naming: Continue numbered list with all six checkpoints integrated
 
 PHASE: 42 → 48 STEPS (REFINE AND RENUMBER)
-Action: Expand to 36 implementation steps (split 2 critical steps), split 6 checkpoints into 12 validations
-Result: 36 implementation + 12 validation = 48 steps total
+Action: Expand to 36 implementation STAPPENPLAN (split 2 critical steps), split 6 checkpoints into 12 validations
+Formula: [EXPAND]48 = 36 STAPPENPLAN + 12 CHECKLIST
+Result: 36 STAPPENPLAN + 12 validation = 48 steps total
 Naming: MUST renumber everything as STEP_01 through STEP_48
 Validation format: Each validation has 4 dash items (including TDD cycle)
-CRITICAL: This is final implementation phase - use STEP_XX notation
+CRITICAL: This is final STAPPENPLAN implementation phase - use STEP_XX notation
 
 PHASE: 48 → 52 STEPS (ADD GATEWAYS)
-Action: Keep all 48 steps, insert 4 release gateways at major milestones
+Action: Keep all 48 steps (36 STAPPENPLAN + 12 CHECKLIST), insert 4 release gateways at major milestones
+Formula: [INIT]52 = 48 STEPS + 04 GATEWAY
 Result: 48 steps + 4 gateways = 52 items total
 Gateway positions: After foundation, after validation infrastructure, after core system, after final validation
 Gateway format: Similar to checkpoints but spans multiple domains
 Naming: Steps remain STEP_XX, gateways use GATEWAY_01 through GATEWAY_04
 
 PHASE: 52 → 56 STEPS (SPLIT GATEWAYS)
-Action: Keep all 48 steps, split 4 gateways into 8 (automated + manual review)
+Action: Keep all 48 steps (36 STAPPENPLAN + 12 CHECKLIST), split 4 gateways into 8 (automated + manual review)
+Formula: [EXPAND]56 = 48 STEPS + 08 GATEWAY
 Result: 48 steps + 8 gateways = 56 items total
 Gateway format: Automated gateways run tests, manual gateways require human sign-off
 Naming: GATEWAY_01 through GATEWAY_08

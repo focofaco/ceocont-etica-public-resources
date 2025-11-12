@@ -28,81 +28,109 @@ Never use letters for step numbering in final output. Never exceed three dash it
 -----
 
 @___01_single_step___[ONE STEP STAPPENPLAN]:
+[INIT]01 = 01 STAPPENPLAN
 Begin with single comprehensive vision statement. This statement captures entire project scope in one paragraph. Statement must be specific enough to guide all subsequent decomposition while broad enough to encompass full implementation. This is executive summary level. Answer: What is being built and why does it matter?
 
 <--- TRUST THE PROCESS ----->
 
 @___02_sequential_steps___[TWO STEPS STAPPENPLAN]:
-Split the single vision into two fundamental phases: preparation and execution. Or: design and implementation. Or: foundation and superstructure. Whatever dichotomy best serves the project. These two steps represent the highest-level work breakdown. Each step is still quite abstract but shows major dependency. Step one must complete before step two begins.
+[FIBONACCI]02 = 01 STAPPENPLAN + 01 STAPPENPLAN
+Split the single vision into two fundamental phases: preparation and execution. Or: design and implementation. Or: foundation and superstructure. Whatever dichotomy best serves the project. Fibonacci: 1 + 1 = 2. These two steps represent the highest-level work breakdown. Each step is still quite abstract but shows major dependency. Step one must complete before step two begins.
 
 <--- TRUST THE PROCESS ----->
 
 @___03_sequential_steps___[THREE STEPS STAPPENPLAN]:
+[FIBONACCI]03 = 01 STAPPENPLAN + 02 STAPPENPLAN
 Fibonacci expansion: previous two step counts (1 + 2 = 3). Take the two steps and expand by adding one new intermediate or follow-up step. Common patterns: beginning, middle, end. Or: setup, core work, teardown. Or: build, test, deploy. Three steps show minimal viable progression through project lifecycle. Steps remain high-level but show sequence.
 
 <--- TRUST THE PROCESS ----->
 
 @___05_sequential_steps___[FIVE STEPS STAPPENPLAN]:
+[FIBONACCI]05 = 02 STAPPENPLAN + 03 STAPPENPLAN
 Fibonacci expansion: previous two step counts (2 + 3 = 5). Take the three steps and add two more steps by splitting most complex step or adding critical dependencies. Five steps typically map to major capability domains. Each step represents substantial deliverable or milestone. Five steps provide program management visibility into major work streams. Descriptions specify domain but not implementation details.
 
 <--- TRUST THE PROCESS ----->
 
 @___08_sequential_steps___[EIGHT STEPS STAPPENPLAN]:
+[FIBONACCI]08 = 03 STAPPENPLAN + 05 STAPPENPLAN
 Fibonacci expansion: previous two step counts (3 + 5 = 8). Take the five steps and add three more steps through strategic splits or dependency additions. Eight steps show project rhythm. Natural checkpoints emerge. Each step now represents focused work package. Eight steps provide technical leadership visibility into execution sequence. Descriptions hint at deliverables and artifacts.
 
 <--- TRUST THE PROCESS ----->
 
 @___13_sequential_steps___[THIRTEEN STEPS STAPPENPLAN]:
+[FIBONACCI]13 = 05 STAPPENPLAN + 08 STAPPENPLAN
 Fibonacci expansion: previous two step counts (5 + 8 = 13). Take the eight steps and add five more steps by splitting complex steps or revealing hidden dependencies. Thirteen steps show detailed execution path. Dependencies between steps become critical. Each step is actionable work item. Thirteen steps provide senior implementer visibility. Descriptions specify what gets built or configured.
 
 <--- TRUST THE PROCESS ----->
 
 @___21_sequential_steps___[TWENTY-ONE STEPS STAPPENPLAN]:
+[FIBONACCI]21 = 08 STAPPENPLAN + 13 STAPPENPLAN
 Fibonacci expansion: previous two step counts (8 + 13 = 21). Take the thirteen steps and add eight more steps by breaking down complex activities and exposing all major dependencies. Twenty-one steps show comprehensive implementation plan. Each step is discrete task. Dependencies form critical path. Twenty-one steps provide implementer-level granularity. Descriptions specify exact artifacts, commands, or configurations.
 
 <--- TRUST THE PROCESS ----->
 
 @___34_sequential_steps___[THIRTY-FOUR STEPS STAPPENPLAN]:
+[FIBONACCI]34 = 13 STAPPENPLAN + 21 STAPPENPLAN
 Fibonacci expansion: previous two step counts (13 + 21 = 34). Take the twenty-one steps and add thirteen more steps by splitting remaining complex steps into atomic actions. Thirty-four steps represent fully decomposed implementation plan. Each step is single-purpose action. No step requires further decomposition to execute. Thirty-four steps provide complete implementation visibility. This is final Fibonacci expansion before quality gates insertion.
 
 <--- TRUST THE PROCESS ----->
 
 @___36_sequential_steps___[THIRTY-SIX STEPS PLUS TWO INITIAL VALIDATIONS]:
-Keep all thirty-four implementation steps. Add two validation checkpoint steps at early critical junctions: one after foundational setup, one after configuration complete. These first checkpoints validate project can proceed to complex implementation. Checkpoints define specific test files to create, list atomic tests to execute, reiterate one-test-one-validation principle, include TDD cycle guidance. Total: thirty-four implementation plus two validation equals thirty-six steps.
+[INIT]36 = 34 STAPPENPLAN + 02 CHECKLIST
+Keep all thirty-four implementation steps. Add two validation checkpoint steps at early critical junctions: one after foundational setup, one after configuration complete. These first checkpoints validate project can proceed to complex implementation. Checkpoints define specific test files to create, list atomic tests to execute, reiterate one-test-one-validation principle, include TDD cycle guidance. Total: thirty-four STAPPENPLAN plus two validation equals thirty-six steps.
 
 <--- TRUST THE PROCESS ----->
 
 @___42_sequential_steps___[THIRTY-SIX STEPS PLUS SIX TOTAL VALIDATIONS]:
-Keep all thirty-four implementation steps and two existing validations. Add four more validation checkpoint steps at strategic boundaries: after CI pipeline, after integrity system, after release automation, after publishing system. Six checkpoints total now validate: foundation, configuration, CI, integrity, release, publishing. Each checkpoint validates cumulative work in its domain. Total: thirty-four implementation plus six validation equals forty steps, round to forty-two to maintain progression.
+[EXPAND]42 = 36 STAPPENPLAN + 06 CHECKLIST
+Keep all thirty-four implementation steps and two existing validations. Add two more implementation STAPPENPLAN and four more validation checkpoint steps at strategic boundaries: after CI pipeline, after integrity system, after release automation, after publishing system. Six checkpoints total now validate: foundation, configuration, CI, integrity, release, publishing. Each checkpoint validates cumulative work in its domain. Total: thirty-six STAPPENPLAN plus six validation equals forty-two steps.
 
 <--- TRUST THE PROCESS ----->
 
 @___48_sequential_steps___[THIRTY-SIX IMPLEMENTATION PLUS TWELVE VALIDATIONS]:
-Keep all thirty-four implementation steps. Expand to thirty-six implementation steps by splitting two most critical steps. Split six checkpoints into twelve focused validation steps: each checkpoint becomes two validations testing core functionality and edge cases separately. Renumber everything sequentially as STEP_01 through STEP_48. Validation format matches previous phases. Total: thirty-six implementation plus twelve validation equals forty-eight steps.
+[EXPAND]48 = 36 STAPPENPLAN + 12 CHECKLIST
+Keep all thirty-four implementation steps. Expand to thirty-six implementation steps by splitting two most critical steps. Split six checkpoints into twelve focused validation steps: each checkpoint becomes two validations testing core functionality and edge cases separately. Renumber everything sequentially as STEP_01 through STEP_48. Validation format matches previous phases. Total: thirty-six STAPPENPLAN plus twelve validation equals forty-eight steps.
 
 <--- TRUST THE PROCESS ----->
 
 @___52_sequential_steps___[FORTY-EIGHT STEPS PLUS FOUR GATEWAYS]:
+[INIT]52 = 48 STEPS + 04 GATEWAY
 Keep all forty-eight steps from previous phase. Insert four release gateway steps at major milestone boundaries: after foundation completion (GATEWAY_01), after validation infrastructure complete (GATEWAY_02), after core system functional (GATEWAY_03), after all validations pass (GATEWAY_04). Gateways aggregate multiple checkpoint results and add integration tests. Gateways block progression until prerequisites pass. Total: forty-eight steps plus four gateways equals fifty-two steps.
 
 <--- TRUST THE PROCESS ----->
 
 @___56_sequential_steps___[FORTY-EIGHT STEPS PLUS EIGHT GATEWAYS]:
+[EXPAND]56 = 48 STEPS + 08 GATEWAY
 Keep all forty-eight steps. Split four gateways into eight sub-gateways: automated verification gateway and manual review gateway for each milestone. Automated gateways run deterministic tests. Manual gateways require human sign-off on: documentation completeness, architecture review, security audit, performance benchmarks. Each manual gateway specifies exact review checklist. Total: forty-eight steps plus eight gateways equals fifty-six steps. Renumber gateways as GATEWAY_01 through GATEWAY_08.
 
 -----
 
 [FIBONACCI RATIONALE]
 
-Why Fibonacci progression:
-- Mirrors natural problem complexity growth
-- Early steps stay abstract longer (1, 2, 3, 5)
-- Middle steps show acceleration (8, 13, 21)
-- Final step reaches comprehensive detail (34)
-- Prevents premature over-specification
-- Allows organic discovery of hidden complexity
+Why Fibonacci progression for STAPPENPLAN:
+- Mirrors natural problem complexity growth in STAPPENPLAN decomposition
+- Early STAPPENPLAN stay abstract longer (1, 2, 3, 5)
+- Middle STAPPENPLAN show acceleration (8, 13, 21)
+- Final STAPPENPLAN reaches comprehensive detail (34)
+- Prevents premature over-specification of STAPPENPLAN
+- Allows organic discovery of hidden complexity in STAPPENPLAN
 - Each expansion builds on sum of previous two expansions
-- Creates natural information density gradient
+- Creates natural information density gradient across STAPPENPLAN
+
+Formula progression for pure Fibonacci:
+- [INIT]01 = 01 STAPPENPLAN
+- [FIBONACCI]02 = 01 STAPPENPLAN + 01 STAPPENPLAN (1+1=2)
+- [FIBONACCI]03 = 01 STAPPENPLAN + 02 STAPPENPLAN (1+2=3)
+- [FIBONACCI]05 = 02 STAPPENPLAN + 03 STAPPENPLAN (2+3=5)
+- [FIBONACCI]08 = 03 STAPPENPLAN + 05 STAPPENPLAN (3+5=8)
+- [FIBONACCI]13 = 05 STAPPENPLAN + 08 STAPPENPLAN (5+8=13)
+- [FIBONACCI]21 = 08 STAPPENPLAN + 13 STAPPENPLAN (8+13=21)
+- [FIBONACCI]34 = 13 STAPPENPLAN + 21 STAPPENPLAN (13+21=34, final implementation)
+- [INIT]36 = 34 STAPPENPLAN + 02 CHECKLIST
+- [EXPAND]42 = 36 STAPPENPLAN + 06 CHECKLIST
+- [EXPAND]48 = 36 STAPPENPLAN + 12 CHECKLIST
+- [INIT]52 = [48 STEPS] + 04 GATEWAY
+- [EXPAND]56 = [48 STEPS] + 08 GATEWAY
 
 When to use Fibonacci vs doubling:
 - Use Fibonacci when problem complexity not fully understood at start
