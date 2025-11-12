@@ -15,6 +15,52 @@ This is an interactive execution guide. When user says "next phase" or "proceed"
 7. Commit and push
 8. The process continues until you reach a section that says "Final sequence"
 
+Formula interpretation:
+- [INIT]: Initial step creation, starting point
+- [SPLIT]: Decomposition of steps, revealing hidden complexity
+- [DOUBLE]: Systematic doubling of step count through refinement
+- Formula notation: shows transformation from one count to another
+- Splitting logic: identify most complex steps, decompose into finer granularity
+
+Iterative refinement mechanics:
+- Begin with single high-level vision
+- Progressively split into more steps: 1→3→6→12→24→36
+- Each iteration maintains all previous work while adding detail
+- Early iterations: strategic decomposition of major capabilities
+- Middle iterations: tactical decomposition of work packages
+- Late iterations: operational decomposition of specific tasks
+- Renumber sequentially after each phase: STEP_01, STEP_02, STEP_03, etc.
+- Preserve step content during renumbering, only update numbers
+
+Step formatting rules:
+- Implementation steps: STEP_XX: Brief imperative description
+- Validation steps: STEP_XX: Brief validation description
+- Checkpoint format: exactly three dash items plus optional fourth for TDD cycle
+- Gateway format: similar to checkpoint but spans multiple domains
+- Use plain text with dashes only, never use backticks or code blocks
+
+Validation requirements:
+- Every validation MUST specify exact test file path: tests/category/test-name.sh
+- List atomic tests as comma-separated items
+- One test equals one validation - never bundle multiple validations
+- Always include TDD cycle guidance as fourth dash item
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
+
+Checkpoint insertion strategy:
+- Complete implementation decomposition before inserting first checkpoint
+- Strategic placement after logical completion points
+- Checkpoints validate cumulative implementation, not individual steps
+- Domain-based grouping: structure, configuration, CI, integrity, release, publishing
+- Incremental checkpoint addition: 6→12 checkpoints through splitting
+- Each checkpoint split divides validation scope: core functionality vs edge cases
+
+Gateway insertion strategy:
+- Gateways mark major milestone boundaries
+- Four primary gateways: foundation, validation infrastructure, core system, production
+- Gateway expansion: 4→8 through splitting automated vs manual verification
+- Automated gateways: deterministic test execution
+- Manual gateways: human review with explicit checklists
+
 [SYNTAX]:
 Phase separator: <--- TRUST THE PROCESS --->
 Step format implementation: STEP_XX: Brief imperative description
@@ -28,8 +74,128 @@ Validation structure:
 [PATTERNS]:
 Start vague, end precise. Identify complex steps, split them. Insert checkpoints after logical completion points. Validation steps are not implementation steps. Keep ratios: implementation to validation approximately 3:1. Checkpoints validate cumulative work, not single steps. Group validations by domain: structure, configuration, CI, integrity, release, publishing.
 
+Phase progression patterns:
+- Phase 1 (single step): Executive summary level, entire project scope in one statement
+- Phase 2 (three steps): Highest-level work breakdown, sequential dependency, major phase boundaries
+- Phase 3 (six steps): Program management visibility, major work streams, substantial deliverables
+- Phase 4 (twelve steps): Technical leadership visibility, focused work packages, execution sequence
+- Phase 5 (twenty-four steps): Senior implementer visibility, detailed execution path, critical dependencies
+- Phase 6 (thirty-six steps): Implementer granularity, comprehensive plan, exact artifacts
+
+Splitting and doubling patterns:
+- Splitting: identify most complex steps from previous phase, decompose into constituent parts
+- Doubling: systematic increase from N to 2N steps through targeted decomposition
+- Target selection: choose steps with highest complexity, broadest scope, most hidden dependencies
+- Decomposition strategy: reveal sequential phases within complex steps, expose parallel work streams
+- Granularity calibration: maintain appropriate detail level for current phase
+
+Step description patterns:
+- Phase 1: Paragraph capturing full vision
+- Phase 2-3: High-level capability statements
+- Phase 4-5: Work package descriptions with scope
+- Phase 6: Specific task descriptions with artifacts
+- Use imperative mood throughout
+- Maintain measurable outcomes at every level
+- Increase specificity through phases: conceptual → tactical → operational
+
+Validation insertion patterns:
+- Complete all implementation decomposition first (reach phase 6 with 36 steps)
+- Insert six checkpoints at strategic completion boundaries
+- Domain-based checkpoint placement: structure, config, CI, integrity, release, publishing
+- Each checkpoint validates cumulative work in its domain
+- Checkpoint splitting: core functionality vs edge cases/integration
+- Checkpoint expansion: 6 → 12 through systematic splitting
+
+Gateway insertion patterns:
+- Add four gateways at major milestone boundaries
+- Gateway positioning: after checkpoints are placed
+- Each gateway aggregates multiple checkpoint results
+- Gateway content: automated tests + manual review criteria
+- Gateway splitting: automated verification vs manual review
+- Gateway expansion: 4 → 8 through verification type separation
+
+Ratio and balance patterns:
+- Target implementation:validation ratio approximately 3:1
+- Phase 6: 36 implementation steps provides foundation
+- Checkpoint phase: add 6 then 12 validations (36:12 = 3:1)
+- Gateway phase: add 4 then 8 release gates
+- Final balance: 36 implementation + 12 validation + 8 gateway = 56 total
+
 [ANTIPATTERNS]:
 Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never batch multiple implementations into one step at final level. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria. Never reference tools that don't exist yet.
+
+Splitting and doubling antipatterns:
+- Never split low-complexity steps while high-complexity steps remain unsplit
+- Never double by creating duplicate steps instead of proper decomposition
+- Never maintain same abstraction level when doubling - must add detail
+- Never split evenly - target most complex steps for decomposition
+- Never double implementation and validation simultaneously
+- Never skip intermediate doubling phases trying to jump to final count
+
+Numbering and formatting antipatterns:
+- Never skip renumbering after splitting or doubling
+- Never use non-sequential numbering after expansion
+- Never lose track of step count during splitting phases
+- Never forget to update STEP_XX numbers when inserting validations
+- Never use inconsistent numbering schemes within same plan
+
+Step content antipatterns:
+- Never write vague descriptions at any phase
+- Never include implementation code in step descriptions
+- Never create steps with multiple unrelated concerns
+- Never use conditional logic in step descriptions
+- Never create unverifiable steps without measurable outcomes
+- Never use passive voice in step descriptions
+- Never include optional elements or tentative phrasing
+- Never batch multiple tasks into one step at final implementation granularity
+
+Dependency antipatterns:
+- Never create circular dependencies between steps
+- Never reference future steps not yet created
+- Never violate topological order during splitting
+- Never assume implicit dependencies without making them explicit
+- Never create checkpoints that validate steps not yet implemented
+- Never design gateways that depend on validations not yet inserted
+
+Validation antipatterns:
+- Never create validation steps without exact test file path
+- Never bundle multiple unrelated tests in single validation
+- Never forget TDD cycle guidance in checkpoint dash items
+- Never use relative file paths in test specifications
+- Never hard-code values that should come from contract
+- Never create tests requiring manual intervention without review criteria
+- Never write validations that test implementation details instead of behavior
+- Never omit edge case and negative test coverage
+- Never violate 3:1 implementation:validation ratio significantly
+
+Phase progression antipatterns:
+- Never add too much detail too early in splitting sequence
+- Never stay too abstract too late in splitting sequence
+- Never insert checkpoints before completing implementation decomposition
+- Never add gateways before completing checkpoint insertion
+- Never read ahead to future phases before reaching them
+- Never skip implementation doubling phases
+- Never violate three-phase structure: implementation, validation, gateway
+
+Quality antipatterns:
+- Never use placeholder text like TODO or TBD
+- Never leave ambiguous acceptance criteria
+- Never create steps requiring information not available in contract
+- Never write implementation-specific steps when contract is technology-agnostic
+- Never exceed three dash items in checkpoints except for TDD cycle
+- Never use backticks, code blocks, or formatted code in step text
+- Never create steps that require external documentation to complete
+- Never reference tools, frameworks, or dependencies not yet created in earlier steps
+
+Strategic antipatterns:
+- Never place checkpoints at arbitrary positions - follow domain boundaries
+- Never create low-value checkpoints testing trivial operations
+- Never omit checkpoints for high-risk or complex operations
+- Never design gateways that merely duplicate checkpoint tests
+- Never create manual review gates without specific review checklists
+- Never position gateways within phases instead of at major milestone boundaries
+- Never split checkpoints unevenly - balance core vs edge case coverage
+- Never split gateways arbitrarily - separate automated from manual verification
 
 [PHASE BREAKER]: "<--- TRUST THE PROCESS --->"
 

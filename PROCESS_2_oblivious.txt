@@ -13,7 +13,44 @@ This is an interactive execution guide. When user says "next phase" or "proceed"
 5. Execute that section's instructions
 6. Add results below last "<--- TRUST THE PROCESS --->" separator in IMPLEMENTATION-PLAN.md
 7. Commit and push
-8. Organic expansion creates natural complexity growth. After completing execution expansion, switch to checkpoint insertion pattern. Use STEP_XX numbering for final itemization. Validation steps specify exact test files with atomic test definitions. Apply TDD cycle to every validation. One test equals one validation. Maximum three dash items per checkpoint unless fourth is TDD cycle guidance. Plain text with dashes only. No backticks. No code blocks in steps.
+8. Organic expansion creates natural complexity growth. After completing execution expansion, switch to checkpoint insertion pattern
+
+Formula interpretation:
+- [INIT]: Initial step creation, starting point
+- [FIBONACCI]: Growth following natural progression pattern
+- [EXPAND]: Addition of new steps building on previous work
+- Formula notation: shows how current phase builds on previous phase results
+- Expansion logic: each phase adds steps based on previous phase counts
+
+Organic expansion mechanics:
+- Early phases: slow growth, stay abstract, establish foundation
+- Middle phases: accelerated growth, add specificity, reveal dependencies
+- Late phases: comprehensive detail, concrete implementation guidance
+- Maintain ALL previous steps when expanding to next phase
+- Add new steps according to phase instructions
+- Renumber sequentially after each phase: STEP_01, STEP_02, STEP_03, etc.
+- Preserve step content during renumbering, only update numbers
+
+Step formatting rules:
+- Implementation steps: STEP_XX: Brief imperative description
+- Validation steps: STEP_XX: Brief validation description
+- Checkpoint format: exactly three dash items plus optional fourth for TDD cycle
+- Gateway format: similar to checkpoint but spans multiple domains
+- Use plain text with dashes only, never use backticks or code blocks
+
+Validation requirements:
+- Every validation MUST specify exact test file path: tests/category/test-name.sh
+- List atomic tests as comma-separated items
+- One test equals one validation - never bundle multiple validations
+- Always include TDD cycle guidance as fourth dash item
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
+
+Transition strategy:
+- Execution expansion phase: focus purely on implementation steps, no validations yet
+- Transition point: when execution steps reach sufficient detail for comprehensive implementation
+- Checkpoint insertion phase: add strategic validations to completed execution plan
+- Gateway insertion phase: add release verification after checkpoints complete
+- Never mix execution expansion with validation insertion in same phase
 
 [SYNTAX]:
 Phase separator: <--- TRUST THE PROCESS --->
@@ -28,8 +65,118 @@ Validation structure:
 [PATTERNS]:
 Start minimal, grow organically. Each expansion adds detail based on previous step counts. Early phases grow slowly, middle phases accelerate. After completing execution steps, switch to checkpoint insertion. Natural information density progression emerges. Later phases focus on validation and quality gates rather than feature expansion.
 
+Phase progression patterns:
+- Phase 1: Single vision statement, highest abstraction, project-level scope
+- Phase 2-3: Major capability domains emerge, program-level decomposition
+- Phase 4-5: Work packages defined, technical leadership visibility
+- Phase 6-7: Detailed task breakdown, implementer-level granularity, comprehensive coverage
+- Phase 8+: Validation insertion, checkpoint saturation, gateway creation
+
+Organic growth patterns:
+- Growth accelerates naturally: early phases add fewer steps, later phases add more
+- Each expansion builds on all previous expansions
+- Complexity emerges gradually without forcing premature detail
+- Natural discovery of hidden dependencies and implicit requirements
+- Information density increases organically from abstract to concrete
+
+Step description patterns:
+- Early phases: paragraph-level conceptual descriptions, strategic capabilities
+- Middle phases: sentence-level work package descriptions, tactical capabilities
+- Late phases: precise task descriptions, operational details
+- Use imperative mood throughout: "Create", "Configure", "Implement"
+- Maintain measurable outcomes: each step produces verifiable artifact
+
+Dependency management patterns:
+- Early phases establish high-level sequence: foundation → build → verify
+- Middle phases reveal dependency chains between capabilities
+- Late phases expose fine-grained dependencies between tasks
+- Maintain topological order: dependencies always come before dependents
+- Sequential checkpoints validate dependency satisfaction progressively
+
+Validation patterns:
+- Complete all execution expansion before adding first checkpoint
+- Strategic checkpoint placement at capability boundaries
+- Incremental checkpoint addition: start with few, grow to comprehensive coverage
+- Test file organization: tests/category/test-name.sh
+- Atomic test definitions: one test one validation
+- Gateway placement at major milestones after checkpoint saturation
+
+Natural information density patterns:
+- Abstraction level decreases through phases: conceptual → tactical → operational
+- Specificity increases through phases: what → how → exactly how
+- Granularity increases through phases: programs → packages → tasks
+- Verification rigor increases through phases: none → checkpoints → gateways
+- Each phase reveals information hidden in previous abstractions
+
 [ANTIPATTERNS]:
 Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria.
+
+Organic growth antipatterns:
+- Never force premature detail in early phases
+- Never stay too abstract in late phases
+- Never skip intermediate phases trying to jump directly to implementation detail
+- Never lose the organic progression by making all phases equally detailed
+- Never add checkpoints during execution expansion phases
+- Never continue execution expansion after transition to validation phase
+
+Numbering and formatting antipatterns:
+- Never skip renumbering after any expansion
+- Never use non-sequential numbering
+- Never lose track of step count between phases
+- Never forget to preserve step content during renumbering
+- Never mix numbering schemes within same plan
+
+Step content antipatterns:
+- Never write vague descriptions at any phase
+- Never include code or commands in step descriptions
+- Never create steps with multiple unrelated concerns
+- Never use conditional logic in steps
+- Never create unverifiable steps
+- Never use passive voice
+- Never include optional elements
+
+Dependency antipatterns:
+- Never create circular dependencies
+- Never reference steps not yet created
+- Never violate topological order
+- Never assume implicit dependencies
+- Never create checkpoints before their target steps exist
+- Never design gateways depending on non-existent validations
+
+Validation antipatterns:
+- Never create validation without exact test file path
+- Never bundle multiple unrelated tests
+- Never forget TDD cycle guidance
+- Never use relative paths
+- Never hard-code values from contract
+- Never write validations testing implementation instead of behavior
+- Never omit edge cases and negative tests
+
+Expansion mechanics antipatterns:
+- Never lose previous steps when expanding
+- Never modify existing step content during expansion
+- Never skip phases
+- Never read ahead to future phases
+- Never combine expansion with validation insertion
+- Never violate phase separation
+- Never change the expansion pattern mid-process
+
+Quality antipatterns:
+- Never use placeholders like TODO or TBD
+- Never leave ambiguous criteria
+- Never require information not in contract
+- Never create technology-specific steps when contract is agnostic
+- Never exceed three dash items except for TDD
+- Never use code formatting in plain text
+- Never require external documentation
+
+Strategic antipatterns:
+- Never place checkpoints arbitrarily
+- Never create trivial low-value checkpoints
+- Never omit checkpoints for high-risk operations
+- Never make gateways that duplicate checkpoint tests
+- Never create review gates without specific criteria
+- Never position gateways mid-phase instead of at boundaries
 
 [PHASE BREAKER]: "<--- TRUST THE PROCESS --->"
 

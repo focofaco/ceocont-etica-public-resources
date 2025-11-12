@@ -15,6 +15,43 @@ This is an interactive execution guide. When user says "next phase" or "proceed"
 7. Commit and push
 8. The process continues until you reach a section that says "This is the final compact process"
 
+Formula interpretation:
+- [INIT]: Initial step creation, starting point for a new type
+- [MITOSE]: Growth through replication and expansion
+- Formula notation shows composition and relationships between step types
+- Density formulas: checkpoint_count = execution_steps / checkpoint_interval, gateway_count = execution_steps / gateway_interval
+
+Density-based expansion mechanics:
+- Execution steps expand until reaching fixed count, then stop
+- Checkpoint count calculated from execution step density: exec_steps / interval
+- Gateway count calculated from execution step density: exec_steps / interval
+- Density increases through interval reduction: larger interval → fewer items, smaller interval → more items
+- All density calculations reference fixed execution step count, never total accumulated steps
+- Renumber sequentially after each phase: STEP_01, STEP_02, STEP_03, etc.
+- Preserve step content during renumbering, only update numbers
+
+Step formatting rules:
+- Implementation steps: STEP_XX: Brief imperative description
+- Validation steps: STEP_XX: Brief validation description
+- Checkpoint format: exactly three dash items plus optional fourth for TDD cycle
+- Gateway format: similar to checkpoint but spans multiple domains
+- Use plain text with dashes only, never use backticks or code blocks
+
+Validation requirements:
+- Every validation MUST specify exact test file path: tests/category/test-name.sh
+- List atomic tests as comma-separated items
+- One test equals one validation - never bundle multiple validations
+- Always include TDD cycle guidance as fourth dash item
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
+
+Density calculation strategy:
+- Checkpoint density phase 1: larger interval, lower density, fewer checkpoints
+- Checkpoint density phase 2: smaller interval, higher density, more checkpoints (typically double from phase 1)
+- Gateway density phase 1: larger interval, lower density, fewer gateways
+- Gateway density phase 2: smaller interval, higher density, more gateways (typically double from phase 1)
+- Ratio tracking: maintain awareness of execution:validation:gateway ratios
+- Example: 8 exec : 4 checkpoints : 2 gateways = 2:1:0.25 ratio
+
 [SYNTAX]:
 Phase separator: <--- TRUST THE PROCESS --->
 Step format implementation: STEP_XX: Brief imperative description
@@ -28,8 +65,101 @@ Validation structure:
 [PATTERNS]:
 Start minimal, expand rapidly to fixed execution steps. Minimal action set forces high-level thinking. After execution steps complete, calculate checkpoint density from those execution steps. After checkpoint expansion complete, calculate gateway density from those same execution steps. All density calculations based on fixed execution steps, not on total accumulated count. Density increases with each expansion.
 
+Phase progression patterns:
+- Execution expansion: rapid growth to fixed count, focus on essential actions only
+- Checkpoint insertion: density-driven, calculated from fixed execution count
+- Gateway insertion: density-driven, calculated from fixed execution count
+- Fixed baseline: execution steps remain constant once reached, only validation/gateway density changes
+- Compact design: minimal execution steps forces maximum abstraction and essential-only thinking
+
+Density calculation patterns:
+- Always reference fixed execution step count as denominator
+- Never use total accumulated steps (exec + validation + gateway) in density formulas
+- Checkpoint interval reduction increases checkpoint density
+- Gateway interval reduction increases gateway density
+- Track ratios: exec:checkpoint:gateway ratios reveal process balance
+- Example progression: 8:2:1 → 8:4:1 → 8:4:2 (execution fixed, validations/gateways increase)
+
+Step description patterns:
+- Execution steps must be high-level and essential: forced by minimal count constraint
+- Use imperative mood: "Create", "Configure", "Implement", "Deploy"
+- Be specific about major capabilities: "Implement integrity verification system" not "Add checks"
+- Each execution step represents substantial capability or infrastructure component
+- Validation steps verify cumulative implementation across execution steps
+- Gateway steps aggregate multiple checkpoint results plus integration tests
+
+Validation placement patterns:
+- Checkpoint positioning based on density calculation, not arbitrary choice
+- Higher checkpoint density (smaller interval) provides more granular validation
+- Distribute checkpoints evenly across execution step sequence
+- Each checkpoint validates subset of execution steps within its coverage interval
+- Gateways placed at major milestones spanning multiple checkpoint domains
+
+Quality patterns with density focus:
+- Minimal execution count demands maximum clarity and essential-only scope
+- High validation density compensates for minimal execution granularity
+- Density ratios reveal validation coverage: 2:1 ratio means 1 checkpoint per 2 exec steps
+- Gateway density creates staged release path even with compact execution plan
+- Fixed execution baseline ensures consistent density reference point
+
 [ANTIPATTERNS]:
 Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria. Never calculate density based on total steps instead of execution steps.
+
+Density calculation antipatterns:
+- Never use total step count (exec + validation + gateway) in density formulas
+- Never calculate checkpoint density from checkpoint count instead of execution count
+- Never calculate gateway density from gateway count instead of execution count
+- Never change execution step count after fixing it for density reference
+- Never confuse interval (denominator) with count (result)
+- Never apply density formulas to early phases before execution steps are fixed
+- Never forget that density = count / interval, not interval / count
+
+Numbering and formatting antipatterns:
+- Never skip renumbering after inserting checkpoints or gateways
+- Never use non-sequential numbering
+- Never lose track of total step count during density-based insertion
+- Never forget to update STEP_XX numbers when inserting validations between executions
+- Never use inconsistent numbering schemes within same plan
+
+Execution step antipatterns:
+- Never create more execution steps after reaching fixed count
+- Never reduce execution step count during checkpoint or gateway phases
+- Never split execution steps during validation phases
+- Never create low-level execution steps - keep them high-level and essential
+- Never include implementation details in execution step descriptions
+- Never create execution steps for trivial operations
+
+Checkpoint antipatterns:
+- Never position checkpoints arbitrarily - follow density calculation
+- Never create uneven checkpoint distribution across execution sequence
+- Never validate steps not yet implemented or outside checkpoint's interval coverage
+- Never bundle multiple unrelated tests in single checkpoint
+- Never forget exact test file path specification
+- Never omit TDD cycle guidance from checkpoint dash items
+
+Gateway antipatterns:
+- Never create gateways before checkpoint insertion complete
+- Never design gateways that only test single domain - gateways must span multiple
+- Never omit integration tests from gateways
+- Never forget manual review criteria for gateways
+- Never position gateways within phases instead of at milestone boundaries
+- Never create gateway density from wrong baseline
+
+Expansion antipatterns:
+- Never lose previous steps when inserting checkpoints or gateways
+- Never change content of existing steps during renumbering
+- Never skip density calculation phases
+- Never read ahead to future phases before reaching them
+- Never mix execution expansion with checkpoint insertion in same phase
+- Never violate phase sequence: execution first, checkpoints second, gateways third
+
+Quality antipatterns:
+- Never use vague descriptions in minimal execution set
+- Never create placeholder steps
+- Never leave ambiguous acceptance criteria
+- Never exceed three dash items except for TDD cycle
+- Never use backticks or code blocks in step text
+- Never create steps requiring information not in contract
 
 [PHASE BREAKER]: "<--- TRUST THE PROCESS --->"
 
