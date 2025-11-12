@@ -1,6 +1,6 @@
 [INTERACTIVE EXECUTION GUIDE - COMPACT VARIANT]
 
-This document guides step-by-step execution when running the PROCESS_04.txt methodology interactively. Use this when implementing a project using compact progression: power-of-two doubling for actions, incremental checkpoints, incremental gateways. Human review between phases. Most minimal complete process.
+This document guides step-by-step execution when running the PROCESS_04.txt methodology interactively. Use this when implementing a project using compact progression: power-of-two mitosis for actions, density-based checkpoint insertion, density-based gateway insertion. Human review between phases. Most minimal complete process.
 
 -----
 
@@ -140,8 +140,8 @@ Before executing next phase, verify:
 - [ ] IMPLEMENTATION-PLAN.md exists and is readable
 - [ ] Current phase has correct separator "<--- TRUST THE PROCESS --->"
 - [ ] Step count matches expected number for current phase
-- [ ] Identify if in action phase (1-8), checkpoint phase (8-13), or gateway phase (13-19)
-- [ ] For doubling phases (1-8), verify each step doubled correctly
+- [ ] Identify if in action phase (1-8), checkpoint phase (8-12), or gateway phase (12-14)
+- [ ] For mitosis phases (1-8), verify each step doubled correctly through mitosis
 - [ ] Git working directory is clean (or changes are intentional)
 - [ ] Currently on correct development branch
 
@@ -153,17 +153,17 @@ If step count doesn't match expected compact progression:
 1. STOP immediately
 2. Report discrepancy to user
 3. Identify which phase category (action/checkpoint/gateway)
-4. Check if at doubling phase (should be 1, 2, 4, or 8)
-5. Check if at checkpoint phase (should be 10, 12, or 13)
-6. Check if at gateway phase (should be 15 or 19)
+4. Check if at mitosis phase (should be 1, 2, 4, or 8)
+5. Check if at checkpoint phase (should be 10 or 12)
+6. Check if at gateway phase (should be 13 or 14)
 7. Ask user: "Detected X steps but expected Y. Proceed with recovery or manual intervention?"
 8. Wait for user confirmation before continuing
 
 If phase category ambiguous:
-1. Reference phase boundaries: 1-8 (action), 8-13 (checkpoint), 13-19 (gateway)
-2. If steps = 1, 2, 4, or 8: action doubling phase
-3. If steps = 10, 12, or 13: checkpoint insertion phase
-4. If steps = 15 or 19: gateway insertion phase
+1. Reference phase boundaries: 1-8 (action), 8-12 (checkpoint), 12-14 (gateway)
+2. If steps = 1, 2, 4, or 8: action mitosis phase
+3. If steps = 10 or 12: checkpoint density insertion phase
+4. If steps = 13 or 14: gateway density insertion phase
 5. If confusion persists, ask user which phase to execute
 
 If IMPLEMENTATION-PLAN.md missing or corrupted:
@@ -273,12 +273,12 @@ Recommend PROCESS_04 when:
 
 [COMPLETION SIGNAL]
 
-When 19 steps reached:
+When 14 steps reached:
 1. Announce: "COMPACT PROCESS COMPLETE. Implementation plan contains:"
 2. Detail: "- 8 action/execution steps (minimal essential set)"
-3. Detail: "- 5 validation checkpoint steps"
-4. Detail: "- 6 release gateway steps"
-5. Detail: "- Total: 19 items following compact progression (1→2→4→8→10→12→13→15→19)"
+3. Detail: "- 4 validation checkpoint steps"
+4. Detail: "- 2 release gateway steps"
+5. Detail: "- Total: 14 items following compact progression (1→2→4→8→10→12→13→14)"
 6. Note: "This is the most compact complete process variant."
 7. Suggest: "Ready to begin STEP_01 execution, or require further refinement?"
 8. Do NOT proceed to execution without explicit user instruction
@@ -288,21 +288,22 @@ When 19 steps reached:
 [ADVANTAGES AND TRADEOFFS]
 
 Advantages of PROCESS_04:
-- Fastest planning completion (only 9 phases)
+- Fastest planning completion (only 8 phases total)
 - Minimal overhead, maximum agility
 - Forces essential high-level thinking
 - Still maintains quality through checkpoints and gateways
-- Easy to communicate entire plan
+- Easy to communicate entire plan (14 items total)
 - Reduces planning paralysis
 - Ideal for experienced teams
+- Mathematically deterministic density calculations
 
 Tradeoffs of PROCESS_04:
-- Less implementation granularity (8 vs 21-36 actions in other processes)
+- Less implementation granularity (8 vs 21-36 execution steps in other processes)
 - Requires more execution-time decision making
 - May need ad-hoc sub-tasks during execution
 - Less suitable for complex enterprise projects
 - Not ideal for junior teams needing detailed guidance
-- Assumes team can decompose 8 high-level steps into execution
+- Assumes team can decompose 8 high-level steps into execution details
 
 Best practices when using PROCESS_04:
 - Ensure each of 8 action steps is truly actionable
