@@ -1,252 +1,45 @@
 [INTRODUCTION]:
-This document defines a hybrid methodology combining organic growth for execution steps with systematic checkpoint and gateway insertion. Action steps grow organically, then validation checkpoints are inserted achieving saturation, finally release gateways complete the plan. Every step must be tangible, measurable, and executable. No ambiguity permitted.
+Hybrid methodology: organic action growth → checkpoint saturation → gateway completion. Every step tangible, measurable, executable. No ambiguity.
 
 [WRITING STYLE/TONE/VOICE]:
-Assertive. Deterministic. Direct. Pragmatic. Hands-on. Zero fluff. Commands not suggestions. Facts not opinions. Concrete not abstract. Executable not theoretical. Present tense imperative. No optional elements. No maybe. No perhaps. Only MUST and MUST NOT.
+Assertive. Deterministic. Direct. Commands not suggestions. Facts not opinions. Concrete not abstract. Present tense imperative. No optional elements. Only MUST and MUST NOT.
 
 [GUIDANCE FOR AI AGENT - INTERACTIVE EXECUTION]:
-This is an interactive execution guide. When user says "next phase" or "proceed":
+When user says "next phase" or "proceed":
 1. Read IMPLEMENTATION-PLAN.md completely
 2. Count total STEP_XX entries present
-3. Find the section below that starts with @___[your_current_count]_
-4. Read ONLY that section - do NOT read ahead to sections you haven't reached
+3. Find section below starting with @___[your_current_count]___
+4. Read ONLY that section - do NOT read ahead
 5. Execute that section's instructions
-6. Add results below last "<--- TRUST THE PROCESS --->" separator in IMPLEMENTATION-PLAN.md
+6. Add results below last "<--- TRUST THE PROCESS --->" separator
 7. Commit and push
-8. Organic expansion for actions, then checkpoint saturation, then gateway completion
+8. Process: actions → checkpoints → gateways
 
-Formula interpretation:
-- [INIT]: Initial step creation, starting point for a new type
-- [EXPAND]: Growth by adding more steps of same type
-- [SATURATE]: Intensive addition achieving high density
-- [COMPLETE]: Final phase bringing process to conclusion
-- Formula notation shows composition: 01 STAPPENPLAN + 02 STAPPENPLAN = 03 STAPPENPLAN
-
-Expansion mechanics:
-- When expanding action steps: maintain ALL previous action steps, add new ones according to phase instructions
-- When inserting checkpoints: maintain ALL previous action steps AND checkpoints, add new checkpoints at strategic positions
-- When inserting gateways: maintain ALL previous steps, add gateways at major milestone boundaries
-- Renumber sequentially after each phase: STEP_01, STEP_02, STEP_03, etc.
-- Preserve step content during renumbering, only update numbers
-
-Step formatting rules:
-- Implementation steps: STEP_XX: Brief imperative description (e.g., "Create directory structure", "Configure CI pipeline")
-- Validation steps: STEP_XX: Brief validation description (e.g., "Validate directory structure", "Validate CI configuration")
-- Checkpoint format: exactly three dash items plus optional fourth for TDD cycle
-- Gateway format: similar to checkpoint but spans multiple domains
-- Use plain text with dashes only, never use backticks or code blocks in step descriptions
-
-Validation requirements:
-- Every validation MUST specify exact test file path: tests/category/test-name.sh
-- List atomic tests as comma-separated items
-- One test equals one validation - never bundle multiple validations
-- Always include TDD cycle guidance as fourth dash item
-- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
-
-Checkpoint positioning strategy:
-- Place checkpoints after completing major capability domains
-- Position where failure would invalidate significant subsequent work
-- Ensure checkpoints validate cumulative implementation, not just latest changes
-- Cover critical junctions: foundation, configuration, infrastructure, integration, release, compliance
-
-Gateway positioning strategy:
-- Gateways mark major milestone boundaries requiring comprehensive verification
-- Each gateway aggregates multiple checkpoint results
-- Include both automated tests and manual review criteria in gateways
-- Gateways block progression until all prerequisites pass
-- Typical gateway points: foundation readiness, validation infrastructure ready, core system functional, integration complete, pre-production verification, production readiness
+Step format: STEP_XX: Brief imperative (e.g., "Create directory structure", "Configure CI pipeline")
+Maintain ALL previous steps when expanding. Renumber sequentially. Preserve content, update only numbers.
 
 [RUNTIME CHECKPOINT POLICY]:
-Objective: Define checkpoint creation policy during execution sequence of implementation steps and gateways.
-
-Step counting:
-- Counting is 1-based: step 1, step 2, step 3, …
-- Each execution of implementation step or gateway increments count by +1
-- Checkpoint occurs at end of designated step, after successful execution
-- Single unified counter: implementation steps and gateways both increment same counter
-
-Phase 1 - Initial checkpoint after 4 steps:
-- Rule: execute 4 steps without checkpoint, create checkpoint at end of 5th step
-- Formula: if current_step = 5 → create checkpoint
-- Usage: this initial phase applies only once at beginning of execution flow
-- Rationale: larger initial window reduces checkpoint overhead when flow is still stable
-
-Phase 2 - Checkpoints every 2 steps:
-- After first checkpoint from Phase 1, pattern changes
-- Rule: create checkpoint whenever 2 steps have executed since last checkpoint
-- Equivalently: every interval of 2 steps, next step creates new checkpoint
-- Formula:
-  • Let k = step number where last checkpoint occurred
-  • Next checkpoint must occur at step k + 3
-  • After that, new k becomes this step number, repeat rule
-- Practical interpretation: between one checkpoint and next, exactly 2 "pure" execution steps exist
-- Sequence pattern: exec → exec → checkpoint → exec → exec → checkpoint → …
-- Rationale: smaller window increases safety in critical or long execution phases
-
-Timeline example (implementation steps):
-Legend: E = normal execution step, C = execution with checkpoint creation at end
-
-Step:   1  2  3  4  5  6  7  8  9  10 11 12 13 14 15
-Action: E  E  E  E  C  E  E  C  E  E  C  E  E  C  E
-
-Explanation:
-- Steps 1–4: 4 executions without checkpoint (Phase 1)
-- Step 5: execution + checkpoint (first checkpoint, ends Phase 1)
-- Steps 6–7: 2 "pure" executions after checkpoint
-- Step 8: execution + checkpoint
-- Steps 9–10: 2 "pure" executions after checkpoint
-- Step 11: execution + checkpoint
-- Steps 12–13: 2 "pure" executions after checkpoint
-- Step 14: execution + checkpoint
-- Pattern continues indefinitely
-
-Application to gateways:
-- Gateways follow same counting and checkpoint policy as implementation steps
-- Each gateway passage counts as 1 execution step
-- Step counter does NOT differentiate between implementation step and gateway
-- Implementation step or gateway both increment by +1
-- Checkpoints occur at same step indices (5, 8, 11, 14, …) regardless of element type
-
-Mixed example (implementation steps + gateways):
-Step:      1    2      3  4    5      6  7    8
-Element:   step step   gw step step   gw step step
-Type:      E    E      E  E    C      E  E    C
-
-- Steps 1–4: any combination of implementation steps/gateways, no checkpoint
-- Step 5: element (implementation step or gateway) executes and creates checkpoint
-- After: maintains "2 executions between checkpoints" rule
-
-Operational summary:
-- Initialize step_counter = 0
-- At each execution of implementation step or gateway:
-  1) step_counter ← step_counter + 1
-  2) if step_counter = 5 → create checkpoint (end Phase 1)
-  3) after first checkpoint:
-     - maintain last_checkpoint = step where checkpoint occurred
-     - if step_counter = last_checkpoint + 3 → create new checkpoint
-     - update last_checkpoint ← step_counter
-
-MUST follow this policy. No exceptions. No deviations. Deterministic checkpoint creation ensures consistent recovery points throughout execution flow.
+Phase 1: Execute 4 steps, checkpoint at step 5
+Phase 2: Checkpoint every 2 steps thereafter (steps 8, 11, 14, ...)
+Counter: unified for both implementation steps and gateways
+Formula: if step = 5 → checkpoint; else if step = last_checkpoint + 3 → checkpoint
+Pattern: E E E E C E E C E E C E E C ...
+MUST follow. No exceptions.
 
 [SYNTAX]:
 Phase separator: <--- TRUST THE PROCESS --->
-Step format implementation: STEP_XX: Brief imperative description
-Step format validation: STEP_XX: Brief validation description
-Validation structure:
-- Create tests/category/test-name.sh with fixtures if needed
-- Tests: atomic test list, comma-separated
-- All tests atomic: 1 test = 1 validation
-- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
+Step format: STEP_XX: Brief imperative description
+Validation: STEP_XX: Brief validation description
+Validation structure: test file path (tests/category/test-name.sh), atomic tests, TDD cycle
 
 [PATTERNS]:
-Start minimal, grow organically through action steps. After action expansion, saturate with checkpoints. After checkpoint saturation, add release gateways. Early validation prevents late failures. High checkpoint density ensures quality. Gateway pattern enables staged release verification. Action/validation/gateway separation creates clear phase boundaries.
-
-Phase progression patterns:
-- Early phases: Stay abstract, define high-level capabilities, establish project rhythm, avoid implementation details
-- Middle phases: Add specificity, reveal dependencies, expose hidden complexity, maintain topological order
-- Late phases: Concrete implementation details, specific commands and configurations, exact file paths and artifacts
-- Validation phases: Strategic checkpoint insertion, high coverage of critical paths, comprehensive test specifications
-- Gateway phases: Milestone-based verification, integration testing, manual review criteria, release readiness checks
-
-Step description patterns:
-- Use imperative mood: "Create", "Configure", "Implement", "Deploy" not "Creating" or "Should create"
-- Be specific about artifacts: "Create tests/ directory structure" not "Set up testing"
-- Include scope: "Configure CI pipeline for all artifact types" not just "Configure CI"
-- Specify targets: "Implement hash generation for release artifacts" not "Implement hashing"
-- Measurable outcomes: each step produces verifiable artifact or configuration change
-
-Dependency management patterns:
-- Maintain topological order: dependencies come before dependents
-- Foundation before features: directory structure before file creation, configuration before execution
-- Infrastructure before validation: create before validate, implement before test
-- Sequential validation: earlier checkpoints validate prerequisites for later work
-- Gateway dependencies: all checkpoints in a phase must pass before gateway
-
-Validation patterns:
-- Validation density increases with risk: high-risk operations get more checkpoints
-- Test file organization: tests/category/test-name.sh with clear categorization
-- Atomic test definitions: one test validates one specific behavior or constraint
-- Comprehensive coverage: positive tests, negative tests, edge cases, integration tests
-- TDD discipline: write test first, ensure it fails, implement, ensure it passes, refactor
-
-Description granularity patterns:
-- Action steps describe WHAT to build, not HOW to build it
-- Validation steps describe WHAT to verify, tests define HOW to verify
-- Early action steps: paragraph-level descriptions of major capabilities
-- Late action steps: sentence-level descriptions of specific tasks
-- Checkpoints: bullet-point lists of atomic test criteria
-- Gateways: combination of automated test lists and manual review checklists
-
-Quality patterns:
-- Every step must be completable by implementer without ambiguity
-- Every validation must be executable without additional research
-- Every checkpoint must specify exact test file path and test list
-- Every gateway must have clear pass/fail criteria
-- Every phase must maintain all previous work while adding new work
+Start minimal, grow organically. After action expansion, saturate with checkpoints. After checkpoint saturation, add gateways.
+Early phases: abstract, high-level. Middle phases: specificity, dependencies. Late phases: concrete details.
+Use imperative mood. Be specific about artifacts. Include scope. Measurable outcomes.
+Maintain topological order. Foundation before features. Infrastructure before validation.
 
 [ANTIPATTERNS]:
-Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria. Never mix action steps with validation steps in same expansion phase.
-
-Numbering and formatting antipatterns:
-- Never skip renumbering after inserting checkpoints or gateways
-- Never use non-sequential numbering (gaps or duplicates)
-- Never use letters, roman numerals, or outline notation in final STEP_XX format
-- Never lose track of step count during expansion phases
-- Never forget to update STEP_XX numbers when inserting validations between actions
-- Never use inconsistent numbering schemes within same plan
-
-Step content antipatterns:
-- Never write vague descriptions like "Set up system" or "Configure things"
-- Never include implementation code or command syntax in step descriptions
-- Never put multiple unrelated concerns in single step
-- Never use conditional logic in step descriptions ("If X then Y")
-- Never create steps that cannot be verified or measured
-- Never use passive voice ("Should be created" instead of "Create")
-- Never include optional elements or "maybe" phrasing
-
-Dependency antipatterns:
-- Never create circular dependencies between steps
-- Never reference future steps that haven't been created yet
-- Never place dependent steps before their prerequisites
-- Never assume implicit dependencies without making them explicit in sequence
-- Never create checkpoints that validate steps not yet implemented
-- Never design gateways that depend on validations not yet inserted
-
-Validation antipatterns:
-- Never create validation steps without specifying exact test file path
-- Never bundle multiple unrelated tests in single validation
-- Never forget TDD cycle guidance in checkpoint dash items
-- Never use relative file paths in test specifications
-- Never validate against hard-coded values that should come from contract
-- Never create tests that require manual intervention without specifying review criteria
-- Never write validations that test implementation details instead of behavior
-- Never omit edge case and negative test coverage
-
-Expansion antipatterns:
-- Never lose previous steps when expanding to next phase
-- Never change content of existing steps during renumbering
-- Never skip phases or try to combine multiple phases
-- Never read ahead to future phases before reaching them
-- Never insert checkpoints before action phase completion
-- Never add gateways before checkpoint saturation phase completion
-- Never violate three-phase structure: actions, then checkpoints, then gateways
-
-Quality antipatterns:
-- Never use placeholder text like "TODO" or "TBD" in final output
-- Never leave ambiguous acceptance criteria
-- Never create steps requiring information not available in contract
-- Never write implementation-specific steps when contract is technology-agnostic
-- Never exceed three dash items in checkpoints except for TDD cycle
-- Never use backticks, code blocks, or formatted code in step text
-- Never create steps that require external documentation to complete
-
-Strategic antipatterns:
-- Never place checkpoints at arbitrary positions without strategic reasoning
-- Never create low-value checkpoints that test trivial operations
-- Never omit checkpoints for high-risk or complex operations
-- Never design gateways that merely duplicate checkpoint tests
-- Never create manual review gates without specific review criteria
-- Never position gateways within a phase instead of at phase boundaries
+Never use letters for numbering. Never exceed three dash items except TDD. Never write code in steps. Never use examples with specific values unless from contract. Never skip renumbering. Never lose previous steps. Never read ahead. Never use passive voice. Never create ambiguous steps.
 
 [PHASE BREAKER]: "<--- TRUST THE PROCESS --->"
 
