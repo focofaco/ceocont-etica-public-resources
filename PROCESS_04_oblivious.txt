@@ -12,21 +12,22 @@ Before proceeding to next phase, AI agent MUST:
 - Count total STEP_XX entries present
 - Determine next phase based on step count
 
-Phase identification table (Compact progression):
-- 1 step present → Next: expand to 2 steps
-- 2 steps present → Next: expand to 4 steps (double)
-- 4 steps present → Next: expand to 8 steps (double)
-- 8 steps present → Next: add 2 checkpoints (10 total)
-- 10 steps present → Next: add 2 more checkpoints (12 total)
-- 12 steps present → Next: add 1 more checkpoint (13 total)
-- 13 steps present → Next: add 2 gateways (15 total)
-- 15 steps present → Next: add 4 more gateways (19 total)
-- 19 steps present → COMPLETE, no next phase
+Phase identification table (Compact progression with density):
+- 1 step present → Next: mitosis to 2 steps
+- 2 steps present → Next: mitosis to 4 steps
+- 4 steps present → Next: mitosis to 8 steps (execution phase complete)
+- 8 steps present → Next: add 2 checkpoints based on density 8/4 (10 total)
+- 10 steps present → Next: checkpoint mitosis based on density 8/2 (12 total)
+- 12 steps present → Next: add 1 gateway based on density 8/8 (13 total)
+- 13 steps present → Next: gateway mitosis based on density 8/4 (14 total)
+- 14 steps present → COMPLETE, no next phase
 
 Phase categories:
-- 1→8: Action steps only (power-of-two doubling)
-- 8→13: Checkpoint insertion (incremental)
-- 13→19: Gateway insertion (incremental)
+- 1→8: Execution steps only (power-of-two mitosis)
+- 8→12: Checkpoint insertion (density-based: 8/4=2, mitosis to 8/2=4)
+- 12→14: Gateway insertion (density-based: 8/8=1, mitosis to 8/4=2)
+
+Critical concept: All checkpoints and gateways calculated from fixed 8 execution steps, NOT from total accumulated count.
 
 -----
 
@@ -47,91 +48,89 @@ STEP 10: Announce completion: "Phase complete. Now at Y steps. Ready for next ph
 
 -----
 
-[PHASE-SPECIFIC INSTRUCTIONS - ACTION DOUBLING]
+[PHASE-SPECIFIC INSTRUCTIONS - EXECUTION MITOSIS]
 
 PHASE: 1 → 2 STEPS
-Action: Split single vision into two fundamental action steps
+Action: Split single vision into two fundamental execution steps through mitosis
 Method: Identify primary dichotomy (prep/exec, design/implement)
-Doubling: 1 × 2 = 2
-Result: 2 action steps total
+Mitosis: 1 × 2 = 2
+Formula: [MITOSE]02 = 01 STAPPENPLAN + 01 STAPPENPLAN
+Result: 2 execution steps total
 Naming: Use numbered list (1-2) at this phase
-Category: Action doubling phase
+Category: Execution mitosis phase
 
 PHASE: 2 → 4 STEPS
-Action: Take two action steps and double to four
+Action: Take two execution steps and apply mitosis to reach four
 Method: Each of two steps splits into two sub-steps
-Doubling: 2 × 2 = 4
-Result: 4 action steps total
+Mitosis: 2 × 2 = 4
+Formula: [MITOSE]04 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN
+Result: 4 execution steps total
 Naming: Use numbered list (1-4) at this phase
-Category: Action doubling phase
+Category: Execution mitosis phase
 
 PHASE: 4 → 8 STEPS
-Action: Take four action steps and double to eight
+Action: Take four execution steps and apply mitosis to reach eight
 Method: Each of four steps splits into two focused steps
-Doubling: 4 × 2 = 8 (final action doubling)
-Result: 8 action steps total
+Mitosis: 4 × 2 = 8 (final execution mitosis)
+Formula: [MITOSE]08 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN + 04 STAPPENPLAN
+Result: 8 execution steps total (FIXED)
 Naming: Use numbered list (1-8) at this phase
-Note: This completes action expansion at minimal sufficient level
-Category: Action doubling phase (final)
+Note: This completes execution step mitosis - 8 is the fixed execution count
+Category: Execution mitosis phase (final)
+Critical: All subsequent densities calculated from these 8 fixed execution steps
 
 -----
 
-[PHASE-SPECIFIC INSTRUCTIONS - CHECKPOINT INCREMENTS]
+[PHASE-SPECIFIC INSTRUCTIONS - CHECKPOINT DENSITY]
 
-PHASE: 8 → 10 STEPS (INITIAL CHECKPOINTS)
-Action: Keep all 8 action steps, insert 2 validation checkpoints
-Method: Place checkpoints at early critical junctions (foundation, configuration)
-Increment: Add 2 checkpoints
-Result: 8 actions + 2 validations = 10 steps total
+PHASE: 8 → 10 STEPS (INITIAL CHECKPOINT DENSITY)
+Action: Keep all 8 execution steps fixed, insert 2 checkpoints based on density
+Method: Calculate density from 8 execution steps: 8/4 = 2 checkpoints
+Density: One checkpoint per four execution steps
+Formula: [INIT]10 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN + 04 STAPPENPLAN + 02 CHECKLIST
+Result: 8 execution + 2 checklists = 10 steps total
 Checkpoint format: Test file path, atomic tests, 1-test-1-validation, TDD cycle
 Naming: Continue numbered list incorporating checkpoints
-Category: Checkpoint insertion phase (initial)
-Transition: From action doubling to validation insertion
+Category: Checkpoint density phase (initial)
+Transition: From execution mitosis to checkpoint density insertion
 
-PHASE: 10 → 12 STEPS (MID-IMPLEMENTATION CHECKPOINTS)
-Action: Keep all 8 action steps and 2 existing checkpoints, add 2 more checkpoints
-Method: Add mid-implementation validation and near-completion validation
-Increment: Add 2 checkpoints
-Result: 8 actions + 4 validations = 12 steps total
-Checkpoint coverage: Foundation, configuration, mid-implementation, near-completion
+PHASE: 10 → 12 STEPS (CHECKPOINT MITOSIS DENSITY)
+Action: Keep all 8 execution steps fixed, apply mitosis to checkpoints
+Method: Calculate new density from 8 execution steps: 8/2 = 4 checkpoints
+Density: Mitosis doubles checkpoints - one checkpoint per two execution steps
+Formula: [MITOSE]12 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN + 04 STAPPENPLAN + 02 CHECKLIST + 02 CHECKLIST
+Result: 8 execution + 4 checklists = 12 steps total
+Checkpoint ratio: 8:4 = 2:1 (execution to validation)
 Naming: Continue numbered list with all 4 checkpoints integrated
-Category: Checkpoint insertion phase (continuing)
-
-PHASE: 12 → 13 STEPS (FINAL CHECKPOINT)
-Action: Keep all 8 action steps and 4 existing checkpoints, add 1 more checkpoint
-Method: Add final critical junction checkpoint before release preparation
-Increment: Add 1 checkpoint
-Result: 8 actions + 5 validations = 13 steps total
-Checkpoint ratio: 1:1.6 (action:validation)
-Naming: Continue numbered list with all 5 checkpoints integrated
-Category: Checkpoint insertion phase (final)
-Note: This completes checkpoint insertion
+Category: Checkpoint density phase (mitosis)
+Note: This completes checkpoint insertion phase
 
 -----
 
-[PHASE-SPECIFIC INSTRUCTIONS - GATEWAY INCREMENTS]
+[PHASE-SPECIFIC INSTRUCTIONS - GATEWAY DENSITY]
 
-PHASE: 13 → 15 STEPS (INITIAL GATEWAYS)
-Action: Keep all 13 steps (8 actions + 5 validations), insert 2 release gateways
-Method: Place gateways at major milestone boundaries
-Gateway positions: Foundation complete, implementation complete
-Increment: Add 2 gateways
-Result: 13 steps + 2 gateways = 15 items total
+PHASE: 12 → 13 STEPS (INITIAL GATEWAY DENSITY)
+Action: Keep all 12 steps fixed (8 execution + 4 checklists), insert 1 gateway based on density
+Method: Calculate density from 8 execution steps: 8/8 = 1 gateway
+Density: One gateway per eight execution steps
+Formula: [INIT]13 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN + 04 STAPPENPLAN + 02 CHECKLIST + 02 CHECKLIST + 01 GATEWAY
+Result: 12 steps + 1 gateway = 13 items total
 Gateway format: Aggregates checkpoints, adds integration tests, blocks progression
-Naming: Steps remain numbered, gateways use GATEWAY_01, GATEWAY_02
-Category: Gateway insertion phase (initial)
-Transition: From checkpoint insertion to release verification
+Naming: Steps remain numbered, gateway uses GATEWAY_01
+Category: Gateway density phase (initial)
+Transition: From checkpoint density to gateway density insertion
 
-PHASE: 15 → 19 STEPS (GATEWAY COMPLETION)
-Action: Keep all 13 steps (8 actions + 5 validations), expand to 6 gateways total
-Method: Add 4 more gateways for complete staged release verification
-Gateway positions: Foundation, configuration validated, implementation mid-point, implementation complete, pre-release, production ready
-Increment: Add 4 gateways (total 6)
-Result: 13 steps + 6 gateways = 19 items total
+PHASE: 13 → 14 STEPS (GATEWAY MITOSIS DENSITY)
+Action: Keep all 12 steps fixed (8 execution + 4 checklists), apply mitosis to gateway
+Method: Calculate new density from 8 execution steps: 8/4 = 2 gateways
+Density: Mitosis doubles gateways - one gateway per four execution steps
+Formula: [MITOSE]14 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN + 04 STAPPENPLAN + 02 CHECKLIST + 02 CHECKLIST + 01 GATEWAY + 01 GATEWAY
+Result: 12 steps + 2 gateways = 14 items total
 Gateway types: Each has automated tests and manual review criteria
-Naming: GATEWAY_01 through GATEWAY_06, all items renumbered STEP_01 through STEP_19
-Category: Gateway insertion phase (final)
+Naming: GATEWAY_01 and GATEWAY_02, all items renumbered STEP_01 through STEP_14
+Category: Gateway density phase (mitosis - FINAL)
 CRITICAL: This is final phase - renumber everything as STEP_XX
+Final composition: 8 execution + 4 checklists + 2 gateways = 14 steps
 
 -----
 
@@ -177,49 +176,53 @@ If IMPLEMENTATION-PLAN.md missing or corrupted:
 
 [COMMIT MESSAGE TEMPLATES]
 
-Action doubling phase:
-1→2: "docs: split vision into 2 fundamental action steps (compact doubling)"
-2→4: "docs: double to 4 action steps (compact 2×2)"
-4→8: "docs: double to 8 action steps (compact 4×2, action phase complete)"
+Execution mitosis phase:
+1→2: "docs: apply mitosis to 2 execution steps (compact mitosis 1×2)"
+2→4: "docs: apply mitosis to 4 execution steps (compact 2×2)"
+4→8: "docs: apply mitosis to 8 execution steps (compact 4×2, execution phase complete)"
 
-Checkpoint insertion phase:
-8→10: "docs: add 2 initial validation checkpoints (10 items total, checkpoint phase start)"
-10→12: "docs: add 2 mid-implementation checkpoints (12 items total, checkpoint phase continuing)"
-12→13: "docs: add 1 final checkpoint for 5 total validations (13 items total, checkpoint phase complete)"
+Checkpoint density phase:
+8→10: "docs: add 2 checkpoints based on density 8/4 (10 items total, checkpoint density init)"
+10→12: "docs: checkpoint mitosis based on density 8/2 for 4 total (12 items total, checkpoint phase complete)"
 
-Gateway insertion phase:
-13→15: "docs: add 2 initial release gateways (15 items total, gateway phase start)"
-15→19: "docs: add 4 more gateways for 6 total and renumber STEP_01-19 (compact process complete)"
+Gateway density phase:
+12→13: "docs: add 1 gateway based on density 8/8 (13 items total, gateway density init)"
+13→14: "docs: gateway mitosis based on density 8/4 for 2 total and renumber STEP_01-14 (compact process complete)"
 
 -----
 
 [PROGRESSION SUMMARY]
 
-Compact PROCESS_04 progression map:
+Compact PROCESS_04 progression map with density logic:
 
-Phase 1 - Action Doubling (Power of Two):
+Phase 1 - Execution Mitosis (Power of Two):
 1 → 2 → 4 → 8 steps
-Pure action/execution steps, no validation yet
-Doubling at each phase: ×2 → ×2 → ×2
-Goal: Minimal 8 essential action steps
+Pure execution steps, no validation yet
+Mitosis at each phase: ×2 → ×2 → ×2
+Goal: Fixed 8 execution steps (basis for all density calculations)
 
-Phase 2 - Checkpoint Insertion (Incremental):
-8 → 10 → 12 → 13 steps
-Add 2, then 2 more, then 1 final checkpoint
-Incremental additions: +2 → +2 → +1
-Goal: 5 validation checkpoints for coverage
+Phase 2 - Checkpoint Density (Calculated from 8 exec steps):
+8 → 10 → 12 steps
+Density 8/4=2 checkpoints, mitosis to density 8/2=4 checkpoints
+Density additions: 8/4 → 8/2 (interval halves)
+Goal: 4 validation checkpoints for coverage
 
-Phase 3 - Gateway Insertion (Incremental):
-13 → 15 → 19 steps
-Add 2 initial gateways, then 4 more
-Incremental additions: +2 → +4
-Goal: 6 release gateways for staged verification
+Phase 3 - Gateway Density (Calculated from 8 exec steps):
+12 → 13 → 14 steps
+Density 8/8=1 gateway, mitosis to density 8/4=2 gateways
+Density additions: 8/8 → 8/4 (interval halves)
+Goal: 2 release gateways for staged verification
 
-Final composition at 19 steps:
-- 8 implementation/action steps
-- 5 validation checkpoint steps
-- 6 release gateway steps
-- Total: 19 items (most compact complete process)
+Final composition at 14 steps:
+- 8 execution steps (FIXED)
+- 4 checkpoint steps (density from 8 exec: 8/4 → 8/2)
+- 2 gateway steps (density from 8 exec: 8/8 → 8/4)
+- Total: 14 items (most compact complete process)
+
+Density formulas used:
+- Checkpoints: 8 exec / checkpoint_interval
+- Gateways: 8 exec / gateway_interval
+- Mitosis halves interval, doubles count
 
 -----
 
@@ -248,21 +251,23 @@ PROCESS_03 (1→3→5→8→13→21→24→32→34→38):
 - Total: 38 items
 - Complexity: Medium
 
-PROCESS_04 (1→2→4→8→10→12→13→15→19):
-- Compact doubling with incremental insertion
-- Reaches 8 implementation steps + 5 validations + 6 gateways
+PROCESS_04 (1→2→4→8→10→12→13→14):
+- Compact mitosis with density-based insertion
+- Reaches 8 execution steps + 4 validations + 2 gateways
 - Best for: Small projects, rapid prototyping, time-constrained planning
-- Total: 19 items (MINIMAL)
+- Total: 14 items (MINIMAL)
 - Complexity: Low
+- Density logic: All checkpoints/gateways calculated from fixed 8 exec steps
 
 Recommend PROCESS_04 when:
 - Small to medium projects with clear scope
 - Rapid prototyping or proof-of-concept work
 - Time-constrained planning phases
-- 8 major action steps provide sufficient granularity
+- 8 major execution steps provide sufficient granularity
 - Team experienced enough to work from higher-level steps
 - Speed and agility prioritized over exhaustive decomposition
-- Still need validation and gateways but minimal action detail
+- Need validation and gateways but minimal execution detail
+- Prefer mathematically deterministic density calculations
 
 -----
 
