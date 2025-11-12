@@ -1,0 +1,109 @@
+[INTRODUCTION]:
+This document defines a hybrid methodology combining Fibonacci-like growth for execution steps with systematic checkpoint and gateway insertion. Action steps grow organically (1→3→5→8→13→21), then validation checkpoints are inserted (22→32), finally release gateways complete the plan (33→38). Total: 21 execution + 11 validation + 6 gateways = 38 steps. Every step must be tangible, measurable, and executable. No ambiguity permitted.
+
+[WRITING STYLE/TONE/VOICE]:
+Assertive. Deterministic. Direct. Pragmatic. Hands-on. Zero fluff. Commands not suggestions. Facts not opinions. Concrete not abstract. Executable not theoretical. Present tense imperative. No optional elements. No maybe. No perhaps. Only MUST and MUST NOT.
+
+[GUIDANCE FOR AI AGENT]:
+Follow this process sequentially. Do not skip phases. Fibonacci-like expansion for actions (1→3→5→8→13→21), then checkpoint saturation (add 11 checkpoints to reach 32), then gateway completion (add 6 gateways to reach 38). Maintain all previous steps when expanding. Use STEP_XX numbering for final itemization. Validation steps specify exact test files with atomic test definitions. Apply TDD cycle to every validation. One test equals one validation. Maximum three dash items per checkpoint unless fourth is TDD cycle guidance. Plain text with dashes only. No backticks. No code blocks in steps.
+
+[SYNTAX]:
+Phase separator: <--- TRUST THE PROCESS --->
+Step format implementation: STEP_XX: Brief imperative description
+Step format validation: STEP_XX: Brief validation description
+Validation structure:
+- Create tests/category/test-name.sh with fixtures if needed
+- Tests: atomic test list, comma-separated
+- All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
+
+[PATTERNS]:
+Start minimal, grow organically to 21 action steps following modified Fibonacci. After 21 steps, saturate with checkpoints. After 32 steps, add release gateways. Early validation prevents late failures. High checkpoint density ensures quality. Gateway pattern enables staged release verification. Action/validation/gateway separation creates clear phase boundaries.
+
+[ANTIPATTERNS]:
+Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria. Never mix action steps with validation steps in same expansion phase.
+
+[PHASE BREAKER]: "<--- TRUST THE PROCESS --->"
+
+-----
+
+@___01_single_step___[ONE STEP STAPPENPLAN]:
+Begin with single comprehensive vision statement. This statement captures entire project scope in one paragraph or sentence. Statement must be specific enough to guide all subsequent decomposition while broad enough to encompass full implementation. This is executive summary level. Answer: What is being built and why does it matter? This singular vision drives all subsequent refinement.
+
+<--- TRUST THE PROCESS ----->
+
+@___03_sequential_steps___[THREE STEPS STAPPENPLAN]:
+Split single vision into three fundamental action steps. Common patterns: beginning, middle, end. Or: setup, execute, verify. Or: foundation, build, deliver. Three steps show minimal viable progression through project lifecycle. Each step represents major phase boundary. These three steps provide highest-level work breakdown showing sequential dependency. Descriptions remain abstract but establish project rhythm. Only action/execution steps at this phase.
+
+<--- TRUST THE PROCESS ----->
+
+@___05_sequential_steps___[FIVE STEPS STAPPENPLAN]:
+Take three action steps and add two more action steps. Modified Fibonacci: 3 + 2 = 5. Splits can separate preparation from execution, or reveal critical intermediate steps. Five steps map to major capability domains. Each step represents substantial deliverable. Five steps provide program management visibility into major work streams. Descriptions specify domain but not implementation details. Continue action-only focus.
+
+<--- TRUST THE PROCESS ----->
+
+@___08_sequential_steps___[EIGHT STEPS STAPPENPLAN]:
+Take five action steps and add three more action steps. Modified Fibonacci: 5 + 3 = 8. Strategic splits or dependency revelations. Eight steps show project rhythm and natural checkpoints emerging. Each step now represents focused work package. Eight steps provide technical leadership visibility into execution sequence. Descriptions hint at deliverables and artifacts. Maintain action-only steps.
+
+<--- TRUST THE PROCESS ----->
+
+@___13_sequential_steps___[THIRTEEN STEPS STAPPENPLAN]:
+Take eight action steps and add five more action steps. Fibonacci: 8 + 5 = 13. Split complex steps or expose hidden dependencies. Thirteen steps show detailed execution path. Dependencies between steps become critical. Each step is actionable work item. Thirteen steps provide senior implementer visibility. Descriptions specify what gets built or configured. Pure action steps continue.
+
+<--- TRUST THE PROCESS ----->
+
+@___21_sequential_steps___[TWENTY-ONE STEPS STAPPENPLAN]:
+Take thirteen action steps and add eight more action steps. Fibonacci: 13 + 8 = 21. This completes action/execution step expansion. Break down complex activities and expose all major dependencies. Twenty-one action steps show comprehensive implementation plan without validation. Each step is discrete implementation task. Dependencies form critical path. Twenty-one steps provide implementer-level granularity. Descriptions specify exact artifacts, commands, or configurations. This is final action expansion before validation insertion.
+
+<--- TRUST THE PROCESS ----->
+
+@___24_sequential_steps___[TWENTY-ONE ACTIONS PLUS THREE CHECKPOINTS]:
+Keep all twenty-one action steps. Insert three validation checkpoint steps at early critical junctions: one after foundational setup (around step 7-8), one after core configuration (around step 14-15), one after initial infrastructure (around step 21-22). These first checkpoints validate project can proceed to complex implementation. Checkpoints define specific test files to create, list atomic tests to execute, reiterate one-test-one-validation principle, include TDD cycle guidance. Total: twenty-one actions plus three validations equals twenty-four steps.
+
+<--- TRUST THE PROCESS ----->
+
+@___32_sequential_steps___[TWENTY-ONE ACTIONS PLUS ELEVEN CHECKPOINTS]:
+Keep all twenty-one action steps and three existing checkpoints. Add eight more validation checkpoint steps achieving high validation density. Target checkpoint placement: after every 2-3 action steps in critical sections. Cover all major domains: directory structure, file format validation, naming rules, CI pipeline negative tests, CI pipeline positive tests, hash generation, tree generation, determinism, changelog, versioning, upload, compliance. Total: twenty-one actions plus eleven validations equals thirty-two steps. This saturation ensures nothing proceeds without validation.
+
+<--- TRUST THE PROCESS ----->
+
+@___34_sequential_steps___[THIRTY-TWO STEPS PLUS TWO GATEWAYS]:
+Keep all thirty-two steps (21 actions + 11 validations). Insert two release gateway steps at major milestone boundaries: GATEWAY_01 after foundation complete (around step 16-17), GATEWAY_02 after core system functional (around step 32). Gateways aggregate multiple checkpoint results and add integration smoke tests. Gateway format matches checkpoint format but tests span multiple domains. Gateways block progression until prerequisites pass. Total: thirty-two steps plus two gateways equals thirty-four items.
+
+<--- TRUST THE PROCESS ----->
+
+@___38_sequential_steps___[THIRTY-TWO STEPS PLUS SIX GATEWAYS]:
+Keep all thirty-two steps (21 actions + 11 validations). Expand from two gateways to six gateways total by adding four more at strategic points: GATEWAY_01 foundation readiness, GATEWAY_02 validation infrastructure ready, GATEWAY_03 core system functional, GATEWAY_04 integration complete, GATEWAY_05 pre-production verification, GATEWAY_06 production readiness. Each gateway has both automated tests and manual review criteria. Gateways create staged release verification path. Total: twenty-one actions plus eleven validations plus six gateways equals thirty-eight items. Renumber all items sequentially STEP_01 through STEP_38.
+
+-----
+
+[HYBRID RATIONALE]
+
+Why this progression:
+- Modified Fibonacci (1→3→5→8→13→21) creates natural action step growth
+- Stopping at 21 action steps prevents over-decomposition
+- High checkpoint density (11 checkpoints) ensures quality at every stage
+- Checkpoint saturation phase (24→32) validates without adding features
+- Gateway phase (32→34→38) adds release management without changing implementation
+- Clear phase separation: action expansion, validation saturation, gateway completion
+
+Progression breakdown:
+- Phase 1 (1→21): Action/execution steps only, Fibonacci-like growth
+- Phase 2 (21→24→32): Checkpoint insertion, validation saturation
+- Phase 3 (32→34→38): Gateway insertion, release verification
+
+Comparison to other processes:
+- PROCESS_1 (doubling): More systematic, reaches 48 action steps
+- PROCESS_2 (pure Fibonacci): More organic, reaches 34 action steps
+- PROCESS_03 (hybrid): Balanced at 21 actions, emphasizes validation density
+
+When to use PROCESS_03:
+- Projects where quality gates are critical
+- Regulated environments requiring extensive validation
+- High-risk implementations needing staged verification
+- Teams preferring more checkpoints over more action granularity
+- When 21 action steps sufficient but validation must be comprehensive
+
+-----
+
+[END PROCESS DEFINITION]
