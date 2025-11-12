@@ -1,29 +1,111 @@
-[INTERACTIVE EXECUTION GUIDE - COMPACT VARIANT]
+[INTRODUCTION]:
+This document defines a minimal compact methodology using power-of-two mitosis for action steps with density-based checkpoint and gateway insertion. Action steps grow through mitosis, then checkpoints are inserted based on execution step density, finally gateways based on density. Every step must be tangible, measurable, and executable. No ambiguity permitted. Most compact process variant.
 
-This document guides step-by-step execution when running the PROCESS_04.txt methodology interactively.
+[WRITING STYLE/TONE/VOICE]:
+Assertive. Deterministic. Direct. Pragmatic. Hands-on. Zero fluff. Commands not suggestions. Facts not opinions. Concrete not abstract. Executable not theoretical. Present tense imperative. No optional elements. No maybe. No perhaps. Only MUST and MUST NOT.
 
------
-
-[HOW TO USE]
-
-When user says "next phase" or "continue" or "proceed":
-
+[GUIDANCE FOR AI AGENT - INTERACTIVE EXECUTION]:
+This is an interactive execution guide. When user says "next phase" or "proceed":
 1. Read IMPLEMENTATION-PLAN.md completely
 2. Count total STEP_XX entries present
-3. Read PROCESS_04.txt and find the section that starts with @___[current_count]_
-4. Execute that section's instructions
-5. Add new phase below last "<--- TRUST THE PROCESS --->" separator
-6. Commit and push
+3. Find the section below that starts with @___[your_current_count]_
+4. Read ONLY that section - do NOT read ahead to sections you haven't reached
+5. Execute that section's instructions
+6. Add results below last "<--- TRUST THE PROCESS --->" separator in IMPLEMENTATION-PLAN.md
+7. Commit and push
+8. The process continues until you reach a section that says "This is the final compact process"
+
+[SYNTAX]:
+Phase separator: <--- TRUST THE PROCESS --->
+Step format implementation: STEP_XX: Brief imperative description
+Step format validation: STEP_XX: Brief validation description
+Validation structure:
+- Create tests/category/test-name.sh with fixtures if needed
+- Tests: atomic test list, comma-separated
+- All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
+
+[PATTERNS]:
+Start minimal, mitosis rapidly to fixed execution steps. Minimal action set forces high-level thinking. After execution steps complete, calculate checkpoint density from those execution steps. After checkpoint mitosis complete, calculate gateway density from those same execution steps. All density calculations based on fixed execution steps, not on total accumulated count. Mitosis doubles density each time.
+
+[ANTIPATTERNS]:
+Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria. Never calculate density based on total steps instead of execution steps.
+
+[PHASE BREAKER]: "<--- TRUST THE PROCESS --->"
 
 -----
 
-[IMPORTANT]
+@___01_single_step___[ONE EXECUTION STAPPENPLAN]:
+[INIT]01 = 01 EXEC STAPPENPLAN
+Begin with single comprehensive vision statement. This statement captures entire project scope in one paragraph or sentence. Statement must be specific enough to guide all subsequent decomposition while broad enough to encompass full implementation. This is executive summary level. Answer: What is being built and why does it matter? This singular vision drives all subsequent refinement.
 
-- Only read the section of PROCESS_04.txt that matches your current step count
-- Do NOT read ahead to future sections
-- Trust the process - mitosis and density-based insertion naturally reveal next phase
-- The process is complete when PROCESS_04.txt has no more sections to execute
+<--- TRUST THE PROCESS ----->
+
+@___02_sequential_steps___[TWO EXECUTION STAPPENPLAN]:
+[MITOSE]02 = 01 STAPPENPLAN + 01 STAPPENPLAN
+Split single vision into two fundamental action steps through mitosis. Mitosis: 1 × 2 = 2. Primary dichotomy: preparation and execution. Or: design and implementation. Or: foundation and superstructure. Two steps represent highest-level work breakdown. Each step is abstract but shows major dependency. Step one must complete before step two begins. Pure execution steps only.
+
+<--- TRUST THE PROCESS ----->
+
+@___04_sequential_steps___[FOUR EXECUTION STAPPENPLAN]:
+[MITOSE]04 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN
+Take two action steps and apply mitosis to reach four execution steps. Mitosis: 2 × 2 = 4. Each of two steps splits into two sub-steps. Common patterns: for each original step, separate planning from execution or separate components. Four steps show major work packages. Each step represents substantial phase. Four steps provide high-level program visibility. Descriptions specify domain but remain abstract. Continue execution-only focus.
+
+<--- TRUST THE PROCESS ----->
+
+@___08_sequential_steps___[EIGHT EXECUTION STAPPENPLAN]:
+[MITOSE]08 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN + 04 STAPPENPLAN
+Take four action steps and apply mitosis to reach eight execution steps. Mitosis: 4 × 2 = 8. Each of four steps splits into two focused steps. Eight execution steps represent complete minimal action decomposition. This is the fixed execution step count. Each step is concrete work package. Eight steps provide implementer-level visibility into all major work streams. Descriptions specify what gets built or configured. This completes execution step mitosis. All subsequent phases calculate density based on these 8 fixed execution steps.
+
+<--- TRUST THE PROCESS ----->
+
+@___10_sequential_steps___[EIGHT EXECUTION PLUS TWO CHECKLISTS]:
+[INIT]10 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN + 04 STAPPENPLAN + 02 CHECKLIST
+Keep all eight execution steps fixed. Calculate initial checkpoint density: 8 exec steps / 4 = 2 checklists. Insert two validation checkpoint steps based on density of one checkpoint per four execution steps. These first checkpoints validate project foundation at strategic intervals across the 8 execution steps. Checkpoints define specific test files to create, list atomic tests to execute, reiterate one-test-one-validation principle, include TDD cycle guidance. Total: eight execution plus two checklists equals ten steps.
+
+<--- TRUST THE PROCESS ----->
+
+@___12_sequential_steps___[EIGHT EXECUTION PLUS FOUR CHECKLISTS]:
+[MITOSE]12 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN + 04 STAPPENPLAN + 02 CHECKLIST + 02 CHECKLIST
+Keep all eight execution steps fixed. Apply mitosis to checkpoints. Calculate new checkpoint density: 8 exec steps / 2 = 4 checklists. Double the checkpoint count from 2 to 4 through mitosis. New density is one checkpoint per two execution steps. Four checkpoints total provide comprehensive validation coverage across the 8 execution steps. Ratio: 8 execution to 4 validation = 2:1. Total: eight execution plus four checklists equals twelve steps. This completes checkpoint mitosis.
+
+<--- TRUST THE PROCESS ----->
+
+@___13_sequential_steps___[EIGHT EXECUTION PLUS FOUR CHECKLISTS PLUS ONE GATEWAY]:
+[INIT]13 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN + 04 STAPPENPLAN + 02 CHECKLIST + 02 CHECKLIST + 01 GATEWAY
+Keep all twelve steps fixed (8 execution + 4 checklists). Calculate initial gateway density: 8 exec steps / 8 = 1 gateway. Insert one release gateway step based on density of one gateway per eight execution steps. Gateway aggregates checkpoint results and adds integration tests spanning entire execution scope. Gateway format matches checkpoint format but tests span multiple domains. Gateway blocks progression until all prerequisites pass. Total: eight execution plus four checklists plus one gateway equals thirteen steps.
+
+<--- TRUST THE PROCESS ----->
+
+@___14_sequential_steps___[EIGHT EXECUTION PLUS FOUR CHECKLISTS PLUS TWO GATEWAYS]:
+[MITOSE]14 = 01 STAPPENPLAN + 01 STAPPENPLAN + 02 STAPPENPLAN + 04 STAPPENPLAN + 02 CHECKLIST + 02 CHECKLIST + 01 GATEWAY + 01 GATEWAY
+Keep all twelve steps fixed (8 execution + 4 checklists). Apply mitosis to gateways. Calculate new gateway density: 8 exec steps / 4 = 2 gateways. Double the gateway count from 1 to 2 through mitosis. New density is one gateway per four execution steps. Two gateways create staged release verification path. Each gateway has both automated tests and manual review criteria. Total: eight execution plus four checklists plus two gateways equals fourteen steps. Renumber all items sequentially STEP_01 through STEP_14. This is the final compact process.
 
 -----
 
-[END INTERACTIVE EXECUTION GUIDE - COMPACT VARIANT]
+[COMPACT RATIONALE WITH DENSITY LOGIC]
+
+Why this progression with density calculation:
+- Power-of-two mitosis creates rapid execution expansion to fixed execution step count
+- All density calculations based on fixed execution steps, not total count
+- Checkpoints calculated as: execution_steps / checkpoint_interval
+- Gateways calculated as: execution_steps / gateway_interval
+- Mitosis pattern: interval halves, count doubles
+- Most compact complete process
+
+Density formula:
+- Checkpoints = exec steps / checkpoint_interval
+- Initial checkpoint: larger interval, fewer checkpoints
+- Mitosis checkpoint: smaller interval, more checkpoints
+- Gateways = exec steps / gateway_interval
+- Initial gateway: larger interval, fewer gateways
+- Mitosis gateway: smaller interval, more gateways
+
+Mitosis pattern:
+- Execution mitosis: stops at fixed count
+- Checkpoint mitosis: density increases (interval halves, count doubles)
+- Gateway mitosis: density increases (interval halves, count doubles)
+
+-----
+
+[END PROCESS DEFINITION]
