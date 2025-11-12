@@ -1,0 +1,144 @@
+[INTERACTIVE EXECUTION GUIDE]
+
+This document guides step-by-step execution when running the PROCESS.txt methodology interactively. Use this when implementing a project phase by phase, with human review between phases.
+
+-----
+
+[CURRENT STATE AWARENESS]
+
+Before proceeding to next phase, AI agent MUST:
+- Read IMPLEMENTATION-PLAN.md completely
+- Identify which phase separator was last completed
+- Count total STEP_XX entries present
+- Determine next phase based on step count
+
+Phase identification table:
+- 6 steps present → Next: expand to 12 steps
+- 12 steps present → Next: expand to 24 steps
+- 24 steps present → Next: expand to 36 steps
+- 36 steps present → Next: add 6 checkpoints (42 total)
+- 42 steps present → Next: split checkpoints to 12 validations (48 total)
+- 48 steps present → Next: add 4 release gateways (52 total)
+- 52 steps present → Next: split gateways to 8 (56 total)
+- 56 steps present → COMPLETE, no next phase
+
+-----
+
+[EXECUTION PROTOCOL]
+
+When user says "next phase" or "continue" or "proceed":
+
+STEP 1: Read current IMPLEMENTATION-PLAN.md
+STEP 2: Identify current step count
+STEP 3: Announce: "Current state: X steps detected. Next phase: expand to Y steps."
+STEP 4: Execute appropriate expansion from PROCESS.txt methodology
+STEP 5: Update IMPLEMENTATION-PLAN.md with new phase below last separator
+STEP 6: Add new "<--- TRUST THE PROCESS --->" separator before new content
+STEP 7: Commit with message describing phase transition (X → Y steps)
+STEP 8: Push to remote
+STEP 9: Announce completion: "Phase complete. Now at Y steps. Ready for next phase."
+
+-----
+
+[PHASE-SPECIFIC INSTRUCTIONS]
+
+PHASE: 6 → 12 STEPS
+Action: Take each of 6 steps, split into 2 steps each
+Result: 12 steps total
+Naming: Use numbered list (1-12) at this phase
+Preserve: All original 6 steps visible above separator
+
+PHASE: 12 → 24 STEPS
+Action: Take each of 12 steps, split into 2 steps each
+Result: 24 steps total
+Naming: Use numbered list (1-24) at this phase
+Preserve: All previous phases visible above separator
+
+PHASE: 24 → 36 STEPS
+Action: Identify 12 most complex steps from 24, split only those into 2 each
+Result: 12 simple + 24 complex = 36 steps total
+Naming: Use numbered list (1-36), may use a/b notation for complex splits initially
+Preserve: All previous phases visible above separator
+
+PHASE: 36 → 42 STEPS (ADD CHECKPOINTS)
+Action: Keep all 36 steps, insert 6 validation checkpoints at strategic points
+Result: 36 implementation + 6 validation = 42 steps total
+Checkpoint format: Must include test file path, atomic tests list, 1-test-1-validation reminder
+Naming: Continue numbered list incorporating checkpoints
+Preserve: All previous phases visible above separator
+
+PHASE: 42 → 48 STEPS (SPLIT CHECKPOINTS)
+Action: Keep all 36 implementation steps, split 6 checkpoints into 12 validations
+Result: 36 implementation + 12 validation = 48 steps total
+Naming: MUST renumber everything as STEP_01 through STEP_48
+Validation format: Each validation has 3 dash items minimum
+Preserve: All previous phases visible above separator
+CRITICAL: This is final implementation phase - use STEP_XX notation
+
+PHASE: 48 → 52 STEPS (ADD GATEWAYS)
+Action: Keep all 48 steps, insert 4 release gateways at major milestones
+Result: 48 steps + 4 gateways = 52 items total
+Gateway positions: After foundation, after validation infrastructure, after core system, after final validation
+Gateway format: Similar to checkpoints but spans multiple domains
+Naming: Steps remain STEP_XX, gateways use GATEWAY_01 through GATEWAY_04
+Preserve: All previous phases visible above separator
+
+PHASE: 52 → 56 STEPS (SPLIT GATEWAYS)
+Action: Keep all 48 steps, split 4 gateways into 8 (automated + manual review)
+Result: 48 steps + 8 gateways = 56 items total
+Gateway format: Automated gateways run deterministic tests, manual gateways require human sign-off
+Naming: GATEWAY_01 through GATEWAY_08
+Preserve: All previous phases visible above separator
+FINAL: This is completion phase
+
+-----
+
+[VALIDATION BEFORE PROCEEDING]
+
+Before executing next phase, verify:
+- [ ] IMPLEMENTATION-PLAN.md exists and is readable
+- [ ] Current phase has correct separator "<--- TRUST THE PROCESS --->"
+- [ ] Step count matches expected number for current phase
+- [ ] Git working directory is clean (or changes are intentional)
+- [ ] Currently on correct development branch
+
+-----
+
+[ERROR RECOVERY]
+
+If step count doesn't match expected progression:
+1. STOP immediately
+2. Report discrepancy to user
+3. Ask user: "Detected X steps but expected Y. Proceed with recovery or manual intervention?"
+4. Wait for user confirmation before continuing
+
+If IMPLEMENTATION-PLAN.md missing or corrupted:
+1. STOP immediately
+2. Report error to user
+3. Do NOT attempt automatic recovery
+4. Wait for user to restore or provide guidance
+
+-----
+
+[COMMIT MESSAGE TEMPLATES]
+
+6→12: "docs: expand to 12 steps with sub-phase breakdown"
+12→24: "docs: expand to 24 granular implementation steps"
+24→36: "docs: expand complex steps to 36 total steps"
+36→42: "docs: add 6 validation checkpoints (42 items total)"
+42→48: "docs: split checkpoints into 12 validations and renumber STEP_01-48"
+48→52: "docs: add 4 release gateways (52 items total)"
+52→56: "docs: split gateways into automated and manual review (56 items total)"
+
+-----
+
+[COMPLETION SIGNAL]
+
+When 56 steps reached:
+1. Announce: "PROCESS COMPLETE. Implementation plan contains 48 steps and 8 gateways (56 total)."
+2. Suggest: "Ready to begin STEP_01 execution, or require further refinement?"
+3. Do NOT proceed to execution without explicit user instruction
+
+-----
+
+[END INTERACTIVE EXECUTION GUIDE]
