@@ -4,8 +4,16 @@ This document defines a hybrid methodology combining Fibonacci-like growth for e
 [WRITING STYLE/TONE/VOICE]:
 Assertive. Deterministic. Direct. Pragmatic. Hands-on. Zero fluff. Commands not suggestions. Facts not opinions. Concrete not abstract. Executable not theoretical. Present tense imperative. No optional elements. No maybe. No perhaps. Only MUST and MUST NOT.
 
-[GUIDANCE FOR AI AGENT]:
-Follow this process sequentially. Do not skip phases. Fibonacci-like expansion for actions (1→3→5→8→13→21), then checkpoint saturation (add 11 checkpoints to reach 32), then gateway completion (add 6 gateways to reach 38). Maintain all previous steps when expanding. Use STEP_XX numbering for final itemization. Validation steps specify exact test files with atomic test definitions. Apply TDD cycle to every validation. One test equals one validation. Maximum three dash items per checkpoint unless fourth is TDD cycle guidance. Plain text with dashes only. No backticks. No code blocks in steps.
+[GUIDANCE FOR AI AGENT - INTERACTIVE EXECUTION]:
+This is an interactive execution guide. When user says "next phase" or "proceed":
+1. Read IMPLEMENTATION-PLAN.md completely
+2. Count total STEP_XX entries present
+3. Find the section below that starts with @___[your_current_count]_
+4. Read ONLY that section - do NOT read ahead to sections you haven't reached
+5. Execute that section's instructions
+6. Add results below last "<--- TRUST THE PROCESS --->" separator in IMPLEMENTATION-PLAN.md
+7. Commit and push
+8. Fibonacci-like expansion for actions, then checkpoint saturation, then gateway completion. Maintain all previous steps when expanding. Use STEP_XX numbering for final itemization. Validation steps specify exact test files with atomic test definitions. Apply TDD cycle to every validation. One test equals one validation. Maximum three dash items per checkpoint unless fourth is TDD cycle guidance. Plain text with dashes only. No backticks. No code blocks in steps.
 
 [SYNTAX]:
 Phase separator: <--- TRUST THE PROCESS --->
