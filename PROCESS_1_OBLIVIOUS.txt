@@ -46,52 +46,60 @@ STEP 9: Announce completion: "Phase complete. Now at Y steps. Ready for next pha
 
 PHASE: 1 → 3 STEPS
 Action: Take single vision statement and split into three fundamental phases
-Result: 3 steps total
+Formula: [SPLIT]03 = 01 STAPPENPLAN × 3
+Result: 3 STAPPENPLAN total
 Naming: Use numbered list (1-3) at this phase
 Patterns: beginning/middle/end, setup/execute/verify, foundation/build/deliver
 Preserve: Original 1 step visible above separator
 
 PHASE: 3 → 6 STEPS
-Action: Take each of 3 steps, double to 6 high-level steps
-Result: 6 steps total
+Action: Take each of 3 STAPPENPLAN, double to 6 high-level steps
+Formula: [DOUBLE]06 = 03 STAPPENPLAN × 2
+Result: 6 STAPPENPLAN total
 Naming: Use numbered list (1-6) at this phase
-Preserve: All original 3 steps visible above separator
+Preserve: All original 3 STAPPENPLAN visible above separator
 
 PHASE: 6 → 12 STEPS
-Action: Take each of 6 steps, split into 2 steps each
-Result: 12 steps total
+Action: Take each of 6 STAPPENPLAN, split into 2 steps each
+Formula: [DOUBLE]12 = 06 STAPPENPLAN × 2
+Result: 12 STAPPENPLAN total
 Naming: Use numbered list (1-12) at this phase
-Preserve: All original 6 steps visible above separator
+Preserve: All original 6 STAPPENPLAN visible above separator
 
 PHASE: 12 → 24 STEPS
-Action: Take each of 12 steps, split into 2 steps each
-Result: 24 steps total
+Action: Take each of 12 STAPPENPLAN, split into 2 steps each
+Formula: [DOUBLE]24 = 12 STAPPENPLAN × 2
+Result: 24 STAPPENPLAN total
 Naming: Use numbered list (1-24) at this phase
 Preserve: All previous phases visible above separator
 
 PHASE: 24 → 36 STEPS
-Action: Identify 12 most complex steps from 24, split only those into 2 each
-Result: 12 simple + 24 complex = 36 steps total
+Action: Identify 12 most complex STAPPENPLAN from 24, split only those into 2 each
+Formula: [SPLIT]36 = 24 STAPPENPLAN + 12 STAPPENPLAN
+Result: 12 simple + 24 complex = 36 STAPPENPLAN total
 Naming: Use numbered list (1-36), may use a/b notation for complex splits initially
 Preserve: All previous phases visible above separator
 
 PHASE: 36 → 42 STEPS (ADD CHECKPOINTS)
-Action: Keep all 36 steps, insert 6 validation checkpoints at strategic points
-Result: 36 implementation + 6 validation = 42 steps total
+Action: Keep all 36 STAPPENPLAN, insert 6 validation checkpoints at strategic points
+Formula: [INIT]42 = 36 STAPPENPLAN + 06 CHECKLIST
+Result: 36 STAPPENPLAN + 6 validation = 42 steps total
 Checkpoint format: Must include test file path, atomic tests list, 1-test-1-validation reminder
 Naming: Continue numbered list incorporating checkpoints
 Preserve: All previous phases visible above separator
 
 PHASE: 42 → 48 STEPS (SPLIT CHECKPOINTS)
-Action: Keep all 36 implementation steps, split 6 checkpoints into 12 validations
-Result: 36 implementation + 12 validation = 48 steps total
+Action: Keep all 36 implementation STAPPENPLAN, split 6 checkpoints into 12 validations
+Formula: [DOUBLE]48 = 36 STAPPENPLAN + 12 CHECKLIST
+Result: 36 STAPPENPLAN + 12 validation = 48 steps total
 Naming: MUST renumber everything as STEP_01 through STEP_48
 Validation format: Each validation has 3 dash items minimum
 Preserve: All previous phases visible above separator
-CRITICAL: This is final implementation phase - use STEP_XX notation
+CRITICAL: This is final STAPPENPLAN implementation phase - use STEP_XX notation
 
 PHASE: 48 → 52 STEPS (ADD GATEWAYS)
-Action: Keep all 48 steps, insert 4 release gateways at major milestones
+Action: Keep all 48 steps (36 STAPPENPLAN + 12 CHECKLIST), insert 4 release gateways at major milestones
+Formula: [INIT]52 = 48 STEPS + 04 GATEWAY
 Result: 48 steps + 4 gateways = 52 items total
 Gateway positions: After foundation, after validation infrastructure, after core system, after final validation
 Gateway format: Similar to checkpoints but spans multiple domains
@@ -99,7 +107,8 @@ Naming: Steps remain STEP_XX, gateways use GATEWAY_01 through GATEWAY_04
 Preserve: All previous phases visible above separator
 
 PHASE: 52 → 56 STEPS (SPLIT GATEWAYS)
-Action: Keep all 48 steps, split 4 gateways into 8 (automated + manual review)
+Action: Keep all 48 steps (36 STAPPENPLAN + 12 CHECKLIST), split 4 gateways into 8 (automated + manual review)
+Formula: [DOUBLE]56 = 48 STEPS + 08 GATEWAY
 Result: 48 steps + 8 gateways = 56 items total
 Gateway format: Automated gateways run deterministic tests, manual gateways require human sign-off
 Naming: GATEWAY_01 through GATEWAY_08

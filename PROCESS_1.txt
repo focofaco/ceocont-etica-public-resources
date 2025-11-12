@@ -28,52 +28,62 @@ Never use letters for step numbering in final output. Never exceed three dash it
 -----
 
 @___01_single_step___[ONE STEP STAPPENPLAN]:
+[INIT]01 = 01 STAPPENPLAN
 Begin with single comprehensive vision statement. This statement captures entire project scope in one paragraph or sentence. Statement must be specific enough to guide all subsequent decomposition while broad enough to encompass full implementation. This is executive summary level. Answer: What is being built and why does it matter? This singular vision drives all subsequent refinement.
 
 <--- TRUST THE PROCESS ----->
 
 @___03_sequential_steps___[THREE STEPS STAPPENPLAN]:
-Take the single vision and split into three fundamental phases. Common patterns: beginning, middle, end. Or: setup, execute, verify. Or: foundation, build, deliver. Three steps show minimal viable progression through project lifecycle. Each step represents major phase boundary. These three steps provide highest-level work breakdown showing sequential dependency. Descriptions remain abstract but establish project rhythm.
+[SPLIT]03 = 01 STAPPENPLAN × 3
+Take the single vision and split into three fundamental phases. Splitting: 1 × 3 = 3. Common patterns: beginning, middle, end. Or: setup, execute, verify. Or: foundation, build, deliver. Three steps show minimal viable progression through project lifecycle. Each step represents major phase boundary. These three STAPPENPLAN provide highest-level work breakdown showing sequential dependency. Descriptions remain abstract but establish project rhythm.
 
 <--- TRUST THE PROCESS ----->
 
 @___06_sequential_steps___[SIX STEPS STAPPENPLAN]:
-Take the three fundamental phases and double to six high-level steps that map the entire journey from initial setup to final delivery. Each step represents a major capability milestone. Steps must be sequential and build upon each other. No step can start before its predecessor completes. These six steps provide executive-level visibility into project structure without implementation details. Use simple present tense descriptions focusing on outcomes not methods.
+[DOUBLE]06 = 03 STAPPENPLAN × 2
+Take the three fundamental phases and double to six high-level steps that map the entire journey from initial setup to final delivery. Doubling: 3 × 2 = 6. Each step represents a major capability milestone. Steps must be sequential and build upon each other. No step can start before its predecessor completes. These six STAPPENPLAN provide executive-level visibility into project structure without implementation details. Use simple present tense descriptions focusing on outcomes not methods.
 
 <--- TRUST THE PROCESS ----->
 
 @___12_sequential_steps___[TWELVE INFERED STEPS STAPPENPLAN]:
-Take each of the six phases and decompose into two logical sub-phases, yielding twelve steps total. Each split reveals one preparatory step and one execution step, or one design step and one implementation step. Maintain sequential dependency chain. These twelve steps provide mid-level management visibility showing how each major phase breaks down into actionable chunks. Descriptions remain outcome-focused but hint at method.
+[DOUBLE]12 = 06 STAPPENPLAN × 2
+Take each of the six phases and decompose into two logical sub-phases, yielding twelve steps total. Doubling: 6 × 2 = 12. Each split reveals one preparatory step and one execution step, or one design step and one implementation step. Maintain sequential dependency chain. These twelve STAPPENPLAN provide mid-level management visibility showing how each major phase breaks down into actionable chunks. Descriptions remain outcome-focused but hint at method.
 
 <--- TRUST THE PROCESS ----->
 
 @___24_sequential_steps___[TWENTY FOUR INFERED STEPS STAPPENPLAN]:
-Take each of the twelve steps and split into two granular steps, yielding twenty-four steps total. Some splits separate planning from execution. Others separate component A from component B. Others separate write from test. Each step now represents a distinct deliverable or artifact. These twenty-four steps provide technical lead visibility into implementation sequence. Descriptions must be specific about what gets created or configured.
+[DOUBLE]24 = 12 STAPPENPLAN × 2
+Take each of the twelve steps and split into two granular steps, yielding twenty-four steps total. Doubling: 12 × 2 = 24. Some splits separate planning from execution. Others separate component A from component B. Others separate write from test. Each step now represents a distinct deliverable or artifact. These twenty-four STAPPENPLAN provide technical lead visibility into implementation sequence. Descriptions must be specific about what gets created or configured.
 
 <--- TRUST THE PROCESS ----->
 
 @___36_sequential_steps___[THIRTY SIX SAME 24 + 12-COMPLEX-ONLY-SET INFERED STEPS STAPPENPLAN]:
-Keep all twenty-four steps. Identify the twelve most complex steps based on: multiple sub-concerns, high cognitive load, error-prone nature, or critical path position. Split each of these twelve complex steps into two sub-steps using a/b notation initially or direct expansion. Result: twelve simple steps remain as-is, twelve complex steps become twenty-four detailed steps, total equals thirty-six steps. These thirty-six steps provide implementer visibility into every discrete action required. Descriptions specify exact artifacts, commands, or configurations.
+[SPLIT]36 = 24 STAPPENPLAN + 12 STAPPENPLAN
+Keep all twenty-four steps. Identify the twelve most complex steps based on: multiple sub-concerns, high cognitive load, error-prone nature, or critical path position. Split each of these twelve complex steps into two sub-steps using a/b notation initially or direct expansion. Splitting: 24 + 12 = 36. Result: twelve simple steps remain as-is, twelve complex steps become twenty-four detailed steps, total equals thirty-six STAPPENPLAN. These thirty-six STAPPENPLAN provide implementer visibility into every discrete action required. Descriptions specify exact artifacts, commands, or configurations.
 
 <--- TRUST THE PROCESS ----->
 
 @___42_sequential_steps___[EACH SIX CHECKPOINTS STAPPENPLAN]:
-Keep all thirty-six implementation steps. Insert six validation checkpoint steps at strategic completion boundaries: after directory structure, after configuration, after CI pipeline, after integrity system, after release automation, after publishing system. Each checkpoint defines specific test files to create, lists atomic tests to execute, reiterates one-test-one-validation principle, and includes TDD cycle guidance as fourth dash. Checkpoints validate cumulative implementation, not individual steps. Position checkpoints where failure would invalidate subsequent work. Total: thirty-six implementation plus six validation equals forty-two steps.
+[INIT]42 = 36 STAPPENPLAN + 06 CHECKLIST
+Keep all thirty-six implementation STAPPENPLAN. Insert six validation checkpoint steps at strategic completion boundaries: after directory structure, after configuration, after CI pipeline, after integrity system, after release automation, after publishing system. Each checkpoint defines specific test files to create, lists atomic tests to execute, reiterates one-test-one-validation principle, and includes TDD cycle guidance as fourth dash. Checkpoints validate cumulative implementation, not individual STAPPENPLAN. Position checkpoints where failure would invalidate subsequent work. Total: thirty-six STAPPENPLAN plus six validation equals forty-two steps.
 
 <--- TRUST THE PROCESS ----->
 
 @___48_sequential_steps___[EACH THREE INFERED CHECKPOINTS STAPPENPLAN]:
-Keep all thirty-six implementation steps. Split each of six checkpoints into two focused validation steps, yielding twelve validation steps total. First validation in each pair tests core functionality, second tests edge cases or integration. For example: directory structure splits into base directories validation and category directories validation. Configuration splits into limits validation and naming rules validation. CI splits into reject-invalid validation and accept-valid validation. Integrity splits into hash generation and tree determinism. Release splits into changelog and versioning. Publishing splits into upload and compliance. Total: thirty-six implementation plus twelve validation equals forty-eight steps. Renumber all steps sequentially as STEP_01 through STEP_48.
+[DOUBLE]48 = 36 STAPPENPLAN + 12 CHECKLIST
+Keep all thirty-six implementation STAPPENPLAN. Split each of six checkpoints into two focused validation steps, yielding twelve validation steps total. Doubling validation: 6 × 2 = 12. First validation in each pair tests core functionality, second tests edge cases or integration. For example: directory structure splits into base directories validation and category directories validation. Configuration splits into limits validation and naming rules validation. CI splits into reject-invalid validation and accept-valid validation. Integrity splits into hash generation and tree determinism. Release splits into changelog and versioning. Publishing splits into upload and compliance. Total: thirty-six STAPPENPLAN plus twelve validation equals forty-eight steps. Renumber all steps sequentially as STEP_01 through STEP_48.
 
 <--- TRUST THE PROCESS ----->
 
 @___52_sequential_steps___[EACH FOUR RELEASE GATEWAY STAPPENPLAN]:
+[INIT]52 = 48 STEPS + 04 GATEWAY
 Keep all forty-eight steps from previous phase. Insert four release gateway steps at major milestone boundaries: after STEP_10 as GATEWAY_01 verifying foundation readiness, after STEP_21 as GATEWAY_02 verifying validation infrastructure readiness, after STEP_31 as GATEWAY_03 verifying core system readiness, after STEP_48 as GATEWAY_04 verifying production readiness. Each gateway aggregates multiple checkpoint results and adds integration smoke tests. Gateway format matches checkpoint format but tests span multiple domains. Gateways block progression until all prerequisites pass. Total: forty-eight steps plus four gateways equals fifty-two steps.
 
 <--- TRUST THE PROCESS ----->
 
 @___56_sequential_steps___[EACH FOUR FINAL RELEASE GATEWAY STAPPENPLAN]:
-Keep all forty-eight steps and four gateways from previous phase. Split each of four gateways into two sub-gateways: automated verification gateway and manual review gateway. Automated gateway runs deterministic tests. Manual gateway requires human sign-off on non-deterministic criteria: documentation completeness, architecture review, security audit, performance benchmarks. Each manual gateway specifies exact review checklist. Total: forty-eight steps plus eight gateways equals fifty-six steps. Renumber gateways as GATEWAY_01 through GATEWAY_08. Final sequence: STEP_01, STEP_02, ..., GATEWAY_01, GATEWAY_02, ..., STEP_XX, ..., GATEWAY_07, GATEWAY_08, STEP_48.
+[DOUBLE]56 = 48 STEPS + 08 GATEWAY
+Keep all forty-eight steps and four gateways from previous phase. Split each of four gateways into two sub-gateways: automated verification gateway and manual review gateway. Doubling gateways: 4 × 2 = 8. Automated gateway runs deterministic tests. Manual gateway requires human sign-off on non-deterministic criteria: documentation completeness, architecture review, security audit, performance benchmarks. Each manual gateway specifies exact review checklist. Total: forty-eight steps plus eight gateways equals fifty-six steps. Renumber gateways as GATEWAY_01 through GATEWAY_08. Final sequence: STEP_01, STEP_02, ..., GATEWAY_01, GATEWAY_02, ..., STEP_XX, ..., GATEWAY_07, GATEWAY_08, STEP_48.
 
 -----
 
