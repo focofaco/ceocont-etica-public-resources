@@ -60,63 +60,87 @@ timestamp: 2025-11-12T17:42:18Z
 
 <--- TRUST THE PROCESS --->
 
-1. Verify existing repository structure and branch strategy
-2. Set up .gitignore and repository documentation files
-3. Create README with contract overview and CDN usage
-4. Establish documentation templates for releases
-5. Initialize online-resources directory structure
-6. Create raw-text subdirectory with proper permissions
-7. Create content category directories (plaintext, callouts, docks, tradeoffs, tables, data, faqs, diagrams, disclaimers, others)
-8. Create meta directory for integrity and tree files
-CHECKPOINT 1: Directory structure validation
-- Create tests/structure/test-dirs-exist.sh with 1 atomic test per directory validation
+STEP_01: Verify existing repository structure and branch strategy
+STEP_02: Set up .gitignore and repository documentation files
+STEP_03: Create README with contract overview and CDN usage
+STEP_04: Establish documentation templates for releases
+STEP_05: Initialize online-resources directory structure
+STEP_06: Create raw-text subdirectory with proper permissions
+STEP_07: Create content category directories (plaintext, callouts, docks, tradeoffs, tables, data, faqs, diagrams, disclaimers, others)
+STEP_08: Create meta directory for integrity and tree files
+STEP_09: Base directory structure validation
+- Create tests/structure/test-base-dirs.sh with 1 atomic test per base directory
+- Tests: online-resources exists, raw-text exists, raw-text writable
+- All tests atomic: 1 test = 1 validation
+STEP_10: Content category directories validation
+- Create tests/structure/test-category-dirs.sh with 1 atomic test per category
 - Tests: plaintext exists, callouts exists, docks exists, tradeoffs exists, tables exists, data exists, faqs exists, diagrams exists, disclaimers exists, others exists, meta exists, no unauthorized dirs
 - All tests atomic: 1 test = 1 validation
-9a. Specify UTF-8 encoding validation and BOM detection logic
-9b. Define line ending normalization rules and CRLF rejection
-10. Specify size limits and naming convention patterns
-CHECKPOINT 2: Validation rules specification complete
-- Create tests/validation/test-rules-complete.sh with 1 atomic test per rule
-- Tests: config exists, max file size defined, max line length defined, naming pattern rejects uppercase, naming pattern accepts lowercase, forbidden extensions listed
+STEP_11: Specify UTF-8 encoding validation and BOM detection logic
+STEP_12: Define line ending normalization rules and CRLF rejection
+STEP_13: Specify size limits and naming convention patterns
+STEP_14: Configuration files with limits validation
+- Create tests/validation/test-config-limits.sh with 1 atomic test per config value
+- Tests: config exists, max file size defined, max line length defined
 - All tests atomic: 1 test = 1 validation
-11a. Create GitHub Actions YAML workflow structure
-11b. Define workflow triggers and runner environment
-12a. Implement format-specific validation gates (TSV, DOT, JSON)
-12b. Configure blocking conditions and error reporting
-CHECKPOINT 3: CI validation gates operational
-- Create tests/ci/test-validation-gates.sh with fixtures: invalid-crlf.txt, invalid-bom.txt, invalid-file.html, oversized.txt, valid-name.txt
-- Tests: rejects CRLF, rejects BOM, rejects html extension, rejects oversized, accepts valid
+STEP_15: Naming and extension rules validation
+- Create tests/validation/test-naming-rules.sh with 1 atomic test per naming rule
+- Tests: naming pattern rejects uppercase, naming pattern accepts lowercase, forbidden extensions listed
 - All tests atomic: 1 test = 1 validation
-13a. Design hash computation algorithm for file iteration
-13b. Implement SHA-256 calculation with path formatting
-14a. Write directory tree walker with file filtering
-14b. Handle edge cases and symlink resolution
-15a. Design TREE.txt hierarchical output format
-15b. Implement directory structure serialization logic
-16a. Design integrity.txt hash manifest format
-16b. Implement file hash pairing and output generation
-CHECKPOINT 4: Integrity system functional
-- Create tests/integrity/test-hash-and-tree.sh with fixture: sample-content.txt
-- Tests: generates integrity.txt, generates TREE.txt, format has two spaces, hash matches sha256sum, deterministic output on rerun
+STEP_16: Create GitHub Actions YAML workflow structure
+STEP_17: Define workflow triggers and runner environment
+STEP_18: Implement format-specific validation gates (TSV, DOT, JSON)
+STEP_19: Configure blocking conditions and error reporting
+STEP_20: CI rejects invalid files validation
+- Create tests/ci/test-reject-invalid.sh with fixtures: invalid-crlf.txt, invalid-bom.txt, invalid-file.html, oversized.txt
+- Tests: rejects CRLF, rejects BOM, rejects html extension, rejects oversized
 - All tests atomic: 1 test = 1 validation
-17. Define tag naming convention and versioning policy
-18a. Document semantic versioning rules and examples
-18b. Create helper scripts for tag creation and validation
-19a. Parse commit history and categorize by type
-19b. Format changelog entries according to Keep a Changelog
-20a. Extract release metadata from tags and commits
-20b. Generate release notes with categorized changes
-CHECKPOINT 5: Release automation working
-- Create tests/release/test-changelog-and-versioning.sh with fixture: mock-commits.txt
-- Tests: generates CHANGELOG.txt, has Added section, has Changed section, has Fixed section, version bump calculates correctly, rejects invalid version, creates vX.Y.Z tag
+STEP_21: CI accepts valid files validation
+- Create tests/ci/test-accept-valid.sh with fixture: valid-name.txt
+- Tests: accepts valid file, CI pipeline runs, validation passes with exit code 0
 - All tests atomic: 1 test = 1 validation
-21a. Select CDN provider and configure authentication
-21b. Set up bucket/storage structure and access policies
-22. Define deployment paths and versioning strategy
-23a. Write tag detection and artifact preparation logic
-23b. Implement CDN upload and version pinning mechanism
-24. Configure CDN cache invalidation and verification
-CHECKPOINT 6: End-to-end publishing validated
-- Create tests/publishing/test-cdn-end-to-end.sh with fixture: test-release-content.txt
-- Tests: uploads to CDN, HTTP GET returns 200, version URL immutable, reupload fails, cache invalidation works, contract MUST requirements met
+STEP_22: Design hash computation algorithm for file iteration
+STEP_23: Implement SHA-256 calculation with path formatting
+STEP_24: Write directory tree walker with file filtering
+STEP_25: Handle edge cases and symlink resolution
+STEP_26: Design TREE.txt hierarchical output format
+STEP_27: Implement directory structure serialization logic
+STEP_28: Design integrity.txt hash manifest format
+STEP_29: Implement file hash pairing and output generation
+STEP_30: Hash generation validation
+- Create tests/integrity/test-hash-generation.sh with fixture: sample-content.txt
+- Tests: generates integrity.txt, format has two spaces, hash matches sha256sum
+- All tests atomic: 1 test = 1 validation
+STEP_31: Tree generation and determinism validation
+- Create tests/integrity/test-tree-and-determinism.sh with fixture: sample-content.txt
+- Tests: generates TREE.txt, deterministic output on rerun, both files valid
+- All tests atomic: 1 test = 1 validation
+STEP_32: Define tag naming convention and versioning policy
+STEP_33: Document semantic versioning rules and examples
+STEP_34: Create helper scripts for tag creation and validation
+STEP_35: Parse commit history and categorize by type
+STEP_36: Format changelog entries according to Keep a Changelog
+STEP_37: Extract release metadata from tags and commits
+STEP_38: Generate release notes with categorized changes
+STEP_39: Changelog generation validation
+- Create tests/release/test-changelog.sh with fixture: mock-commits.txt
+- Tests: generates CHANGELOG.txt, has Added section, has Changed section, has Fixed section
+- All tests atomic: 1 test = 1 validation
+STEP_40: Version and tag creation validation
+- Create tests/release/test-versioning.sh with fixture: mock-commits.txt
+- Tests: version bump calculates correctly, rejects invalid version, creates vX.Y.Z tag
+- All tests atomic: 1 test = 1 validation
+STEP_41: Select CDN provider and configure authentication
+STEP_42: Set up bucket/storage structure and access policies
+STEP_43: Define deployment paths and versioning strategy
+STEP_44: Write tag detection and artifact preparation logic
+STEP_45: Implement CDN upload and version pinning mechanism
+STEP_46: Configure CDN cache invalidation and verification
+STEP_47: CDN upload and versioning validation
+- Create tests/publishing/test-cdn-upload.sh with fixture: test-release-content.txt
+- Tests: uploads to CDN, HTTP GET returns 200, version URL immutable, reupload fails
+- All tests atomic: 1 test = 1 validation
+STEP_48: Cache and contract compliance validation
+- Create tests/publishing/test-cdn-cache-and-compliance.sh with fixture: test-release-content.txt
+- Tests: cache invalidation works, contract MUST requirements met, full end-to-end passes
 - All tests atomic: 1 test = 1 validation
