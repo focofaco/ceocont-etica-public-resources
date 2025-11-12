@@ -72,10 +72,12 @@ STEP_09: Base directory structure validation
 - Create tests/structure/test-base-dirs.sh with 1 atomic test per base directory
 - Tests: online-resources exists, raw-text exists, raw-text writable
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_10: Content category directories validation
 - Create tests/structure/test-category-dirs.sh with 1 atomic test per category
 - Tests: plaintext exists, callouts exists, docks exists, tradeoffs exists, tables exists, data exists, faqs exists, diagrams exists, disclaimers exists, others exists, meta exists, no unauthorized dirs
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_11: Specify UTF-8 encoding validation and BOM detection logic
 STEP_12: Define line ending normalization rules and CRLF rejection
 STEP_13: Specify size limits and naming convention patterns
@@ -83,10 +85,12 @@ STEP_14: Configuration files with limits validation
 - Create tests/validation/test-config-limits.sh with 1 atomic test per config value
 - Tests: config exists, max file size defined, max line length defined
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_15: Naming and extension rules validation
 - Create tests/validation/test-naming-rules.sh with 1 atomic test per naming rule
 - Tests: naming pattern rejects uppercase, naming pattern accepts lowercase, forbidden extensions listed
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_16: Create GitHub Actions YAML workflow structure
 STEP_17: Define workflow triggers and runner environment
 STEP_18: Implement format-specific validation gates (TSV, DOT, JSON)
@@ -95,10 +99,12 @@ STEP_20: CI rejects invalid files validation
 - Create tests/ci/test-reject-invalid.sh with fixtures: invalid-crlf.txt, invalid-bom.txt, invalid-file.html, oversized.txt
 - Tests: rejects CRLF, rejects BOM, rejects html extension, rejects oversized
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_21: CI accepts valid files validation
 - Create tests/ci/test-accept-valid.sh with fixture: valid-name.txt
 - Tests: accepts valid file, CI pipeline runs, validation passes with exit code 0
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_22: Design hash computation algorithm for file iteration
 STEP_23: Implement SHA-256 calculation with path formatting
 STEP_24: Write directory tree walker with file filtering
@@ -111,10 +117,12 @@ STEP_30: Hash generation validation
 - Create tests/integrity/test-hash-generation.sh with fixture: sample-content.txt
 - Tests: generates integrity.txt, format has two spaces, hash matches sha256sum
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_31: Tree generation and determinism validation
 - Create tests/integrity/test-tree-and-determinism.sh with fixture: sample-content.txt
 - Tests: generates TREE.txt, deterministic output on rerun, both files valid
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_32: Define tag naming convention and versioning policy
 STEP_33: Document semantic versioning rules and examples
 STEP_34: Create helper scripts for tag creation and validation
@@ -126,10 +134,12 @@ STEP_39: Changelog generation validation
 - Create tests/release/test-changelog.sh with fixture: mock-commits.txt
 - Tests: generates CHANGELOG.txt, has Added section, has Changed section, has Fixed section
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_40: Version and tag creation validation
 - Create tests/release/test-versioning.sh with fixture: mock-commits.txt
 - Tests: version bump calculates correctly, rejects invalid version, creates vX.Y.Z tag
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_41: Select CDN provider and configure authentication
 STEP_42: Set up bucket/storage structure and access policies
 STEP_43: Define deployment paths and versioning strategy
@@ -140,7 +150,9 @@ STEP_47: CDN upload and versioning validation
 - Create tests/publishing/test-cdn-upload.sh with fixture: test-release-content.txt
 - Tests: uploads to CDN, HTTP GET returns 200, version URL immutable, reupload fails
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
 STEP_48: Cache and contract compliance validation
 - Create tests/publishing/test-cdn-cache-and-compliance.sh with fixture: test-release-content.txt
 - Tests: cache invalidation works, contract MUST requirements met, full end-to-end passes
 - All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
