@@ -1,0 +1,25 @@
+CHANGELOG
+
+All notable changes to online-resources/raw-text/ are documented in this file.
+Format based on Keep a Changelog. Project adheres to Semantic Versioning.
+
+================================================================================
+
+[Unreleased]
+
+================================================================================
+
+[1.0.0] - 2025-11-12
+
+Added:
+- Initial directory structure for online-resources/raw-text/
+- Content categories: plaintext/, callouts/, docks/, tradeoffs/, tables/, data/, faqs/, diagrams/, disclaimers/, others/
+- Metadata directory: meta/
+- Metadata files: glossario.json.txt, abbr.json.txt, integrity.txt, TREE.txt
+- Root files: DEPRECATIONS.txt, CHANGELOG.txt
+
+================================================================================
+
+Links:
+[Unreleased]: https://github.com/focofacofoco/ceocont-etica-public-resources/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/focofacofoco/ceocont-etica-public-resources/releases/tag/v1.0.0
