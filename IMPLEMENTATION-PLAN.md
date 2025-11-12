@@ -69,28 +69,28 @@ timestamp: 2025-11-12T17:42:18Z
 7. Create content category directories (plaintext, callouts, docks, tradeoffs, tables, data, faqs, diagrams, disclaimers, others)
 8. Create meta directory for integrity and tree files
 ✓ CHECKPOINT 1: Directory structure validation
-   - All 11 required directories exist under online-resources/raw-text/
-   - Directory permissions are readable and writable (755)
+   - All required directories per contract exist under online-resources/raw-text/
+   - Directory permissions are readable and writable (standard directory permissions)
    - No unauthorized directories present
-   - Path depth does not exceed 3 levels from raw-text/
+   - Path depth does not exceed maximum allowed levels from raw-text/
 9a. Specify UTF-8 encoding validation and BOM detection logic
 9b. Define line ending normalization rules and CRLF rejection
 10. Specify size limits and naming convention patterns
 ✓ CHECKPOINT 2: Validation rules specification complete
-   - Maximum file size limit documented (e.g., 1MB per file)
-   - Maximum line length defined (e.g., 120 characters)
+   - Maximum file size limit documented and configured
+   - Maximum line length defined per contract requirements
    - Naming pattern regex written and tested (lowercase, hyphens only)
-   - All forbidden extensions listed (.html, .js, .css, .svg, .png, .jpg, .pdf, etc.)
+   - All forbidden extensions listed per contract specification
 11a. Create GitHub Actions YAML workflow structure
 11b. Define workflow triggers and runner environment
 12a. Implement format-specific validation gates (TSV, DOT, JSON)
 12b. Configure blocking conditions and error reporting
 ✓ CHECKPOINT 3: CI validation gates operational
    - CI pipeline runs on every pull request and push to main
-   - At least 3 validation gates active (encoding, format, size)
+   - All required validation gates active (encoding, format, size)
    - Invalid file upload blocked with clear error message
    - Test file with CRLF rejected automatically
-   - Test file with .html extension rejected automatically
+   - Test file with forbidden extension rejected automatically
 13a. Design hash computation algorithm for file iteration
 13b. Implement SHA-256 calculation with path formatting
 14a. Write directory tree walker with file filtering
@@ -113,7 +113,7 @@ timestamp: 2025-11-12T17:42:18Z
 20a. Extract release metadata from tags and commits
 20b. Generate release notes with categorized changes
 ✓ CHECKPOINT 5: Release automation working
-   - Test tag v0.1.0 created successfully
+   - Test tag created successfully with semantic version format
    - CHANGELOG.txt auto-generated with proper format
    - Release notes include categorized changes (Added, Changed, Fixed)
    - Version bump follows semantic versioning rules
@@ -127,7 +127,7 @@ timestamp: 2025-11-12T17:42:18Z
 ✓ CHECKPOINT 6: End-to-end publishing validated
    - Test release deployed to CDN successfully
    - CDN URL returns correct content from online-resources/raw-text/
-   - Version-pinned URL (e.g., v1.0.0) immutable and accessible
-   - Cache invalidation completes within 5 minutes
+   - Version-pinned URL immutable and accessible
+   - Cache invalidation completes within configured timeout
    - README contains working CDN link example
    - Full contract compliance verified (all MUST requirements met)
