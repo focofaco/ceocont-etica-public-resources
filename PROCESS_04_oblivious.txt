@@ -1,0 +1,312 @@
+[INTERACTIVE EXECUTION GUIDE - COMPACT VARIANT]
+
+This document guides step-by-step execution when running the PROCESS_04.txt methodology interactively. Use this when implementing a project using compact progression: power-of-two doubling for actions, incremental checkpoints, incremental gateways. Human review between phases. Most minimal complete process.
+
+-----
+
+[CURRENT STATE AWARENESS]
+
+Before proceeding to next phase, AI agent MUST:
+- Read IMPLEMENTATION-PLAN.md completely
+- Identify which phase separator was last completed
+- Count total STEP_XX entries present
+- Determine next phase based on step count
+
+Phase identification table (Compact progression):
+- 1 step present → Next: expand to 2 steps
+- 2 steps present → Next: expand to 4 steps (double)
+- 4 steps present → Next: expand to 8 steps (double)
+- 8 steps present → Next: add 2 checkpoints (10 total)
+- 10 steps present → Next: add 2 more checkpoints (12 total)
+- 12 steps present → Next: add 1 more checkpoint (13 total)
+- 13 steps present → Next: add 2 gateways (15 total)
+- 15 steps present → Next: add 4 more gateways (19 total)
+- 19 steps present → COMPLETE, no next phase
+
+Phase categories:
+- 1→8: Action steps only (power-of-two doubling)
+- 8→13: Checkpoint insertion (incremental)
+- 13→19: Gateway insertion (incremental)
+
+-----
+
+[EXECUTION PROTOCOL]
+
+When user says "next phase" or "continue" or "proceed":
+
+STEP 1: Read current IMPLEMENTATION-PLAN.md
+STEP 2: Identify current step count
+STEP 3: Determine phase category (action/checkpoint/gateway)
+STEP 4: Announce: "Current state: X steps detected. Phase: [action/checkpoint/gateway]. Next: expand to Y steps."
+STEP 5: Execute appropriate expansion from PROCESS_04.txt methodology
+STEP 6: Update IMPLEMENTATION-PLAN.md with new phase below last separator
+STEP 7: Add new "<--- TRUST THE PROCESS --->" separator before new content
+STEP 8: Commit with message describing phase transition (X → Y steps)
+STEP 9: Push to remote
+STEP 10: Announce completion: "Phase complete. Now at Y steps. Ready for next phase."
+
+-----
+
+[PHASE-SPECIFIC INSTRUCTIONS - ACTION DOUBLING]
+
+PHASE: 1 → 2 STEPS
+Action: Split single vision into two fundamental action steps
+Method: Identify primary dichotomy (prep/exec, design/implement)
+Doubling: 1 × 2 = 2
+Result: 2 action steps total
+Naming: Use numbered list (1-2) at this phase
+Category: Action doubling phase
+
+PHASE: 2 → 4 STEPS
+Action: Take two action steps and double to four
+Method: Each of two steps splits into two sub-steps
+Doubling: 2 × 2 = 4
+Result: 4 action steps total
+Naming: Use numbered list (1-4) at this phase
+Category: Action doubling phase
+
+PHASE: 4 → 8 STEPS
+Action: Take four action steps and double to eight
+Method: Each of four steps splits into two focused steps
+Doubling: 4 × 2 = 8 (final action doubling)
+Result: 8 action steps total
+Naming: Use numbered list (1-8) at this phase
+Note: This completes action expansion at minimal sufficient level
+Category: Action doubling phase (final)
+
+-----
+
+[PHASE-SPECIFIC INSTRUCTIONS - CHECKPOINT INCREMENTS]
+
+PHASE: 8 → 10 STEPS (INITIAL CHECKPOINTS)
+Action: Keep all 8 action steps, insert 2 validation checkpoints
+Method: Place checkpoints at early critical junctions (foundation, configuration)
+Increment: Add 2 checkpoints
+Result: 8 actions + 2 validations = 10 steps total
+Checkpoint format: Test file path, atomic tests, 1-test-1-validation, TDD cycle
+Naming: Continue numbered list incorporating checkpoints
+Category: Checkpoint insertion phase (initial)
+Transition: From action doubling to validation insertion
+
+PHASE: 10 → 12 STEPS (MID-IMPLEMENTATION CHECKPOINTS)
+Action: Keep all 8 action steps and 2 existing checkpoints, add 2 more checkpoints
+Method: Add mid-implementation validation and near-completion validation
+Increment: Add 2 checkpoints
+Result: 8 actions + 4 validations = 12 steps total
+Checkpoint coverage: Foundation, configuration, mid-implementation, near-completion
+Naming: Continue numbered list with all 4 checkpoints integrated
+Category: Checkpoint insertion phase (continuing)
+
+PHASE: 12 → 13 STEPS (FINAL CHECKPOINT)
+Action: Keep all 8 action steps and 4 existing checkpoints, add 1 more checkpoint
+Method: Add final critical junction checkpoint before release preparation
+Increment: Add 1 checkpoint
+Result: 8 actions + 5 validations = 13 steps total
+Checkpoint ratio: 1:1.6 (action:validation)
+Naming: Continue numbered list with all 5 checkpoints integrated
+Category: Checkpoint insertion phase (final)
+Note: This completes checkpoint insertion
+
+-----
+
+[PHASE-SPECIFIC INSTRUCTIONS - GATEWAY INCREMENTS]
+
+PHASE: 13 → 15 STEPS (INITIAL GATEWAYS)
+Action: Keep all 13 steps (8 actions + 5 validations), insert 2 release gateways
+Method: Place gateways at major milestone boundaries
+Gateway positions: Foundation complete, implementation complete
+Increment: Add 2 gateways
+Result: 13 steps + 2 gateways = 15 items total
+Gateway format: Aggregates checkpoints, adds integration tests, blocks progression
+Naming: Steps remain numbered, gateways use GATEWAY_01, GATEWAY_02
+Category: Gateway insertion phase (initial)
+Transition: From checkpoint insertion to release verification
+
+PHASE: 15 → 19 STEPS (GATEWAY COMPLETION)
+Action: Keep all 13 steps (8 actions + 5 validations), expand to 6 gateways total
+Method: Add 4 more gateways for complete staged release verification
+Gateway positions: Foundation, configuration validated, implementation mid-point, implementation complete, pre-release, production ready
+Increment: Add 4 gateways (total 6)
+Result: 13 steps + 6 gateways = 19 items total
+Gateway types: Each has automated tests and manual review criteria
+Naming: GATEWAY_01 through GATEWAY_06, all items renumbered STEP_01 through STEP_19
+Category: Gateway insertion phase (final)
+CRITICAL: This is final phase - renumber everything as STEP_XX
+
+-----
+
+[VALIDATION BEFORE PROCEEDING]
+
+Before executing next phase, verify:
+- [ ] IMPLEMENTATION-PLAN.md exists and is readable
+- [ ] Current phase has correct separator "<--- TRUST THE PROCESS --->"
+- [ ] Step count matches expected number for current phase
+- [ ] Identify if in action phase (1-8), checkpoint phase (8-13), or gateway phase (13-19)
+- [ ] For doubling phases (1-8), verify each step doubled correctly
+- [ ] Git working directory is clean (or changes are intentional)
+- [ ] Currently on correct development branch
+
+-----
+
+[ERROR RECOVERY]
+
+If step count doesn't match expected compact progression:
+1. STOP immediately
+2. Report discrepancy to user
+3. Identify which phase category (action/checkpoint/gateway)
+4. Check if at doubling phase (should be 1, 2, 4, or 8)
+5. Check if at checkpoint phase (should be 10, 12, or 13)
+6. Check if at gateway phase (should be 15 or 19)
+7. Ask user: "Detected X steps but expected Y. Proceed with recovery or manual intervention?"
+8. Wait for user confirmation before continuing
+
+If phase category ambiguous:
+1. Reference phase boundaries: 1-8 (action), 8-13 (checkpoint), 13-19 (gateway)
+2. If steps = 1, 2, 4, or 8: action doubling phase
+3. If steps = 10, 12, or 13: checkpoint insertion phase
+4. If steps = 15 or 19: gateway insertion phase
+5. If confusion persists, ask user which phase to execute
+
+If IMPLEMENTATION-PLAN.md missing or corrupted:
+1. STOP immediately
+2. Report error to user
+3. Do NOT attempt automatic recovery
+4. Wait for user to restore or provide guidance
+
+-----
+
+[COMMIT MESSAGE TEMPLATES]
+
+Action doubling phase:
+1→2: "docs: split vision into 2 fundamental action steps (compact doubling)"
+2→4: "docs: double to 4 action steps (compact 2×2)"
+4→8: "docs: double to 8 action steps (compact 4×2, action phase complete)"
+
+Checkpoint insertion phase:
+8→10: "docs: add 2 initial validation checkpoints (10 items total, checkpoint phase start)"
+10→12: "docs: add 2 mid-implementation checkpoints (12 items total, checkpoint phase continuing)"
+12→13: "docs: add 1 final checkpoint for 5 total validations (13 items total, checkpoint phase complete)"
+
+Gateway insertion phase:
+13→15: "docs: add 2 initial release gateways (15 items total, gateway phase start)"
+15→19: "docs: add 4 more gateways for 6 total and renumber STEP_01-19 (compact process complete)"
+
+-----
+
+[PROGRESSION SUMMARY]
+
+Compact PROCESS_04 progression map:
+
+Phase 1 - Action Doubling (Power of Two):
+1 → 2 → 4 → 8 steps
+Pure action/execution steps, no validation yet
+Doubling at each phase: ×2 → ×2 → ×2
+Goal: Minimal 8 essential action steps
+
+Phase 2 - Checkpoint Insertion (Incremental):
+8 → 10 → 12 → 13 steps
+Add 2, then 2 more, then 1 final checkpoint
+Incremental additions: +2 → +2 → +1
+Goal: 5 validation checkpoints for coverage
+
+Phase 3 - Gateway Insertion (Incremental):
+13 → 15 → 19 steps
+Add 2 initial gateways, then 4 more
+Incremental additions: +2 → +4
+Goal: 6 release gateways for staged verification
+
+Final composition at 19 steps:
+- 8 implementation/action steps
+- 5 validation checkpoint steps
+- 6 release gateway steps
+- Total: 19 items (most compact complete process)
+
+-----
+
+[COMPARISON TO OTHER PROCESSES]
+
+When user asks which process to use:
+
+PROCESS_1 (1→3→6→12→24→36→42→48→52→56):
+- Systematic doubling/splitting approach
+- Reaches 36 implementation steps + 12 validations + 8 gateways
+- Best for: Well-defined production implementations requiring high detail
+- Total: 56 items
+- Complexity: High
+
+PROCESS_2 (1→2→3→5→8→13→21→34→36→42→48→52→56):
+- Pure Fibonacci approach
+- Reaches 36 implementation steps + 12 validations + 8 gateways
+- Best for: Exploratory or research-heavy projects
+- Total: 56 items
+- Complexity: High
+
+PROCESS_03 (1→3→5→8→13→21→24→32→34→38):
+- Hybrid Fibonacci with validation saturation
+- Reaches 21 implementation steps + 11 validations + 6 gateways
+- Best for: Regulated environments requiring validation density
+- Total: 38 items
+- Complexity: Medium
+
+PROCESS_04 (1→2→4→8→10→12→13→15→19):
+- Compact doubling with incremental insertion
+- Reaches 8 implementation steps + 5 validations + 6 gateways
+- Best for: Small projects, rapid prototyping, time-constrained planning
+- Total: 19 items (MINIMAL)
+- Complexity: Low
+
+Recommend PROCESS_04 when:
+- Small to medium projects with clear scope
+- Rapid prototyping or proof-of-concept work
+- Time-constrained planning phases
+- 8 major action steps provide sufficient granularity
+- Team experienced enough to work from higher-level steps
+- Speed and agility prioritized over exhaustive decomposition
+- Still need validation and gateways but minimal action detail
+
+-----
+
+[COMPLETION SIGNAL]
+
+When 19 steps reached:
+1. Announce: "COMPACT PROCESS COMPLETE. Implementation plan contains:"
+2. Detail: "- 8 action/execution steps (minimal essential set)"
+3. Detail: "- 5 validation checkpoint steps"
+4. Detail: "- 6 release gateway steps"
+5. Detail: "- Total: 19 items following compact progression (1→2→4→8→10→12→13→15→19)"
+6. Note: "This is the most compact complete process variant."
+7. Suggest: "Ready to begin STEP_01 execution, or require further refinement?"
+8. Do NOT proceed to execution without explicit user instruction
+
+-----
+
+[ADVANTAGES AND TRADEOFFS]
+
+Advantages of PROCESS_04:
+- Fastest planning completion (only 9 phases)
+- Minimal overhead, maximum agility
+- Forces essential high-level thinking
+- Still maintains quality through checkpoints and gateways
+- Easy to communicate entire plan
+- Reduces planning paralysis
+- Ideal for experienced teams
+
+Tradeoffs of PROCESS_04:
+- Less implementation granularity (8 vs 21-36 actions in other processes)
+- Requires more execution-time decision making
+- May need ad-hoc sub-tasks during execution
+- Less suitable for complex enterprise projects
+- Not ideal for junior teams needing detailed guidance
+- Assumes team can decompose 8 high-level steps into execution
+
+Best practices when using PROCESS_04:
+- Ensure each of 8 action steps is truly actionable
+- Document assumptions within each high-level step
+- Be prepared to create sub-tasks during execution
+- Leverage checkpoints to catch issues early
+- Use gateways as decision points for detailed planning if needed
+- Consider this as "just enough" planning approach
+
+-----
+
+[END INTERACTIVE EXECUTION GUIDE - COMPACT VARIANT]

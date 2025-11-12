@@ -1,0 +1,121 @@
+[INTRODUCTION]:
+This document defines a minimal compact methodology using power-of-two doubling for action steps with incremental validation and gateway insertion. Action steps double rapidly (1→2→4→8), then checkpoints are inserted incrementally (8→13), finally gateways complete the plan (13→19). Total: 8 execution + 5 validation + 6 gateways = 19 steps. Every step must be tangible, measurable, and executable. No ambiguity permitted. Most compact process variant.
+
+[WRITING STYLE/TONE/VOICE]:
+Assertive. Deterministic. Direct. Pragmatic. Hands-on. Zero fluff. Commands not suggestions. Facts not opinions. Concrete not abstract. Executable not theoretical. Present tense imperative. No optional elements. No maybe. No perhaps. Only MUST and MUST NOT.
+
+[GUIDANCE FOR AI AGENT]:
+Follow this process sequentially. Do not skip phases. Doubling for actions (1→2→4→8), incremental checkpoint insertion (8→10→12→13), incremental gateway insertion (13→15→19). Maintain all previous steps when expanding. Use STEP_XX numbering for final itemization. Validation steps specify exact test files with atomic test definitions. Apply TDD cycle to every validation. One test equals one validation. Maximum three dash items per checkpoint unless fourth is TDD cycle guidance. Plain text with dashes only. No backticks. No code blocks in steps.
+
+[SYNTAX]:
+Phase separator: <--- TRUST THE PROCESS --->
+Step format implementation: STEP_XX: Brief imperative description
+Step format validation: STEP_XX: Brief validation description
+Validation structure:
+- Create tests/category/test-name.sh with fixtures if needed
+- Tests: atomic test list, comma-separated
+- All tests atomic: 1 test = 1 validation
+- TDD cycle: write test, run test (fail), implement feature, run test (pass), refactor if needed, run test (pass)
+
+[PATTERNS]:
+Start minimal, double rapidly to 8 actions. Minimal action set forces high-level thinking. After 8 actions, add checkpoints incrementally. After 13 total items, add gateways incrementally. Total 19 items provides complete but compact plan. Fastest path to executable plan with validation coverage. Ideal for small projects or rapid prototyping.
+
+[ANTIPATTERNS]:
+Never use letters for step numbering in final output. Never exceed three dash items except for TDD guidance. Never write code in process steps. Never use examples with specific values unless from contract. Never create validation without specifying test file path. Never forget TDD cycle guidance. Never use magic numbers in validation criteria. Never over-decompose when 8 action steps sufficient.
+
+[PHASE BREAKER]: "<--- TRUST THE PROCESS --->"
+
+-----
+
+@___01_single_step___[ONE STEP STAPPENPLAN]:
+Begin with single comprehensive vision statement. This statement captures entire project scope in one paragraph or sentence. Statement must be specific enough to guide all subsequent decomposition while broad enough to encompass full implementation. This is executive summary level. Answer: What is being built and why does it matter? This singular vision drives all subsequent refinement.
+
+<--- TRUST THE PROCESS ----->
+
+@___02_sequential_steps___[TWO STEPS STAPPENPLAN]:
+Split single vision into two fundamental action steps. Doubling: 1 × 2 = 2. Primary dichotomy: preparation and execution. Or: design and implementation. Or: foundation and superstructure. Two steps represent highest-level work breakdown. Each step is abstract but shows major dependency. Step one must complete before step two begins. Pure action steps only.
+
+<--- TRUST THE PROCESS ----->
+
+@___04_sequential_steps___[FOUR STEPS STAPPENPLAN]:
+Take two action steps and double to four action steps. Doubling: 2 × 2 = 4. Each of two steps splits into two sub-steps. Common patterns: for each original step, separate planning from execution or separate components. Four steps show major work packages. Each step represents substantial phase. Four steps provide high-level program visibility. Descriptions specify domain but remain abstract. Continue action-only focus.
+
+<--- TRUST THE PROCESS ----->
+
+@___08_sequential_steps___[EIGHT STEPS STAPPENPLAN]:
+Take four action steps and double to eight action steps. Doubling: 4 × 2 = 8. Each of four steps splits into two focused steps. Eight steps represent complete minimal action decomposition. Each step is concrete work package. Eight steps provide implementer-level visibility into all major work streams. Descriptions specify what gets built or configured. This completes action expansion. Minimal but sufficient granularity for execution.
+
+<--- TRUST THE PROCESS ----->
+
+@___10_sequential_steps___[EIGHT ACTIONS PLUS TWO CHECKPOINTS]:
+Keep all eight action steps. Insert two validation checkpoint steps at critical early junctions: one after foundational setup (around step 3-4), one after core configuration (around step 6-7). These first checkpoints validate project foundation before proceeding. Checkpoints define specific test files to create, list atomic tests to execute, reiterate one-test-one-validation principle, include TDD cycle guidance. Total: eight actions plus two validations equals ten steps.
+
+<--- TRUST THE PROCESS ----->
+
+@___12_sequential_steps___[EIGHT ACTIONS PLUS FOUR CHECKPOINTS]:
+Keep all eight action steps and two existing checkpoints. Add two more validation checkpoint steps. Target placement: one mid-implementation validation, one near-completion validation. Four checkpoints total now cover: foundation, configuration, mid-implementation, near-completion. Incremental checkpoint addition ensures coverage without saturation. Total: eight actions plus four validations equals twelve steps.
+
+<--- TRUST THE PROCESS ----->
+
+@___13_sequential_steps___[EIGHT ACTIONS PLUS FIVE CHECKPOINTS]:
+Keep all eight action steps and four existing checkpoints. Add one more validation checkpoint step at final critical junction before release preparation. Five checkpoints total provide adequate validation coverage for eight action steps. Ratio approximately 1:1.6 (action:validation). Total: eight actions plus five validations equals thirteen steps. This completes checkpoint insertion.
+
+<--- TRUST THE PROCESS ----->
+
+@___15_sequential_steps___[THIRTEEN STEPS PLUS TWO GATEWAYS]:
+Keep all thirteen steps (8 actions + 5 validations). Insert two release gateway steps at major milestone boundaries: GATEWAY_01 after foundation and initial validations complete (around step 7-8), GATEWAY_02 after implementation and all validations complete (around step 13). Gateways aggregate checkpoint results and add integration tests. Gateway format matches checkpoint format but tests span multiple domains. Gateways block progression until prerequisites pass. Total: thirteen steps plus two gateways equals fifteen items.
+
+<--- TRUST THE PROCESS ----->
+
+@___19_sequential_steps___[THIRTEEN STEPS PLUS SIX GATEWAYS]:
+Keep all thirteen steps (8 actions + 5 validations). Expand from two gateways to six gateways total by adding four more at strategic points throughout lifecycle: GATEWAY_01 foundation ready, GATEWAY_02 configuration validated, GATEWAY_03 implementation mid-point, GATEWAY_04 implementation complete, GATEWAY_05 pre-release verification, GATEWAY_06 production ready. Six gateways create comprehensive staged release verification path. Each gateway has both automated tests and manual review criteria. Total: eight actions plus five validations plus six gateways equals nineteen items. Renumber all items sequentially STEP_01 through STEP_19.
+
+-----
+
+[COMPACT RATIONALE]
+
+Why this progression:
+- Power-of-two doubling (1→2→4→8) creates rapid action expansion
+- Stopping at 8 action steps forces high-level essential thinking
+- Incremental checkpoint insertion (2→4→5) provides validation without bloat
+- Incremental gateway insertion (2→6) enables staged verification
+- Total 19 items is most compact complete process
+- Fastest path from vision to validated executable plan
+
+Progression breakdown:
+- Phase 1 (1→8): Action expansion via doubling, 8 action steps total
+- Phase 2 (8→13): Incremental checkpoint insertion, 5 validation steps total
+- Phase 3 (13→19): Incremental gateway insertion, 6 gateway steps total
+
+Comparison to other processes:
+- PROCESS_1: 36 actions, most detailed, 48+8=56 total
+- PROCESS_2: 34 actions, organic growth, 48+8=56 total
+- PROCESS_03: 21 actions, validation dense, 21+11+6=38 total
+- PROCESS_04: 8 actions, minimal compact, 8+5+6=19 total
+
+When to use PROCESS_04:
+- Small projects with clear scope
+- Rapid prototyping or proof-of-concept
+- Time-constrained planning phases
+- Teams preferring high-level planning with execution flexibility
+- Projects where 8 major action steps sufficient
+- Environments prioritizing speed over exhaustive decomposition
+- When validation and gateways needed but minimal action detail desired
+
+Advantages:
+- Fastest to complete planning phase
+- Forces essential thinking (only 8 actions)
+- Still maintains quality through 5 checkpoints and 6 gateways
+- Minimal overhead, maximum agility
+- Easy to communicate and understand
+- Less planning paralysis
+
+Tradeoffs:
+- Less implementation granularity (8 vs 21-36 actions)
+- Requires more execution-time decision making
+- May need ad-hoc sub-tasks during execution
+- Best for experienced teams who can work from higher-level steps
+
+-----
+
+[END PROCESS DEFINITION]
