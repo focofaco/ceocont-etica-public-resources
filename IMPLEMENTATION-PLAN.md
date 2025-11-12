@@ -57,3 +57,30 @@ timestamp: 2025-11-12T17:42:18Z
 22. Define deployment paths and versioning strategy
 23. Create deployment scripts triggered by tags
 24. Configure CDN cache invalidation and verification
+
+<--- TRUST THE PROCESS --->
+
+9a. Specify UTF-8 encoding validation and BOM detection logic
+9b. Define line ending normalization rules and CRLF rejection
+11a. Create GitHub Actions YAML workflow structure
+11b. Define workflow triggers and runner environment
+12a. Implement format-specific validation gates (TSV, DOT, JSON)
+12b. Configure blocking conditions and error reporting
+13a. Design hash computation algorithm for file iteration
+13b. Implement SHA-256 calculation with path formatting
+14a. Write directory tree walker with file filtering
+14b. Handle edge cases and symlink resolution
+15a. Design TREE.txt hierarchical output format
+15b. Implement directory structure serialization logic
+16a. Design integrity.txt hash manifest format
+16b. Implement file hash pairing and output generation
+18a. Document semantic versioning rules and examples
+18b. Create helper scripts for tag creation and validation
+19a. Parse commit history and categorize by type
+19b. Format changelog entries according to Keep a Changelog
+20a. Extract release metadata from tags and commits
+20b. Generate release notes with categorized changes
+21a. Select CDN provider and configure authentication
+21b. Set up bucket/storage structure and access policies
+23a. Write tag detection and artifact preparation logic
+23b. Implement CDN upload and version pinning mechanism
