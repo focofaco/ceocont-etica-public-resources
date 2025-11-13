@@ -80,12 +80,12 @@ repos:
       - id: text-unicode-replacement-char
         name: Check unicode replacement chars
 
-  # Markdown linting
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.43.0
+  # Markdown linting (markdownlint-cli2 - improved version)
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.15.0
     hooks:
-      - id: markdownlint
-        name: Lint Markdown files
+      - id: markdownlint-cli2
+        name: Lint Markdown files (cli2)
         args: ["--fix"]
         exclude: ^(CHANGELOG\.md|CHANGELOG\.txt)$
 
@@ -98,6 +98,18 @@ repos:
         types_or: [json, yaml, markdown]
         exclude: ^(online-resources/raw-text/.*\.json|chunks\.json|\.claude/.*\.json)$
 
+  # Markdown formatting (mdformat - opinionated formatter)
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.21
+    hooks:
+      - id: mdformat
+        name: Format Markdown files
+        args: ["--wrap", "120"]
+        exclude: ^(CHANGELOG\.md|CHANGELOG\.txt)$
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-tables
+
   # Python code quality (Ruff - fast linter/formatter)
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.8.4
@@ -109,6 +121,39 @@ repos:
       - id: ruff-format
         name: Ruff formatter (Python)
         types_or: [python, pyi]
+
+  # Python security (Bandit - security issue scanner)
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.10
+    hooks:
+      - id: bandit
+        name: Bandit security linter
+        args: ["-c", "pyproject.toml"]
+        additional_dependencies: ["bandit[toml]"]
+
+  # Python exception anti-patterns (Tryceratops)
+  - repo: https://github.com/guilatrova/tryceratops
+    rev: v2.4.1
+    hooks:
+      - id: tryceratops
+        name: Check exception anti-patterns
+
+  # Python dead code detection (Vulture)
+  - repo: https://github.com/jendrikseipp/vulture
+    rev: v2.13
+    hooks:
+      - id: vulture
+        name: Find dead Python code
+        args: ["--min-confidence", "80"]
+
+  # Python code complexity monitoring (Xenon)
+  - repo: https://github.com/rubik/xenon
+    rev: v0.9.3
+    hooks:
+      - id: xenon
+        name: Monitor code complexity
+        args:
+          ["--max-absolute", "B", "--max-modules", "B", "--max-average", "B"]
 
   # Commitizen (conventional commits validation)
   - repo: https://github.com/commitizen-tools/commitizen
