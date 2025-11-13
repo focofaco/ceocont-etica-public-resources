@@ -2,12 +2,21 @@
 
 ## Placeholder format: ${variable-name}
 
+${acao-cliente}
+${areas-treinamento}
+${codigo-referencia}
 ${data-atualizacao}
+${descricao-conteudo-normativo}
 ${diagrama-piramide}
+${documento-normativo}
+${nome-profissional}
 ${numero-atualizacoes}
 ${objetivo-correcao}
 ${razao-social}
 ${responsavel-qualidade}
+${responsavel-seguranca}
 ${responsavel-tecnico}
+${setor-administrativo}
+${sistema-arquivo}
 ${tipo-irregularidade}
 ${tipo-servico}
