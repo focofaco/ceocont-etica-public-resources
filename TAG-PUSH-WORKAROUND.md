@@ -111,7 +111,7 @@ User: local_proxy
 
 **Via GitHub Web UI** (Atomic, recommended):
 
-1. Go to: `https://github.com/focofacofoco/ceocont-etica-public-resources/settings/access`
+1. Go to: `https://github.com/focofaco/ceocont-etica-public-resources/settings/access`
 1. Click "Invite collaborator" or "Add people"
 1. Enter Claude Code Agent credentials (if exists) or add service account
 1. Select role: **Maintain** or **Admin**
@@ -124,12 +124,12 @@ User: local_proxy
 
 ```bash
 # Add collaborator with maintain role (can push tags)
-gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME \
+gh api repos/focofaco/ceocont-etica-public-resources/collaborators/USERNAME \
   -X PUT \
   -f permission='maintain'
 
 # Or add with admin role
-gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME \
+gh api repos/focofaco/ceocont-etica-public-resources/collaborators/USERNAME \
   -X PUT \
   -f permission='admin'
 ```
@@ -174,7 +174,7 @@ gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME 
 1. **Add GitHub as secondary remote**:
 
    ```bash
-   git remote add github-direct https://github.com/focofacofoco/ceocont-etica-public-resources.git
+   git remote add github-direct https://github.com/focofaco/ceocont-etica-public-resources.git
    ```
 
 1. **Configure credentials** (if needed):
@@ -210,7 +210,7 @@ git tag -a "v0.0.1-test" -m "Test tag push permissions"
 git push origin v0.0.1-test
 
 # If successful:
-# To http://127.0.0.1:60115/git/focofacofoco/ceocont-etica-public-resources
+# To http://127.0.0.1:60115/git/focofaco/ceocont-etica-public-resources
 #  * [new tag]         v0.0.1-test -> v0.0.1-test
 
 # Cleanup test tag

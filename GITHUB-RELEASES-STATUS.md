@@ -50,7 +50,7 @@ GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx ./create-github-releases.sh
 
 **For each release (v1.0.0, v1.1.0, v2.0.0):**
 
-1. Go to: <https://github.com/focofacofoco/ceocont-etica-public-resources/releases/new>
+1. Go to: <https://github.com/focofaco/ceocont-etica-public-resources/releases/new>
 
 1. **v1.0.0 - Initial Release**
 
@@ -78,7 +78,7 @@ GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx ./create-github-releases.sh
 **Step 1**: Merge PR to main
 
 ```
-https://github.com/focofacofoco/ceocont-etica-public-resources/pull/new/claude/dev003-content-ingestion-011CV4kf1V2XbPxRYPEA6QKV
+https://github.com/focofaco/ceocont-etica-public-resources/pull/new/claude/dev003-content-ingestion-011CV4kf1V2XbPxRYPEA6QKV
 ```
 
 **Step 2**: Create releases via GitHub UI (no technical setup required)
