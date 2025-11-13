@@ -1,61 +1,58 @@
 #!/usr/bin/env python3
-"""Validate ingestion-audit.json against schema."""
+"""Validate ingestion-audit.json using Pydantic v2."""
 
 import json
 import sys
 from pathlib import Path
 
 try:
-    import jsonschema
-    from jsonschema import validate, ValidationError
+    from pydantic import ValidationError
 except ImportError:
-    print("ERROR: jsonschema library not installed")
-    print("Install with: pip install jsonschema>=4.20.0")
+    print("ERROR: pydantic library not installed")
+    print("Install with: pip install pydantic>=2.9.0")
+    sys.exit(1)
+
+# Add .claude/models to path
+repo_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(repo_root / ".claude" / "models"))
+
+try:
+    from ingestion_audit import IngestionAudit
+except ImportError as e:
+    print(f"ERROR: Failed to import IngestionAudit model: {e}")
+    print("Ensure .claude/models/ingestion_audit.py exists")
     sys.exit(1)
 
 
 def validate_audit_json():
-    """Validate ingestion-audit.json against ingestion-audit-schema.json."""
-    repo_root = Path(__file__).parent.parent.parent
+    """Validate ingestion-audit.json using Pydantic schema."""
     audit_file = repo_root / ".claude" / "ingestion-audit.json"
-    schema_file = repo_root / ".claude" / "ingestion-audit-schema.json"
 
-    # Check if files exist
+    # Check if file exists
     if not audit_file.exists():
         print(f"ERROR: {audit_file} does not exist")
         return 1
 
-    if not schema_file.exists():
-        print(f"ERROR: {schema_file} does not exist")
-        return 1
-
-    # Load files
+    # Load JSON
     try:
         with open(audit_file, 'r', encoding='utf-8') as f:
-            audit_data = json.load(f)
+            data = json.load(f)
     except json.JSONDecodeError as e:
         print(f"ERROR: Invalid JSON in {audit_file}")
         print(f"       {e}")
         return 1
-
-    try:
-        with open(schema_file, 'r', encoding='utf-8') as f:
-            schema_data = json.load(f)
-    except json.JSONDecodeError as e:
-        print(f"ERROR: Invalid JSON in {schema_file}")
-        print(f"       {e}")
+    except Exception as e:
+        print(f"ERROR: Failed to read {audit_file}: {e}")
         return 1
 
-    # Validate
+    # Validate with Pydantic
     try:
-        validate(instance=audit_data, schema=schema_data)
-        print(f"✓ {audit_file.name} is valid against schema")
+        IngestionAudit(**data)
+        print(f"✓ {audit_file.name} is valid")
         return 0
     except ValidationError as e:
-        print(f"ERROR: Schema validation failed for {audit_file}")
-        print(f"       {e.message}")
-        if e.path:
-            print(f"       Path: {' -> '.join(str(p) for p in e.path)}")
+        print(f"ERROR: Pydantic validation failed for {audit_file.name}")
+        print(f"       {e}")
         return 1
 
 
