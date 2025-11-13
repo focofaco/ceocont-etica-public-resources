@@ -1,0 +1,7 @@
+Estudo de caso
+
+Cenário: ${nome-profissional} trabalha na firma e foi abordado para prestar serviços de consultoria adicional a um cliente com o qual desenvolveu relacionamento profissional.
+
+Comportamento: ${nome-profissional} deve consultar o supervisor para obter orientação sobre possível conflito de interesses.
+
+Solução: ${nome-profissional} não deve aceitar a solicitação caso seja identificado conflito de interesses ou violação de requisitos éticos aplicáveis.

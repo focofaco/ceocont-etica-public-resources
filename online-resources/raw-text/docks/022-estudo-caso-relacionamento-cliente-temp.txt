@@ -1,0 +1,7 @@
+Estudo de caso
+
+Cenário: ${nome-profissional} trabalha na firma há dois anos e desenvolveu relacionamento profissional com o diretor executivo de um cliente. Recentemente, ${nome-profissional} foi abordado pelo diretor executivo com solicitação para prestar serviços adicionais fora do escopo contratado.
+
+Comportamento: ${nome-profissional} deve comunicar imediatamente ao sócio responsável pelo trabalho a situação para avaliação conjunta dos próximos passos, considerando possíveis conflitos de interesse e conformidade com requisitos éticos.
+
+Solução: Após avaliação da situação pelo sócio responsável e pelo ${responsavel-qualidade}, determina-se se os serviços solicitados podem ser prestados ou se há conflito de interesse que impeça a prestação.

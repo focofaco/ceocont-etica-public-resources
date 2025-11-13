@@ -1,0 +1,9 @@
+Orientações para reporte de não conformidades
+
+Os colaboradores são orientados a reportar ao ${responsavel-qualidade} quando identificado:
+
+- Caso de não conformidade aos princípios fundamentais de ética profissional
+- Caso de não conformidade em relação aos requisitos de independência aplicáveis
+- Alegação de que o trabalho realizado não está de acordo com as normas técnicas, exigências regulatórias e legais aplicáveis
+
+Durante a execução dos trabalhos, o sócio responsável permanece alerta a fatos relacionados ao não cumprimento de exigências éticas relevantes pelos membros da equipe e, caso suspeite ou identifique não conformidade, informa o ${responsavel-qualidade}, que efetua as diligências cabíveis.
