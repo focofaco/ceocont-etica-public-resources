@@ -3,9 +3,11 @@
 Cabeçalhos de nível 1 (títulos principais de seção).
 
 ## Propósito
+
 Títulos de primeiro nível que marcam divisões principais do conteúdo, equivalente a `<h1>` em HTML ou `# Título` em Markdown.
 
 ## Regras
+
 - Extensão: `.txt`
 - UTF-8, LF, sem BOM
 - Nomenclatura: `NNN-slug-HHHH.txt`
@@ -14,6 +16,7 @@ Títulos de primeiro nível que marcam divisões principais do conteúdo, equiva
 - Uso: títulos principais de capítulos ou seções de topo
 
 ## Exemplos
+
 ```
 Fundamentos da Contabilidade
 Sistema de Controle de Qualidade

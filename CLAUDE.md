@@ -1,6 +1,7 @@
 # CLAUDE.md — AI Agent Operational Rules
 
 ## META-INSTRUCTIONS
+
 **TARGET**: Claude AI Sonnet 4.5 autonomous operation on text-only content repository
 **AUTHORITY**: This document is NORMATIVE for AI agent behavior
 **PRIORITY**: Deterministic, zero-ambiguity, explicit boundaries
@@ -11,6 +12,7 @@
 ## PROJECT IDENTITY
 
 ### What This Repository IS
+
 - **Text-only content repository** for `online-resources/raw-text/`
 - **Server-side contract** governing pure text delivery via CDN
 - **Immutable versioned content** with cryptographic integrity (SHA256)
@@ -18,6 +20,7 @@
 - **Semantic versioning** with breaking change discipline
 
 ### What This Repository IS NOT
+
 - NOT a client application
 - NOT a UI/rendering system
 - NOT a general-purpose code repository
@@ -101,8 +104,7 @@ Forbidden:
   - Leading slash
   - URLs in path
 
-Examples:
-  ✓ intro-to-topic.txt
+Examples: ✓ intro-to-topic.txt
   ✓ risk-analysis-2024.tsv.txt
   ✓ process-flow.dot.txt
   ✗ Intro To Topic.txt
@@ -545,8 +547,7 @@ Did I:
 ```yaml
 ERROR: "File does not end with .txt"
 CAUSE: File created with wrong extension
-ACTION:
-  1. NEVER proceed
+ACTION: 1. NEVER proceed
   2. Delete invalid file
   3. Recreate with .txt extension
   4. Inform user of correction
@@ -557,8 +558,7 @@ ACTION:
 ```yaml
 ERROR: "HTML tags detected in content"
 CAUSE: Content contains <tag> patterns
-ACTION:
-  1. NEVER commit HTML
+ACTION: 1. NEVER commit HTML
   2. Strip all HTML tags
   3. Convert to plain text
   4. Validate pure text
@@ -570,8 +570,7 @@ ACTION:
 ```yaml
 ERROR: "Cannot rename file in same MAJOR version"
 CAUSE: Attempting to change path without MAJOR bump
-ACTION:
-  1. STOP operation
+ACTION: 1. STOP operation
   2. Create DEPRECATIONS.txt entry
   3. Explain MAJOR bump requirement
   4. Ask user to confirm MAJOR bump
@@ -583,8 +582,7 @@ ACTION:
 ```yaml
 ERROR: "TSV rows have inconsistent column count"
 CAUSE: Tab separator missing or extra columns
-ACTION:
-  1. NEVER commit invalid TSV
+ACTION: 1. NEVER commit invalid TSV
   2. Parse TSV structure
   3. Identify mismatched rows
   4. Fix tab separators
@@ -596,8 +594,7 @@ ACTION:
 ```yaml
 ERROR: "CRLF line endings detected"
 CAUSE: Content has \r\n instead of \n
-ACTION:
-  1. NEVER commit CRLF
+ACTION: 1. NEVER commit CRLF
   2. Convert all \r\n to \n
   3. Remove all \r characters
   4. Validate LF-only
@@ -687,8 +684,7 @@ FORBIDDEN_OPERATIONS:
 ### When AI Agent Encounters Ambiguity
 
 ```yaml
-PROTOCOL:
-  1. STOP operation
+PROTOCOL: 1. STOP operation
   2. Identify ambiguous element
   3. List possible interpretations
   4. Ask user for clarification
@@ -704,8 +700,7 @@ NEVER:
 ### When AI Agent Detects Violation
 
 ```yaml
-PROTOCOL:
-  1. STOP operation immediately
+PROTOCOL: 1. STOP operation immediately
   2. Describe violation clearly
   3. Reference specific rule/section
   4. Explain impact
@@ -722,22 +717,20 @@ NEVER:
 ### When AI Agent Completes Task
 
 ```yaml
-PROTOCOL:
-  1. Summarize actions taken
+PROTOCOL: 1. Summarize actions taken
   2. List files created/modified
   3. Show commit message used
   4. Confirm validation passed
   5. Display next steps (if any)
   6. Update TodoWrite with completion
 
-FORMAT:
-  "✓ Task completed:
-   - Created: {file_path}
-   - Validated: {validation_type}
-   - Committed: {commit_sha}
-   - Message: {commit_message}
+FORMAT: "✓ Task completed:
+  - Created: {file_path}
+  - Validated: {validation_type}
+  - Committed: {commit_sha}
+  - Message: {commit_message}
 
-   Next: Push to remote branch"
+  Next: Push to remote branch"
 ```
 
 ---
@@ -849,6 +842,7 @@ AFTER_EXECUTION:
 ## REFERENCE QUICK LINKS
 
 ### Key Contract Sections
+
 - Format rules: server-contract.md §3, §6
 - Path stability: server-contract.md §5
 - Versioning: server-contract.md §11
@@ -856,11 +850,13 @@ AFTER_EXECUTION:
 - Security: server-contract.md §12
 
 ### Key Spec Sections
+
 - MUST requirements: server-contract.spec (all)
 - Validation gates: server-contract.spec §9
 - Conformance: server-contract.spec §10
 
 ### Key Schema Sections
+
 - Examples: contract.schema (Exempla I-XI)
 - Structure: contract.schema (Structura)
 - Workflow: contract.schema (Gradus Operis)

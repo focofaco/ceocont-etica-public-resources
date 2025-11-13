@@ -1,11 +1,13 @@
 # CHANGELOG TEMPLATE - AI AGENT ONLY
 
 ## META-TEMPLATE INSTRUCTIONS
+
 **TARGET**: Claude AI Sonnet 4.5 autonomous changelog generation
 **PRIORITY**: Deterministic, structured, machine-parseable
 **CONSTRAINTS**: Strict categorization, zero ambiguity, exact pattern
 
 ## MANDATORY STRUCTURE
+
 ```markdown
 # Changelog
 
@@ -19,10 +21,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [X.Y.Z] - YYYY-MM-DD
 
 ### Added
+
 ### Changed
+
 ### Deprecated
+
 ### Removed
+
 ### Fixed
+
 ### Security
 
 [Unreleased]: https://github.com/USER/REPO/compare/vX.Y.Z...HEAD
@@ -32,17 +39,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## SECTION TAXONOMY (EXHAUSTIVE)
 
 ```yaml
-Added:      # New features, functionality, files
-Changed:    # Changes in existing functionality
+Added: # New features, functionality, files
+Changed: # Changes in existing functionality
 Deprecated: # Soon-to-be removed features
-Removed:    # Removed features, breaking deletions
-Fixed:      # Bug fixes, corrections
-Security:   # Vulnerabilities, security updates
+Removed: # Removed features, breaking deletions
+Fixed: # Bug fixes, corrections
+Security: # Vulnerabilities, security updates
 ```
 
 ## SECTION RULES
 
 ### Added
+
 - **Trigger**: `feat:` commits
 - **Content**: New capabilities users can now use
 - **Examples**:
@@ -52,6 +60,7 @@ Security:   # Vulnerabilities, security updates
   - New UI components
 
 ### Changed
+
 - **Trigger**: `refactor:`, `perf:`, `style:` commits with user impact
 - **Content**: Modifications to existing behavior
 - **Examples**:
@@ -61,11 +70,13 @@ Security:   # Vulnerabilities, security updates
   - Improved performance
 
 ### Deprecated
+
 - **Trigger**: Explicit deprecation notices in code/docs
 - **Content**: Features still working but will be removed
 - **Format**: `X is deprecated, use Y instead`
 
 ### Removed
+
 - **Trigger**: `feat!:`, `refactor!:` commits removing features
 - **Content**: Features no longer available (breaking)
 - **Examples**:
@@ -74,6 +85,7 @@ Security:   # Vulnerabilities, security updates
   - Dropped platform support
 
 ### Fixed
+
 - **Trigger**: `fix:` commits
 - **Content**: Bug corrections, error handling
 - **Examples**:
@@ -82,27 +94,32 @@ Security:   # Vulnerabilities, security updates
   - Fixed memory leaks
 
 ### Security
+
 - **Trigger**: Security-related fixes, updates
 - **Content**: Vulnerability patches, security improvements
 - **Format**: Include CVE if applicable
 - **Priority**: Always list first if present
 
 ## VERSION HEADER FORMAT
+
 ```
 ## [X.Y.Z] - YYYY-MM-DD
 ```
+
 - Version in square brackets
 - Semver format: MAJOR.MINOR.PATCH
 - ISO 8601 date: YYYY-MM-DD
 - Space-dash-space separator
 
 ## UNRELEASED SECTION
+
 - Always maintain `## [Unreleased]` at top
 - Accumulate changes not yet released
 - Move to versioned section on release
 - Never delete, always keep empty after release
 
 ## ENTRY FORMAT RULES
+
 - Use bullet points (-)
 - Start with capital letter
 - End with period
@@ -112,11 +129,13 @@ Security:   # Vulnerabilities, security updates
 - Blank line between sections
 
 ## LINK REFERENCES (BOTTOM)
+
 ```markdown
 [Unreleased]: https://github.com/USER/REPO/compare/vX.Y.Z...HEAD
 [X.Y.Z]: https://github.com/USER/REPO/compare/vX.Y.Z-1...vX.Y.Z
 [X.Y.Z-1]: https://github.com/USER/REPO/compare/vX.Y.Z-2...vX.Y.Z-1
 ```
+
 - Compare links for diffs
 - Unreleased compares latest tag to HEAD
 - Each version compares to previous
@@ -172,36 +191,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.1.0] - 2024-03-15
 
 ### Added
+
 - New PDF export functionality with customizable templates.
 - Support for multi-language documentation generation.
 
 ### Changed
+
 - Improved performance of data parsing by 40%.
 - Updated dependency `axios` from 0.27.0 to 1.6.0.
 
 ### Fixed
+
 - Resolved race condition in concurrent file uploads.
 - Corrected timezone handling in date calculations.
 
 ## [2.0.0] - 2024-02-01
 
 ### Added
+
 - New authentication system with OAuth2 support.
 - Webhook support for real-time notifications.
 
 ### Changed
+
 - API response format now uses JSON envelopes.
 
 ### Removed
+
 - Legacy XML API endpoints (use JSON instead).
 - Support for Node.js 12 and 14.
 
 ### Security
+
 - Patched SQL injection vulnerability in search endpoint (CVE-2024-1234).
 
 ## [1.0.0] - 2024-01-10
 
 ### Added
+
 - Initial release with core functionality.
 - User management system.
 - RESTful API with authentication.
@@ -215,14 +242,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## ANTI-PATTERNS (FORBIDDEN)
 
 ```markdown
-❌ ## 2.1.0 - 2024-03-15              # Missing brackets
-❌ ## [2.1.0] 2024-03-15              # Missing dash separator
-❌ ## [2.1.0] - 03/15/2024            # Wrong date format
-❌ ### Features                       # Non-standard section name
-❌ - added new feature                # Lowercase start
-❌ - Fixed bug                        # Inconsistent capitalization
-❌ - New API endpoint                 # No period at end
-❌ ## [2.0.0] (Breaking Changes)      # Extra annotation
+❌ ## 2.1.0 - 2024-03-15 # Missing brackets
+❌ ## [2.1.0] 2024-03-15 # Missing dash separator
+❌ ## [2.1.0] - 03/15/2024 # Wrong date format
+❌ ### Features # Non-standard section name
+❌ - added new feature # Lowercase start
+❌ - Fixed bug # Inconsistent capitalization
+❌ - New API endpoint # No period at end
+❌ ## [2.0.0] (Breaking Changes) # Extra annotation
 ```
 
 ## CORRECT PATTERNS (REQUIRED)
@@ -356,6 +383,7 @@ def determine_next_version(current_version, commits):
 ## EXCLUSION RULES
 
 **DO NOT include in CHANGELOG:**
+
 - Internal refactoring (unless user-facing impact)
 - Test additions/updates
 - CI/CD configuration changes
@@ -365,6 +393,7 @@ def determine_next_version(current_version, commits):
 - Dependency updates (unless security or breaking)
 
 **DO include in CHANGELOG:**
+
 - New features users can access
 - Bug fixes users will notice
 - Breaking changes requiring user action
@@ -387,4 +416,5 @@ def determine_next_version(current_version, commits):
 - [ ] Only user-facing changes included
 
 ---
+
 **END OF TEMPLATE - VERSION 1.0.0**

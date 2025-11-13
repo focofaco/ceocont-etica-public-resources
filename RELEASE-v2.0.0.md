@@ -8,26 +8,30 @@ All code and validation complete. Release branches ready for PR creation.
 
 **v1.1.0 → v2.0.0**: New component categories added to content hierarchy
 
-### What Changed:
+### What Changed
+
 - Added three new component directories: `header_h1/`, `header_h2/`, `header_h3/`
 - Headers are **structural elements** and do NOT count towards 70-80% plaintext baseline
 - Component enum expanded in all Pydantic schemas
 - ComponentDistribution models extended with header fields
 
-### Migration Impact:
+### Migration Impact
+
 - Client code must handle new component types
 - Distribution calculations exclude headers from baseline metrics
 - Schema validation updated across all validators
 
 ## Release Contents
 
-### BREAKING CHANGES:
+### BREAKING CHANGES
+
 - Added new component categories: header_h1/, header_h2/, header_h3/
 - Headers are structural elements and do NOT count towards 70-80% plaintext baseline
 - Component enum in all schemas updated to include new header types
 - ComponentDistribution and ComponentDistributionPercentage models extended
 
-### Added:
+### Added
+
 - header_h1/ directory with README.md (H1-level headers)
 - header_h2/ directory with README.md (H2-level headers)
 - header_h3/ directory with README.md (H3-level headers)
@@ -43,7 +47,8 @@ All code and validation complete. Release branches ready for PR creation.
 - Metadata twin validation hook (validate_metadata_twins.sh)
 - Distribution note in chunks.json about header exclusion from baseline
 
-### Changed:
+### Changed
+
 - Updated all Pydantic models to include header_h1, header_h2, header_h3 components
 - Migrated validate_audit_json.py from jsonschema to Pydantic v2
 - Updated server-contract.md §3 with new header component categories
@@ -51,7 +56,8 @@ All code and validation complete. Release branches ready for PR creation.
 - Updated validate_raw_text_only.sh to allow README.md and .json metadata twins
 - chunks.json component_distribution extended with header fields
 
-### Validation Status:
+### Validation Status
+
 ✓ All pre-commit hooks passing
 ✓ Pydantic v2 validation passing
 ✓ Metadata twin validation passing
@@ -72,13 +78,15 @@ b17562d - feat(validation): add metadata twin validation and README support
 ## Available Branch for Merge
 
 **claude/dev003-content-ingestion-011CV4kf1V2XbPxRYPEA6QKV**
+
 - Development branch with all v2.0.0 changes
 - Latest commit: 9cd7dbb
-- PR URL: https://github.com/focofacofoco/ceocont-etica-public-resources/pull/new/claude/dev003-content-ingestion-011CV4kf1V2XbPxRYPEA6QKV
+- PR URL: <https://github.com/focofacofoco/ceocont-etica-public-resources/pull/new/claude/dev003-content-ingestion-011CV4kf1V2XbPxRYPEA6QKV>
 
 ## Local Tags (Documentation)
 
 Git tags created locally for version tracking:
+
 - `v1.0.0` - Initial release
 - `v1.1.0` - Pre-commit hooks release
 - `v2.0.0` - Header components release (cannot push due to 403)
@@ -98,19 +106,23 @@ Git tags created locally for version tracking:
 
 ## Architecture Notes
 
-### Header Components:
+### Header Components
+
 Headers represent **document structure** (H1/H2/H3 hierarchy) separate from content distribution:
+
 - **Not counted** in 70-80% plaintext baseline
 - **Not counted** in 20-30% others baseline
 - Tracked separately for structural organization
 - Short text content (typically one line per header)
 
-### SSoT Architecture:
+### SSoT Architecture
+
 - **JSON metadata twins** = Single Source of Truth (full content + metadata)
 - **TXT files** = Derived content (CDN delivery, text only)
 - JSON files don't go to CDN, no size limits
 
-### Validation Stack:
+### Validation Stack
+
 - **Pydantic v2** for all JSON schema validation
 - **Pre-commit hooks** enforce all rules before commit
 - **Metadata twin pairing** enforced bidirectionally

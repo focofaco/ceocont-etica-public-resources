@@ -10,17 +10,18 @@ First public release of the text-only content repository.
 
 ## Release Contents
 
-### Added:
+### Added
+
 - Initial directory structure for online-resources/raw-text/
 - Content categories:
   - plaintext/ - Flowing text for content boxes
   - callouts/ - Highlighted messages
   - docks/ - Editorial side notes
   - tradeoffs/ - Pros/cons lists (+/-)
-  - tables/ - TSV data tables (*.tsv.txt)
-  - data/ - TSV data for charts (*.tsv.txt)
+  - tables/ - TSV data tables (\*.tsv.txt)
+  - data/ - TSV data for charts (\*.tsv.txt)
   - faqs/ - Q&A pairs (q.txt + a.txt)
-  - diagrams/ - Graphviz DOT files (*.dot.txt)
+  - diagrams/ - Graphviz DOT files (\*.dot.txt)
   - disclaimers/ - Legal/risk warnings
   - others/ - Generic textual content
 - Metadata directory: meta/
@@ -38,7 +39,8 @@ First public release of the text-only content repository.
   - CHANGELOG.txt - Version history log
   - README.md - Repository overview
 
-### Core Contracts Established:
+### Core Contracts Established
+
 - **Text-Only Policy**: Only .txt files allowed under raw-text/
 - **UTF-8 + LF**: No BOM, no CRLF line endings
 - **Path Stability**: Paths are stable identifiers within MAJOR version
@@ -46,13 +48,15 @@ First public release of the text-only content repository.
 - **Integrity Tracking**: SHA256 checksums for all content
 - **Component Distribution**: 70-80% plaintext baseline enforcement
 
-### File Format Rules:
+### File Format Rules
+
 - `.txt` - Standard text files
 - `.tsv.txt` - Tab-separated values (tables/data)
 - `.dot.txt` - Graphviz diagrams
 - `.json.txt` - JSON metadata dictionaries
 
-### Validation Rules:
+### Validation Rules
+
 - Lowercase-slug-with-hyphens naming convention
 - No HTML/JS/CSS/binaries allowed
 - No spaces, accents, or special characters in filenames
@@ -61,23 +65,28 @@ First public release of the text-only content repository.
 
 ## Architecture Decisions
 
-### Text-Only Repository:
+### Text-Only Repository
+
 - **Server-side contract** governing pure text delivery
 - **CDN-ready** content with immutable versioning
 - **Client-agnostic** - no UI/rendering logic
 - **Format enforcement** via CI validation gates
 
-### Version Strategy:
+### Version Strategy
+
 - **MAJOR**: Breaking changes (path moves, category additions, semantic changes)
 - **MINOR**: Compatible additions (new content, new files)
 - **PATCH**: Bug fixes (typos, corrections without semantic changes)
 
-### Component Categories:
+### Component Categories
+
 11 content categories established:
+
 - 10 content types (plaintext through others)
 - 1 metadata directory (meta/)
 
-## Validation Status:
+## Validation Status
+
 ✓ Directory structure created
 ✓ Contract files established
 ✓ Brandguide documentation complete

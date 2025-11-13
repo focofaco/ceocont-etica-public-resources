@@ -10,12 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2025-11-13
 
 ### BREAKING CHANGES
+
 - Added new component categories: header_h1/, header_h2/, header_h3/
 - Headers are structural elements and do NOT count towards 70-80% plaintext baseline
 - Component enum in all schemas updated to include new header types
 - ComponentDistribution and ComponentDistributionPercentage models extended
 
 ### Added
+
 - header_h1/ directory with README.md (H1-level headers)
 - header_h2/ directory with README.md (H2-level headers)
 - header_h3/ directory with README.md (H3-level headers)
@@ -32,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Distribution note in chunks.json about header exclusion from baseline
 
 ### Changed
+
 - Updated all Pydantic models to include header_h1, header_h2, header_h3 components
 - Migrated validate_audit_json.py from jsonschema to Pydantic v2
 - Updated server-contract.md §3 with new header component categories
@@ -42,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2025-11-13
 
 ### Added
+
 - Pre-commit hooks configuration (.pre-commit-config.yaml)
 - Standard hooks from pre-commit v4.4.0 and v6.0.0
 - Custom validation hook: validate_raw_text_only.sh
@@ -54,11 +58,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ingestion audit schema (.claude/ingestion-audit-schema.json)
 
 ### Removed
+
 - shadow-original/ folder (replaced by JSON audit trail)
 - shadow-fragments-original/ folder (replaced by JSON audit trail)
 - shadow-fragments-transformed/ folder (replaced by JSON audit trail)
 
 ### Changed
+
 - Updated brandguide bundle integration
 - Fixed trailing whitespace in contract files
 - Fixed end-of-file newlines in schema files
@@ -66,6 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-11-12
 
 ### Added
+
 - Initial directory structure for online-resources/raw-text/
 - Content categories: plaintext/, callouts/, docks/, tradeoffs/, tables/, data/, faqs/, diagrams/, disclaimers/, others/
 - Metadata directory: meta/

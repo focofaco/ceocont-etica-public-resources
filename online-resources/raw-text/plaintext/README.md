@@ -3,6 +3,7 @@
 Texto corrido para corpo principal de conteúdo.
 
 ## Regras
+
 - Extensão: `.txt`
 - UTF-8, LF, sem BOM
 - Nomenclatura: `NNN-slug-HHHH.txt`

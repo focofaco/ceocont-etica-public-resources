@@ -41,11 +41,13 @@ Ver [CHANGELOG.md](CHANGELOG.md) para histórico completo.
 ## 📝 Contratos e Especificações
 
 ### Contrato do Servidor
+
 - **[server-contract.md](server-contract.md)** - Contrato principal
 - **[server-contract.spec](server-contract.spec)** - Especificação normativa
 - **[contract.schema](contract.schema)** - Schema (latim)
 
 ### Guia de Marca
+
 - **[server-brandguide.md](server-brandguide.md)** - Guia de marca textual
 - **[server-brandguide.spec](server-brandguide.spec)** - Especificação normativa
 - **[server-brandguide-schema.json](server-brandguide-schema.json)** - Schema JSON
@@ -53,11 +55,13 @@ Ver [CHANGELOG.md](CHANGELOG.md) para histórico completo.
 ## 🔒 Regras de Formato
 
 ### Permitido
+
 - ✅ Extensão `.txt` (UTF-8, LF, sem BOM)
 - ✅ Subtipos: `.tsv.txt`, `.dot.txt`, `.json.txt`
 - ✅ Nomenclatura: lowercase-slug-with-hyphens
 
 ### Proibido
+
 - ❌ HTML, JavaScript, CSS
 - ❌ Imagens (SVG, PNG, JPG, WebP)
 - ❌ PDFs, binários, áudio/vídeo
@@ -66,6 +70,7 @@ Ver [CHANGELOG.md](CHANGELOG.md) para histórico completo.
 ## 🛡️ Validação
 
 ### Pre-commit Hooks
+
 ```bash
 # Instalar pre-commit
 pip install -r requirements.txt
@@ -76,6 +81,7 @@ pre-commit run --all-files
 ```
 
 ### Hooks Ativos
+
 - ✓ validate_raw_text_only.sh - Apenas .txt permitido
 - ✓ forbid_html_js_css.sh - Sem HTML/JS/CSS
 - ✓ check_crlf.sh - LF obrigatório
@@ -87,6 +93,7 @@ pre-commit run --all-files
 ## 📊 Distribuição de Componentes
 
 **Baseline obrigatória:**
+
 - 70-80% plaintext
 - 20-30% outros componentes
 
@@ -97,11 +104,13 @@ Ver [chunks.json](chunks.json) para status atual.
 ## 🔐 Integridade
 
 Todos os arquivos sob `online-resources/raw-text/` possuem checksums SHA256 em:
+
 ```
 online-resources/raw-text/meta/integrity.txt
 ```
 
 Verificar integridade:
+
 ```bash
 cd online-resources/raw-text
 sha256sum -c meta/integrity.txt
@@ -118,11 +127,13 @@ Ver [DEPRECATIONS.txt](DEPRECATIONS.txt) para paths depreciados.
 ## 🚀 Releases
 
 ### Tags Disponíveis
+
 - **v2.0.0** - Header components (BREAKING)
 - **v1.1.0** - Pre-commit hooks e validação
 - **v1.0.0** - Estrutura inicial
 
 ### Documentação de Releases
+
 - [RELEASE-v2.0.0.md](RELEASE-v2.0.0.md)
 - [RELEASE-v1.1.0.md](RELEASE-v1.1.0.md)
 - [RELEASE-v1.0.0.md](RELEASE-v1.0.0.md)
@@ -130,12 +141,14 @@ Ver [DEPRECATIONS.txt](DEPRECATIONS.txt) para paths depreciados.
 ## 🔧 Desenvolvimento
 
 ### Estrutura de Branches
+
 ```
 main                    # Produção (protegida)
 claude/*-SESSION_ID     # Feature branches
 ```
 
 ### Workflow
+
 1. Criar branch `claude/dev-description-SESSION_ID`
 2. Fazer alterações seguindo [CLAUDE.md](CLAUDE.md)
 3. Validar com pre-commit hooks
@@ -154,6 +167,7 @@ claude/*-SESSION_ID     # Feature branches
 ## 🧩 Metadata Twins
 
 Arquivos .txt podem ter .json metadata twins (Single Source of Truth):
+
 ```
 plaintext/001-politica-controle-qualidade-contabil-41f5.txt
 plaintext/001-politica-controle-qualidade-contabil-41f5.json
@@ -164,6 +178,7 @@ JSON contém conteúdo completo + metadados. TXT é derivado (CDN only).
 ## 📞 Suporte
 
 Para issues, bugs ou sugestões:
+
 - GitHub Issues: [ceocont-etica-public-resources/issues](https://github.com/focofaco/ceocont-etica-public-resources/issues)
 
 ## 📄 Licença

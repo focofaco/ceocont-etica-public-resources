@@ -3,9 +3,11 @@
 Cabeçalhos de nível 3 (sub-subtítulos).
 
 ## Propósito
+
 Títulos de terceiro nível que organizam detalhes dentro de subseções, equivalente a `<h3>` em HTML ou `### Sub-subtítulo` em Markdown.
 
 ## Regras
+
 - Extensão: `.txt`
 - UTF-8, LF, sem BOM
 - Nomenclatura: `NNN-slug-HHHH.txt`
@@ -14,6 +16,7 @@ Títulos de terceiro nível que organizam detalhes dentro de subseções, equiva
 - Uso: sub-subtítulos para organizar tópicos específicos
 
 ## Exemplos
+
 ```
 Revisão de Competência Profissional
 Controle de Documentação

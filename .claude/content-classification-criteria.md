@@ -1,6 +1,7 @@
 # CONTENT CLASSIFICATION CRITERIA - AI AGENT DETERMINISTIC RULES
 
 ## META-INSTRUCTIONS
+
 **TARGET**: Claude AI Sonnet 4.5 content classification
 **AUTHORITY**: This document is NORMATIVE for content placement decisions
 **PRIORITY**: Deterministic, zero-ambiguity, binary decisions
@@ -79,6 +80,7 @@ NEGATIVE_EXAMPLES:
 ```
 
 ### BINARY TEST
+
 ```python
 def is_tradeoff(text):
     lines = text.strip().split('\n')
@@ -125,6 +127,7 @@ NEGATIVE_EXAMPLES:
 ```
 
 ### BINARY TEST
+
 ```python
 def is_table(text):
     lines = text.strip().split('\n')
@@ -179,6 +182,7 @@ NEGATIVE_EXAMPLES:
 ```
 
 ### BINARY TEST
+
 ```python
 def is_chart_data(text):
     if not is_table(text):
@@ -247,6 +251,7 @@ NEGATIVE_EXAMPLES:
 ```
 
 ### BINARY TEST
+
 ```python
 def is_faq(text):
     # Check for explicit Q:/A: format
@@ -304,6 +309,7 @@ NEGATIVE_EXAMPLES:
 ```
 
 ### BINARY TEST
+
 ```python
 def is_diagram(text):
     text_lower = text.lower().strip()
@@ -353,6 +359,7 @@ NEGATIVE_EXAMPLES:
 ```
 
 ### BINARY TEST
+
 ```python
 def is_disclaimer(text):
     text_lower = text.lower()
@@ -403,6 +410,7 @@ NEGATIVE_EXAMPLES:
 ```
 
 ### BINARY TEST
+
 ```python
 def is_callout(text):
     text_stripped = text.strip()
@@ -463,6 +471,7 @@ NEGATIVE_EXAMPLES:
 ```
 
 ### BINARY TEST
+
 ```python
 def is_dock(text):
     text_stripped = text.strip()
@@ -517,11 +526,11 @@ POSITIVE_EXAMPLES:
   ✓ "This section explains the fundamental concepts of..."
   ✓ "In the context of ethics, we must consider..."
 
-NEGATIVE_EXAMPLES:
-  ✗ (Anything matching other categories above)
+NEGATIVE_EXAMPLES: ✗ (Anything matching other categories above)
 ```
 
 ### BINARY TEST
+
 ```python
 def is_plaintext(text):
     # Default category if no other category matches
@@ -573,6 +582,7 @@ NEGATIVE_EXAMPLES:
 ```
 
 ### BINARY TEST
+
 ```python
 def is_other(text):
     # Fallback category - always returns True if reached
@@ -635,26 +645,19 @@ PRESENT_TO_USER:
 ## EDGE CASES
 
 ```yaml
-EMPTY_TEXT:
-  → REJECT (require minimum content)
+EMPTY_TEXT: → REJECT (require minimum content)
 
-SINGLE_WORD:
-  → others/
+SINGLE_WORD: → others/
 
-MIXED_LANGUAGES:
-  → Apply same criteria (language-agnostic where possible)
+MIXED_LANGUAGES: → Apply same criteria (language-agnostic where possible)
 
-CODE_SNIPPETS:
-  → others/ (unless it's DOT diagram code)
+CODE_SNIPPETS: → others/ (unless it's DOT diagram code)
 
-POETRY/VERSE:
-  → plaintext/ (treat as prose)
+POETRY/VERSE: → plaintext/ (treat as prose)
 
-QUOTATIONS:
-  → plaintext/ or docks/ (depends on context/markers)
+QUOTATIONS: → plaintext/ or docks/ (depends on context/markers)
 
-DEFINITIONS:
-  → docks/ if marked "Definition:", else plaintext/
+DEFINITIONS: → docks/ if marked "Definition:", else plaintext/
 ```
 
 ---

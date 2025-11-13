@@ -3,58 +3,122 @@
 # See https://pre-commit.com/hooks.html for available hooks
 
 repos:
-  # Standard pre-commit hooks
+  # Standard pre-commit hooks (v6.0.0 - comprehensive)
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v6.0.0
     hooks:
+      # File formatting
       - id: trailing-whitespace
         name: Trim trailing whitespace
         exclude: ^(CHANGELOG\.txt|.*\.md)$
       - id: end-of-file-fixer
         name: Fix end of files
+      - id: mixed-line-ending
+        name: Check mixed line endings
+        args: ["--fix=lf"]
+      - id: fix-byte-order-marker
+        name: Remove UTF-8 BOM
+
+      # Syntax validation
       - id: check-yaml
         name: Check YAML syntax
       - id: check-json
         name: Check JSON syntax
+      - id: check-toml
+        name: Check TOML syntax
+      - id: check-xml
+        name: Check XML syntax
+
+      # Security and safety
+      - id: detect-private-key
+        name: Detect private keys
       - id: check-added-large-files
         name: Check for large files
-        args: ['--maxkb=100']
+        args: ["--maxkb=100"]
+
+      # Git safety
       - id: check-case-conflict
         name: Check for case conflicts
       - id: check-merge-conflict
         name: Check for merge conflicts
-      - id: detect-private-key
-        name: Detect private keys
-      - id: mixed-line-ending
-        name: Check mixed line endings
-        args: ['--fix=lf']
+      - id: no-commit-to-branch
+        name: Prevent commits to main
+        args: ["--branch", "main"]
+      - id: forbid-new-submodules
+        name: Forbid new submodules
 
-  # Additional hooks from v6.0.0
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
-    hooks:
-      - id: check-executables-have-shebangs
-        name: Check executables have shebangs
-      - id: check-shebang-scripts-are-executable
-        name: Check shebang scripts are executable
+      # File integrity
       - id: check-symlinks
         name: Check for broken symlinks
       - id: destroyed-symlinks
         name: Check for destroyed symlinks
-      - id: fix-byte-order-marker
-        name: Remove UTF-8 BOM
-      - id: forbid-new-submodules
-        name: Forbid new submodules
+      - id: check-executables-have-shebangs
+        name: Check executables have shebangs
+      - id: check-shebang-scripts-are-executable
+        name: Check shebang scripts are executable
 
-  # Grep-based content checks
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+  # Grep-based content checks (pygrep-hooks)
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
     hooks:
-      - id: no-commit-to-branch
-        name: Prevent commits to main
-        args: ['--branch', 'main']
+      - id: python-check-blanket-noqa
+        name: Check blanket noqa
+      - id: python-check-blanket-type-ignore
+        name: Check blanket type ignore
+      - id: python-no-eval
+        name: Check no eval()
+      - id: python-no-log-warn
+        name: Check no .warn() in logging
+      - id: python-use-type-annotations
+        name: Check type annotations
+      - id: rst-backticks
+        name: Check RST backticks
+      - id: rst-directive-colons
+        name: Check RST directive colons
+      - id: rst-inline-touching-normal
+        name: Check RST inline touching
+      - id: text-unicode-replacement-char
+        name: Check unicode replacement chars
 
-  # Custom local hooks
+  # Markdown linting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.43.0
+    hooks:
+      - id: markdownlint
+        name: Lint Markdown files
+        args: ["--fix"]
+        exclude: ^(CHANGELOG\.md|CHANGELOG\.txt)$
+
+  # JSON/YAML/TOML formatting with prettier
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        name: Format JSON/YAML/Markdown with Prettier
+        types_or: [json, yaml, markdown]
+        exclude: ^(online-resources/raw-text/.*\.json|chunks\.json|\.claude/.*\.json)$
+
+  # Python code quality (Ruff - fast linter/formatter)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff
+        name: Ruff linter (Python)
+        args: [--fix]
+        types_or: [python, pyi]
+      - id: ruff-format
+        name: Ruff formatter (Python)
+        types_or: [python, pyi]
+
+  # Commitizen (conventional commits validation)
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.1.0
+    hooks:
+      - id: commitizen
+        name: Check commit message format
+        stages: [commit-msg]
+
+  # Custom local hooks (repository-specific validation)
   - repo: local
     hooks:
       # Validate raw-text files are .txt only
@@ -71,7 +135,7 @@ repos:
         entry: python .claude/hooks/validate_audit_json.py
         language: python
         files: ^\.claude/ingestion-audit\.json$
-        additional_dependencies: ['pydantic>=2.9.0']
+        additional_dependencies: ["pydantic>=2.9.0"]
 
       # Validate metadata twin JSONs with Pydantic
       - id: validate-metadata-twin-json
@@ -80,7 +144,7 @@ repos:
         language: python
         files: ^online-resources/raw-text/.*\.json$
         pass_filenames: true
-        additional_dependencies: ['pydantic>=2.9.0']
+        additional_dependencies: ["pydantic>=2.9.0"]
 
       # Validate chunks.json with Pydantic
       - id: validate-chunks-json
@@ -88,7 +152,7 @@ repos:
         entry: python .claude/hooks/validate_chunks_pydantic.py
         language: python
         files: ^chunks\.json$
-        additional_dependencies: ['pydantic>=2.9.0']
+        additional_dependencies: ["pydantic>=2.9.0"]
 
       # Check for forbidden HTML/JS/CSS in raw-text
       - id: forbid-html-js-css

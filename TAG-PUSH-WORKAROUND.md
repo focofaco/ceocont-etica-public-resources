@@ -3,6 +3,7 @@
 ## Problem: HTTP 403 on Tag Push
 
 **Symptom**: All attempts to push git tags fail with HTTP 403
+
 ```
 error: RPC failed; HTTP 403 curl 22 The requested URL returned error: 403
 fatal: the remote end hung up unexpectedly
@@ -13,18 +14,21 @@ fatal: the remote end hung up unexpectedly
 ## Attempted Solutions (All Failed)
 
 ### Attempt 1: Direct tag push
+
 ```bash
 git push origin v1.0.0
 # Result: HTTP 403
 ```
 
 ### Attempt 2: Push all tags
+
 ```bash
 git push origin --tags
 # Result: HTTP 403
 ```
 
 ### Attempt 3: Explicit refspec
+
 ```bash
 git config --add remote.origin.push '+refs/tags/*:refs/tags/*'
 git push origin refs/tags/v1.0.0
@@ -32,6 +36,7 @@ git push origin refs/tags/v1.0.0
 ```
 
 ### Attempt 4: Tag-specific refspec
+
 ```bash
 git push origin refs/tags/v1.0.0
 # Result: HTTP 403
@@ -40,10 +45,12 @@ git push origin refs/tags/v1.0.0
 ## Working Fallback: Tag Branches
 
 **Discovery**: Branch pushes work, tag pushes don't
+
 - ✓ `claude/*-SESSION_ID` branches push successfully
 - ✗ `refs/tags/*` always return 403
 
 **Workaround**:
+
 ```bash
 # Create branch pointing to tag commit
 git checkout -b "claude/tag-v1.0.0-011CV4kf1V2XbPxRYPEA6QKV" v1.0.0
@@ -74,12 +81,14 @@ If direct tag push is required, grant permissions atomically:
 Check which system controls git access:
 
 **A. GitHub Repository Settings** (if using GitHub directly):
+
 ```
 Repository → Settings → Branches → Protected branches
 Repository → Settings → Tags → Protected tags
 ```
 
 **B. Git Proxy Configuration** (current setup):
+
 ```
 Proxy at: http://127.0.0.1:60115
 User: local_proxy
@@ -90,6 +99,7 @@ User: local_proxy
 #### Option A: GitHub Repository Permissions
 
 **Via GitHub Web UI** (Atomic, recommended):
+
 1. Go to: `https://github.com/focofacofoco/ceocont-etica-public-resources/settings/access`
 2. Click "Invite collaborator" or "Add people"
 3. Enter Claude Code Agent credentials (if exists) or add service account
@@ -100,6 +110,7 @@ User: local_proxy
 6. **Atomic**: Single UI action, immediate effect
 
 **Via GitHub CLI** (if installed):
+
 ```bash
 # Add collaborator with maintain role (can push tags)
 gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME \
@@ -117,6 +128,7 @@ gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME 
 **If proxy controls access** (requires proxy configuration access):
 
 1. **Locate proxy config file**:
+
    ```bash
    # Common locations:
    /etc/git-proxy/config.yaml
@@ -125,17 +137,19 @@ gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME 
    ```
 
 2. **Add tag push rule** (atomic edit):
+
    ```yaml
    # Example YAML config
    rules:
      - pattern: "refs/heads/claude/*-{SESSION_ID}"
        allow: push
-     - pattern: "refs/tags/*"          # ADD THIS LINE
-       allow: push                       # ADD THIS LINE
-       user: local_proxy                 # ADD THIS LINE
+     - pattern: "refs/tags/*" # ADD THIS LINE
+       allow: push # ADD THIS LINE
+       user: local_proxy # ADD THIS LINE
    ```
 
 3. **Reload proxy** (atomic operation):
+
    ```bash
    systemctl reload git-proxy
    # or
@@ -147,17 +161,20 @@ gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME 
 **Temporary direct access** (for tag creation):
 
 1. **Add GitHub as secondary remote**:
+
    ```bash
    git remote add github-direct https://github.com/focofacofoco/ceocont-etica-public-resources.git
    ```
 
 2. **Configure credentials** (if needed):
+
    ```bash
    git config credential.helper store
    # Will prompt for GitHub PAT on first push
    ```
 
 3. **Push tags to direct remote**:
+
    ```bash
    git push github-direct v1.0.0
    git push github-direct v1.1.0
@@ -165,6 +182,7 @@ gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME 
    ```
 
 4. **Remove secondary remote** (cleanup):
+
    ```bash
    git remote remove github-direct
    ```
@@ -172,6 +190,7 @@ gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME 
 ### Step 3: Verify Permissions
 
 **Test tag push after granting permissions**:
+
 ```bash
 # Create test tag
 git tag -a "v0.0.1-test" -m "Test tag push permissions"
@@ -191,18 +210,21 @@ git tag -d v0.0.1-test
 ## Recommended Approach
 
 **For Production Releases**: Use GitHub Release workflow (no special permissions needed)
+
 - ✓ Standard GitHub workflow
 - ✓ Audit trail in GitHub UI
 - ✓ Release notes integrated
 - ✓ No proxy configuration changes
 
 **For Development/CI**: Grant maintain permissions via GitHub settings
+
 - ✓ Atomic operation via GitHub UI
 - ✓ Reversible (remove collaborator anytime)
 - ✓ Audit logged in GitHub
 - ✗ Requires GitHub account for service
 
 **For Proxy Bypass**: Add secondary remote temporarily
+
 - ✓ No proxy configuration changes
 - ✓ Works immediately
 - ✗ Requires GitHub PAT management
@@ -211,14 +233,17 @@ git tag -d v0.0.1-test
 ## Current Status
 
 **Local tags**:
+
 - `v1.0.0` - Initial release
 - `v1.1.0` - Pre-commit hooks release
 - `v2.0.0` - Not yet created (will be created after PR merge)
 
 **Remote tags**:
+
 - None (all blocked by 403)
 
 **Workaround branches pushed**:
+
 - `claude/tag-v1.0.0-011CV4kf1V2XbPxRYPEA6QKV` ✓ (points to v1.0.0 commit)
 
 **Recommended action**:
