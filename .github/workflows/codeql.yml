@@ -2,9 +2,9 @@ name: CodeQL Security Analysis
 
 on:
   push:
-    branches: [main, "claude/**"]
+    # Run on ALL branches, every commit
   pull_request:
-    branches: [main]
+    # Run on ALL pull requests, every PR
   schedule:
     # Run at 00:00 UTC every Monday
     - cron: "0 0 * * 1"
@@ -19,7 +19,7 @@ jobs:
   analyze:
     name: CodeQL Analysis
     runs-on: ubuntu-latest
-    continue-on-error: true  # Non-blocking: allows PR merge even if issues found
+    continue-on-error: true # Non-blocking: allows PR merge even if issues found
 
     strategy:
       fail-fast: false
