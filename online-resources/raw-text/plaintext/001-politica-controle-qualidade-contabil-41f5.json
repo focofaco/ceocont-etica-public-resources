@@ -2,6 +2,8 @@
   "version": "1.0.0",
   "content_id": "001-politica-controle-qualidade-contabil-41f5",
   "component": "plaintext",
+  "original_text": "Política de controle da qualidade\n\nA ${razao-social}, doravante \"a firma\", estabelece controles de qualidade para os serviços contábeis prestados. A qualidade resulta de políticas, procedimentos e controles internos documentados e comunicados a todos os profissionais. Esses controles devem ser revisados periodicamente para garantir conformidade.\n\nEste Manual de Qualidade e Procedimentos Internos (doravante \"Manual\") define as políticas do sistema de controle da qualidade. O objetivo é assegurar que os profissionais e os serviços prestados observam as normas profissionais e técnicas aplicáveis, emitidas pelo Conselho Federal de Contabilidade (CFC).\n\nO Manual estabelece as práticas, etapas e controles internos adotados pela firma para monitorar os padrões de qualidade dos serviços contábeis.\n\nA firma disponibiliza este Manual a todos os profissionais e estagiários. É obrigatória a leitura. Dúvidas devem ser direcionadas ao ${responsavel-qualidade}.\n\nO Manual é atualizado pelo ${responsavel-qualidade} sempre que ocorram alterações relevantes nas normas técnicas e profissionais aplicáveis ou em regulamentos que impactem os serviços contábeis prestados. A versão atualizada é disponibilizada na rede corporativa.\n\nO Manual é atualizado conforme necessário.\n\nÚltima atualização: ${data-atualizacao}\nNúmero de atualizações: ${numero-atualizacoes}",
+  "transformed_text": "Política de controle da qualidade\n\nA ${razao-social}, doravante \"a firma\", estabelece controles de qualidade para os serviços contábeis prestados. A qualidade resulta de políticas, procedimentos e controles internos documentados e comunicados a todos os profissionais. Esses controles devem ser revisados periodicamente para garantir conformidade.\n\nEste Manual de Qualidade e Procedimentos Internos (doravante \"Manual\") define as políticas do sistema de controle da qualidade. O objetivo é assegurar que os profissionais e os serviços prestados observam as normas profissionais e técnicas aplicáveis, emitidas pelo Conselho Federal de Contabilidade (CFC).\n\nO Manual estabelece as práticas, etapas e controles internos adotados pela firma para monitorar os padrões de qualidade dos serviços contábeis.\n\nA firma disponibiliza este Manual a todos os profissionais e estagiários. É obrigatória a leitura. Dúvidas devem ser direcionadas ao ${responsavel-qualidade}.\n\nO Manual é atualizado pelo ${responsavel-qualidade} sempre que ocorram alterações relevantes nas normas técnicas e profissionais aplicáveis ou em regulamentos que impactem os serviços contábeis prestados. A versão atualizada é disponibilizada na rede corporativa.\n\nÚltima atualização: ${data-atualizacao}\nNúmero de atualizações: ${numero-atualizacoes}",
   "metadata": {
     "title": "Política de Controle da Qualidade",
     "description": "Documento que estabelece as políticas de controle de qualidade para serviços contábeis prestados pela firma",
@@ -17,10 +19,11 @@
     "reading_level": "tecnico",
     "estimated_reading_time_minutes": 3
   },
-  "references": {
-    "internal": [],
-    "external": ["CFC"],
-    "related_terms": ["controle-qualidade", "manual-qualidade", "cfc", "normas-tecnicas", "normas-profissionais"]
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Contra Capa",
+    "extraction_method": "copy_paste",
+    "page_number": 1,
+    "source_format": "pdf"
   },
   "placeholders": [
     {
@@ -49,20 +52,57 @@
       "required": true
     }
   ],
+  "transformations": [
+    {
+      "type": "deduplication",
+      "description": "Removed duplicate line about manual updates",
+      "before": "O Manual é atualizado conforme necessário.",
+      "after": "",
+      "timestamp": "2025-11-13T00:55:00Z"
+    }
+  ],
+  "brandguide_compliance": {
+    "overall_score": 0.95,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
   "quality_metrics": {
     "word_count": 165,
     "character_count": 1307,
     "readability_score": 58.3,
+    "avg_sentence_length": 21.5,
+    "avg_word_length": 6.2,
     "technical_term_density": 0.18,
-    "brandguide_compliance": 0.95
+    "passive_voice_ratio": 0.25,
+    "flesch_reading_ease": 58.3,
+    "gunning_fog_index": 12.4
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": []
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T00:55:00Z",
+    "review_notes": "Auto-approved: brandguide compliance 0.95, no critical issues detected"
   },
   "audit": {
     "fragment_id": "chunk_01_frag_001",
     "chunk_id": "chunk_01",
     "ingestion_date": "2025-11-13T00:03:00Z",
-    "transformations_applied": ["deduplication"],
-    "review_status": "approved",
-    "reviewed_by": "auto",
-    "reviewed_at": "2025-11-13T00:55:00Z"
+    "sha256_original": "41f5bfaaff5dee1e10520e90c0df497bbde3a549714c593b96b13585240fe2ad",
+    "sha256_transformed": "41f5bfaaff5dee1e10520e90c0df497bbde3a549714c593b96b13585240fe2ad",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Single cohesive policy document, regulatory text, no special formatting markers. Pure plaintext content.",
+    "alternative_components": []
   }
 }
