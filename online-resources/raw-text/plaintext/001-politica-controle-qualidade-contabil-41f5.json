@@ -1,0 +1,68 @@
+{
+  "version": "1.0.0",
+  "content_id": "001-politica-controle-qualidade-contabil-41f5",
+  "component": "plaintext",
+  "metadata": {
+    "title": "Política de Controle da Qualidade",
+    "description": "Documento que estabelece as políticas de controle de qualidade para serviços contábeis prestados pela firma",
+    "domain": "gestao-qualidade",
+    "keywords": ["controle-qualidade", "manual-qualidade", "cfc", "normas-tecnicas"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T00:03:00Z",
+    "updated_at": "2025-11-13T00:55:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "politicas-gerais",
+    "target_audience": ["profissionais-contabeis", "estagiarios", "gestores"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 3
+  },
+  "references": {
+    "internal": [],
+    "external": ["CFC"],
+    "related_terms": ["controle-qualidade", "manual-qualidade", "cfc", "normas-tecnicas", "normas-profissionais"]
+  },
+  "placeholders": [
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${responsavel-qualidade}",
+      "description": "Nome do responsável pelo sistema de controle de qualidade",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${data-atualizacao}",
+      "description": "Data da última atualização do manual",
+      "type": "date",
+      "format": "DD/MM/YYYY",
+      "required": true
+    },
+    {
+      "key": "${numero-atualizacoes}",
+      "description": "Número sequencial de atualizações do manual",
+      "type": "integer",
+      "required": true
+    }
+  ],
+  "quality_metrics": {
+    "word_count": 165,
+    "character_count": 1307,
+    "readability_score": 58.3,
+    "technical_term_density": 0.18,
+    "brandguide_compliance": 0.95
+  },
+  "audit": {
+    "fragment_id": "chunk_01_frag_001",
+    "chunk_id": "chunk_01",
+    "ingestion_date": "2025-11-13T00:03:00Z",
+    "transformations_applied": ["deduplication"],
+    "review_status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T00:55:00Z"
+  }
+}

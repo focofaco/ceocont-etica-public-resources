@@ -1,17 +1,28 @@
 .
+|____diagrams
+| |____README.md
+|____tradeoffs
+| |____README.md
+|____disclaimers
+| |____README.md
+|____data
+| |____README.md
+|____tables
+| |____README.md
+|____others
+| |____README.md
 |____plaintext
 | |____001-politica-controle-qualidade-contabil-41f5.txt
-|____tables
-|____disclaimers
+| |____README.md
 |____faqs
-|____tradeoffs
-|____diagrams
-|____others
-|____docks
-|____data
+| |____README.md
 |____meta
-| |____integrity.txt
-| |____abbr.json.txt
-| |____glossario.json.txt
 | |____TREE.txt
+| |____abbr.json.txt
+| |____integrity.txt
+| |____glossario.json.txt
+| |____README.md
 |____callouts
+| |____README.md
+|____docks
+| |____README.md

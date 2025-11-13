@@ -96,3 +96,11 @@ repos:
         language: system
         files: ^online-resources/raw-text/(?!meta/).*\.txt$
         pass_filenames: true
+
+      # Validate metadata twins (every .txt has .json)
+      - id: validate-metadata-twins
+        name: Validate .txt files have .json metadata twins
+        entry: .claude/hooks/validate_metadata_twins.sh
+        language: system
+        files: ^online-resources/raw-text/.*\.(txt|json)$
+        pass_filenames: false
