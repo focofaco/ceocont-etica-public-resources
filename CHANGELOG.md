@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `online-resources/raw-text/plaintext/002-introducao-manual-controle-qualidade-a1b8.txt` - Manual quality control introduction (190 words)
+- `online-resources/raw-text/docks/003-estudo-caso-irregularidade-cliente-4800.txt` - Case study: irregularity identified in client (121 words) - **First dock component**
+- `online-resources/raw-text/plaintext/004-sistema-controle-qualidade-documentacao-7eff.txt` - Quality control system documentation (360 words)
+
+### Features
+
+- Content ingestion: chunk_02 with 3 fragments (2 plaintext + 1 docks)
+- Component distribution balanced: 75% plaintext / 25% docks (within 70-80% target)
+- Total content: 4 fragments across 2 chunks, 836 words
+- First dock component added to repository
+
+### Notes
+
+- 9 placeholders tracked: `${razao-social}`, `${tipo-servico}`, `${tipo-irregularidade}`, `${responsavel-tecnico}`, `${objetivo-correcao}`, `${responsavel-qualidade}`, `${diagrama-piramide}`
+- All fragments approved with 0.95 brandguide compliance score
+- Metadata twins validated via pre-commit hooks
+
 ## [2.3.0] - 2025-11-13
 
 ### Added

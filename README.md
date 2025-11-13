@@ -15,11 +15,13 @@ This repository serves as a **server-side contract** for delivering pure text co
 
 ## 📊 Repository Statistics
 
-- **Content Files**: TBD text files
-- **Metadata Files**: TBD JSON files
-- **Total Size**: TBD
-- **Commits**: TBD
-- **Latest Version**: v2.1.0
+- **Content Files**: 4 text files (836 words total)
+- **Metadata Files**: 4 JSON metadata twins
+- **Content Distribution**: 75% plaintext (3), 25% docks (1)
+- **Total Size**: 111K
+- **Commits**: 52
+- **Latest Release**: v1.1.0
+- **In Development**: v2.3.0
 
 *Stats auto-updated by README Updater Agent*
 
