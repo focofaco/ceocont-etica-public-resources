@@ -14,18 +14,32 @@ Added:
   Case study: irregularity identified in client (121 words) - First dock component
 - online-resources/raw-text/plaintext/004-sistema-controle-qualidade-documentacao-7eff.txt
   Quality control system documentation (360 words)
+- online-resources/raw-text/plaintext/005-responsabilidade-lideranca-qualidade-2509.txt
+  Leadership responsibility for quality (448 words)
+- online-resources/raw-text/docks/006-estudo-caso-ausencia-responsavel-c717.txt
+  Case study: absence of quality control responsible (57 words)
+- online-resources/raw-text/plaintext/007-normas-aplicaveis-servicos-contabeis-9baf.txt
+  Applicable norms for accounting services (224 words)
+
+Changed:
+- Component distribution baseline: 70-80% plaintext / 20-30% others → 60-70% plaintext / 30-40% others
+- Validation rules: Added no-consecutive-components constraint within chunks
 
 Features:
-- Content ingestion: chunk_02 with 3 fragments (2 plaintext + 1 docks)
-- Component distribution balanced: 75% plaintext / 25% docks (within 70-80% target)
-- Total content: 4 fragments across 2 chunks, 836 words
-- First dock component added to repository
+- Content ingestion: chunk_02 (3 fragments) + chunk_03 (3 fragments)
+- Component distribution: 71.4% plaintext / 28.6% docks
+- Saturation warning: plaintext exceeds 70% target (need more specialized components)
+- Total content: 7 fragments across 3 chunks, 1565 words
+- No-consecutive-components validation: Enforces alternation within chunks
 
 Note:
-- 9 placeholders tracked: ${razao-social}, ${tipo-servico}, ${tipo-irregularidade},
-  ${responsavel-tecnico}, ${objetivo-correcao}, ${responsavel-qualidade}, ${diagrama-piramide}
+- 13 placeholders tracked: ${acao-cliente}, ${areas-treinamento}, ${data-atualizacao},
+  ${descricao-conteudo-normativo}, ${diagrama-piramide}, ${documento-normativo},
+  ${numero-atualizacoes}, ${objetivo-correcao}, ${razao-social}, ${responsavel-qualidade},
+  ${responsavel-tecnico}, ${tipo-irregularidade}, ${tipo-servico}
 - All fragments approved with 0.95 brandguide compliance score
 - Metadata twins validated via pre-commit hooks
+- chunk_03 validation: no consecutive components (plaintext → docks → plaintext)
 
 ================================================================================
 

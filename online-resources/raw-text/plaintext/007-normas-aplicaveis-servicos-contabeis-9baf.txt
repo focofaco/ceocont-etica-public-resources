@@ -1,0 +1,18 @@
+Normas aplicáveis aos serviços contábeis
+
+Esta seção apresenta as normas e regulamentos que regem os serviços prestados pela firma, com o objetivo de divulgar os procedimentos e exigências regulatórias a serem cumpridos, em observância às normas emanadas pelo Conselho Federal de Contabilidade.
+
+O Decreto-Lei nº 9.295, de 27 de maio de 1946, em seu art. 6º, alínea "f", estabelece as atribuições do Conselho Federal de Contabilidade - CFC:
+
+Art. 6º São atribuições do Conselho Federal de Contabilidade:
+
+"[...]
+f) regular acerca dos princípios contábeis, do Exame de Suficiência, do cadastro de qualificação técnica e dos programas de educação continuada; e editar Normas Brasileiras de Contabilidade de natureza técnica e profissional. (Incluído pela Lei nº 12.249, de 2010) (BRASIL, 1976)."
+
+O CFC é o órgão responsável pelo processo de convergência das Normas Brasileiras de Contabilidade - NBC aos padrões internacionais e pela edição de normas técnicas e profissionais aplicáveis aos serviços contábeis prestados no Brasil.
+
+As normas profissionais e técnicas aplicáveis aos serviços prestados pela firma são estabelecidas pelo CFC e devem ser observadas integralmente na execução dos trabalhos. As normas se relacionam entre si e devem ser aplicadas de forma integrada.
+
+A letra "R" disposta em frente às normas indica revisão. Os números subsequentes indicam a quantidade de revisões às quais a norma foi submetida.
+
+O ${documento-normativo} apresenta ${descricao-conteudo-normativo} aplicável aos serviços prestados pela firma.

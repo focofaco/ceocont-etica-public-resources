@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-11-13T07:30:00Z",
-  "total_chunks": 2,
-  "total_fragments": 4,
+  "last_updated": "2025-11-13T16:30:00Z",
+  "total_chunks": 3,
+  "total_fragments": 7,
   "chunks": [
     {
       "chunk_id": "chunk_01",
@@ -88,12 +88,73 @@
           "review_status": "approved"
         }
       ]
+    },
+    {
+      "chunk_id": "chunk_03",
+      "status": "completed",
+      "ingested_at": "2025-11-13T16:30:00Z",
+      "source_document": "Manual Qualidade - Responsabilidade da Liderança e Normas",
+      "source_metadata": {
+        "extraction_method": "copy_paste",
+        "page_number": 3,
+        "sections": ["Responsabilidade da liderança", "Estudo de caso", "Normas aplicáveis"],
+        "source_format": "text"
+      },
+      "fragments_generated": 3,
+      "fragments": [
+        {
+          "fragment_id": "chunk_03_frag_001",
+          "seq": 1,
+          "component": "plaintext",
+          "content_id": "005-responsabilidade-lideranca-qualidade-2509",
+          "title": "Responsabilidade da liderança pela qualidade",
+          "path_txt": "online-resources/raw-text/plaintext/005-responsabilidade-lideranca-qualidade-2509.txt",
+          "path_json": "online-resources/raw-text/plaintext/005-responsabilidade-lideranca-qualidade-2509.json",
+          "sha256_txt": "2509db05f299c1e36496d2b0177c05db71f3469e654b3b775cd9fd14619ceee9",
+          "word_count": 448,
+          "character_count": 3397,
+          "transformations_applied": [],
+          "review_status": "approved"
+        },
+        {
+          "fragment_id": "chunk_03_frag_002",
+          "seq": 2,
+          "component": "docks",
+          "content_id": "006-estudo-caso-ausencia-responsavel-c717",
+          "title": "Estudo de caso - Ausência do responsável pelo controle de qualidade",
+          "path_txt": "online-resources/raw-text/docks/006-estudo-caso-ausencia-responsavel-c717.txt",
+          "path_json": "online-resources/raw-text/docks/006-estudo-caso-ausencia-responsavel-c717.json",
+          "sha256_txt": "c717111279306aab95fd93d672bfc2fa3456441031e624feaabf6b3de2d4f294",
+          "word_count": 57,
+          "character_count": 453,
+          "transformations_applied": [],
+          "review_status": "approved"
+        },
+        {
+          "fragment_id": "chunk_03_frag_003",
+          "seq": 3,
+          "component": "plaintext",
+          "content_id": "007-normas-aplicaveis-servicos-contabeis-9baf",
+          "title": "Normas aplicáveis aos serviços contábeis",
+          "path_txt": "online-resources/raw-text/plaintext/007-normas-aplicaveis-servicos-contabeis-9baf.txt",
+          "path_json": "online-resources/raw-text/plaintext/007-normas-aplicaveis-servicos-contabeis-9baf.json",
+          "sha256_txt": "9baf7064374ea03ed0ef4d4fc044f15582cce9ca0296c24d440e5fc652e72506",
+          "word_count": 224,
+          "character_count": 1592,
+          "transformations_applied": [],
+          "review_status": "approved"
+        }
+      ],
+      "validation": {
+        "no_consecutive_components": true,
+        "component_sequence": ["plaintext", "docks", "plaintext"]
+      }
     }
   ],
   "component_distribution": {
-    "plaintext": 3,
+    "plaintext": 5,
     "callouts": 0,
-    "docks": 1,
+    "docks": 2,
     "tradeoffs": 0,
     "tables": 0,
     "data": 0,
@@ -106,9 +167,9 @@
     "header_h3": 0
   },
   "component_distribution_percentage": {
-    "plaintext": 75.0,
+    "plaintext": 71.4,
     "callouts": 0.0,
-    "docks": 25.0,
+    "docks": 28.6,
     "tradeoffs": 0.0,
     "tables": 0.0,
     "data": 0.0,
@@ -120,27 +181,38 @@
     "header_h2": 0.0,
     "header_h3": 0.0
   },
-  "_distribution_note": "Headers (header_h1, header_h2, header_h3) are structural elements and do NOT count towards the 70-80% plaintext / 20-30% others baseline.",
+  "_distribution_note": "Headers (header_h1, header_h2, header_h3) are structural elements and do NOT count towards the 60-70% plaintext / 30-40% others baseline.",
   "target_distribution": {
     "plaintext": {
-      "min": 70.0,
-      "max": 80.0
+      "min": 60.0,
+      "max": 70.0
     },
     "others_combined": {
-      "min": 20.0,
-      "max": 30.0
+      "min": 30.0,
+      "max": 40.0
     }
   },
-  "saturation_warnings": [],
+  "validation_rules": {
+    "no_consecutive_components": {
+      "enabled": true,
+      "description": "Fragments within a chunk cannot have consecutive same-component types",
+      "enforcement": "pre-commit"
+    }
+  },
+  "saturation_warnings": ["plaintext at 71.4% exceeds max 70.0% - add more specialized components (docks, callouts, tradeoffs, etc.)"],
   "placeholders_inventory": [
+    "${acao-cliente}",
+    "${areas-treinamento}",
+    "${data-atualizacao}",
+    "${descricao-conteudo-normativo}",
+    "${diagrama-piramide}",
+    "${documento-normativo}",
+    "${numero-atualizacoes}",
+    "${objetivo-correcao}",
     "${razao-social}",
     "${responsavel-qualidade}",
-    "${data-atualizacao}",
-    "${numero-atualizacoes}",
-    "${tipo-servico}",
-    "${tipo-irregularidade}",
     "${responsavel-tecnico}",
-    "${objetivo-correcao}",
-    "${diagrama-piramide}"
+    "${tipo-irregularidade}",
+    "${tipo-servico}"
   ]
 }
