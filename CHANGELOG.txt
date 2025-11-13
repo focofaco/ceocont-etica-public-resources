@@ -8,38 +8,48 @@ Format based on Keep a Changelog. Project adheres to Semantic Versioning.
 [Unreleased]
 
 Added:
-- online-resources/raw-text/plaintext/002-introducao-manual-controle-qualidade-a1b8.txt
-  Manual quality control introduction (190 words)
-- online-resources/raw-text/docks/003-estudo-caso-irregularidade-cliente-4800.txt
-  Case study: irregularity identified in client (121 words) - First dock component
-- online-resources/raw-text/plaintext/004-sistema-controle-qualidade-documentacao-7eff.txt
-  Quality control system documentation (360 words)
-- online-resources/raw-text/plaintext/005-responsabilidade-lideranca-qualidade-2509.txt
-  Leadership responsibility for quality (448 words)
-- online-resources/raw-text/docks/006-estudo-caso-ausencia-responsavel-c717.txt
-  Case study: absence of quality control responsible (57 words)
-- online-resources/raw-text/plaintext/007-normas-aplicaveis-servicos-contabeis-9baf.txt
-  Applicable norms for accounting services (224 words)
+- chunk_04 (6 fragments): First callouts, tradeoffs, faqs components
+  - 008-principios-seguranca-informacao-1fcc.txt (callouts)
+  - 009-monitoramento-sistemas-931f.txt (tradeoffs)
+  - 010-politica-responsabilidade-social-ambiental-9129.txt (plaintext)
+  - 011-diferenca-empresa-privada-publica (faqs)
+  - 012-classificacao-entidades-pies-f7ad.txt (plaintext)
+  - 013-legislacao-capital-aberto (faqs)
+
+- chunk_05 (11 fragments): First tables component, reclassified with critical thinking
+  - 014-024 with proper component-specific characteristics
+  - Reclassified 016 from disclaimers to plaintext
+  - Merged 023+024 into 022
+  - Removed redundant 025
+
+- chunk_06 (12 fragments): First header_h2 and disclaimers components
+  - 025-036 with 6 distinct component types
+  - Headers: 025 (Integridade h2), 032 (Objetividade h2)
+  - First proper disclaimer: 029 (proibições com sanções)
+
+- Header extraction: 15 headers extracted from 13 plaintext fragments
+  - 13 header_h1 files created
+  - 2 additional header_h2 files created (002, 004)
+  - Plaintext fragments updated to remove embedded headers
+  - Metadata twins updated with corrected word counts
+
+- New placeholders: ${sistema-arquivo}, ${codigo-referencia}, ${setor-administrativo}, ${nome-profissional}
 
 Changed:
-- Component distribution baseline: 70-80% plaintext / 20-30% others → 60-70% plaintext / 30-40% others
-- Validation rules: Added no-consecutive-components constraint within chunks
+- Component distribution: 47.1% plaintext (below baseline due to rendering test)
+- Total fragments: 36 → 51 (added 15 headers)
+- Countable fragments: 34 (excluding 17 structural headers)
 
 Features:
-- Content ingestion: chunk_02 (3 fragments) + chunk_03 (3 fragments)
-- Component distribution: 71.4% plaintext / 28.6% docks
-- Saturation warning: plaintext exceeds 70% target (need more specialized components)
-- Total content: 7 fragments across 3 chunks, 1565 words
-- No-consecutive-components validation: Enforces alternation within chunks
+- Header extraction workflow: Automated extraction of h1/h2 titles from plaintext
+- Critical content classification: Fragments classified by inherent characteristics, not quotas
+- Component variety: 8 component types now in use (plaintext, callouts, docks, tradeoffs, tables, faqs, disclaimers, headers)
 
 Note:
-- 13 placeholders tracked: ${acao-cliente}, ${areas-treinamento}, ${data-atualizacao},
-  ${descricao-conteudo-normativo}, ${diagrama-piramide}, ${documento-normativo},
-  ${numero-atualizacoes}, ${objetivo-correcao}, ${razao-social}, ${responsavel-qualidade},
-  ${responsavel-tecnico}, ${tipo-irregularidade}, ${tipo-servico}
-- All fragments approved with 0.95 brandguide compliance score
-- Metadata twins validated via pre-commit hooks
-- chunk_03 validation: no consecutive components (plaintext → docks → plaintext)
+- Headers (h1/h2/h3) are structural elements and don't count toward baseline
+- Rendering test exception for chunks 04/05/06 (below 60% plaintext)
+- Next chunks must return to 60-70% plaintext baseline
+- All fragments approved with brandguide compliance
 
 ================================================================================
 
