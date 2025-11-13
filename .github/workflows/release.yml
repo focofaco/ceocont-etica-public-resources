@@ -1,0 +1,100 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version from tag
+        id: version
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "version=${TAG#v}" >> $GITHUB_OUTPUT
+
+      - name: Check for release notes
+        id: release_notes
+        run: |
+          TAG=${{ steps.version.outputs.tag }}
+          RELEASE_FILE="RELEASE-${TAG}.md"
+
+          if [ -f "$RELEASE_FILE" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+            echo "file=$RELEASE_FILE" >> $GITHUB_OUTPUT
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate release notes from CHANGELOG
+        if: steps.release_notes.outputs.found == 'false'
+        id: changelog_notes
+        run: |
+          TAG=${{ steps.version.outputs.tag }}
+
+          # Try to extract from CHANGELOG.md
+          if [ -f "CHANGELOG.md" ]; then
+            # Extract section for this version
+            awk "/## \[$TAG\]/,/## \[/" CHANGELOG.md | head -n -1 > release_notes.md
+            if [ -s release_notes.md ]; then
+              echo "Release notes extracted from CHANGELOG.md"
+            else
+              echo "No release notes found in CHANGELOG.md for $TAG"
+              echo "# Release $TAG" > release_notes.md
+              echo "" >> release_notes.md
+              echo "See [CHANGELOG.md](CHANGELOG.md) for details." >> release_notes.md
+            fi
+          else
+            echo "# Release $TAG" > release_notes.md
+            echo "" >> release_notes.md
+            echo "Release created automatically." >> release_notes.md
+          fi
+
+      - name: Prepare release notes
+        id: notes
+        run: |
+          if [ "${{ steps.release_notes.outputs.found }}" == "true" ]; then
+            cp "${{ steps.release_notes.outputs.file }}" final_release_notes.md
+          else
+            cp release_notes.md final_release_notes.md
+          fi
+
+          # Add AI Agent Ownership notice
+          cat > temp_notes.md << 'EOF'
+## 🤖 AI Agent Ownership & Review Process
+
+This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase, development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews, which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural consistency. The human user delegates all technical decisions, implementations, and repository management to the AI agent.
+
+---
+
+EOF
+          cat temp_notes.md final_release_notes.md > release_body.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: release_body.md
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          name: ${{ steps.version.outputs.tag }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "✅ Release ${{ steps.version.outputs.tag }} created successfully"
+          echo "🔗 View at: https://github.com/${{ github.repository }}/releases/tag/${{ steps.version.outputs.tag }}"

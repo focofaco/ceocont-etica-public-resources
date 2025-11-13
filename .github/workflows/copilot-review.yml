@@ -1,0 +1,128 @@
+name: Copilot PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  copilot-review:
+    name: Automated Code Review
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Fetch base branch
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+
+      - name: Analyze changes
+        id: analysis
+        run: |
+          echo "📊 Analyzing PR changes..."
+
+          # Get list of changed files
+          git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD > changed_files.txt
+
+          # Count changes by category
+          txt_files=$(grep -c "\.txt$" changed_files.txt || echo 0)
+          md_files=$(grep -c "\.md$" changed_files.txt || echo 0)
+          py_files=$(grep -c "\.py$" changed_files.txt || echo 0)
+          json_files=$(grep -c "\.json" changed_files.txt || echo 0)
+          yaml_files=$(grep -c "\.ya?ml$" changed_files.txt || echo 0)
+
+          echo "txt_count=$txt_files" >> $GITHUB_OUTPUT
+          echo "md_count=$md_files" >> $GITHUB_OUTPUT
+          echo "py_count=$py_files" >> $GITHUB_OUTPUT
+          echo "json_count=$json_files" >> $GITHUB_OUTPUT
+          echo "yaml_count=$yaml_files" >> $GITHUB_OUTPUT
+
+          # Check for sensitive changes
+          if grep -q "CLAUDE.md\|server-contract\|requirements.txt\|.pre-commit-config.yaml" changed_files.txt; then
+            echo "critical_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "critical_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check conventional commits
+        id: commits
+        run: |
+          echo "📝 Checking commit messages..."
+
+          # Get commit messages
+          commits=$(git log --format=%s origin/${{ github.event.pull_request.base.ref }}..HEAD)
+
+          # Check if commits follow conventional format
+          non_conventional=0
+          while IFS= read -r commit; do
+            if ! echo "$commit" | grep -qE "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?(!)?: .+"; then
+              echo "⚠️ Non-conventional commit: $commit"
+              non_conventional=$((non_conventional + 1))
+            fi
+          done <<< "$commits"
+
+          echo "non_conventional=$non_conventional" >> $GITHUB_OUTPUT
+
+      - name: Generate review comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            const txtCount = '${{ steps.analysis.outputs.txt_count }}';
+            const mdCount = '${{ steps.analysis.outputs.md_count }}';
+            const pyCount = '${{ steps.analysis.outputs.py_count }}';
+            const jsonCount = '${{ steps.analysis.outputs.json_count }}';
+            const yamlCount = '${{ steps.analysis.outputs.yaml_count }}';
+            const criticalChanges = '${{ steps.analysis.outputs.critical_changes }}';
+            const nonConventional = '${{ steps.commits.outputs.non_conventional }}';
+
+            let body = '## 🤖 Automated Review Summary\n\n';
+            body += '### 📊 Changes Overview\n\n';
+            body += `- **Text files (.txt)**: ${txtCount}\n`;
+            body += `- **Markdown files (.md)**: ${mdCount}\n`;
+            body += `- **Python files (.py)**: ${pyCount}\n`;
+            body += `- **JSON files**: ${jsonCount}\n`;
+            body += `- **YAML files**: ${yamlCount}\n\n`;
+
+            if (criticalChanges === 'true') {
+              body += '### ⚠️ Critical Changes Detected\n\n';
+              body += 'This PR modifies critical configuration files (CLAUDE.md, server-contract, requirements.txt, or pre-commit config). ';
+              body += 'Please review these changes carefully.\n\n';
+            }
+
+            if (nonConventional > 0) {
+              body += '### 📝 Commit Message Issues\n\n';
+              body += `Found ${nonConventional} commit(s) not following Conventional Commits format. `;
+              body += 'Consider using: `feat`, `fix`, `docs`, `chore`, etc.\n\n';
+            }
+
+            body += '### ✅ Next Steps\n\n';
+            body += '1. **Claude AI**: Review all Copilot suggestions critically with full context-awareness\n';
+            body += '2. **Claude AI**: Assess if changes align with repository contracts and policies\n';
+            body += '3. **Claude AI**: Verify all pre-commit hooks pass\n';
+            body += '4. **Claude AI**: Confirm architectural consistency\n\n';
+
+            body += '_This automated review is provided to assist Claude AI in evaluating this PR. ';
+            body += 'Final decisions rest with Claude, who critically assesses all suggestions._\n';
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+
+      - name: Review complete
+        run: |
+          echo "✅ Automated review comment posted"
+          echo "Claude AI will now review suggestions and make final decisions"
