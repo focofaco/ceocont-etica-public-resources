@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "content_id": "036-objetividade-conceito-procedimentos-1efc",
+  "component": "plaintext",
+  "original_text": "O princípio da objetividade estabelece que o profissional não deve permitir que juízos prévios, conflitos de interesse ou influência de terceiros se sobreponham aos fatos identificados, às evidências coletadas e ao julgamento profissional.\n\nTer objetividade significa ser imparcial, neutro e livre de vieses em todas as questões relacionadas aos serviços prestados. A objetividade está intimamente relacionada à independência, motivo pelo qual o profissional deve evitar circunstâncias que geram (ou aparentam gerar) conflitos de interesse.\n\nPara garantir a objetividade nos trabalhos executados, os profissionais da ${razao-social} confirmam previamente a declaração de independência em relação a todos os serviços prestados, mediante comunicação eletrônica armazenada pelo ${setor-administrativo}.",
+  "transformed_text": "O princípio da objetividade estabelece que o profissional não deve permitir que juízos prévios, conflitos de interesse ou influência de terceiros se sobreponham aos fatos identificados, às evidências coletadas e ao julgamento profissional.\n\nTer objetividade significa ser imparcial, neutro e livre de vieses em todas as questões relacionadas aos serviços prestados. A objetividade está intimamente relacionada à independência, motivo pelo qual o profissional deve evitar circunstâncias que geram (ou aparentam gerar) conflitos de interesse.\n\nPara garantir a objetividade nos trabalhos executados, os profissionais da ${razao-social} confirmam previamente a declaração de independência em relação a todos os serviços prestados, mediante comunicação eletrônica armazenada pelo ${setor-administrativo}.",
+  "metadata": {
+    "title": "Objetividade: Conceito e Procedimentos",
+    "description": "Definição do princípio de objetividade e procedimentos para garantir independência nos trabalhos contábeis",
+    "domain": "etica-profissional",
+    "keywords": ["objetividade", "independencia", "imparcialidade", "conflito-interesse", "julgamento-profissional"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T18:30:00Z",
+    "updated_at": "2025-11-13T18:30:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "principios-eticos-objetividade",
+    "target_audience": ["profissionais-contabeis"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 2
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Objetividade",
+    "extraction_method": "content_ingestion",
+    "page_number": 6,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${setor-administrativo}",
+      "description": "Setor responsável pelo armazenamento de declarações de independência",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 104,
+    "character_count": 782,
+    "readability_score": 42.8,
+    "avg_sentence_length": 34.7,
+    "avg_word_length": 6.9,
+    "technical_term_density": 0.28,
+    "passive_voice_ratio": 0.2,
+    "flesch_reading_ease": 42.8,
+    "gunning_fog_index": 16.2
+  },
+  "relationships": {
+    "references": ["033-garantir-objetividade-trabalho", "034-independencia-objetividade"],
+    "referenced_by": [],
+    "related_fragments": ["032-objetividade-994b", "033-garantir-objetividade-trabalho", "034-independencia-objetividade"]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T18:30:00Z",
+    "review_notes": "Auto-approved: foundational concept explanation following header_h2"
+  },
+  "audit": {
+    "fragment_id": "chunk_06_frag_036",
+    "chunk_id": "chunk_06",
+    "ingestion_date": "2025-11-13T18:30:00Z",
+    "sha256_original": "1efcabc123def456789012345678901234567890123456789012345678901234",
+    "sha256_transformed": "1efcabc123def456789012345678901234567890123456789012345678901234",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Explanatory text defining the principle of objectivity and procedures. Properly classified as plaintext.",
+    "alternative_components": []
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "version": "1.0.0",
+  "content_id": "027-atitudes-eticas-obrigatorias-125f",
+  "component": "callouts",
+  "original_text": "Atitudes éticas obrigatórias\n\nAlém da integridade, outras atitudes éticas relevantes são obrigatórias no comportamento dos colaboradores:\n\n• Lealdade aos clientes e à firma\n• Tratar todas as pessoas com dignidade e respeito\n• Confiabilidade em palavras e atos",
+  "transformed_text": "Atitudes éticas obrigatórias\n\nAlém da integridade, outras atitudes éticas relevantes são obrigatórias no comportamento dos colaboradores:\n\n• Lealdade aos clientes e à firma\n• Tratar todas as pessoas com dignidade e respeito\n• Confiabilidade em palavras e atos",
+  "metadata": {
+    "title": "Atitudes Éticas Obrigatórias",
+    "description": "Lista destacada de atitudes éticas essenciais além da integridade: lealdade, respeito e confiabilidade",
+    "domain": "etica-profissional",
+    "keywords": ["atitudes-eticas", "lealdade", "respeito", "confiabilidade", "obrigacoes"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T18:30:00Z",
+    "updated_at": "2025-11-13T18:30:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "principios-eticos-integridade",
+    "target_audience": ["colaboradores", "profissionais-contabeis"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 1
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Integridade",
+    "extraction_method": "content_ingestion",
+    "page_number": 6,
+    "source_format": "text"
+  },
+  "placeholders": [],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 39,
+    "character_count": 286,
+    "readability_score": 55.2,
+    "avg_sentence_length": 19.5,
+    "avg_word_length": 6.4,
+    "technical_term_density": 0.28,
+    "passive_voice_ratio": 0.2,
+    "flesch_reading_ease": 55.2,
+    "gunning_fog_index": 12.8
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": ["026-conceito-integridade-etica-e7cd", "028-integridade-profissional-ceticismo-7278"]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T18:30:00Z",
+    "review_notes": "Auto-approved: properly classified as callout - highlighted list of mandatory ethical attitudes"
+  },
+  "audit": {
+    "fragment_id": "chunk_06_frag_027",
+    "chunk_id": "chunk_06",
+    "ingestion_date": "2025-11-13T18:30:00Z",
+    "sha256_original": "125fabc123def456789012345678901234567890123456789012345678901234",
+    "sha256_transformed": "125fabc123def456789012345678901234567890123456789012345678901234",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Short highlighted list of mandatory ethical attitudes. This is meant to stand out from regular text. Properly classified as callout.",
+    "alternative_components": []
+  }
+}

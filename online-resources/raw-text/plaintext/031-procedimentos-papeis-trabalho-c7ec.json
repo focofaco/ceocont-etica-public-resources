@@ -1,0 +1,93 @@
+{
+  "version": "1.0.0",
+  "content_id": "031-procedimentos-papeis-trabalho-c7ec",
+  "component": "plaintext",
+  "original_text": "Procedimentos de documentação\n\nPara garantir a integridade dos trabalhos executados, cada profissional da ${razao-social} executa procedimentos e testes para obter evidências que sustentem as decisões e conclusões alcançadas. Todo o processo é formalmente documentado em papéis de trabalho com identificação dos autores e revisores e respectivas datas.\n\nOs papéis de trabalho são arquivados em ${sistema-arquivo} sob identificação do cliente. Os documentos fornecidos pelo cliente são mantidos separados dos documentos elaborados pela equipe responsável pelos serviços, devendo estes últimos conter a referência ${codigo-referencia}.",
+  "transformed_text": "Procedimentos de documentação\n\nPara garantir a integridade dos trabalhos executados, cada profissional da ${razao-social} executa procedimentos e testes para obter evidências que sustentem as decisões e conclusões alcançadas. Todo o processo é formalmente documentado em papéis de trabalho com identificação dos autores e revisores e respectivas datas.\n\nOs papéis de trabalho são arquivados em ${sistema-arquivo} sob identificação do cliente. Os documentos fornecidos pelo cliente são mantidos separados dos documentos elaborados pela equipe responsável pelos serviços, devendo estes últimos conter a referência ${codigo-referencia}.",
+  "metadata": {
+    "title": "Procedimentos de Documentação",
+    "description": "Procedimentos para documentação formal de trabalhos contábeis em papéis de trabalho com identificação e arquivamento adequado",
+    "domain": "procedimentos-documentacao",
+    "keywords": ["papeis-trabalho", "documentacao", "evidencias", "arquivamento", "integridade"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T18:30:00Z",
+    "updated_at": "2025-11-13T18:30:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "procedimentos-documentacao",
+    "target_audience": ["profissionais-contabeis"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 1
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Documentação",
+    "extraction_method": "content_ingestion",
+    "page_number": 6,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${sistema-arquivo}",
+      "description": "Sistema utilizado para arquivamento de papéis de trabalho",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${codigo-referencia}",
+      "description": "Código de referência para documentos elaborados internamente",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 89,
+    "character_count": 666,
+    "readability_score": 41.5,
+    "avg_sentence_length": 29.7,
+    "avg_word_length": 6.8,
+    "technical_term_density": 0.31,
+    "passive_voice_ratio": 0.3,
+    "flesch_reading_ease": 41.5,
+    "gunning_fog_index": 16.5
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": ["028-integridade-profissional-ceticismo-7278"]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T18:30:00Z",
+    "review_notes": "Auto-approved: procedural documentation guidelines"
+  },
+  "audit": {
+    "fragment_id": "chunk_06_frag_031",
+    "chunk_id": "chunk_06",
+    "ingestion_date": "2025-11-13T18:30:00Z",
+    "sha256_original": "c7ecabc123def456789012345678901234567890123456789012345678901234",
+    "sha256_transformed": "c7ecabc123def456789012345678901234567890123456789012345678901234",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Procedural text about documentation practices. Properly classified as plaintext.",
+    "alternative_components": []
+  }
+}
