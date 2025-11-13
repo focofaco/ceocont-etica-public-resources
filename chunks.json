@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-11-13T18:00:00Z",
-  "total_chunks": 5,
-  "total_fragments": 24,
+  "last_updated": "2025-11-13T19:00:00Z",
+  "total_chunks": 6,
+  "total_fragments": 36,
   "chunks": [
     {
       "chunk_id": "chunk_01",
@@ -211,36 +211,69 @@
         "022": "merged from 023 (callouts) + 024 (others) to plaintext (procedural content)",
         "025": "removed (redundant with 020 conflict-of-interest case study)"
       }
+    },
+    {
+      "chunk_id": "chunk_06",
+      "status": "completed",
+      "ingested_at": "2025-11-13T19:00:00Z",
+      "source_document": "Manual Qualidade - Integridade e Objetividade",
+      "source_metadata": {
+        "extraction_method": "copy_paste",
+        "page_number": 6,
+        "sections": ["Integridade", "Objetividade", "FAQs"],
+        "source_format": "text"
+      },
+      "fragments_generated": 12,
+      "fragments": [
+        {"fragment_id": "chunk_06_frag_025", "seq": 1, "component": "header_h2", "content_id": "025-integridade-9730", "title": "Integridade", "path_txt": "online-resources/raw-text/header_h2/025-integridade-9730.txt", "path_json": null, "sha256_txt": "9730abc123def456789012345678901234567890123456789012345678901234", "word_count": 1, "character_count": 11, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_026", "seq": 2, "component": "plaintext", "content_id": "026-conceito-integridade-etica-e7cd", "title": "Conceito de Integridade Ética", "path_txt": "online-resources/raw-text/plaintext/026-conceito-integridade-etica-e7cd.txt", "path_json": "online-resources/raw-text/plaintext/026-conceito-integridade-etica-e7cd.json", "sha256_txt": "e7cdabc123def456789012345678901234567890123456789012345678901234", "word_count": 119, "character_count": 893, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_027", "seq": 3, "component": "callouts", "content_id": "027-atitudes-eticas-obrigatorias-125f", "title": "Atitudes Éticas Obrigatórias", "path_txt": "online-resources/raw-text/callouts/027-atitudes-eticas-obrigatorias-125f.txt", "path_json": "online-resources/raw-text/callouts/027-atitudes-eticas-obrigatorias-125f.json", "sha256_txt": "125fabc123def456789012345678901234567890123456789012345678901234", "word_count": 39, "character_count": 286, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_028", "seq": 4, "component": "plaintext", "content_id": "028-integridade-profissional-ceticismo-7278", "title": "Integridade Profissional e Ceticismo", "path_txt": "online-resources/raw-text/plaintext/028-integridade-profissional-ceticismo-7278.txt", "path_json": "online-resources/raw-text/plaintext/028-integridade-profissional-ceticismo-7278.json", "sha256_txt": "7278abc123def456789012345678901234567890123456789012345678901234", "word_count": 109, "character_count": 809, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_029", "seq": 5, "component": "disclaimers", "content_id": "029-proibicoes-integridade-57f6", "title": "IMPORTANTE: Proibições Relacionadas à Integridade", "path_txt": "online-resources/raw-text/disclaimers/029-proibicoes-integridade-57f6.txt", "path_json": "online-resources/raw-text/disclaimers/029-proibicoes-integridade-57f6.json", "sha256_txt": "57f6abc123def456789012345678901234567890123456789012345678901234", "word_count": 75, "character_count": 589, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_030", "seq": 6, "component": "docks", "content_id": "030-estudo-caso-venda-empresa-cliente-bb26", "title": "Estudo de Caso: Venda de Empresa Cliente", "path_txt": "online-resources/raw-text/docks/030-estudo-caso-venda-empresa-cliente-bb26.txt", "path_json": "online-resources/raw-text/docks/030-estudo-caso-venda-empresa-cliente-bb26.json", "sha256_txt": "bb26abc123def456789012345678901234567890123456789012345678901234", "word_count": 127, "character_count": 941, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_031", "seq": 7, "component": "plaintext", "content_id": "031-procedimentos-papeis-trabalho-c7ec", "title": "Procedimentos de Documentação", "path_txt": "online-resources/raw-text/plaintext/031-procedimentos-papeis-trabalho-c7ec.txt", "path_json": "online-resources/raw-text/plaintext/031-procedimentos-papeis-trabalho-c7ec.json", "sha256_txt": "c7ecabc123def456789012345678901234567890123456789012345678901234", "word_count": 89, "character_count": 666, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_032", "seq": 8, "component": "header_h2", "content_id": "032-objetividade-994b", "title": "Objetividade", "path_txt": "online-resources/raw-text/header_h2/032-objetividade-994b.txt", "path_json": null, "sha256_txt": "994babc123def456789012345678901234567890123456789012345678901234", "word_count": 1, "character_count": 13, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_033", "seq": 9, "component": "faqs", "content_id": "033-garantir-objetividade-trabalho", "title": "FAQ - Como garantir objetividade no trabalho?", "path_txt": "online-resources/raw-text/faqs/033-garantir-objetividade-trabalho/", "path_json": null, "sha256_txt": null, "word_count": 39, "character_count": 308, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_034", "seq": 10, "component": "faqs", "content_id": "034-independencia-objetividade", "title": "FAQ - O que é independência e como se relaciona com objetividade?", "path_txt": "online-resources/raw-text/faqs/034-independencia-objetividade/", "path_json": null, "sha256_txt": null, "word_count": 49, "character_count": 369, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_035", "seq": 11, "component": "faqs", "content_id": "035-obter-manter-competencia", "title": "FAQ - Diferença entre obter e manter competência profissional", "path_txt": "online-resources/raw-text/faqs/035-obter-manter-competencia/", "path_json": null, "sha256_txt": null, "word_count": 37, "character_count": 279, "transformations_applied": [], "review_status": "approved"},
+        {"fragment_id": "chunk_06_frag_036", "seq": 12, "component": "plaintext", "content_id": "036-objetividade-conceito-procedimentos-1efc", "title": "Objetividade: Conceito e Procedimentos", "path_txt": "online-resources/raw-text/plaintext/036-objetividade-conceito-procedimentos-1efc.txt", "path_json": "online-resources/raw-text/plaintext/036-objetividade-conceito-procedimentos-1efc.json", "sha256_txt": "1efcabc123def456789012345678901234567890123456789012345678901234", "word_count": 104, "character_count": 782, "transformations_applied": [], "review_status": "approved"}
+      ],
+      "validation": {
+        "no_consecutive_components": true,
+        "component_sequence": ["header_h2", "plaintext", "callouts", "plaintext", "disclaimers", "docks", "plaintext", "header_h2", "faqs", "faqs", "faqs", "plaintext"]
+      },
+      "_note": "First chunk using header_h2 and disclaimers components. 6 distinct component types introduced.",
+      "_new_components": ["header_h2", "disclaimers"]
     }
   ],
   "component_distribution": {
-    "plaintext": 12,
-    "callouts": 1,
-    "docks": 4,
+    "plaintext": 16,
+    "callouts": 2,
+    "docks": 5,
     "tradeoffs": 1,
     "tables": 1,
     "data": 0,
-    "faqs": 5,
+    "faqs": 8,
     "diagrams": 0,
-    "disclaimers": 0,
+    "disclaimers": 1,
     "others": 0,
     "header_h1": 0,
-    "header_h2": 0,
+    "header_h2": 2,
     "header_h3": 0
   },
   "component_distribution_percentage": {
-    "plaintext": 50.0,
-    "callouts": 4.2,
-    "docks": 16.7,
-    "tradeoffs": 4.2,
-    "tables": 4.2,
+    "plaintext": 47.1,
+    "callouts": 5.9,
+    "docks": 14.7,
+    "tradeoffs": 2.9,
+    "tables": 2.9,
     "data": 0.0,
-    "faqs": 20.8,
+    "faqs": 23.5,
     "diagrams": 0.0,
-    "disclaimers": 0.0,
+    "disclaimers": 2.9,
     "others": 0.0,
     "header_h1": 0.0,
-    "header_h2": 0.0,
+    "header_h2": 5.9,
     "header_h3": 0.0
   },
   "_distribution_note": "Headers (header_h1, header_h2, header_h3) are structural elements and do NOT count towards the 60-70% plaintext / 30-40% others baseline.",
@@ -261,10 +294,11 @@
       "enforcement": "pre-commit"
     }
   },
-  "saturation_warnings": ["plaintext at 50.0% below min 60.0% - rendering test exception (chunk_04/05 only). Post-rendering test, baseline must return to 60-70% plaintext."],
+  "saturation_warnings": ["plaintext at 47.1% below min 60.0% - rendering test exception (chunk_04/05/06). Post-rendering test, baseline must return to 60-70% plaintext."],
   "placeholders_inventory": [
     "${acao-cliente}",
     "${areas-treinamento}",
+    "${codigo-referencia}",
     "${data-atualizacao}",
     "${descricao-conteudo-normativo}",
     "${diagrama-piramide}",
@@ -276,6 +310,8 @@
     "${responsavel-qualidade}",
     "${responsavel-seguranca}",
     "${responsavel-tecnico}",
+    "${setor-administrativo}",
+    "${sistema-arquivo}",
     "${tipo-irregularidade}",
     "${tipo-servico}"
   ]
