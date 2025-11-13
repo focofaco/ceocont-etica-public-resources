@@ -1,3 +1,4 @@
-e865a3da9d69fbd5a2c568ea67d9d9748ba313d7919f79e25fc351da5d65c0b7  online-resources/raw-text/meta/TREE.txt
+30f4b78554ab52321d9ec86a33f350f2ebd11731c2159a42ff0c83977bb80734  online-resources/raw-text/meta/TREE.txt
 0fc2bab192eba6b97c6ffe0d87f4cd5231f23395ec752413f6d38f72d62c6e9e  online-resources/raw-text/meta/abbr.json.txt
 bc197e858fe7061127dd52ba30278fba051862b5934d2c790f59e6358a91ebde  online-resources/raw-text/meta/glossario.json.txt
+41f5bfaaff5dee1e10520e90c0df497bbde3a549714c593b96b13585240fe2ad  online-resources/raw-text/plaintext/politica-controle-qualidade-contabil.txt

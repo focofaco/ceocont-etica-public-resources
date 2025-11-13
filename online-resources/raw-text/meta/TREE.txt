@@ -12,5 +12,6 @@ online-resources/raw-text/
 │   └── integrity.txt
 ├── others/
 ├── plaintext/
+│   └── politica-controle-qualidade-contabil.txt
 ├── tables/
 └── tradeoffs/

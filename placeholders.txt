@@ -1,0 +1,8 @@
+# PLACEHOLDERS INVENTORY
+
+## Placeholder format: ${variable-name}
+
+${razao-social}
+${responsavel-qualidade}
+${data-atualizacao}
+${numero-atualizacoes}
