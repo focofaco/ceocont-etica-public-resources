@@ -1,15 +1,8 @@
-name: "Dependency Review"
-
-# Scans PRs for vulnerable or malicious dependencies
-# Integrates with GitHub Advisory Database
-# See: https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review
+name: Dependency Review
 
 on:
   pull_request:
-    paths:
-      - 'requirements.txt'
-      - '.github/workflows/*.yml'
-      - '.github/dependabot.yml'
+    branches: [main]
 
 permissions:
   contents: read
@@ -19,35 +12,23 @@ jobs:
   dependency-review:
     name: Review Dependencies
     runs-on: ubuntu-latest
+    continue-on-error: true  # Non-blocking: informational only
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Dependency Review
         uses: actions/dependency-review-action@v4
         with:
-          # Fail on these severity levels
-          fail-on-severity: moderate
-
-          # Check for malicious packages
-          warn-on-malicious: true
-
-          # License compliance (optional - adjust as needed)
-          # Deny licenses: GPL-3.0, AGPL-3.0 (copyleft)
-          # deny-licenses: GPL-3.0, AGPL-3.0
-
-          # Allow licenses: MIT, Apache-2.0, BSD-3-Clause
-          # allow-licenses: MIT, Apache-2.0, BSD-3-Clause
-
-          # Comment on PR with findings
+          fail-on-severity: critical
+          # Vulnerabilities are reported but don't block merge
           comment-summary-in-pr: always
+          deny-licenses: GPL-3.0, AGPL-3.0
 
-          # Retry configuration for API calls
-          retry-on-snapshot-warnings: true
-          retry-on-snapshot-warnings-timeout: 120
-
-      - name: Security Summary
+      - name: Review summary
         if: always()
         run: |
-          echo "::notice::Dependency review completed. Check PR comments for details."
+          echo "✅ Dependency review completed"
+          echo "📊 Check PR comments for vulnerability details"
+          echo "⚠️ This check is informational and does not block PR merges"

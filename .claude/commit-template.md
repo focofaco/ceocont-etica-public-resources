@@ -1,11 +1,13 @@
 # CONVENTIONAL COMMITS TEMPLATE - AI AGENT ONLY
 
 ## META-TEMPLATE INSTRUCTIONS
+
 **TARGET**: Claude AI Sonnet 4.5 autonomous commit generation
 **PRIORITY**: Deterministic, machine-parseable, zero ambiguity
 **CONSTRAINTS**: No bloat, no optional fluff, exact pattern matching
 
 ## MANDATORY STRUCTURE
+
 ```
 <type>[optional scope]: <description>
 
@@ -15,32 +17,36 @@
 ```
 
 ## TYPE TAXONOMY (EXHAUSTIVE)
+
 ```yaml
-fix:      # patches bug (PATCH in semver)
-feat:     # new functionality (MINOR in semver)
-build:    # build system/external deps (webpack, npm, etc)
-chore:    # maintenance, no production code change
-ci:       # CI config/scripts (GitHub Actions, etc)
-docs:     # documentation only
-perf:     # performance improvement
+fix: # patches bug (PATCH in semver)
+feat: # new functionality (MINOR in semver)
+build: # build system/external deps (webpack, npm, etc)
+chore: # maintenance, no production code change
+ci: # CI config/scripts (GitHub Actions, etc)
+docs: # documentation only
+perf: # performance improvement
 refactor: # neither fix nor feature
-revert:   # reverts previous commit
-style:    # formatting, no code logic change
-test:     # add/update tests
+revert: # reverts previous commit
+style: # formatting, no code logic change
+test: # add/update tests
 ```
 
 ## BREAKING CHANGE MARKERS
+
 - Append `!` after type/scope: `feat!:` or `feat(api)!:`
 - OR include `BREAKING CHANGE:` footer
 - TRIGGERS: Major version bump (MAJOR in semver)
 
 ## SCOPE RULES
+
 - Optional but recommended
 - Use parentheses: `feat(parser):`
 - Lowercase, single word or hyphenated
 - Examples: `api`, `auth`, `database`, `ui-button`
 
 ## DESCRIPTION RULES
+
 - Imperative mood: "add" not "added" or "adds"
 - Lowercase first letter
 - No period at end
@@ -48,12 +54,14 @@ test:     # add/update tests
 - Complete the sentence: "This commit will..."
 
 ## BODY RULES (OPTIONAL)
+
 - Blank line after description
 - Explain WHAT and WHY, not HOW
 - Wrap at 72 characters
 - Multiple paragraphs allowed
 
 ## FOOTER RULES (OPTIONAL)
+
 - Blank line before footer
 - Format: `<token>: <value>` or `<token> #<issue>`
 - Common tokens:
@@ -65,16 +73,19 @@ test:     # add/update tests
 ## AI EXECUTION PATTERNS
 
 ### Pattern A: Simple commit
+
 ```
 feat: add user authentication endpoint
 ```
 
 ### Pattern B: With scope
+
 ```
 fix(parser): handle null values in JSON input
 ```
 
 ### Pattern C: Breaking change (method 1)
+
 ```
 feat(api)!: restructure response format
 
@@ -82,6 +93,7 @@ BREAKING CHANGE: API now returns data in envelope structure
 ```
 
 ### Pattern D: Breaking change (method 2)
+
 ```
 refactor!: drop support for Node 12
 
@@ -89,6 +101,7 @@ BREAKING CHANGE: minimum Node version is now 14.0.0
 ```
 
 ### Pattern E: With body
+
 ```
 fix: prevent race condition in file uploads
 
@@ -97,6 +110,7 @@ Previous implementation allowed concurrent writes causing corruption.
 ```
 
 ### Pattern F: With footer
+
 ```
 feat: add PDF export functionality
 
@@ -105,6 +119,7 @@ Refs: #456
 ```
 
 ### Pattern G: Full structure
+
 ```
 feat(export)!: replace CSV with JSON format
 
@@ -132,6 +147,7 @@ Is it maintenance? → chore
 ```
 
 ## VALIDATION CHECKLIST
+
 - [ ] Type is from approved list
 - [ ] Description is imperative, lowercase, no period
 - [ ] Scope is lowercase, hyphenated if needed
@@ -141,6 +157,7 @@ Is it maintenance? → chore
 - [ ] Commit message is ASCII-safe
 
 ## ANTI-PATTERNS (FORBIDDEN)
+
 ```
 ❌ Added feature X                    # Past tense
 ❌ Fix: bug in parser                 # Capital F
@@ -152,6 +169,7 @@ Is it maintenance? → chore
 ```
 
 ## CORRECT PATTERNS (REQUIRED)
+
 ```
 ✓ feat: add user login
 ✓ fix(parser): handle null values
@@ -161,6 +179,7 @@ Is it maintenance? → chore
 ```
 
 ## SEMVER MAPPING
+
 ```
 fix:     → 0.0.x (PATCH)
 feat:    → 0.x.0 (MINOR)
@@ -168,6 +187,7 @@ feat:    → 0.x.0 (MINOR)
 ```
 
 ## COMMIT GENERATION ALGORITHM
+
 ```python
 def generate_commit(changes_analyzed):
     # 1. Determine type from decision tree
@@ -202,6 +222,7 @@ def generate_commit(changes_analyzed):
 ```
 
 ## PRIORITY EXECUTION RULES
+
 1. ALWAYS use imperative mood
 2. ALWAYS lowercase description first letter
 3. NEVER use period at end of description
@@ -212,4 +233,5 @@ def generate_commit(changes_analyzed):
 8. INCLUDE issue references in footer when applicable
 
 ---
+
 **END OF TEMPLATE - VERSION 1.0.0**

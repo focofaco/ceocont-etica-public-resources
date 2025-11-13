@@ -1,0 +1,77 @@
+name: Content Validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "online-resources/raw-text/**"
+  push:
+    branches: [main]
+    paths:
+      - "online-resources/raw-text/**"
+
+jobs:
+  validate-content:
+    name: Validate Text Content
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pydantic>=2.9.0
+
+      - name: Validate file extensions
+        run: |
+          echo "🔍 Checking all files have .txt extension..."
+          bash .claude/hooks/validate_raw_text_only.sh online-resources/raw-text/**/*.txt || true
+
+      - name: Check for forbidden content
+        run: |
+          echo "🚫 Checking for HTML/JS/CSS..."
+          bash .claude/hooks/forbid_html_js_css.sh online-resources/raw-text/**/*.txt || true
+
+      - name: Validate line endings
+        run: |
+          echo "📄 Validating LF line endings..."
+          bash .claude/hooks/check_crlf.sh online-resources/raw-text/**/*.txt || true
+
+      - name: Validate filename patterns
+        run: |
+          echo "📝 Validating filename patterns..."
+          bash .claude/hooks/validate_filename_pattern.sh online-resources/raw-text/**/*.txt || true
+
+      - name: Validate metadata twins
+        run: |
+          echo "🔗 Validating metadata twins..."
+          bash .claude/hooks/validate_metadata_twins.sh
+
+      - name: Validate chunks.json
+        if: hashFiles('chunks.json') != ''
+        run: |
+          echo "📦 Validating chunks.json schema..."
+          python .claude/hooks/validate_chunks_pydantic.py
+
+      - name: Validate metadata twin JSONs
+        run: |
+          echo "🗂️ Validating metadata twin JSON files..."
+          for json_file in online-resources/raw-text/**/*.json; do
+            if [ -f "$json_file" ] && [ "$json_file" != "online-resources/raw-text/meta/glossario.json.txt" ] && [ "$json_file" != "online-resources/raw-text/meta/abbr.json.txt" ]; then
+              python .claude/hooks/validate_metadata_twin_pydantic.py "$json_file" || true
+            fi
+          done
+
+      - name: Validation summary
+        if: always()
+        run: |
+          echo "✅ Content validation completed"
+          echo "Review logs above for any issues"

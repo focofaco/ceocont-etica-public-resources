@@ -1,184 +1,203 @@
 # ceocont-etica-public-resources
 
-Text-only content repository for CEO Contabilidade ethics and professional standards materials.
+Repository de conteúdo textual puro para recursos públicos de ética profissional e contabilidade.
 
-## 📋 Overview
+## 🤖 AI Agent Ownership & Review Process
 
-This repository serves as a **server-side contract** for delivering pure text content via CDN. It follows strict format enforcement and semantic versioning with cryptographic integrity guarantees.
+This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
+development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
+which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
+recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
+actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
+consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
+agent. **Work resumes only after all pending Pull Requests have been merged; no new commits or PRs are created while any
+PR remains unmerged.**
 
-### Key Characteristics
+## 📋 Visão Geral
 
-- **Text-only content**: UTF-8 encoded `.txt` files with LF line endings
-- **Immutable versioning**: Semantic versioning with SHA256 integrity checks
-- **Path stability**: File paths are stable within MAJOR versions
-- **SSoT architecture**: JSON metadata twins as source of truth
+Este repositório contém **texto puro** (.txt) versionado de forma imutável, com integridade rastreável e estrutura
+estável, para consumo via CDN. É um **servidor de conteúdo** independente de cliente, sem lógica de renderização ou UI.
 
-## 📊 Repository Statistics
-
-- **Content Files**: 4 text files (836 words total)
-- **Metadata Files**: 4 JSON metadata twins
-- **Content Distribution**: 75% plaintext (3), 25% docks (1)
-- **Total Size**: 111K
-- **Commits**: 52
-- **Latest Release**: v1.1.0
-- **In Development**: v2.3.0
-
-*Stats auto-updated by README Updater Agent*
-
-## 🗂️ Content Structure
+## 🏗️ Estrutura
 
 ```
 online-resources/raw-text/
-├── plaintext/          # Flowing text content
-├── callouts/           # Highlighted messages
-├── docks/              # Editorial side notes
-├── tradeoffs/          # Pros/cons lists (+/-)
-├── tables/             # *.tsv.txt (tabular data)
-├── data/               # *.tsv.txt (for charts)
-├── faqs/               # q.txt and a.txt pairs
-├── diagrams/           # *.dot.txt (Graphviz)
-├── disclaimers/        # Legal/risk warnings
-├── others/             # Generic textual content
-└── meta/               # Metadata files
+├── plaintext/          # Texto corrido por box (70-80% do conteúdo)
+├── callouts/           # Mensagens destacadas
+├── docks/              # Notas laterais editoriais
+├── tradeoffs/          # Listas prós/contras (+/-)
+├── tables/             # Tabelas TSV (*.tsv.txt)
+├── data/               # Dados TSV para gráficos
+├── faqs/               # Pares q.txt + a.txt
+├── diagrams/           # Diagramas DOT (*.dot.txt)
+├── disclaimers/        # Avisos legais/risco
+├── others/             # Conteúdo textual genérico
+├── header_h1/          # Cabeçalhos nível 1 (estruturais)
+├── header_h2/          # Cabeçalhos nível 2 (estruturais)
+├── header_h3/          # Cabeçalhos nível 3 (estruturais)
+└── meta/               # Metadados e integridade
     ├── glossario.json.txt
     ├── abbr.json.txt
-    ├── integrity.txt
-    └── TREE.txt
+    ├── integrity.txt   # SHA256 checksums
+    └── TREE.txt        # Estrutura de diretórios
 ```
 
-## 🤖 Autonomous Agents (20)
+## 📦 Versão Atual
 
-This repository is maintained by 20 autonomous GitHub Actions agents running on schedules:
+**v2.0.0** - 2025-11-13
 
-### Basic Health & Maintenance (3)
+Breaking changes: Adição de categorias header_h1/, header_h2/, header_h3/
 
-- **Daily Health Check Agent** - Validates metadata twin sync, file counts
-- **Branch Cleanup Agent** - Removes merged feature branches weekly
-- **Morning Standup Agent** - Daily status updates (weekdays)
+Ver [CHANGELOG.md](CHANGELOG.md) para histórico completo.
 
-### Content Quality Agents (5)
+## 📝 Contratos e Especificações
 
-- **Spell Checker Agent** - Detects typos in PT-BR content daily
-- **Translation Memory Agent** - Builds PT-BR ↔ EN glossary weekly
-- **Character Encoding Agent** - Validates UTF-8, detects BOM/control chars
-- **Locale Validator Agent** - Checks Brazilian date/currency formats
-- **SOC2 Audit Trail Agent** - Immutable compliance logs for all changes
+### Contrato do Servidor
 
-### Advanced Quality Workflows (3)
+- **[server-contract.md](server-contract.md)** - Contrato principal
+- **[server-contract.spec](server-contract.spec)** - Especificação normativa
+- **[contract.schema](contract.schema)** - Schema (latim)
 
-- **Stale Content Detector** - Identifies content >180 days old monthly
-- **Link Checker** - Validates internal file references weekly
-- **Changelog Auto Generator** - Suggests version bumps from commits
+### Guia de Marca
 
-### Repository Maintenance (4)
+- **[server-brandguide.md](server-brandguide.md)** - Guia de marca textual
+- **[server-brandguide.spec](server-brandguide.spec)** - Especificação normativa
+- **[server-brandguide-schema.json](server-brandguide-schema.json)** - Schema JSON
 
-- **Commit Message Validator** - Enforces conventional commits
-- **Auto-label Issues Agent** - Labels issues by keywords
-- **PR Size Labeler** - Labels PRs as XS/S/M/L/XL
-- **Changelog Formatter** - Validates Keep a Changelog format
+## 🔒 Regras de Formato
 
-### Growth & Documentation (2)
+### Permitido
 
-- **Content Growth Tracker** - Tracks file counts, size weekly
-- **README Updater** - Auto-updates statistics in this file
+- ✅ Extensão `.txt` (UTF-8, LF, sem BOM)
+- ✅ Subtipos: `.tsv.txt`, `.dot.txt`, `.json.txt`
+- ✅ Nomenclatura: lowercase-slug-with-hyphens
 
-### Dependency Management (4)
+### Proibido
 
-- **Unused Dependency Cleaner** - Detects unused Python packages monthly
-- **Outdated Dependency Reporter** - Reports outdated deps & security issues weekly
-- **Dependency Graph Generator** - Creates visual dep graphs monthly
-- **Breaking Change Detector** - Alerts on major version bumps in PRs
+- ❌ HTML, JavaScript, CSS
+- ❌ Imagens (SVG, PNG, JPG, WebP)
+- ❌ PDFs, binários, áudio/vídeo
+- ❌ CRLF, BOM, caracteres de controle
 
-## 🔄 Workflows & CI/CD
+## 🛡️ Validação
 
-### Pre-commit Hooks (26 checks)
+### Pre-commit Hooks
 
-- Format validation (UTF-8, LF, no BOM)
-- Security checks (no private keys, no binaries)
-- Structural validation (paths, metadata twins)
-- Code quality (YAML, JSON syntax)
+```bash
+# Instalar pre-commit
+pip install -r requirements.txt
+pre-commit install
 
-### Dependabot
-
-- **Daily** dependency updates at 09:00 BRT (Python) and 10:00 BRT (GitHub Actions)
-- Grouped updates to reduce PR noise
-- Automated security updates
-
-### CodeQL Security Scanning
-
-- Runs on all branches
-- Python security analysis
-- Automated vulnerability detection
-
-## 📦 Versioning
-
-Follows **Semantic Versioning** (MAJOR.MINOR.PATCH):
-
-- **MAJOR**: Breaking changes (path renames, category changes)
-- **MINOR**: New content, compatible enhancements
-- **PATCH**: Bug fixes, typo corrections
-
-### Recent Versions
-
-- **v2.1.0** (2025-11-13): GitHub automation infrastructure (20 agents)
-- **v1.2.0** (2025-11-13): Content quality workflows (v2.2.0)
-- **v1.1.0** (2025-11-12): Enhanced validation and ingestion metadata
-- **v1.0.0** (2025-11-11): Initial stable release
-
-See [CHANGELOG.txt](CHANGELOG.txt) for full version history.
-
-## 🛠️ Development
-
-### Branch Naming Convention
-
-Feature branches must follow: `claude/*-SESSION_ID`
-
-Example: `claude/dev004-v1.2.0-release-011CV4kf1V2XbPxRYPEA6QKV`
-
-### Commit Message Format
-
-Follows **Conventional Commits**:
-
-```
-<type>(<scope>): <description>
-
-[optional body]
+# Executar manualmente
+pre-commit run --all-files
 ```
 
-Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`, `build`
+### Hooks Ativos
 
-### Creating Content
+- ✓ validate_raw_text_only.sh - Apenas .txt permitido
+- ✓ forbid_html_js_css.sh - Sem HTML/JS/CSS
+- ✓ check_crlf.sh - LF obrigatório
+- ✓ validate_filename_pattern.sh - Nomenclatura correta
+- ✓ validate_metadata_twins.sh - Pares .txt/.json válidos
+- ✓ validate_chunks_pydantic.py - Schema chunks.json
+- ✓ validate_metadata_twin_pydantic.py - Schema metadata twins
 
-1. Determine content category (plaintext, callouts, etc.)
-2. Create `.txt` file with lowercase-slug-with-hyphens naming
-3. Ensure UTF-8 encoding with LF line endings
-4. Commit with conventional commit message
-5. Open PR for review
+## 📊 Distribuição de Componentes
 
-## 📜 Contracts & Specifications
+**Baseline obrigatória:**
 
-- **server-contract.md** - Normative contract for content delivery
-- **server-contract.spec** - Formal specification with validation rules
-- **contract.schema** - Latin schema with examples
-- **CLAUDE.md** - AI agent operational rules
+- 70-80% plaintext
+- 20-30% outros componentes
 
-## 🔒 Security
+**Headers são estruturais** e NÃO contam na baseline.
 
-- All file changes logged in SOC2 audit trail
-- Pre-commit security checks (no private keys, no binaries)
-- Daily CodeQL security scanning
-- Dependabot security updates
+Ver [chunks.json](chunks.json) para status atual.
 
-## 📄 License
+## 🔐 Integridade
 
-[License information to be added]
+Todos os arquivos sob `online-resources/raw-text/` possuem checksums SHA256 em:
 
-## 🤝 Contributing
+```
+online-resources/raw-text/meta/integrity.txt
+```
 
-[Contribution guidelines to be added]
+Verificar integridade:
 
----
+```bash
+cd online-resources/raw-text
+sha256sum -c meta/integrity.txt
+```
 
-**Maintained by**: CEO Contabilidade
-**Last Updated**: 2025-11-13
-**Repository**: [ceocont-etica-public-resources](https://github.com/focofacofoco/ceocont-etica-public-resources)
+## 📌 Versionamento Semântico
+
+- **MAJOR** (X.0.0): Breaking changes (renomear/mover paths, nova categoria)
+- **MINOR** (0.X.0): Adições compatíveis (novo conteúdo)
+- **PATCH** (0.0.X): Correções (typos, bugs)
+
+Ver [DEPRECATIONS.txt](DEPRECATIONS.txt) para paths depreciados.
+
+## 🚀 Releases
+
+### Tags Disponíveis
+
+- **v2.0.0** - Header components (BREAKING)
+- **v1.1.0** - Pre-commit hooks e validação
+- **v1.0.0** - Estrutura inicial
+
+### Documentação de Releases
+
+- [RELEASE-v2.0.0.md](RELEASE-v2.0.0.md)
+- [RELEASE-v1.1.0.md](RELEASE-v1.1.0.md)
+- [RELEASE-v1.0.0.md](RELEASE-v1.0.0.md)
+
+## 🔧 Desenvolvimento
+
+### Estrutura de Branches
+
+```
+main                    # Produção (protegida)
+claude/*-SESSION_ID     # Feature branches
+```
+
+### Workflow
+
+1. Criar branch `claude/dev-description-SESSION_ID`
+1. Fazer alterações seguindo [CLAUDE.md](CLAUDE.md)
+1. Validar com pre-commit hooks
+1. Commit com Conventional Commits
+1. Push para branch
+1. Criar Pull Request
+1. Merge para main
+1. Criar GitHub Release (gera tag automaticamente)
+
+## 📚 Documentação Adicional
+
+- **[CLAUDE.md](CLAUDE.md)** - Regras operacionais para AI agents
+- **[TAG-PUSH-WORKAROUND.md](TAG-PUSH-WORKAROUND.md)** - Workflow de tags
+- **[GITHUB-RELEASES-STATUS.md](GITHUB-RELEASES-STATUS.md)** - Status de releases
+
+## 🧩 Metadata Twins
+
+Arquivos .txt podem ter .json metadata twins (Single Source of Truth):
+
+```
+plaintext/001-politica-controle-qualidade-contabil-41f5.txt
+plaintext/001-politica-controle-qualidade-contabil-41f5.json
+```
+
+JSON contém conteúdo completo + metadados. TXT é derivado (CDN only).
+
+## 📞 Suporte
+
+Para issues, bugs ou sugestões:
+
+- GitHub Issues:
+  [ceocont-etica-public-resources/issues](https://github.com/focofaco/ceocont-etica-public-resources/issues)
+
+## 📄 Licença
+
+Este repositório contém conteúdo textual para recursos públicos de ética profissional.
+
+______________________________________________________________________
+
+**Última atualização**: 2025-11-13 | **Versão**: v2.0.0

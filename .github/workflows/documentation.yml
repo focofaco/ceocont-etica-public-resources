@@ -1,0 +1,165 @@
+name: Documentation Quality
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "**.md"
+      - "server-contract.*"
+      - "server-brandguide.*"
+      - "contract.schema"
+  push:
+    branches: [main]
+    paths:
+      - "**.md"
+
+jobs:
+  validate-docs:
+    name: Validate Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check required documentation
+        run: |
+          echo "📚 Checking required documentation files..."
+
+          required_docs=(
+            "README.md:Repository overview and setup instructions"
+            "CLAUDE.md:AI agent operational rules"
+            "CHANGELOG.md:Version history and changes"
+            "server-contract.md:Server-side contract specifications"
+            "server-contract.spec:Normative contract specification"
+            "contract.schema:Contract schema definition"
+            "server-brandguide.md:Brand guide specifications"
+            "server-brandguide.spec:Normative brand guide"
+            "server-brandguide-schema.json:Brand guide schema"
+          )
+
+          missing=0
+          for doc_spec in "${required_docs[@]}"; do
+            IFS=: read -r file description <<< "$doc_spec"
+            if [ -f "$file" ]; then
+              echo "✅ $file - $description"
+            else
+              echo "❌ Missing: $file - $description"
+              missing=$((missing + 1))
+            fi
+          done
+
+          if [ $missing -gt 0 ]; then
+            echo ""
+            echo "❌ Found $missing missing required documentation file(s)"
+            exit 1
+          fi
+
+      - name: Check AI ownership declaration
+        run: |
+          echo "🤖 Checking for AI Agent Ownership declaration..."
+
+          docs_to_check=(
+            "README.md"
+            "CLAUDE.md"
+            "CHANGELOG.md"
+            "server-contract.md"
+            "server-brandguide.md"
+          )
+
+          missing_ownership=0
+          for doc in "${docs_to_check[@]}"; do
+            if [ -f "$doc" ]; then
+              if grep -q "AI Agent Ownership & Review Process" "$doc"; then
+                echo "✅ $doc has ownership declaration"
+              else
+                echo "⚠️ $doc missing ownership declaration"
+                missing_ownership=$((missing_ownership + 1))
+              fi
+            fi
+          done
+
+          if [ $missing_ownership -gt 0 ]; then
+            echo ""
+            echo "⚠️ Warning: $missing_ownership file(s) missing AI ownership declaration"
+            echo "This is not fatal but should be addressed"
+          fi
+
+      - name: Validate CHANGELOG format
+        run: |
+          echo "📋 Validating CHANGELOG.md format..."
+
+          if [ ! -f "CHANGELOG.md" ]; then
+            echo "❌ CHANGELOG.md not found"
+            exit 1
+          fi
+
+          # Check for Keep a Changelog format
+          if ! grep -q "keepachangelog.com" CHANGELOG.md; then
+            echo "⚠️ CHANGELOG.md doesn't reference Keep a Changelog format"
+          fi
+
+          # Check for Semantic Versioning reference
+          if ! grep -q "semver.org" CHANGELOG.md; then
+            echo "⚠️ CHANGELOG.md doesn't reference Semantic Versioning"
+          fi
+
+          # Check for version headers
+          if ! grep -qE "## \[[0-9]+\.[0-9]+\.[0-9]+\]" CHANGELOG.md; then
+            echo "⚠️ No version headers found in CHANGELOG.md"
+          else
+            echo "✅ CHANGELOG.md has proper version headers"
+          fi
+
+      - name: Check for broken internal links
+        run: |
+          echo "🔗 Checking for broken internal file references..."
+
+          # Find all markdown files
+          find . -name "*.md" -type f | while read md_file; do
+            # Extract file references like [text](file.md)
+            grep -oP '\[.*?\]\(\K[^)]+(?=\))' "$md_file" 2>/dev/null | while read link; do
+              # Skip external URLs
+              if [[ "$link" =~ ^https?:// ]]; then
+                continue
+              fi
+
+              # Skip anchors
+              if [[ "$link" =~ ^# ]]; then
+                continue
+              fi
+
+              # Get directory of current markdown file
+              dir=$(dirname "$md_file")
+
+              # Check if referenced file exists
+              if [ ! -f "$dir/$link" ] && [ ! -f "$link" ]; then
+                echo "⚠️ Broken link in $md_file: $link"
+              fi
+            done
+          done
+
+      - name: Check documentation consistency
+        run: |
+          echo "🔄 Checking consistency across documentation..."
+
+          # Check if version numbers match
+          if [ -f "README.md" ] && [ -f "CHANGELOG.md" ]; then
+            readme_version=$(grep -oP 'v\d+\.\d+\.\d+' README.md | head -1)
+            changelog_version=$(grep -oP '\[\d+\.\d+\.\d+\]' CHANGELOG.md | head -1 | tr -d '[]')
+
+            if [ -n "$readme_version" ] && [ -n "$changelog_version" ]; then
+              readme_ver_num="${readme_version#v}"
+              if [ "$readme_ver_num" != "$changelog_version" ]; then
+                echo "⚠️ Version mismatch: README ($readme_version) vs CHANGELOG ($changelog_version)"
+              else
+                echo "✅ Version numbers consistent: $readme_version"
+              fi
+            fi
+          fi
+
+      - name: Documentation summary
+        if: always()
+        run: |
+          echo "✅ Documentation quality checks completed"
+          echo "Review warnings above if any issues were found"

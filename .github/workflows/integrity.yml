@@ -1,0 +1,109 @@
+name: Integrity Verification
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "online-resources/raw-text/**"
+  push:
+    branches: [main]
+    paths:
+      - "online-resources/raw-text/**"
+  workflow_dispatch:
+
+jobs:
+  verify-checksums:
+    name: Verify SHA256 Checksums
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check integrity.txt exists
+        run: |
+          if [ ! -f "online-resources/raw-text/meta/integrity.txt" ]; then
+            echo "⚠️ integrity.txt not found - skipping verification"
+            echo "This is expected for new content before release"
+            exit 0
+          fi
+
+      - name: Verify checksums
+        id: verify
+        run: |
+          cd online-resources/raw-text
+
+          echo "🔐 Verifying SHA256 checksums..."
+
+          if sha256sum -c meta/integrity.txt --quiet 2>&1; then
+            echo "✅ All checksums verified successfully"
+            echo "status=success" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Checksum verification failed"
+            echo "status=failed" >> $GITHUB_OUTPUT
+
+            echo ""
+            echo "Failed files:"
+            sha256sum -c meta/integrity.txt 2>&1 | grep FAILED || true
+
+            # Don't fail on PR - just warn
+            if [ "${{ github.event_name }}" == "pull_request" ]; then
+              echo ""
+              echo "⚠️ This is a warning for PR. Checksums will be regenerated on release."
+              exit 0
+            else
+              exit 1
+            fi
+          fi
+
+      - name: List files without checksums
+        run: |
+          cd online-resources/raw-text
+
+          echo "📋 Checking for files not in integrity.txt..."
+
+          # Get all .txt files
+          find . -name "*.txt" -type f | sort > all_files.txt
+
+          # Get files listed in integrity.txt
+          if [ -f "meta/integrity.txt" ]; then
+            awk '{print $2}' meta/integrity.txt | grep -v "^#" | sort > listed_files.txt
+          else
+            touch listed_files.txt
+          fi
+
+          # Find difference
+          new_files=$(comm -23 all_files.txt listed_files.txt)
+
+          if [ -n "$new_files" ]; then
+            echo "📄 New files not yet in integrity.txt:"
+            echo "$new_files"
+            echo ""
+            echo "These will be added in the next release"
+          else
+            echo "✅ All .txt files are tracked in integrity.txt"
+          fi
+
+      - name: Generate updated checksums (PR only)
+        if: github.event_name == 'pull_request'
+        run: |
+          cd online-resources/raw-text
+
+          echo "🔄 Generating current checksums for reference..."
+
+          # Generate checksums for all files
+          find . -name "*.txt" -type f -not -path "./meta/integrity.txt" | sort | xargs sha256sum > checksums_current.txt
+
+          echo "Current checksums saved to checksums_current.txt"
+          echo "File count: $(wc -l < checksums_current.txt)"
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ "${{ steps.verify.outputs.status }}" == "success" ]; then
+            echo "✅ Integrity verification passed"
+          elif [ "${{ steps.verify.outputs.status }}" == "failed" ]; then
+            echo "⚠️ Integrity verification failed (expected for PRs with new content)"
+          else
+            echo "ℹ️ Integrity verification skipped (no integrity.txt)"
+          fi

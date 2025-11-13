@@ -17,12 +17,7 @@
     "meta": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "id",
-        "name",
-        "description",
-        "scope"
-      ],
+      "required": ["id", "name", "description", "scope"],
       "properties": {
         "id": {
           "type": "string",
@@ -38,33 +33,22 @@
         },
         "scope": {
           "type": "string",
-          "enum": [
-            "online-resources/raw-text"
-          ]
+          "enum": ["online-resources/raw-text"]
         }
       }
     },
     "voice": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "persona",
-        "tone",
-        "allowed_modals",
-        "forbidden_modals"
-      ],
+      "required": ["persona", "tone", "allowed_modals", "forbidden_modals"],
       "properties": {
         "persona": {
           "type": "string",
-          "enum": [
-            "impessoal-assertiva-direta"
-          ]
+          "enum": ["impessoal-assertiva-direta"]
         },
         "tone": {
           "type": "string",
-          "enum": [
-            "normativo-tecnico-autoritario-profissional-serio"
-          ]
+          "enum": ["normativo-tecnico-autoritario-profissional-serio"]
         },
         "allowed_modals": {
           "type": "array",
@@ -87,10 +71,7 @@
     "language": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "encoding",
-        "rules"
-      ],
+      "required": ["encoding", "rules"],
       "properties": {
         "encoding": {
           "type": "string",
@@ -139,10 +120,7 @@
         },
         "faq_pairing": {
           "type": "object",
-          "required": [
-            "question",
-            "answer"
-          ],
+          "required": ["question", "answer"],
           "properties": {
             "question": {
               "type": "string",
@@ -163,12 +141,7 @@
         },
         "tsv_policy": {
           "type": "object",
-          "required": [
-            "extension",
-            "delimiter",
-            "header_required",
-            "decimal"
-          ],
+          "required": ["extension", "delimiter", "header_required", "decimal"],
           "properties": {
             "extension": {
               "type": "string",
@@ -190,10 +163,7 @@
         },
         "dot_policy": {
           "type": "object",
-          "required": [
-            "extension",
-            "one_graph_per_file"
-          ],
+          "required": ["extension", "one_graph_per_file"],
           "properties": {
             "extension": {
               "type": "string",
@@ -210,11 +180,7 @@
     "naming": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "slug_style",
-        "no_parents",
-        "no_leading_slash"
-      ],
+      "required": ["slug_style", "no_parents", "no_leading_slash"],
       "properties": {
         "slug_style": {
           "type": "string",
@@ -233,10 +199,7 @@
     "limits": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "max_file_kb",
-        "max_line_chars"
-      ],
+      "required": ["max_file_kb", "max_line_chars"],
       "properties": {
         "max_file_kb": {
           "type": "integer",
@@ -251,9 +214,7 @@
     "compliance": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "checklist"
-      ],
+      "required": ["checklist"],
       "properties": {
         "checklist": {
           "type": "array",
@@ -317,10 +278,7 @@
           "question": "q.txt",
           "answer": "a.txt"
         },
-        "tradeoff_prefixes": [
-          "+",
-          "−"
-        ],
+        "tradeoff_prefixes": ["+", "−"],
         "tsv_policy": {
           "extension": ".tsv.txt",
           "delimiter": "\\t",

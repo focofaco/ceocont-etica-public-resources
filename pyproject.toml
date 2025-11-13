@@ -1,0 +1,65 @@
+# Python project configuration
+[tool.bandit]
+# Bandit security scanner configuration
+exclude_dirs = [
+  ".git",
+  ".venv",
+  "venv",
+  "node_modules",
+  "__pycache__",
+  ".pytest_cache",
+  "build",
+  "dist"
+]
+skips = []
+
+[tool.black]
+# Black code formatter configuration
+line-length = 120
+target-version = ["py39", "py310", "py311", "py312"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | venv
+  | node_modules
+  | __pycache__
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+# Ruff linter configuration
+line-length = 120
+target-version = "py39"
+exclude = [
+  ".git",
+  ".venv",
+  "venv",
+  "node_modules",
+  "__pycache__",
+  "build",
+  "dist"
+]
+
+[tool.ruff.lint]
+# Enable specific rule sets
+select = [
+  "E",   # pycodestyle errors
+  "W",   # pycodestyle warnings
+  "F",   # pyflakes
+  "I",   # isort
+  "N",   # pep8-naming
+  "UP",  # pyupgrade
+  "B",   # flake8-bugbear
+  "C4",  # flake8-comprehensions
+  "SIM", # flake8-simplify
+]
+ignore = []
+
+[tool.ruff.format]
+# Ruff formatter configuration
+quote-style = "double"
+indent-style = "space"

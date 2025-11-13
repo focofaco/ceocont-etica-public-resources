@@ -1,0 +1,101 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  integrity-check:
+    name: Repository Integrity Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check repository structure
+        run: |
+          echo "🏗️ Validating repository structure..."
+
+          # Check required directories exist
+          required_dirs=(
+            "online-resources/raw-text/plaintext"
+            "online-resources/raw-text/callouts"
+            "online-resources/raw-text/docks"
+            "online-resources/raw-text/tradeoffs"
+            "online-resources/raw-text/tables"
+            "online-resources/raw-text/data"
+            "online-resources/raw-text/faqs"
+            "online-resources/raw-text/diagrams"
+            "online-resources/raw-text/disclaimers"
+            "online-resources/raw-text/others"
+            "online-resources/raw-text/header_h1"
+            "online-resources/raw-text/header_h2"
+            "online-resources/raw-text/header_h3"
+            "online-resources/raw-text/meta"
+          )
+
+          for dir in "${required_dirs[@]}"; do
+            if [ ! -d "$dir" ]; then
+              echo "❌ Missing required directory: $dir"
+              exit 1
+            else
+              echo "✓ Found: $dir"
+            fi
+          done
+
+      - name: Check required files
+        run: |
+          echo "📋 Checking required documentation files..."
+
+          required_files=(
+            "README.md"
+            "CLAUDE.md"
+            "CHANGELOG.md"
+            "CHANGELOG.txt"
+            "server-contract.md"
+            "server-contract.spec"
+            "contract.schema"
+            "server-brandguide.md"
+            "server-brandguide.spec"
+            "server-brandguide-schema.json"
+            ".pre-commit-config.yaml"
+            "requirements.txt"
+            "pyproject.toml"
+          )
+
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "❌ Missing required file: $file"
+              exit 1
+            else
+              echo "✓ Found: $file"
+            fi
+          done
+
+      - name: Check UTF-8 encoding
+        run: |
+          echo "🔤 Validating UTF-8 encoding in .txt files..."
+          find online-resources/raw-text -name "*.txt" -type f | while read file; do
+            if ! file -b --mime-encoding "$file" | grep -q "utf-8\|us-ascii"; then
+              echo "❌ Non-UTF-8 file detected: $file"
+              exit 1
+            fi
+          done
+          echo "✓ All .txt files are UTF-8 encoded"
+
+      - name: Check for BOM
+        run: |
+          echo "🚫 Checking for UTF-8 BOM..."
+          if grep -rl $'^\xEF\xBB\xBF' online-resources/raw-text/ 2>/dev/null; then
+            echo "❌ Files with BOM detected"
+            exit 1
+          fi
+          echo "✓ No BOM detected in any files"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "✅ Repository integrity check completed"

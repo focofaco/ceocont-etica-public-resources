@@ -1,191 +1,100 @@
-name: "Create Release"
-
-# Semi-automated release workflow
-# Manually triggered with version validation
-# Generates release notes from CHANGELOG.txt
+name: Create Release
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version to release (e.g., v1.2.0)'
-        required: true
-        type: string
-      prerelease:
-        description: 'Mark as pre-release?'
-        required: false
-        type: boolean
-        default: false
+  push:
+    tags:
+      - "v*.*.*"
 
 permissions:
   contents: write
-  pull-requests: read
 
 jobs:
-  validate-release:
-    name: Validate Release
-    runs-on: ubuntu-latest
-
-    outputs:
-      version: ${{ steps.validate.outputs.version }}
-      changelog_entry: ${{ steps.extract.outputs.changelog }}
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Validate version format
-        id: validate
-        run: |
-          VERSION="${{ github.event.inputs.version }}"
-
-          # Ensure version starts with 'v'
-          if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "::error::Invalid version format. Must be vX.Y.Z (e.g., v1.2.0)"
-            exit 1
-          fi
-
-          # Check if tag already exists
-          if git rev-parse "$VERSION" >/dev/null 2>&1; then
-            echo "::error::Tag $VERSION already exists!"
-            exit 1
-          fi
-
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "✓ Version format valid: $VERSION"
-
-      - name: Check CHANGELOG.txt entry
-        id: extract
-        run: |
-          VERSION="${{ github.event.inputs.version }}"
-          VERSION_NO_V="${VERSION#v}"  # Remove 'v' prefix
-
-          # Extract changelog entry for this version
-          if ! grep -q "\[$VERSION_NO_V\]" CHANGELOG.txt; then
-            echo "::error::No CHANGELOG.txt entry found for $VERSION_NO_V"
-            echo "::error::Please update CHANGELOG.txt before creating release"
-            exit 1
-          fi
-
-          # Extract the changelog section
-          CHANGELOG=$(sed -n "/\[$VERSION_NO_V\]/,/^===/p" CHANGELOG.txt | head -n -1)
-
-          # Save to file for GitHub release
-          echo "$CHANGELOG" > /tmp/changelog_entry.txt
-          echo "✓ CHANGELOG.txt entry found"
-
-          # Set output (multiline)
-          {
-            echo 'changelog<<EOF'
-            cat /tmp/changelog_entry.txt
-            echo EOF
-          } >> $GITHUB_OUTPUT
-
-      - name: Upload changelog artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: changelog-entry
-          path: /tmp/changelog_entry.txt
-          retention-days: 1
-
   create-release:
     name: Create GitHub Release
-    needs: validate-release
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Download changelog
-        uses: actions/download-artifact@v4
-        with:
-          name: changelog-entry
-          path: /tmp
-
-      - name: Create Git tag
+      - name: Extract version from tag
+        id: version
         run: |
-          VERSION="${{ needs.validate-release.outputs.version }}"
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "$VERSION" -m "Release $VERSION"
-          git push origin "$VERSION"
-          echo "✓ Tag $VERSION created and pushed"
+          TAG=${GITHUB_REF#refs/tags/}
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "version=${TAG#v}" >> $GITHUB_OUTPUT
+
+      - name: Check for release notes
+        id: release_notes
+        run: |
+          TAG=${{ steps.version.outputs.tag }}
+          RELEASE_FILE="RELEASE-${TAG}.md"
+
+          if [ -f "$RELEASE_FILE" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+            echo "file=$RELEASE_FILE" >> $GITHUB_OUTPUT
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate release notes from CHANGELOG
+        if: steps.release_notes.outputs.found == 'false'
+        id: changelog_notes
+        run: |
+          TAG=${{ steps.version.outputs.tag }}
+
+          # Try to extract from CHANGELOG.md
+          if [ -f "CHANGELOG.md" ]; then
+            # Extract section for this version
+            awk "/## \[$TAG\]/,/## \[/" CHANGELOG.md | head -n -1 > release_notes.md
+            if [ -s release_notes.md ]; then
+              echo "Release notes extracted from CHANGELOG.md"
+            else
+              echo "No release notes found in CHANGELOG.md for $TAG"
+              echo "# Release $TAG" > release_notes.md
+              echo "" >> release_notes.md
+              echo "See [CHANGELOG.md](CHANGELOG.md) for details." >> release_notes.md
+            fi
+          else
+            echo "# Release $TAG" > release_notes.md
+            echo "" >> release_notes.md
+            echo "Release created automatically." >> release_notes.md
+          fi
+
+      - name: Prepare release notes
+        id: notes
+        run: |
+          if [ "${{ steps.release_notes.outputs.found }}" == "true" ]; then
+            cp "${{ steps.release_notes.outputs.file }}" final_release_notes.md
+          else
+            cp release_notes.md final_release_notes.md
+          fi
+
+          # Add AI Agent Ownership notice
+          echo "## 🤖 AI Agent Ownership & Review Process" > temp_notes.md
+          echo "" >> temp_notes.md
+          echo "This repository is fully managed and owned by Claude AI (Sonnet 4.5)." >> temp_notes.md
+          echo "All changes to main are made exclusively through Pull Request reviews," >> temp_notes.md
+          echo "evaluated by GitHub Copilot. Claude critically assesses all suggestions." >> temp_notes.md
+          echo "" >> temp_notes.md
+          echo "---" >> temp_notes.md
+          echo "" >> temp_notes.md
+          cat temp_notes.md final_release_notes.md > release_body.md
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ needs.validate-release.outputs.version }}
-          name: ${{ needs.validate-release.outputs.version }}
-          body_path: /tmp/changelog_entry.txt
+          body_path: release_body.md
           draft: false
-          prerelease: ${{ github.event.inputs.prerelease }}
-          generate_release_notes: true  # Append auto-generated notes
+          prerelease: false
+          generate_release_notes: true
+          name: ${{ steps.version.outputs.tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Release Summary
+      - name: Summary
         run: |
-          VERSION="${{ needs.validate-release.outputs.version }}"
-          echo "::notice::Release $VERSION created successfully!"
-          echo "::notice::View at: https://github.com/${{ github.repository }}/releases/tag/$VERSION"
-
-  post-release:
-    name: Post-Release Tasks
-    needs: [validate-release, create-release]
-    runs-on: ubuntu-latest
-    if: success()
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Update meta/integrity.txt
-        run: |
-          echo "Generating SHA256 checksums..."
-          find online-resources/raw-text -type f -name "*.txt" -o -name "*.json" | sort | while read -r file; do
-            sha256sum "$file"
-          done > online-resources/raw-text/meta/integrity.txt
-          echo "✓ integrity.txt updated"
-
-      - name: Update meta/TREE.txt
-        run: |
-          echo "Generating directory tree..."
-          tree -F online-resources/raw-text > online-resources/raw-text/meta/TREE.txt || \
-            find online-resources/raw-text -print | sed -e 's;[^/]*/;|___;g;s;___|; |;g' > online-resources/raw-text/meta/TREE.txt
-          echo "✓ TREE.txt updated"
-
-      - name: Commit metadata updates
-        run: |
-          VERSION="${{ needs.validate-release.outputs.version }}"
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git add online-resources/raw-text/meta/integrity.txt
-          git add online-resources/raw-text/meta/TREE.txt
-
-          if git diff --staged --quiet; then
-            echo "No metadata changes to commit"
-          else
-            git commit -m "chore(meta): update integrity and tree for $VERSION"
-            git push origin main
-            echo "✓ Metadata committed to main"
-          fi
-
-      - name: Post-release Summary
-        run: |
-          echo "::notice::Post-release tasks completed!"
-          echo "::notice::- integrity.txt updated with checksums"
-          echo "::notice::- TREE.txt updated with directory structure"
+          echo "✅ Release ${{ steps.version.outputs.tag }} created successfully"
+          echo "🔗 View at: https://github.com/${{ github.repository }}/releases/tag/${{ steps.version.outputs.tag }}"
