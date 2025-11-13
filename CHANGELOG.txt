@@ -9,6 +9,32 @@ Format based on Keep a Changelog. Project adheres to Semantic Versioning.
 
 ================================================================================
 
+[1.1.0] - 2025-11-13
+
+Added:
+- Pre-commit hooks configuration (.pre-commit-config.yaml)
+- Standard hooks from pre-commit v4.4.0 and v6.0.0
+- Custom validation hook: validate_raw_text_only.sh
+- Custom validation hook: validate_audit_json.py (JSON schema validation)
+- Custom validation hook: forbid_html_js_css.sh
+- Custom validation hook: check_crlf.sh
+- Custom validation hook: validate_filename_pattern.sh
+- First content fragment: 001-politica-controle-qualidade-contabil-41f5.txt
+- Ingestion audit trail system (.claude/ingestion-audit.json)
+- Ingestion audit schema (.claude/ingestion-audit-schema.json)
+
+Removed:
+- shadow-original/ folder (replaced by JSON audit trail)
+- shadow-fragments-original/ folder (replaced by JSON audit trail)
+- shadow-fragments-transformed/ folder (replaced by JSON audit trail)
+
+Changed:
+- Updated brandguide bundle integration
+- Fixed trailing whitespace in contract files
+- Fixed end-of-file newlines in schema files
+
+================================================================================
+
 [1.0.0] - 2025-11-12
 
 Added:
@@ -21,5 +47,6 @@ Added:
 ================================================================================
 
 Links:
-[Unreleased]: https://github.com/focofacofoco/ceocont-etica-public-resources/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/focofacofoco/ceocont-etica-public-resources/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/focofacofoco/ceocont-etica-public-resources/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/focofacofoco/ceocont-etica-public-resources/releases/tag/v1.0.0

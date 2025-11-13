@@ -1,16 +1,17 @@
-online-resources/raw-text/
-├── callouts/
-├── data/
-├── diagrams/
-├── disclaimers/
-├── docks/
-├── faqs/
-├── meta/
-│   ├── TREE.txt
-│   ├── abbr.json.txt
-│   ├── glossario.json.txt
-│   └── integrity.txt
-├── others/
-├── plaintext/
-├── tables/
-└── tradeoffs/
+.
+|____plaintext
+| |____001-politica-controle-qualidade-contabil-41f5.txt
+|____tables
+|____disclaimers
+|____faqs
+|____tradeoffs
+|____diagrams
+|____others
+|____docks
+|____data
+|____meta
+| |____integrity.txt
+| |____abbr.json.txt
+| |____glossario.json.txt
+| |____TREE.txt
+|____callouts

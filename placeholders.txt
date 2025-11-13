@@ -1,0 +1,13 @@
+# PLACEHOLDERS INVENTORY
+
+## Placeholder format: ${variable-name}
+
+${data-atualizacao}
+${diagrama-piramide}
+${numero-atualizacoes}
+${objetivo-correcao}
+${razao-social}
+${responsavel-qualidade}
+${responsavel-tecnico}
+${tipo-irregularidade}
+${tipo-servico}

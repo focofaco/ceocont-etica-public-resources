@@ -5,7 +5,7 @@ Hoc documentum monstrat formam, ordinem et exempla ad res textuales regendas. Om
 
 Radix et Viae
 Radix canonica: online-resources/raw-text/
-Semitae relativae (immutabiles per versionem): 
+Semitae relativae (immutabiles per versionem):
 — plaintext/        — textus currens per arcam.
 — callouts/         — nuntii adluminati.
 — docks/            — notae marginales.
@@ -19,24 +19,24 @@ Semitae relativae (immutabiles per versionem):
 — meta/             — glossario.json.txt, abbr.json.txt, integrity.txt, TREE.txt.
 
 Parametra (Nomina et Significationes)
-versio — index editionis constans; 
-commissum — nota fiduciae mutationis; 
-genitum_at — tempus generationis; 
-basis — fons semitarum relativarum; 
-argumentum_id — nota univoca argumenti; 
-sectio_id — nota univoca sectionis; 
-arca_id — nota univoca arcae; 
-titulus — caput brevius et planum; 
-typus — indoles arcae (textus, callout, dock, tradeoff, faq, tabula, chart, diagramma, cards, tip_list, code, disclaimer, others); 
-proprietates — qualitates additae (varietas, pars, amplitudo, columnae); 
-via — locus textus crudi sub radice; 
-delimitator — signum divisionis in TSV; 
-caput_tabulae — signum de capite adest; 
-lingua — indicium sermonis; 
+versio — index editionis constans;
+commissum — nota fiduciae mutationis;
+genitum_at — tempus generationis;
+basis — fons semitarum relativarum;
+argumentum_id — nota univoca argumenti;
+sectio_id — nota univoca sectionis;
+arca_id — nota univoca arcae;
+titulus — caput brevius et planum;
+typus — indoles arcae (textus, callout, dock, tradeoff, faq, tabula, chart, diagramma, cards, tip_list, code, disclaimer, others);
+proprietates — qualitates additae (varietas, pars, amplitudo, columnae);
+via — locus textus crudi sub radice;
+delimitator — signum divisionis in TSV;
+caput_tabulae — signum de capite adest;
+lingua — indicium sermonis;
 inscriptio — subscriptio brevis.
 
 Structura (Ordo Hierarchicus)
-Argumentum → Sectio → Arca. 
+Argumentum → Sectio → Arca.
 Argumentum tenet plures sectiones; sectio continet plures arcas. Ordo scriptus servandus est; identitates manent constantes.
 
 Exempla Didactica (Latine tantum, cum semitis realibus)
@@ -81,7 +81,7 @@ MMXXIV	VII
 MMXXV	VI
 
 Exemplum VII — FAQ (faqs/)
-Semitae: 
+Semitae:
 Q: online-resources/raw-text/faqs/exemplum/q.txt
 A: online-resources/raw-text/faqs/exemplum/a.txt
 Q:
@@ -113,11 +113,11 @@ Normae Stabilitatis
 Identitates non mutantur; si necesse est, nova editio maior scribitur. Ordo in scriptura sequitur ordinem visendi. Textus est crudus; nullae taginae; nullae formulae occultae. Mensurae parcuntur: lineae breves, fasciculi modesti.
 
 Gradus Operis
-I. Designare argumenta, sectiones, arcas. 
-II. Componere textus crudus sub semitis propriis. 
-III. Relegere et normalizare. 
-IV. Signare versionem et memorare genitum_at. 
-V. Scribere arborem (meta/TREE.txt) et integritatem (meta/integrity.txt). 
+I. Designare argumenta, sectiones, arcas.
+II. Componere textus crudus sub semitis propriis.
+III. Relegere et normalizare.
+IV. Signare versionem et memorare genitum_at.
+V. Scribere arborem (meta/TREE.txt) et integritatem (meta/integrity.txt).
 VI. Edere per tag fixam.
 
 Clausula

@@ -1,0 +1,108 @@
+{
+  "metadata": {
+    "schema_version": "1.0.0",
+    "created_at": "2025-11-13T00:49:00Z",
+    "last_updated": "2025-11-13T01:15:00Z",
+    "total_chunks": 1,
+    "total_fragments": 1,
+    "component_stats": {
+      "current_distribution": {
+        "plaintext": {"count": 1, "percentage": 100.0},
+        "callouts": {"count": 0, "percentage": 0.0},
+        "docks": {"count": 0, "percentage": 0.0},
+        "tradeoffs": {"count": 0, "percentage": 0.0},
+        "tables": {"count": 0, "percentage": 0.0},
+        "data": {"count": 0, "percentage": 0.0},
+        "faqs": {"count": 0, "percentage": 0.0},
+        "diagrams": {"count": 0, "percentage": 0.0},
+        "disclaimers": {"count": 0, "percentage": 0.0},
+        "others": {"count": 0, "percentage": 0.0}
+      },
+      "target_distribution": {
+        "plaintext": {"min": 70.0, "max": 80.0},
+        "others_combined": {"min": 20.0, "max": 30.0}
+      },
+      "saturation_warnings": []
+    }
+  },
+  "chunks": [
+    {
+      "chunk_id": "chunk_01",
+      "ingested_at": "2025-11-13T00:03:00Z",
+      "source_description": "Manual quality control - cover page policy",
+      "original_text": "Política de controle da qualidade\n\nA ${razao-social}, doravante \"a firma\", estabelece controles de qualidade para os serviços contábeis prestados. A qualidade resulta de políticas, procedimentos e controles internos documentados e comunicados a todos os profissionais. Esses controles devem ser revisados periodicamente para garantir conformidade.\n\nEste Manual de Qualidade e Procedimentos Internos (doravante \"Manual\") define as políticas do sistema de controle da qualidade. O objetivo é assegurar que os profissionais e os serviços prestados observam as normas profissionais e técnicas aplicáveis, emitidas pelo Conselho Federal de Contabilidade (CFC).\n\nO Manual estabelece as práticas, etapas e controles internos adotados pela firma para monitorar os padrões de qualidade dos serviços contábeis.\n\nA firma disponibiliza este Manual a todos os profissionais e estagiários. É obrigatória a leitura. Dúvidas devem ser direcionadas ao ${responsavel-qualidade}.\n\nO Manual é atualizado pelo ${responsavel-qualidade} sempre que ocorram alterações relevantes nas normas técnicas e profissionais aplicáveis ou em regulamentos que impactem os serviços contábeis prestados. A versão atualizada é disponibilizada na rede corporativa.\n\nO Manual é atualizado conforme necessário.\n\nÚltima atualização: ${data-atualizacao}\nNúmero de atualizações: ${numero-atualizacoes}",
+      "sha256_original": "41f5bfaaff5dee1e10520e90c0df497bbde3a549714c593b96b13585240fe2ad",
+      "word_count": 168,
+      "char_count": 1346,
+      "placeholders_detected": [
+        "${razao-social}",
+        "${responsavel-qualidade}",
+        "${data-atualizacao}",
+        "${numero-atualizacoes}"
+      ],
+      "source_metadata": {
+        "document_name": "Manual Qualidade - Contra Capa",
+        "extraction_method": "copy_paste"
+      },
+      "fragments": [
+        {
+          "frag_id": "chunk_01_frag_001",
+          "seq": 1,
+          "section_title": "Política de controle da qualidade",
+          "component": "plaintext",
+          "classification_confidence": 1.0,
+          "classification_reasoning": "Single cohesive policy document, regulatory text, no special formatting markers. Pure plaintext content.",
+          "alternative_components": [],
+          "original_text": "Política de controle da qualidade\n\nA ${razao-social}, doravante \"a firma\", estabelece controles de qualidade para os serviços contábeis prestados. A qualidade resulta de políticas, procedimentos e controles internos documentados e comunicados a todos os profissionais. Esses controles devem ser revisados periodicamente para garantir conformidade.\n\nEste Manual de Qualidade e Procedimentos Internos (doravante \"Manual\") define as políticas do sistema de controle da qualidade. O objetivo é assegurar que os profissionais e os serviços prestados observam as normas profissionais e técnicas aplicáveis, emitidas pelo Conselho Federal de Contabilidade (CFC).\n\nO Manual estabelece as práticas, etapas e controles internos adotados pela firma para monitorar os padrões de qualidade dos serviços contábeis.\n\nA firma disponibiliza este Manual a todos os profissionais e estagiários. É obrigatória a leitura. Dúvidas devem ser direcionadas ao ${responsavel-qualidade}.\n\nO Manual é atualizado pelo ${responsavel-qualidade} sempre que ocorram alterações relevantes nas normas técnicas e profissionais aplicáveis ou em regulamentos que impactem os serviços contábeis prestados. A versão atualizada é disponibilizada na rede corporativa.\n\nO Manual é atualizado conforme necessário.\n\nÚltima atualização: ${data-atualizacao}\nNúmero de atualizações: ${numero-atualizacoes}",
+          "original_word_count": 168,
+          "original_char_count": 1346,
+          "transformed_text": "Política de controle da qualidade\n\nA ${razao-social}, doravante \"a firma\", estabelece controles de qualidade para os serviços contábeis prestados. A qualidade resulta de políticas, procedimentos e controles internos documentados e comunicados a todos os profissionais. Esses controles devem ser revisados periodicamente para garantir conformidade.\n\nEste Manual de Qualidade e Procedimentos Internos (doravante \"Manual\") define as políticas do sistema de controle da qualidade. O objetivo é assegurar que os profissionais e os serviços prestados observam as normas profissionais e técnicas aplicáveis, emitidas pelo Conselho Federal de Contabilidade (CFC).\n\nO Manual estabelece as práticas, etapas e controles internos adotados pela firma para monitorar os padrões de qualidade dos serviços contábeis.\n\nA firma disponibiliza este Manual a todos os profissionais e estagiários. É obrigatória a leitura. Dúvidas devem ser direcionadas ao ${responsavel-qualidade}.\n\nO Manual é atualizado pelo ${responsavel-qualidade} sempre que ocorram alterações relevantes nas normas técnicas e profissionais aplicáveis ou em regulamentos que impactem os serviços contábeis prestados. A versão atualizada é disponibilizada na rede corporativa.\n\nÚltima atualização: ${data-atualizacao}\nNúmero de atualizações: ${numero-atualizacoes}",
+          "transformed_word_count": 165,
+          "transformed_char_count": 1307,
+          "transformations": [
+            {
+              "type": "deduplication",
+              "description": "Removed duplicate line about manual updates",
+              "before": "O Manual é atualizado conforme necessário.",
+              "after": ""
+            }
+          ],
+          "brandguide_compliance": {
+            "overall_score": 0.95,
+            "voice_check": 1.0,
+            "tone_check": 1.0,
+            "modals_allowed": true,
+            "modals_forbidden_detected": [],
+            "max_line_length_ok": true,
+            "max_file_size_ok": true,
+            "utf8_lf_ok": true,
+            "issues": []
+          },
+          "manual_overrides": [],
+          "quality_metrics": {
+            "readability_score": 58.3,
+            "avg_sentence_length": 21.5,
+            "avg_word_length": 6.2,
+            "technical_term_density": 0.18,
+            "passive_voice_ratio": 0.25
+          },
+          "relationships": {
+            "references": [],
+            "referenced_by": [],
+            "related_fragments": []
+          },
+          "warnings": [],
+          "review_status": {
+            "status": "approved",
+            "reviewed_by": "auto",
+            "reviewed_at": "2025-11-13T00:55:00Z",
+            "review_notes": "Auto-approved: brandguide compliance 0.95"
+          },
+          "final_filename": "001-politica-controle-qualidade-contabil-41f5.txt",
+          "final_path": "online-resources/raw-text/plaintext/001-politica-controle-qualidade-contabil-41f5.txt",
+          "final_sha256": "41f5bfaaff5dee1e10520e90c0df497bbde3a549714c593b96b13585240fe2ad"
+        }
+      ]
+    }
+  ]
+}
