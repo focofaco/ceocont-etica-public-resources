@@ -2,15 +2,21 @@
 
 ## 🤖 AI Agent Ownership & Review Process
 
-This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase, development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews, which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural consistency. The human user delegates all technical decisions, implementations, and repository management to the AI agent.
+This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
+development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
+which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
+recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
+actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
+consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
+agent.
 
----
+______________________________________________________________________
 
 ## Workflows Overview
 
 ### 1. Pre-commit Hooks (`pre-commit.yml`)
 
-**Triggers**: Pull requests to main, pushes to main and claude/* branches
+**Triggers**: Pull requests to main, pushes to main and claude/\* branches
 
 **Purpose**: Runs all pre-commit hooks (50+ checks) including:
 
@@ -23,7 +29,7 @@ This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has 
 
 **Why**: Ensures code quality and consistency before merging
 
----
+______________________________________________________________________
 
 ### 2. Content Validation (`content-validation.yml`)
 
@@ -40,7 +46,7 @@ This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has 
 
 **Why**: Enforces server-side contract for text-only content
 
----
+______________________________________________________________________
 
 ### 3. Continuous Integration (`ci.yml`)
 
@@ -56,7 +62,7 @@ This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has 
 
 **Why**: Ensures repository structure remains intact
 
----
+______________________________________________________________________
 
 ### 4. Copilot Review (`copilot-review.yml`)
 
@@ -72,7 +78,7 @@ This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has 
 
 **Why**: Assists Claude AI in evaluating PRs systematically
 
----
+______________________________________________________________________
 
 ### 5. Release Automation (`release.yml`)
 
@@ -88,7 +94,7 @@ This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has 
 
 **Why**: Streamlines version release process
 
----
+______________________________________________________________________
 
 ### 6. Integrity Verification (`integrity.yml`)
 
@@ -103,7 +109,7 @@ This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has 
 
 **Why**: Ensures cryptographic integrity of content
 
----
+______________________________________________________________________
 
 ### 7. Documentation Quality (`documentation.yml`)
 
@@ -119,7 +125,7 @@ This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has 
 
 **Why**: Maintains documentation quality and completeness
 
----
+______________________________________________________________________
 
 ## Workflow Dependencies
 
@@ -189,6 +195,6 @@ act
 - **Per Release**: Ensure release.yml creates proper releases
 - **As Needed**: Adjust validation rules in workflows
 
----
+______________________________________________________________________
 
 **Last Updated**: 2025-11-13 | **Total Workflows**: 7
