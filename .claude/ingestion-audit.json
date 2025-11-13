@@ -2,9 +2,28 @@
   "metadata": {
     "schema_version": "1.0.0",
     "created_at": "2025-11-13T00:49:00Z",
-    "last_updated": "2025-11-13T00:49:00Z",
+    "last_updated": "2025-11-13T00:55:00Z",
     "total_chunks": 2,
-    "total_fragments": 2
+    "total_fragments": 2,
+    "component_stats": {
+      "current_distribution": {
+        "plaintext": {"count": 1, "percentage": 100.0},
+        "callouts": {"count": 0, "percentage": 0.0},
+        "docks": {"count": 0, "percentage": 0.0},
+        "tradeoffs": {"count": 0, "percentage": 0.0},
+        "tables": {"count": 0, "percentage": 0.0},
+        "data": {"count": 0, "percentage": 0.0},
+        "faqs": {"count": 0, "percentage": 0.0},
+        "diagrams": {"count": 0, "percentage": 0.0},
+        "disclaimers": {"count": 0, "percentage": 0.0},
+        "others": {"count": 0, "percentage": 0.0}
+      },
+      "target_distribution": {
+        "plaintext": {"min": 70.0, "max": 80.0},
+        "others_combined": {"min": 20.0, "max": 30.0}
+      },
+      "saturation_warnings": []
+    }
   },
   "chunks": [
     {
@@ -21,6 +40,10 @@
         "${data-atualizacao}",
         "${numero-atualizacoes}"
       ],
+      "source_metadata": {
+        "document_name": "Manual Qualidade - Contra Capa",
+        "extraction_method": "copy_paste"
+      },
       "fragments": [
         {
           "frag_id": "chunk_01_frag_001",
@@ -56,6 +79,25 @@
             "issues": []
           },
           "manual_overrides": [],
+          "quality_metrics": {
+            "readability_score": 58.3,
+            "avg_sentence_length": 21.5,
+            "avg_word_length": 6.2,
+            "technical_term_density": 0.18,
+            "passive_voice_ratio": 0.25
+          },
+          "relationships": {
+            "references": [],
+            "referenced_by": [],
+            "related_fragments": []
+          },
+          "warnings": [],
+          "review_status": {
+            "status": "approved",
+            "reviewed_by": "auto",
+            "reviewed_at": "2025-11-13T00:55:00Z",
+            "review_notes": "Auto-approved: brandguide compliance 0.95"
+          },
           "final_filename": "001-politica-controle-qualidade-contabil-41f5.txt",
           "final_path": "online-resources/raw-text/plaintext/001-politica-controle-qualidade-contabil-41f5.txt",
           "final_sha256": "41f5bfaaff5dee1e10520e90c0df497bbde3a549714c593b96b13585240fe2ad"
