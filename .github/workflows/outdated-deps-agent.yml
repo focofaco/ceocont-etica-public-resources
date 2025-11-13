@@ -220,7 +220,7 @@ jobs:
 
       - name: Upload report
         if: steps.check-outdated.outputs.has_outdated == 'true' || steps.check-outdated.outputs.has_security == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: outdated-deps-report
           path: outdated-deps-report.md

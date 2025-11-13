@@ -216,7 +216,7 @@ jobs:
 
       - name: Upload graphs as artifacts
         if: steps.generate.outputs.has_graphs == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: dependency-graphs
           path: |

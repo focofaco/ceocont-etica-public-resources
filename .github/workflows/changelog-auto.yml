@@ -247,7 +247,7 @@ jobs:
             core.notice('Review changelog-entry.md artifact for details');
 
       - name: Upload changelog artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: changelog-artifacts
           path: |
