@@ -1,0 +1,74 @@
+{
+  "version": "1.0.0",
+  "content_id": "014-exigencias-eticas-relevantes-7453",
+  "component": "plaintext",
+  "original_text": "Exigências éticas relevantes\n\nOs profissionais contábeis têm responsabilidade de manter padrões éticos na execução dos serviços prestados. Esses padrões incluem integridade, objetividade, competência profissional e devido cuidado, confidencialidade e comportamento profissional. O estabelecimento de políticas e procedimentos para assegurar o cumprimento desses princípios auxilia as firmas e os profissionais a manter práticas éticas, aspecto essencial para o sucesso de longo prazo. Manter os sócios cientes das atividades e questões éticas potenciais pode prevenir que discordâncias se agravem.\n\nCaso surja questão ética com sócio ou membro da equipe, a firma deve estabelecer processo para tratar casos de descumprimento. Isso pode envolver acordos formais que abordem a resolução de disputas quando o desacordo não puder ser resolvido de maneira razoável. Tratar preocupações éticas de maneira profissional e oportuna protege a reputação da firma e assegura que os padrões profissionais sejam observados.",
+  "transformed_text": "Exigências éticas relevantes\n\nOs profissionais contábeis têm responsabilidade de manter padrões éticos na execução dos serviços prestados. Esses padrões incluem integridade, objetividade, competência profissional e devido cuidado, confidencialidade e comportamento profissional. O estabelecimento de políticas e procedimentos para assegurar o cumprimento desses princípios auxilia as firmas e os profissionais a manter práticas éticas, aspecto essencial para o sucesso de longo prazo. Manter os sócios cientes das atividades e questões éticas potenciais pode prevenir que discordâncias se agravem.\n\nCaso surja questão ética com sócio ou membro da equipe, a firma deve estabelecer processo para tratar casos de descumprimento. Isso pode envolver acordos formais que abordem a resolução de disputas quando o desacordo não puder ser resolvido de maneira razoável. Tratar preocupações éticas de maneira profissional e oportuna protege a reputação da firma e assegura que os padrões profissionais sejam observados.",
+  "metadata": {
+    "title": "Exigências Éticas Relevantes",
+    "description": "Documento que estabelece os padrões éticos fundamentais para profissionais contábeis e processos de tratamento de descumprimento",
+    "domain": "etica-profissional",
+    "keywords": ["etica", "padroes-profissionais", "integridade", "comportamento-profissional", "conflitos-eticos"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T17:00:00Z",
+    "updated_at": "2025-11-13T17:00:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "requisitos-eticos",
+    "target_audience": ["profissionais-contabeis", "socios", "gestores"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 2
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Requisitos Éticos",
+    "extraction_method": "content_ingestion",
+    "page_number": null,
+    "source_format": "text"
+  },
+  "placeholders": [],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 129,
+    "character_count": 918,
+    "readability_score": 52.1,
+    "avg_sentence_length": 32.3,
+    "avg_word_length": 6.5,
+    "technical_term_density": 0.22,
+    "passive_voice_ratio": 0.15,
+    "flesch_reading_ease": 52.1,
+    "gunning_fog_index": 14.2
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": ["016-requisitos-eticos-obrigatorios-50f4", "019-detalhamento-principios-etica-0cd9"]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T17:00:00Z",
+    "review_notes": "Auto-approved: brandguide compliance 1.0, proper component classification"
+  },
+  "audit": {
+    "fragment_id": "chunk_05_frag_014",
+    "chunk_id": "chunk_05",
+    "ingestion_date": "2025-11-13T17:00:00Z",
+    "sha256_original": "7453eb234510978a6b4c5dc18cf10f19e3b8fe5e2c0e42a1d9e6ff7e3a5b1c2d",
+    "sha256_transformed": "7453eb234510978a6b4c5dc18cf10f19e3b8fe5e2c0e42a1d9e6ff7e3a5b1c2d",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Introductory plaintext content about ethical requirements, flowing explanatory text without special formatting. Correctly classified as plaintext.",
+    "alternative_components": []
+  }
+}

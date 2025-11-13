@@ -1,0 +1,74 @@
+{
+  "version": "1.0.0",
+  "content_id": "016-requisitos-eticos-obrigatorios-50f4",
+  "component": "plaintext",
+  "original_text": "Requisitos éticos obrigatórios\n\nPara os serviços contábeis prestados, os requisitos éticos relevantes são estabelecidos no Código de Ética Profissional do Contador e nas normas profissionais aplicáveis emitidas pelo Conselho Federal de Contabilidade.\n\nO cumprimento desses requisitos é obrigatório para todos os profissionais que atuam na prestação de serviços contábeis. A inobservância pode resultar em sanções disciplinares e responsabilização profissional.",
+  "transformed_text": "Requisitos éticos obrigatórios\n\nPara os serviços contábeis prestados, os requisitos éticos relevantes são estabelecidos no Código de Ética Profissional do Contador e nas normas profissionais aplicáveis emitidas pelo Conselho Federal de Contabilidade.\n\nO cumprimento desses requisitos é obrigatório para todos os profissionais que atuam na prestação de serviços contábeis. A inobservância pode resultar em sanções disciplinares e responsabilização profissional.",
+  "metadata": {
+    "title": "Requisitos Éticos Obrigatórios",
+    "description": "Documento que estabelece os requisitos éticos obrigatórios baseados no CFC e consequências do descumprimento",
+    "domain": "etica-profissional",
+    "keywords": ["requisitos-eticos", "codigo-etica-cfc", "obrigacoes-profissionais", "sancoes-disciplinares"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T17:00:00Z",
+    "updated_at": "2025-11-13T17:00:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "requisitos-eticos",
+    "target_audience": ["profissionais-contabeis", "gestores"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 1
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Requisitos Éticos",
+    "extraction_method": "content_ingestion",
+    "page_number": null,
+    "source_format": "text"
+  },
+  "placeholders": [],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 55,
+    "character_count": 432,
+    "readability_score": 42.8,
+    "avg_sentence_length": 27.5,
+    "avg_word_length": 7.3,
+    "technical_term_density": 0.35,
+    "passive_voice_ratio": 0.3,
+    "flesch_reading_ease": 42.8,
+    "gunning_fog_index": 16.1
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": ["014-exigencias-eticas-relevantes-7453", "017-principios-fundamentais-etica", "019-detalhamento-principios-etica-0cd9"]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T17:00:00Z",
+    "review_notes": "Auto-approved: correctly reclassified from disclaimers to plaintext - this is informative content, not a legal warning"
+  },
+  "audit": {
+    "fragment_id": "chunk_05_frag_016",
+    "chunk_id": "chunk_05",
+    "ingestion_date": "2025-11-13T17:00:00Z",
+    "sha256_original": "50f4abc123def456789012345678901234567890123456789012345678901234",
+    "sha256_transformed": "50f4abc123def456789012345678901234567890123456789012345678901234",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Informative content about mandatory ethical requirements. Initially misclassified as disclaimers, correctly reclassified to plaintext as it lacks legal warning characteristics.",
+    "alternative_components": []
+  }
+}

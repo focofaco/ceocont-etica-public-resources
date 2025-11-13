@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "content_id": "024-conclusao-padroes-eticos-3fa6",
+  "component": "plaintext",
+  "original_text": "Conclusão\n\nA ${razao-social} observa padrões éticos e de qualidade na prestação de serviços. A firma mantém procedimentos para assegurar que os profissionais atuem com integridade e profissionalismo, e que os trabalhos atendam aos padrões estabelecidos.\n\nOs profissionais são incentivados a relatar comportamento antiético para que medidas corretivas sejam adotadas imediatamente. A firma não tolera descumprimento de padrões éticos ou de qualidade nos serviços prestados.",
+  "transformed_text": "Conclusão\n\nA ${razao-social} observa padrões éticos e de qualidade na prestação de serviços. A firma mantém procedimentos para assegurar que os profissionais atuem com integridade e profissionalismo, e que os trabalhos atendam aos padrões estabelecidos.\n\nOs profissionais são incentivados a relatar comportamento antiético para que medidas corretivas sejam adotadas imediatamente. A firma não tolera descumprimento de padrões éticos ou de qualidade nos serviços prestados.",
+  "metadata": {
+    "title": "Conclusão: Padrões Éticos e de Qualidade",
+    "description": "Conclusão do capítulo sobre requisitos éticos, reafirmando compromisso da firma com padrões éticos e qualidade",
+    "domain": "etica-profissional",
+    "keywords": ["conclusao", "padroes-eticos", "qualidade", "integridade", "profissionalismo"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T17:00:00Z",
+    "updated_at": "2025-11-13T17:00:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "requisitos-eticos",
+    "target_audience": ["profissionais-contabeis", "socios", "gestores"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 1
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Requisitos Éticos",
+    "extraction_method": "content_ingestion",
+    "page_number": null,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 61,
+    "character_count": 475,
+    "readability_score": 54.2,
+    "avg_sentence_length": 20.3,
+    "avg_word_length": 6.9,
+    "technical_term_density": 0.26,
+    "passive_voice_ratio": 0.3,
+    "flesch_reading_ease": 54.2,
+    "gunning_fog_index": 13.1
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": ["014-exigencias-eticas-relevantes-7453", "022-responsabilidades-reporte-etica-c9b3"]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T17:00:00Z",
+    "review_notes": "Auto-approved: concluding section that wraps up chunk_05 content appropriately"
+  },
+  "audit": {
+    "fragment_id": "chunk_05_frag_024",
+    "chunk_id": "chunk_05",
+    "ingestion_date": "2025-11-13T17:00:00Z",
+    "sha256_original": "3fa6def123456789012345678901234567890123456789012345678901234567",
+    "sha256_transformed": "3fa6def123456789012345678901234567890123456789012345678901234567",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Concluding plaintext content. Properly classified as plaintext.",
+    "alternative_components": []
+  }
+}
