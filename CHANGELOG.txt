@@ -38,7 +38,7 @@ Changed:
 
 Note:
 - Headers (header_h1, header_h2, header_h3) are structural elements
-- Headers do NOT count towards 70-80% plaintext / 20-30% others baseline
+- Headers do NOT count towards 70-80% plaintext and 20-30% others baseline
 - This is backward compatible - existing clients continue to work
 - New components are additive only, no breaking changes
 
