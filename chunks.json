@@ -43,7 +43,10 @@
     "faqs": 0,
     "diagrams": 0,
     "disclaimers": 0,
-    "others": 0
+    "others": 0,
+    "header_h1": 0,
+    "header_h2": 0,
+    "header_h3": 0
   },
   "component_distribution_percentage": {
     "plaintext": 100.0,
@@ -55,8 +58,12 @@
     "faqs": 0.0,
     "diagrams": 0.0,
     "disclaimers": 0.0,
-    "others": 0.0
+    "others": 0.0,
+    "header_h1": 0.0,
+    "header_h2": 0.0,
+    "header_h3": 0.0
   },
+  "_distribution_note": "Headers (header_h1, header_h2, header_h3) are structural elements and do NOT count towards the 70-80% plaintext / 20-30% others baseline.",
   "target_distribution": {
     "plaintext": {
       "min": 70.0,

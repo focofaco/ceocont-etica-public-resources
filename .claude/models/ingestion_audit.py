@@ -163,7 +163,7 @@ class Fragment(BaseModel):
     section_title: Optional[str] = None
     component: str = Field(
         ...,
-        pattern=r"^(plaintext|callouts|docks|tradeoffs|tables|data|faqs|diagrams|disclaimers|others)$"
+        pattern=r"^(plaintext|callouts|docks|tradeoffs|tables|data|faqs|diagrams|disclaimers|others|header_h1|header_h2|header_h3)$"
     )
     classification_confidence: float = Field(..., ge=0.0, le=1.0)
     classification_reasoning: Optional[str] = None

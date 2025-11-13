@@ -105,7 +105,7 @@ class MetadataTwin(BaseModel):
 
     version: str = Field(..., pattern=r"^\d+\.\d+\.\d+$")
     content_id: str = Field(..., pattern=r"^\d{3}-[a-z0-9-]+-[a-f0-9]{4}$")
-    component: str = Field(..., pattern=r"^(plaintext|callouts|docks|tradeoffs|tables|data|faqs|diagrams|disclaimers|others)$")
+    component: str = Field(..., pattern=r"^(plaintext|callouts|docks|tradeoffs|tables|data|faqs|diagrams|disclaimers|others|header_h1|header_h2|header_h3)$")
     original_text: str = Field(..., min_length=1)
     transformed_text: str = Field(..., min_length=1)
     metadata: Metadata

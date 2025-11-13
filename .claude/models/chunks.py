@@ -15,7 +15,7 @@ class Fragment(BaseModel):
     """Fragment information."""
     fragment_id: str = Field(..., pattern=r"^chunk_\d+_frag_\d+$")
     seq: int = Field(..., ge=1)
-    component: str = Field(..., pattern=r"^(plaintext|callouts|docks|tradeoffs|tables|data|faqs|diagrams|disclaimers|others)$")
+    component: str = Field(..., pattern=r"^(plaintext|callouts|docks|tradeoffs|tables|data|faqs|diagrams|disclaimers|others|header_h1|header_h2|header_h3)$")
     content_id: str = Field(..., pattern=r"^\d{3}-[a-z0-9-]+-[a-f0-9]{4}$")
     title: str
     path_txt: str = Field(..., pattern=r"^online-resources/raw-text/.+\.txt$")
@@ -50,6 +50,9 @@ class ComponentDistribution(BaseModel):
     diagrams: int = Field(..., ge=0)
     disclaimers: int = Field(..., ge=0)
     others: int = Field(..., ge=0)
+    header_h1: int = Field(..., ge=0)
+    header_h2: int = Field(..., ge=0)
+    header_h3: int = Field(..., ge=0)
 
 
 class ComponentDistributionPercentage(BaseModel):
@@ -64,6 +67,9 @@ class ComponentDistributionPercentage(BaseModel):
     diagrams: float = Field(..., ge=0.0, le=100.0)
     disclaimers: float = Field(..., ge=0.0, le=100.0)
     others: float = Field(..., ge=0.0, le=100.0)
+    header_h1: float = Field(..., ge=0.0, le=100.0)
+    header_h2: float = Field(..., ge=0.0, le=100.0)
+    header_h3: float = Field(..., ge=0.0, le=100.0)
 
 
 class TargetRange(BaseModel):
