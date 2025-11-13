@@ -102,16 +102,32 @@ pre-commit run --all-files
 - ✓ validate_chunks_pydantic.py - Schema chunks.json
 - ✓ validate_metadata_twin_pydantic.py - Schema metadata twins
 
-## 📊 Distribuição de Componentes
+## 📊 Estatísticas do Repositório
+
+**Estado atual:**
+
+- **Total de fragmentos:** 51 (36 conteúdo + 15 headers)
+- **Total de chunks:** 6
+- **Componentes em uso:** 8 (plaintext, callouts, docks, tradeoffs, tables, faqs, disclaimers, headers h1/h2)
+- **Placeholders rastreados:** 18
+
+**Distribuição de fragmentos:**
+
+- 47.1% plaintext (24 fragmentos)
+- 23.5% faqs (12 fragmentos)
+- 14.7% docks (7 fragmentos)
+- 5.9% callouts (3 fragmentos)
+- 5.9% header_h2 (3 fragmentos)
+- 3.9% disclaimers (2 fragmentos)
 
 **Baseline obrigatória:**
 
-- 70-80% plaintext
+- 70-80% plaintext (meta: conteúdo textual principal)
 - 20-30% outros componentes
 
-**Headers são estruturais** e NÃO contam na baseline.
+**Headers são estruturais** e NÃO contam na baseline de conteúdo.
 
-Ver [chunks.json](chunks.json) para status atual.
+Ver [chunks.json](chunks.json) para status completo e atualizado.
 
 ## 🔐 Integridade
 
@@ -163,12 +179,21 @@ claude/*-SESSION_ID     # Feature branches
 
 1. Criar branch `claude/dev-description-SESSION_ID`
 1. Fazer alterações seguindo [CLAUDE.md](CLAUDE.md)
+1. Se aplicável, extrair headers (h1, h2) de fragmentos plaintext para header_h1/ e header_h2/
 1. Validar com pre-commit hooks
 1. Commit com Conventional Commits
 1. Push para branch
 1. Criar Pull Request
 1. Merge para main
 1. Criar GitHub Release (gera tag automaticamente)
+
+**Processo de extração de headers:**
+
+Headers estruturais (h1, h2) são extraídos de fragmentos plaintext e armazenados em categorias dedicadas (header_h1/, header_h2/). Este processo mantém:
+- Headers como componentes estruturais separados
+- Atualização de metadata twins para referenciar headers extraídos
+- Chunks.json atualizado com novos fragmentos
+- Integridade de referências entre fragmentos e headers
 
 ## 📚 Documentação Adicional
 
