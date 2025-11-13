@@ -17,3 +17,4 @@ b40b846dc9e2d1664a707e732d52361835e4e67bfafd21fe6d4beee5f9e8d857  ./meta/glossar
 8672ef6b0b88872d0c43ab2b91c4e30c9eab3b22da96148525438f8a403d2a3c  ./plaintext/README.md
 ca63e7ec518f43d2624ecb75a145e2a702902feed94c63568ed1161b58ed2ec2  ./tables/README.md
 bd6c9e7be5b9224d72ff3c75ab5e6fd6c15cb59991aa2bacc7dd1a6d1faa37c7  ./tradeoffs/README.md
+# Note: The checksum of ./meta/integrity.txt itself is intentionally omitted to avoid circular dependency.
