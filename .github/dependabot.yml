@@ -9,8 +9,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "daily"
       time: "09:00"
       timezone: "America/Sao_Paulo"
     open-pull-requests-limit: 5
@@ -35,8 +34,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "daily"
       time: "10:00"
       timezone: "America/Sao_Paulo"
     open-pull-requests-limit: 3

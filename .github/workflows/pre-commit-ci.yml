@@ -1,7 +1,7 @@
 name: "Pre-commit Checks"
 
 # Run pre-commit hooks on PRs to catch issues early
-# Auto-fix capability: Can commit fixes back to PR (disabled by default)
+# Auto-fix capability: ENABLED - commits fixes back to PR automatically
 
 on:
   pull_request:
@@ -46,19 +46,17 @@ jobs:
           # Run pre-commit on all files (or just changed files)
           # Use --show-diff-on-failure to see what failed
           pre-commit run --all-files --show-diff-on-failure --color=always
-        continue-on-error: false
+        continue-on-error: true
 
-      # Optional: Auto-fix and commit back to PR
-      # Uncomment below to enable auto-fixing
-      # WARNING: This will commit to PRs automatically!
-      #
-      # - name: Commit pre-commit fixes
-      #   if: failure() && steps.pre-commit.outcome == 'failure'
-      #   uses: stefanzweifel/git-auto-commit-action@v5
-      #   with:
-      #     commit_message: "chore: auto-fix pre-commit issues"
-      #     commit_user_name: "pre-commit-ci[bot]"
-      #     commit_user_email: "pre-commit-ci[bot]@users.noreply.github.com"
+      # Auto-fix and commit back to PR
+      # ENABLED: This will commit to PRs automatically!
+      - name: Commit pre-commit fixes
+        if: failure() && steps.pre-commit.outcome == 'failure'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-fix pre-commit issues"
+          commit_user_name: "pre-commit-ci[bot]"
+          commit_user_email: "pre-commit-ci[bot]@users.noreply.github.com"
 
       - name: Pre-commit Summary
         if: always()
