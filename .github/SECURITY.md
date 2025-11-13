@@ -2,18 +2,20 @@
 
 ## Project Security Context
 
-This repository is a **text-only content repository** for ethical accounting guidelines. While the content itself is public and not security-sensitive, the infrastructure (validation scripts, CI/CD workflows, and Python dependencies) could introduce security vulnerabilities.
+This repository is a **text-only content repository** for ethical accounting guidelines. While the content itself is
+public and not security-sensitive, the infrastructure (validation scripts, CI/CD workflows, and Python dependencies)
+could introduce security vulnerabilities.
 
 ## Supported Versions
 
 We actively maintain the following versions with security updates:
 
-| Version | Supported          | Status                          |
-| ------- | ------------------ | ------------------------------- |
-| 1.2.x   | :white_check_mark: | Current stable                  |
-| 1.1.x   | :white_check_mark: | Security fixes only             |
-| 1.0.x   | :x:                | No longer supported             |
-| < 1.0   | :x:                | Deprecated                      |
+| Version | Supported          | Status              |
+| ------- | ------------------ | ------------------- |
+| 1.2.x   | :white_check_mark: | Current stable      |
+| 1.1.x   | :white_check_mark: | Security fixes only |
+| 1.0.x   | :x:                | No longer supported |
+| < 1.0   | :x:                | Deprecated          |
 
 ## Security Scope
 
@@ -28,6 +30,7 @@ Security issues in the following components are in scope:
 - **Pre-commit hooks** (`.pre-commit-config.yaml`)
 
 Examples of security issues we care about:
+
 - Code injection vulnerabilities in validation scripts
 - Path traversal issues in file handling
 - Malicious package dependencies
@@ -49,8 +52,8 @@ The following are **not** security issues:
 
 For security vulnerabilities, please use **GitHub Private Vulnerability Reporting**:
 
-1. Go to: https://github.com/focofacofoco/ceocont-etica-public-resources/security/advisories/new
-2. Fill out the advisory form with:
+1. Go to: <https://github.com/focofaco/ceocont-etica-public-resources/security/advisories/new>
+1. Fill out the advisory form with:
    - Affected component (script/workflow/dependency)
    - Vulnerability description
    - Steps to reproduce
@@ -73,28 +76,33 @@ For low-severity issues or if private reporting is unavailable:
 When a security vulnerability is confirmed:
 
 1. **Triage** (24-48 hours)
+
    - Assess severity (Critical, High, Medium, Low)
    - Determine affected versions
    - Assign CVE if applicable
 
-2. **Fix Development** (depends on severity)
+1. **Fix Development** (depends on severity)
+
    - Critical: 24-48 hours
    - High: 1 week
    - Medium: 2 weeks
    - Low: Next release cycle
 
-3. **Testing & Validation**
+1. **Testing & Validation**
+
    - Fix validated in isolated environment
    - Pre-commit hooks and CI/CD tests pass
    - No regressions introduced
 
-4. **Coordinated Disclosure**
+1. **Coordinated Disclosure**
+
    - Security advisory published on GitHub
    - CHANGELOG.txt updated with security note
    - New version released (PATCH for security fixes)
    - Dependabot/users notified if dependency-related
 
-5. **Public Disclosure**
+1. **Public Disclosure**
+
    - After fix is released and users have time to update
    - Typically 7-14 days after release
    - Full details published in security advisory
@@ -125,6 +133,7 @@ When consuming content from this repository:
 ### Automated Monitoring
 
 We use:
+
 - **Dependabot**: Automatic dependency updates (weekly)
 - **Dependency Review**: PR-based vulnerability scanning
 - **CodeQL**: Static analysis for Python code
@@ -133,6 +142,7 @@ We use:
 ### Manual Audits
 
 We perform manual dependency audits:
+
 - **Quarterly**: Review all dependencies for known issues
 - **Before major releases**: Comprehensive security review
 - **On-demand**: When high-severity CVE is disclosed
@@ -143,15 +153,15 @@ We recognize security researchers who responsibly disclose vulnerabilities:
 
 <!-- Contributors will be listed here after coordinated disclosure -->
 
-*No security issues have been reported yet.*
+_No security issues have been reported yet._
 
----
+______________________________________________________________________
 
 ## Questions?
 
 For security questions that don't involve active vulnerabilities:
-- Open a [GitHub Discussion](https://github.com/focofacofoco/ceocont-etica-public-resources/discussions)
+
+- Open a [GitHub Discussion](https://github.com/focofaco/ceocont-etica-public-resources/discussions)
 - Tag with `security` label
 
-**Last Updated**: 2025-11-13
-**Policy Version**: 1.0
+**Last Updated**: 2025-11-13 **Policy Version**: 1.0

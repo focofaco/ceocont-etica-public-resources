@@ -121,7 +121,7 @@ No migration needed - this is the first release.
 ## Repository URL
 
 ```
-https://github.com/focofacofoco/ceocont-etica-public-resources
+https://github.com/focofaco/ceocont-etica-public-resources
 ```
 
 ## Tag Information

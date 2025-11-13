@@ -3,40 +3,40 @@
 # See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Default owner for everything (unless overridden below)
-* @focofacofoco
+* @focofaco
 
 # Content Repository (SSoT)
 # JSON metadata twins are the single source of truth
-online-resources/raw-text/**/*.json @focofacofoco
+online-resources/raw-text/**/*.json @focofaco
 
 # Critical Infrastructure
 # Changes to validation rules require careful review
-.claude/hooks/*.py @focofacofoco
-.claude/hooks/*.sh @focofacofoco
-.claude/models/*.py @focofacofoco
+.claude/hooks/*.py @focofaco
+.claude/hooks/*.sh @focofaco
+.claude/models/*.py @focofaco
 
 # GitHub Workflows
 # CI/CD changes can break automation
-.github/workflows/*.yml @focofacofoco
+.github/workflows/*.yml @focofaco
 
 # Pre-commit Configuration
 # Hook changes affect all contributors
-.pre-commit-config.yaml @focofacofoco
+.pre-commit-config.yaml @focofaco
 
 # Project Governance
 # Contract and rules require consensus
-server-contract.md @focofacofoco
-server-contract.spec @focofacofoco
-CLAUDE.md @focofacofoco
+server-contract.md @focofaco
+server-contract.spec @focofaco
+CLAUDE.md @focofaco
 
 # Release Management
-CHANGELOG.txt @focofacofoco
-RELEASE-*.md @focofacofoco
+CHANGELOG.txt @focofaco
+RELEASE-*.md @focofaco
 
 # Security & Dependencies
-.github/dependabot.yml @focofacofoco
-.github/SECURITY.md @focofacofoco
-requirements.txt @focofacofoco
+.github/dependabot.yml @focofaco
+.github/SECURITY.md @focofaco
+requirements.txt @focofaco
 
 # Note: If you add collaborators in the future, you can assign specific
 # directories to teams or individuals, e.g.:

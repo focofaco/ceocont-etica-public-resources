@@ -92,7 +92,7 @@ This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has 
 - Conventional Commits template for AI agents
 - Keep a Changelog template for AI agents
 
-[Unreleased]: https://github.com/focofacofoco/ceocont-etica-public-resources/compare/v2.0.0...HEAD
-[2.0.0]: https://github.com/focofacofoco/ceocont-etica-public-resources/compare/v1.1.0...v2.0.0
-[1.1.0]: https://github.com/focofacofoco/ceocont-etica-public-resources/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/focofacofoco/ceocont-etica-public-resources/releases/tag/v1.0.0
+[Unreleased]: https://github.com/focofaco/ceocont-etica-public-resources/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/focofaco/ceocont-etica-public-resources/compare/v1.1.0...v2.0.0
+[1.1.0]: https://github.com/focofaco/ceocont-etica-public-resources/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/focofaco/ceocont-etica-public-resources/releases/tag/v1.0.0

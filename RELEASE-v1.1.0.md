@@ -50,7 +50,7 @@ Both branches contain identical v1.1.0 code at commit `13a9d01`:
    - Release-specific branch
    - Commit: 13a9d01
    - PR URL:
-     <https://github.com/focofacofoco/ceocont-etica-public-resources/pull/new/claude/release-v1.1.0-011CV4kf1V2XbPxRYPEA6QKV>
+     <https://github.com/focofaco/ceocont-etica-public-resources/pull/new/claude/release-v1.1.0-011CV4kf1V2XbPxRYPEA6QKV>
 
 ## Local Tags (Documentation)
 

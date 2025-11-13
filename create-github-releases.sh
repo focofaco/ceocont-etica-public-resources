@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-REPO="focofacofoco/ceocont-etica-public-resources"
+REPO="focofaco/ceocont-etica-public-resources"
 API_BASE="https://api.github.com"
 
 # Check for GitHub token

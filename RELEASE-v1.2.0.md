@@ -8,13 +8,15 @@ All code and validation complete. Release ready for creation.
 
 **v1.1.0 → v1.2.0**: New component categories added (additive, non-breaking)
 
-### What Changed:
+### What Changed
+
 - Added three new component directories: `header_h1/`, `header_h2/`, `header_h3/`
 - Headers are **structural elements** and do NOT count towards 70-80% plaintext baseline
 - Component enum expanded in all Pydantic schemas
 - ComponentDistribution models extended with header fields
 
-### ✅ Backward Compatibility:
+### ✅ Backward Compatibility
+
 - **No breaking changes** - existing clients continue to work
 - All changes are **additive only**
 - No existing paths moved, renamed, or removed
@@ -23,7 +25,8 @@ All code and validation complete. Release ready for creation.
 
 ## Release Contents
 
-### Added:
+### Added
+
 - header_h1/ directory with README.md (H1-level headers)
 - header_h2/ directory with README.md (H2-level headers)
 - header_h3/ directory with README.md (H3-level headers)
@@ -42,7 +45,8 @@ All code and validation complete. Release ready for creation.
 - GitHub release automation script (create-github-releases.sh)
 - Repository rules analysis (REPOSITORY-RULES-ANALYSIS.md)
 
-### Changed:
+### Changed
+
 - Updated all Pydantic models to include header_h1, header_h2, header_h3 components
 - Migrated validate_audit_json.py from jsonschema to Pydantic v2
 - Updated server-contract.md §3 with new header component categories
@@ -50,24 +54,22 @@ All code and validation complete. Release ready for creation.
 - Updated validate_raw_text_only.sh to allow README.md and .json metadata twins
 - chunks.json component_distribution extended with header fields
 
-### Validation Status:
-✓ All pre-commit hooks passing
-✓ Pydantic v2 validation passing
-✓ Metadata twin validation passing
-✓ chunks.json validation passing
-✓ Component README files created
-✓ Contract documentation updated
-✓ Merged to main branch
+### Validation Status
+
+✓ All pre-commit hooks passing ✓ Pydantic v2 validation passing ✓ Metadata twin validation passing ✓ chunks.json
+validation passing ✓ Component README files created ✓ Contract documentation updated ✓ Merged to main branch
 
 ## SSoT Architecture
 
-### JSON Metadata Twins:
+### JSON Metadata Twins
+
 - **Single Source of Truth** (full original_text + transformed_text + metadata)
 - No CDN delivery (server-side only)
 - No size limits
 - Contains complete audit trail
 
-### TXT Files:
+### TXT Files
+
 - **Derived content** from JSON twins
 - CDN delivery optimized
 - Text-only format
@@ -75,49 +77,55 @@ All code and validation complete. Release ready for creation.
 
 ## Header Components
 
-### Purpose:
+### Purpose
+
 Headers represent **document structure** (H1/H2/H3 hierarchy) separate from content distribution:
+
 - **Not counted** in 70-80% plaintext baseline
 - **Not counted** in 20-30% others baseline
 - Tracked separately for structural organization
 - Short text content (typically one line per header)
 
-### Examples:
+### Examples
+
 - **header_h1/**: "Fundamentos da Contabilidade"
 - **header_h2/**: "Objetivos do Sistema de Qualidade"
 - **header_h3/**: "Revisão de Competência Profissional"
 
 ## Migration Guide
 
-### For Existing Clients:
+### For Existing Clients
 
 **No migration required!** This release is backward compatible.
 
 However, to take advantage of new features:
 
 1. **Update component enum** to include:
+
    ```typescript
    type Component =
      | "plaintext"
      | "callouts"
      | "docks"
      // ... existing types
-     | "header_h1"  // NEW
-     | "header_h2"  // NEW
-     | "header_h3"  // NEW
+     | "header_h1" // NEW
+     | "header_h2" // NEW
+     | "header_h3"; // NEW
    ```
 
-2. **Update distribution models**:
+1. **Update distribution models**:
+
    ```typescript
    interface ComponentDistribution {
      // ... existing fields
-     header_h1: number;  // NEW
-     header_h2: number;  // NEW
-     header_h3: number;  // NEW
+     header_h1: number; // NEW
+     header_h2: number; // NEW
+     header_h3: number; // NEW
    }
    ```
 
-3. **Note on metrics**:
+1. **Note on metrics**:
+
    - Headers are excluded from plaintext/others baseline calculations
    - Distribution calculations remain unchanged for existing components
 
@@ -137,22 +145,21 @@ a3d269a - chore(security): add .env files to .gitignore to protect secrets
 ## Available Branch for Merge
 
 **claude/dev003-content-ingestion-011CV4kf1V2XbPxRYPEA6QKV**
+
 - Development branch with all v1.2.0 changes
 - Latest commit: 674c373
-- PR URL: https://github.com/focofacofoco/ceocont-etica-public-resources/pull/9
+- PR URL: <https://github.com/focofaco/ceocont-etica-public-resources/pull/9>
 
 ## Next Steps for Official Release
 
 1. **Merge Pull Request #9** to main
-2. **Create GitHub Release** from main branch
+1. **Create GitHub Release** from main branch
    - Tag: `v1.2.0`
    - Target: `main`
    - Title: `v1.2.0 - Header Components & Pydantic v2`
    - Description: Copy from this document
-3. GitHub will automatically create the `v1.2.0` tag on release
+1. GitHub will automatically create the `v1.2.0` tag on release
 
----
+______________________________________________________________________
 
-**Release prepared by**: Claude Code Agent
-**Session ID**: 011CV4kf1V2XbPxRYPEA6QKV
-**Date**: 2025-11-13
+**Release prepared by**: Claude Code Agent **Session ID**: 011CV4kf1V2XbPxRYPEA6QKV **Date**: 2025-11-13
