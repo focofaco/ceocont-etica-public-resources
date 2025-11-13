@@ -127,6 +127,60 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
+### 8. CodeQL Security Analysis (`codeql.yml`)
+
+**Triggers**: PRs to main, pushes to main/claude/\*, scheduled weekly, manual dispatch
+
+**Purpose**: Advanced security code scanning:
+
+- Multi-language analysis (Python, JavaScript)
+- Security vulnerability detection
+- Code quality analysis
+- SAST (Static Application Security Testing)
+- Results uploaded to GitHub Security tab
+
+**Why**: Proactive security monitoring (non-blocking, informational)
+
+**Note**: ⚠️ Results are **informational only** and do not block PR merges
+
+______________________________________________________________________
+
+### 9. Dependency Review (`dependency-review.yml`)
+
+**Triggers**: Pull requests to main
+
+**Purpose**: Dependency vulnerability scanning:
+
+- Scans all dependency changes in PRs
+- Detects known vulnerabilities (CVEs)
+- License compliance checking (denies GPL-3.0, AGPL-3.0)
+- Posts summary comments in PRs
+- Severity-based alerting
+
+**Why**: Early detection of vulnerable dependencies (non-blocking, informational)
+
+**Note**: ⚠️ Reports vulnerabilities but does not block PR merges
+
+______________________________________________________________________
+
+### 10. Dependabot (Configuration)
+
+**Configuration**: `.github/dependabot.yml`
+
+**Purpose**: Automated dependency updates:
+
+- Weekly dependency updates (Mondays)
+- Python packages (requirements.txt)
+- GitHub Actions versions
+- Automated PR creation with version bumps
+- Grouped updates by ecosystem
+
+**Why**: Keeps dependencies up-to-date and secure
+
+**Note**: Creates PRs automatically, reviewed by Claude AI before merge
+
+______________________________________________________________________
+
 ## Workflow Dependencies
 
 ```mermaid
@@ -134,20 +188,29 @@ graph TD
     A[Push/PR] --> B[Pre-commit]
     A --> C[CI]
     A --> D[Documentation]
+    A --> M[CodeQL Scan]
 
     E[PR to main] --> F[Copilot Review]
     E --> G[Content Validation]
     E --> H[Integrity Check]
+    E --> N[Dependency Review]
 
     I[Tag Push] --> J[Release Automation]
+
+    O[Schedule/Weekly] --> M
+    O --> P[Dependabot Updates]
 
     B -.->|must pass| K[Merge]
     C -.->|must pass| K
     G -.->|must pass| K
     H -.->|warn only| K
+    M -.->|informational| K
+    N -.->|informational| K
 
     K --> L[Main Branch]
     L --> J
+
+    P -.->|creates PRs| E
 ```
 
 ## Status Badges
@@ -159,6 +222,8 @@ Add these to your README.md:
 ![CI](https://github.com/focofaco/ceocont-etica-public-resources/actions/workflows/ci.yml/badge.svg)
 ![Content Validation](https://github.com/focofaco/ceocont-etica-public-resources/actions/workflows/content-validation.yml/badge.svg)
 ![Documentation](https://github.com/focofaco/ceocont-etica-public-resources/actions/workflows/documentation.yml/badge.svg)
+![CodeQL](https://github.com/focofaco/ceocont-etica-public-resources/actions/workflows/codeql.yml/badge.svg)
+![Dependency Review](https://github.com/focofaco/ceocont-etica-public-resources/actions/workflows/dependency-review.yml/badge.svg)
 ```
 
 ## Required Secrets
@@ -169,9 +234,11 @@ None currently required. All workflows use `GITHUB_TOKEN` which is automatically
 
 Workflows require these permissions (already configured):
 
-- `contents: read` - Read repository content
+- `contents: read` - Read repository content (all workflows)
 - `contents: write` - Create releases (release.yml only)
-- `pull-requests: write` - Post PR comments (copilot-review.yml only)
+- `pull-requests: write` - Post PR comments (copilot-review.yml, dependency-review.yml)
+- `security-events: write` - Upload security results (codeql.yml only)
+- `actions: read` - Read workflow status (codeql.yml only)
 
 ## Local Testing
 
@@ -190,11 +257,23 @@ act
 
 ## Maintenance
 
-- **Weekly**: Review workflow runs for failures
+- **Weekly**: Review workflow runs for failures and security scan results
+- **Weekly**: Check Security tab for CodeQL alerts (non-blocking but important)
+- **Weekly**: Review Dependabot PRs for dependency updates
 - **Monthly**: Update action versions (@v4, @v5, etc.)
 - **Per Release**: Ensure release.yml creates proper releases
 - **As Needed**: Adjust validation rules in workflows
 
+## Security Scanning
+
+All security workflows are **non-blocking** (informational only):
+
+- **CodeQL**: Results in Security → Code scanning alerts
+- **Dependency Review**: Comments posted on PRs with vulnerability details
+- **Dependabot**: Creates PRs automatically for dependency updates
+
+These checks do not prevent PR merges but should be reviewed regularly.
+
 ______________________________________________________________________
 
-**Last Updated**: 2025-11-13 | **Total Workflows**: 7
+**Last Updated**: 2025-11-13 | **Total Workflows**: 9 (+ 1 Dependabot config)

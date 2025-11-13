@@ -1,0 +1,58 @@
+name: CodeQL Security Analysis
+
+on:
+  push:
+    branches: [main, "claude/**"]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run at 00:00 UTC every Monday
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    continue-on-error: true  # Non-blocking: allows PR merge even if issues found
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [python, javascript]
+        # CodeQL supports: cpp, csharp, go, java, javascript, python, ruby, swift
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          # Query suites: security-extended, security-and-quality
+          queries: +security-extended,security-and-quality
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"
+          upload: true
+          # Results uploaded to GitHub Security tab (non-blocking)
+
+      - name: Analysis summary
+        if: always()
+        run: |
+          echo "✅ CodeQL analysis completed for ${{ matrix.language }}"
+          echo "📊 Results available in Security → Code scanning alerts"
+          echo "⚠️ This check is informational and does not block PR merges"
