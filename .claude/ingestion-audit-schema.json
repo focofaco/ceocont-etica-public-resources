@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ingestion Audit Trail Schema",
+  "description": "Complete audit trail for content ingestion, fragmentation, and transformation",
+  "type": "object",
+  "required": ["metadata", "chunks"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["schema_version", "created_at", "last_updated"],
+      "properties": {
+        "schema_version": {"type": "string", "const": "1.0.0"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "last_updated": {"type": "string", "format": "date-time"},
+        "total_chunks": {"type": "integer", "minimum": 0},
+        "total_fragments": {"type": "integer", "minimum": 0}
+      }
+    },
+    "chunks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["chunk_id", "ingested_at", "original_text", "fragments"],
+        "properties": {
+          "chunk_id": {"type": "string", "pattern": "^chunk_\\d{2,}$"},
+          "ingested_at": {"type": "string", "format": "date-time"},
+          "source_description": {"type": "string"},
+          "original_text": {"type": "string"},
+          "sha256_original": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "word_count": {"type": "integer", "minimum": 0},
+          "char_count": {"type": "integer", "minimum": 0},
+          "placeholders_detected": {
+            "type": "array",
+            "items": {"type": "string", "pattern": "^\\$\\{[a-z0-9-]+\\}$"}
+          },
+          "fragments": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["frag_id", "seq", "component", "classification_confidence", "original_text", "transformed_text", "final_path"],
+              "properties": {
+                "frag_id": {"type": "string", "pattern": "^chunk_\\d{2,}_frag_\\d{3}$"},
+                "seq": {"type": "integer", "minimum": 1},
+                "section_title": {"type": "string"},
+                "component": {
+                  "type": "string",
+                  "enum": ["plaintext", "callouts", "docks", "tradeoffs", "tables", "data", "faqs", "diagrams", "disclaimers", "others"]
+                },
+                "classification_confidence": {
+                  "type": "number",
+                  "minimum": 0.0,
+                  "maximum": 1.0,
+                  "description": "Thumb rules: 1.0 = format match (tradeoffs +/-, TSV, DOT), 0.9 = explicit markers (Q:/A:, Note:), 0.8 = strong semantic match, 0.7 = weak semantic match, <0.7 = ambiguous"
+                },
+                "classification_reasoning": {"type": "string"},
+                "alternative_components": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["component", "confidence"],
+                    "properties": {
+                      "component": {"type": "string"},
+                      "confidence": {"type": "number", "minimum": 0.0, "maximum": 1.0}
+                    }
+                  }
+                },
+                "original_text": {"type": "string"},
+                "original_word_count": {"type": "integer", "minimum": 0},
+                "original_char_count": {"type": "integer", "minimum": 0},
+                "transformed_text": {"type": "string"},
+                "transformed_word_count": {"type": "integer", "minimum": 0},
+                "transformed_char_count": {"type": "integer", "minimum": 0},
+                "transformations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["type", "description"],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "deduplication",
+                          "line_breaking",
+                          "paragraph_splitting",
+                          "tone_adjustment",
+                          "modal_replacement",
+                          "voice_conversion",
+                          "conciseness",
+                          "passive_to_active",
+                          "formality_adjustment",
+                          "normalization",
+                          "placeholder_preservation",
+                          "encoding_fix",
+                          "whitespace_cleanup",
+                          "formatting_componentization"
+                        ]
+                      },
+                      "description": {"type": "string"},
+                      "before": {"type": "string"},
+                      "after": {"type": "string"}
+                    }
+                  }
+                },
+                "brandguide_compliance": {
+                  "type": "object",
+                  "description": "Thumb rules: 1.0 = fully compliant, 0.8 = minor issues, 0.6 = needs review, <0.6 = non-compliant",
+                  "properties": {
+                    "overall_score": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+                    "voice_check": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+                    "tone_check": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+                    "modals_allowed": {"type": "boolean"},
+                    "modals_forbidden_detected": {"type": "array", "items": {"type": "string"}},
+                    "max_line_length_ok": {"type": "boolean"},
+                    "max_file_size_ok": {"type": "boolean"},
+                    "utf8_lf_ok": {"type": "boolean"},
+                    "issues": {"type": "array", "items": {"type": "string"}}
+                  }
+                },
+                "manual_overrides": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["override_type", "reason"],
+                    "properties": {
+                      "override_type": {
+                        "type": "string",
+                        "enum": ["component_change", "transformation_skipped", "classification_corrected", "manual_edit"]
+                      },
+                      "reason": {"type": "string"},
+                      "timestamp": {"type": "string", "format": "date-time"}
+                    }
+                  }
+                },
+                "final_filename": {"type": "string", "pattern": "^\\d{3}-[a-z0-9-]+-[a-f0-9]{4}\\.txt$"},
+                "final_path": {"type": "string"},
+                "final_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
