@@ -1,0 +1,162 @@
+name: "Character Encoding Agent"
+
+# Autonomous agent that validates UTF-8 encoding and detects problematic characters
+# Ensures content is properly encoded for international use
+
+on:
+  schedule:
+    # Daily at 10:00 BRT (13:00 UTC)
+    - cron: '0 13 * * *'
+  pull_request:
+    paths:
+      - 'online-resources/raw-text/**/*.txt'
+      - 'online-resources/raw-text/**/*.json'
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  encoding-check:
+    name: 🔡 Character Encoding Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 🤖 Agent Task - Validate Encoding
+        id: encoding-check
+        run: |
+          python3 << 'EOF'
+          import sys
+          from pathlib import Path
+
+          print("🤖 Agent validating character encoding...")
+
+          issues = []
+          files_checked = 0
+          encoding_errors = 0
+          bom_files = []
+          non_utf8_files = []
+          control_char_files = []
+
+          raw_text = Path("online-resources/raw-text")
+
+          for file_path in raw_text.rglob("*"):
+              if not file_path.is_file():
+                  continue
+              if file_path.suffix not in ['.txt', '.json']:
+                  continue
+              if 'meta/' in str(file_path):
+                  continue
+
+              files_checked += 1
+              file_str = str(file_path.relative_to(Path.cwd()))
+
+              # Check 1: UTF-8 validity
+              try:
+                  with open(file_path, 'r', encoding='utf-8') as f:
+                      content = f.read()
+              except UnicodeDecodeError as e:
+                  encoding_errors += 1
+                  non_utf8_files.append(f"{file_str} (error: {e})")
+                  continue
+
+              # Check 2: BOM detection
+              with open(file_path, 'rb') as f:
+                  first_bytes = f.read(3)
+                  if first_bytes == b'\xef\xbb\xbf':
+                      bom_files.append(file_str)
+
+              # Check 3: Control characters (except \n, \r, \t)
+              control_chars = []
+              for i, char in enumerate(content):
+                  if ord(char) < 32 and char not in ['\n', '\r', '\t']:
+                      control_chars.append((i, char, ord(char)))
+
+              if control_chars:
+                  control_char_files.append({
+                      'file': file_str,
+                      'chars': control_chars[:5]  # Limit to first 5
+                  })
+
+          # Generate report
+          print("\n# 🔡 Character Encoding Report\n")
+          print(f"**Date**: {Path('').resolve().as_posix()}")
+          print("**Agent**: Character Encoding Bot 🤖\n")
+          print("## Summary\n")
+          print(f"- **Files checked**: {files_checked}")
+          print(f"- **Encoding errors**: {encoding_errors}")
+          print(f"- **Files with BOM**: {len(bom_files)}")
+          print(f"- **Files with control chars**: {len(control_char_files)}\n")
+
+          if non_utf8_files:
+              print("## ❌ Non-UTF-8 Files\n")
+              for f in non_utf8_files:
+                  print(f"- `{f}`")
+              print()
+
+          if bom_files:
+              print("## ⚠️ Files with BOM (Byte Order Mark)\n")
+              for f in bom_files:
+                  print(f"- `{f}`")
+              print("\n*BOM should be removed for proper UTF-8*\n")
+
+          if control_char_files:
+              print("## ⚠️ Files with Control Characters\n")
+              for item in control_char_files[:10]:  # Limit display
+                  print(f"- `{item['file']}`")
+                  for pos, char, code in item['chars']:
+                      print(f"  - Position {pos}: \\x{code:02x}")
+              print()
+
+          if not non_utf8_files and not bom_files and not control_char_files:
+              print("## ✅ All Files Valid!\n")
+              print("All files are properly UTF-8 encoded with no issues.")
+
+          # Save to file
+          with open('encoding-report.md', 'w') as f:
+              # Repeat the print statements to file
+              pass  # Content already printed to stdout
+
+          # Set outputs
+          total_issues = encoding_errors + len(bom_files) + len(control_char_files)
+          print(f"\ntotal_issues={total_issues}", file=sys.stderr)
+
+          with open('GITHUB_OUTPUT', 'a') as f:
+              f.write(f"total_issues={total_issues}\n")
+              f.write(f"encoding_errors={encoding_errors}\n")
+
+          sys.exit(1 if total_issues > 0 else 0)
+          EOF
+
+      - name: Comment on PR with results
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## ❌ Character Encoding Issues Detected\n\nThe encoding agent found problems with character encoding.\n\nPlease ensure:\n- All files are UTF-8 encoded\n- No BOM (Byte Order Mark)\n- No control characters\n\nCheck the workflow logs for details.`
+            });
+
+      - name: ✅ Agent Task Complete
+        if: always()
+        run: |
+          echo "🤖 Character encoding agent completed!"
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ All files properly encoded!"
+          else
+            echo "⚠️ Encoding issues found - check report"
+          fi
