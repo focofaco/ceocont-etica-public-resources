@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "content_id": "012-classificacao-entidades-pies-f7ad",
+  "component": "plaintext",
+  "metadata": {
+    "title": "Classificação de entidades",
+    "description": "Diferenciação entre empresas públicas, privadas e capital aberto, e conceito de PIE",
+    "domain": "classificacao-empresas",
+    "language": "pt-BR",
+    "reading_level": "tecnico"
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Classificação",
+    "page_number": 4
+  },
+  "placeholders": [],
+  "transformations": [],
+  "brandguide_compliance": {"overall_score": 0.95},
+  "quality_metrics": {"word_count": 203, "character_count": 1482},
+  "review_status": {"status": "approved"},
+  "audit": {
+    "fragment_id": "chunk_04_frag_005",
+    "chunk_id": "chunk_04",
+    "sha256_original": "f7ad0d0be3e31526b3bd260d89a636984198701d2af020fd3aadbb56251ed1f1"
+  }
+}

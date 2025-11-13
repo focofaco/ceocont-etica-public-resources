@@ -1,0 +1,11 @@
+Monitoramento de Sistemas e Dispositivos
+
++ Identificação de acessos não autorizados e atividades suspeitas
++ Proteção contra vazamento de informações confidenciais
++ Rastreabilidade de ações realizadas nos sistemas da firma
++ Cumprimento de requisitos legais e regulatórios de segurança
++ Detecção precoce de incidentes de segurança da informação
+- Necessidade de investimento em infraestrutura de monitoramento
+- Possibilidade de percepção de invasão de privacidade pelos profissionais
+- Demanda de recursos para análise e interpretação dos dados coletados
+- Requisitos de armazenamento e proteção dos registros de auditoria

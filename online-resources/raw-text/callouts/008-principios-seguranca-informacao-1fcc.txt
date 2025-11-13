@@ -1,0 +1,9 @@
+Princípios de Segurança da Informação
+
+A ${razao-social} preserva as informações quanto à:
+
+- Integridade: garantia de que a informação seja mantida em seu estado original, protegendo-a contra alterações indevidas, intencionais ou acidentais, durante guarda ou transmissão
+
+- Confidencialidade: garantia de que o acesso à informação seja obtido somente por pessoas autorizadas
+
+- Disponibilidade: garantia de que os usuários autorizados obtenham acesso à informação e aos ativos correspondentes sempre que necessário
