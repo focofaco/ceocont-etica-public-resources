@@ -396,6 +396,84 @@ chunk_id → split into sections → classify each → create .txt + .json → v
 
 ---
 
+## ADR-015: Header Extraction from Plaintext Fragments
+
+**Date**: 2025-11-13
+**Status**: Accepted
+
+**Context**: 13 plaintext fragments contained embedded h1/h2 titles that should be separate structural elements according to semantic content architecture.
+
+**Decision**: Extract headers as separate fragments in `header_h1/` and `header_h2/` directories, treating them as pure structural components.
+
+**Rationale**:
+- Headers are structural elements, not content components
+- Separation improves semantic clarity and document structure
+- Enables independent styling and rendering of headers by clients
+- Maintains single responsibility: plaintext for content, headers for structure
+
+**Implementation**:
+- Created `header_h1/` and `header_h2/` directories under `raw-text/`
+- Extracted 15 headers total (13 h1 + 2 h2) from 13 plaintext fragments
+- Updated metadata twins for affected fragments
+- Headers do NOT use metadata twins (structural elements only)
+
+**Distribution Impact**:
+- Headers excluded from distribution baseline calculations
+- Total fragment count increased from 36 to 51
+- Plaintext percentage recalculated excluding structural headers
+- No impact on component distribution targets
+
+**Consequences**:
+- ✅ Better semantic structure and separation of concerns
+- ✅ Cleaner plaintext fragments without embedded titles
+- ✅ Structural elements clearly identified
+- ✅ Improved document hierarchy visibility
+- ⚠️ Increased fragment count (mitigated by clear structural role)
+
+---
+
+## ADR-016: Critical Classification Over Mechanical Distribution
+
+**Date**: 2025-11-13
+**Status**: Accepted
+
+**Context**: Initial chunk_05 ingestion attempted to mechanically divide fragments to hit component quotas without considering component-specific characteristics ("cara e cheiro" - face and smell).
+
+**Decision**: Classify fragments based on inherent content characteristics, not distribution targets. Quality and semantic accuracy override quota compliance.
+
+**Rationale**:
+- **Disclaimers**: Only for legal/risk warnings with real consequences (not generic notes)
+- **Callouts**: Only for highlighted important messages requiring attention (not every bold text)
+- **Docks**: Must follow Cenário/Comportamento/Solução pattern and be concise (not every side note)
+- Content characteristics determine component type, not distribution pressure
+- Temporary distribution imbalance acceptable if classification is semantically correct
+
+**Classification Criteria** (revised):
+```
+disclaimers  → Legal/risk warnings with consequences
+callouts     → Highlighted messages requiring attention
+docks        → Editorial notes following C/C/S pattern, concise
+plaintext    → Flowing narrative content
+tradeoffs    → Explicit pros/cons with +/- markers
+tables/data  → Structured tabular information
+```
+
+**Priority Order**:
+1. Content characteristics ("cara e cheiro")
+2. Semantic accuracy
+3. Structural clarity
+4. Distribution targets (guidance, not rule)
+
+**Consequences**:
+- ✅ Better semantic accuracy and content integrity
+- ✅ Avoids forced classification to hit quotas
+- ✅ Clearer component purpose and boundaries
+- ✅ More authentic content architecture
+- ⚠️ May temporarily deviate from distribution baseline (acceptable for quality)
+- ⚠️ Requires stronger classification judgment (mitigated by clear criteria)
+
+---
+
 ## Implementation Status (2025-11-13)
 
 ### ✅ Completed
