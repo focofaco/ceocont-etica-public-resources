@@ -1,0 +1,7 @@
+Estudo de caso
+
+Cenário: ${nome-profissional} presta serviços contábeis a uma empresa há cinco anos e desenvolveu relacionamento profissional próximo com os sócios e outros colaboradores do cliente. Um dos sócios se aposenta e os outros dois sócios decidem vender o negócio a uma empresa maior. Os sócios solicitam que ${nome-profissional} permaneça e trabalhe como contador para a nova empresa.
+
+Comportamento: ${nome-profissional} deve discutir a situação com o sócio responsável na ${razao-social} e avaliar possíveis conflitos de interesse. É obrigatório ponderar como a decisão afetará as relações profissionais com o cliente atual e com a firma.
+
+Solução: O sócio responsável e o ${responsavel-qualidade} devem avaliar a situação e determinar se há conflito de interesse ou violação de requisitos éticos. A decisão deve ser tomada com transparência e honestidade entre todas as partes envolvidas.

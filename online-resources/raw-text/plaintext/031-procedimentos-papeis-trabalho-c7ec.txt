@@ -1,0 +1,5 @@
+Procedimentos de documentação
+
+Para garantir a integridade dos trabalhos executados, cada profissional da ${razao-social} executa procedimentos e testes para obter evidências que sustentem as decisões e conclusões alcançadas. Todo o processo é formalmente documentado em papéis de trabalho com identificação dos autores e revisores e respectivas datas.
+
+Os papéis de trabalho são arquivados em ${sistema-arquivo} sob identificação do cliente. Os documentos fornecidos pelo cliente são mantidos separados dos documentos elaborados pela equipe responsável pelos serviços, devendo estes últimos conter a referência ${codigo-referencia}.
