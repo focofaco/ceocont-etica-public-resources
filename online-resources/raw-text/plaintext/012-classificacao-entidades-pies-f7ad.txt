@@ -1,5 +1,3 @@
-Classificação de entidades
-
 Há três tipos de empresas no Brasil: públicas, privadas e de capital aberto. As empresas públicas são consideradas entidades de interesse público (PIEs). Empresas de capital aberto que são negociadas em bolsa de valores também são consideradas PIEs.
 
 Entidades de interesse público são aquelas que:

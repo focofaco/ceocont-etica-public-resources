@@ -1,7 +1,3 @@
-Introdução
-
-Manual de controle de qualidade
-
 A ${razao-social} é firma de contabilidade com experiência nos serviços contábeis prestados. As orientações deste Manual observam os requisitos regulamentares aplicáveis aos serviços contábeis e os procedimentos internos estabelecidos pela firma. Os regulamentos foram definidos considerando o porte da firma, a natureza dos serviços prestados e o perfil da carteira de clientes.
 
 O Manual de Políticas Internas define a metodologia de trabalho adotada, as responsabilidades atribuídas a cada profissional, os requisitos éticos aplicáveis e os procedimentos-chave a serem observados. O Manual documenta o sistema de controle de qualidade utilizado pela firma na execução dos serviços contábeis.
