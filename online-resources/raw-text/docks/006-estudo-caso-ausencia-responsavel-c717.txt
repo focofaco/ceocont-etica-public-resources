@@ -1,0 +1,7 @@
+Estudo de caso
+
+Cenário: O responsável pelo controle de qualidade está ausente por período prolongado sem substituto designado.
+
+Comportamento: Outra pessoa adequada assume o registro dos eventos de qualidade e cumprimento das políticas. Pode ser necessário treinamento adicional.
+
+Solução: O ${responsavel-tecnico} e o sócio líder atuam em conjunto para determinar procedimentos aplicáveis e designar responsável interino. ${acao-cliente}.
