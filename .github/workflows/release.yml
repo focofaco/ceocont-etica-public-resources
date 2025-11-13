@@ -102,7 +102,7 @@ jobs:
           fetch-depth: 0
 
       - name: Download changelog
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: changelog-entry
           path: /tmp
