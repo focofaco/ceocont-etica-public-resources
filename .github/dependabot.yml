@@ -1,0 +1,58 @@
+# Dependabot Configuration
+# Auto-updates dependencies to prevent security vulnerabilities
+# See: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
+
+version: 2
+
+updates:
+  # Python dependencies (requirements.txt)
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    groups:
+      # Group Pydantic updates together
+      pydantic:
+        patterns:
+          - "pydantic*"
+      # Group validation tools
+      validation:
+        patterns:
+          - "jsonschema"
+          - "pre-commit"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "10:00"
+      timezone: "America/Sao_Paulo"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
+    groups:
+      # Group CodeQL actions together
+      codeql:
+        patterns:
+          - "github/codeql-action*"
+      # Group checkout/setup actions
+      actions-core:
+        patterns:
+          - "actions/checkout*"
+          - "actions/setup-*"

@@ -1,0 +1,44 @@
+# CODEOWNERS
+# Auto-requests reviews from specified owners for matching paths
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything (unless overridden below)
+* @focofacofoco
+
+# Content Repository (SSoT)
+# JSON metadata twins are the single source of truth
+online-resources/raw-text/**/*.json @focofacofoco
+
+# Critical Infrastructure
+# Changes to validation rules require careful review
+.claude/hooks/*.py @focofacofoco
+.claude/hooks/*.sh @focofacofoco
+.claude/models/*.py @focofacofoco
+
+# GitHub Workflows
+# CI/CD changes can break automation
+.github/workflows/*.yml @focofacofoco
+
+# Pre-commit Configuration
+# Hook changes affect all contributors
+.pre-commit-config.yaml @focofacofoco
+
+# Project Governance
+# Contract and rules require consensus
+server-contract.md @focofacofoco
+server-contract.spec @focofacofoco
+CLAUDE.md @focofacofoco
+
+# Release Management
+CHANGELOG.txt @focofacofoco
+RELEASE-*.md @focofacofoco
+
+# Security & Dependencies
+.github/dependabot.yml @focofacofoco
+.github/SECURITY.md @focofacofoco
+requirements.txt @focofacofoco
+
+# Note: If you add collaborators in the future, you can assign specific
+# directories to teams or individuals, e.g.:
+# online-resources/raw-text/plaintext/ @content-team
+# online-resources/raw-text/tables/ @data-team

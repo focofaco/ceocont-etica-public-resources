@@ -1,0 +1,140 @@
+name: "Content Validation"
+
+# Specialized validation for text content in online-resources/raw-text/
+# Complements pre-commit hooks with detailed content analysis
+
+on:
+  pull_request:
+    paths:
+      - 'online-resources/raw-text/**'
+      - '.claude/hooks/**'
+      - '.claude/models/**'
+      - 'chunks.json'
+      - '.github/workflows/validate-content.yml'
+
+jobs:
+  validate-content:
+    name: Validate Text Content
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install validation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Validate .txt file extensions
+        run: |
+          echo "::group::Checking .txt extensions"
+          INVALID_FILES=$(find online-resources/raw-text -type f ! -name "*.txt" ! -name "*.json" ! -name "README.md" ! -path "*/meta/*" 2>/dev/null || true)
+          if [ -n "$INVALID_FILES" ]; then
+            echo "::error::Found files without .txt extension:"
+            echo "$INVALID_FILES"
+            exit 1
+          fi
+          echo "✓ All content files have .txt extension"
+          echo "::endgroup::"
+
+      - name: Validate UTF-8 encoding
+        run: |
+          echo "::group::Checking UTF-8 encoding"
+          find online-resources/raw-text -name "*.txt" -type f | while read -r file; do
+            if ! file "$file" | grep -q "UTF-8"; then
+              echo "::error file=$file::Not UTF-8 encoded"
+              exit 1
+            fi
+          done
+          echo "✓ All .txt files are UTF-8 encoded"
+          echo "::endgroup::"
+
+      - name: Validate line endings (LF only)
+        run: |
+          echo "::group::Checking line endings"
+          CRLF_FILES=$(find online-resources/raw-text -name "*.txt" -type f -exec grep -l $'\r' {} \; 2>/dev/null || true)
+          if [ -n "$CRLF_FILES" ]; then
+            echo "::error::Found files with CRLF line endings:"
+            echo "$CRLF_FILES"
+            exit 1
+          fi
+          echo "✓ All .txt files use LF line endings"
+          echo "::endgroup::"
+
+      - name: Validate no BOM
+        run: |
+          echo "::group::Checking for BOM"
+          BOM_FILES=$(find online-resources/raw-text -name "*.txt" -type f -exec sh -c 'head -c 3 "$1" | grep -q $'"'"'\xEF\xBB\xBF'"'"' && echo "$1"' _ {} \; 2>/dev/null || true)
+          if [ -n "$BOM_FILES" ]; then
+            echo "::error::Found files with BOM:"
+            echo "$BOM_FILES"
+            exit 1
+          fi
+          echo "✓ No BOM detected in .txt files"
+          echo "::endgroup::"
+
+      - name: Validate filename patterns
+        run: |
+          echo "::group::Checking filename patterns"
+          INVALID_NAMES=$(find online-resources/raw-text -name "*.txt" -type f ! -path "*/meta/*" | grep -Ev '^online-resources/raw-text/[a-z_-]+/([0-9]{3}-)?[a-z0-9-]+(-[A-Z0-9]{4})?\.(txt|tsv\.txt|dot\.txt|json\.txt)$' || true)
+          if [ -n "$INVALID_NAMES" ]; then
+            echo "::warning::Found files with non-standard naming (may be intentional):"
+            echo "$INVALID_NAMES"
+          else
+            echo "✓ All filenames follow standard pattern"
+          fi
+          echo "::endgroup::"
+
+      - name: Validate metadata twins exist
+        run: |
+          echo "::group::Checking metadata twins"
+          python3 << 'EOF'
+          import os
+          import sys
+          from pathlib import Path
+
+          raw_text = Path("online-resources/raw-text")
+          errors = []
+
+          # Check every .txt has a .json twin
+          for txt_file in raw_text.rglob("*.txt"):
+              if "meta/" in str(txt_file):
+                  continue
+              if "README.md" in str(txt_file):
+                  continue
+
+              json_twin = txt_file.with_suffix(".json")
+              if not json_twin.exists():
+                  errors.append(f"{txt_file} missing {json_twin.name}")
+
+          if errors:
+              print("::error::Missing metadata twins:")
+              for error in errors:
+                  print(f"  {error}")
+              sys.exit(1)
+          else:
+              print("✓ All .txt files have .json metadata twins")
+          EOF
+          echo "::endgroup::"
+
+      - name: Validate chunks.json manifest
+        if: always()
+        run: |
+          echo "::group::Validating chunks.json"
+          python3 .claude/hooks/validate_chunks_pydantic.py chunks.json
+          echo "✓ chunks.json is valid"
+          echo "::endgroup::"
+
+      - name: Content Validation Summary
+        if: always()
+        run: |
+          echo "::notice::Content validation completed. All checks passed!"

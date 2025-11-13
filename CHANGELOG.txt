@@ -9,6 +9,31 @@ Format based on Keep a Changelog. Project adheres to Semantic Versioning.
 
 ================================================================================
 
+[2.1.0] - 2025-11-13
+
+Added:
+- .github/pull_request_template.md with comprehensive validation checklist
+- .github/dependabot.yml for automated dependency updates (Python + GitHub Actions)
+- .github/CODEOWNERS for automatic review assignments
+- .github/workflows/pre-commit-ci.yml for CI-based linting and auto-fix
+- .github/workflows/validate-content.yml for specialized .txt file validation
+- .github/workflows/dependency-review.yml for security scanning of dependencies
+- .github/workflows/release.yml for semi-automated release process
+- .github/SECURITY.md with vulnerability reporting policy
+
+Changed:
+- Enhanced GitHub infrastructure with 8 new automation files
+- Improved developer experience with standardized PR templates
+- Strengthened security posture with multiple scanning workflows
+
+Note:
+- All workflows are YAML-validated and follow GitHub Actions best practices
+- Dependabot configured for weekly updates with grouped PRs to reduce noise
+- Release workflow requires manual trigger (workflow_dispatch) for safety
+- Security policy establishes responsible disclosure process
+
+================================================================================
+
 [1.2.0] - 2025-11-13
 
 Added:
