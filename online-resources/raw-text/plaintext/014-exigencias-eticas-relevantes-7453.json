@@ -2,20 +2,30 @@
   "version": "1.0.0",
   "content_id": "014-exigencias-eticas-relevantes-7453",
   "component": "plaintext",
-  "original_text": "Exigências éticas relevantes\n\nOs profissionais contábeis têm responsabilidade de manter padrões éticos na execução dos serviços prestados. Esses padrões incluem integridade, objetividade, competência profissional e devido cuidado, confidencialidade e comportamento profissional. O estabelecimento de políticas e procedimentos para assegurar o cumprimento desses princípios auxilia as firmas e os profissionais a manter práticas éticas, aspecto essencial para o sucesso de longo prazo. Manter os sócios cientes das atividades e questões éticas potenciais pode prevenir que discordâncias se agravem.\n\nCaso surja questão ética com sócio ou membro da equipe, a firma deve estabelecer processo para tratar casos de descumprimento. Isso pode envolver acordos formais que abordem a resolução de disputas quando o desacordo não puder ser resolvido de maneira razoável. Tratar preocupações éticas de maneira profissional e oportuna protege a reputação da firma e assegura que os padrões profissionais sejam observados.",
-  "transformed_text": "Exigências éticas relevantes\n\nOs profissionais contábeis têm responsabilidade de manter padrões éticos na execução dos serviços prestados. Esses padrões incluem integridade, objetividade, competência profissional e devido cuidado, confidencialidade e comportamento profissional. O estabelecimento de políticas e procedimentos para assegurar o cumprimento desses princípios auxilia as firmas e os profissionais a manter práticas éticas, aspecto essencial para o sucesso de longo prazo. Manter os sócios cientes das atividades e questões éticas potenciais pode prevenir que discordâncias se agravem.\n\nCaso surja questão ética com sócio ou membro da equipe, a firma deve estabelecer processo para tratar casos de descumprimento. Isso pode envolver acordos formais que abordem a resolução de disputas quando o desacordo não puder ser resolvido de maneira razoável. Tratar preocupações éticas de maneira profissional e oportuna protege a reputação da firma e assegura que os padrões profissionais sejam observados.",
+  "original_text": "Os profissionais contábeis têm responsabilidade de manter padrões éticos na execução dos serviços prestados. Esses padrões incluem integridade, objetividade, competência profissional e devido cuidado, confidencialidade e comportamento profissional. O estabelecimento de políticas e procedimentos para assegurar o cumprimento desses princípios auxilia as firmas e os profissionais a manter práticas éticas, aspecto essencial para o sucesso de longo prazo. Manter os sócios cientes das atividades e questões éticas potenciais pode prevenir que discordâncias se agravem.\n\nCaso surja questão ética com sócio ou membro da equipe, a firma deve estabelecer processo para tratar casos de descumprimento. Isso pode envolver acordos formais que abordem a resolução de disputas quando o desacordo não puder ser resolvido de maneira razoável. Tratar preocupações éticas de maneira profissional e oportuna protege a reputação da firma e assegura que os padrões profissionais sejam observados.\n",
+  "transformed_text": "Os profissionais contábeis têm responsabilidade de manter padrões éticos na execução dos serviços prestados. Esses padrões incluem integridade, objetividade, competência profissional e devido cuidado, confidencialidade e comportamento profissional. O estabelecimento de políticas e procedimentos para assegurar o cumprimento desses princípios auxilia as firmas e os profissionais a manter práticas éticas, aspecto essencial para o sucesso de longo prazo. Manter os sócios cientes das atividades e questões éticas potenciais pode prevenir que discordâncias se agravem.\n\nCaso surja questão ética com sócio ou membro da equipe, a firma deve estabelecer processo para tratar casos de descumprimento. Isso pode envolver acordos formais que abordem a resolução de disputas quando o desacordo não puder ser resolvido de maneira razoável. Tratar preocupações éticas de maneira profissional e oportuna protege a reputação da firma e assegura que os padrões profissionais sejam observados.\n",
   "metadata": {
     "title": "Exigências Éticas Relevantes",
     "description": "Documento que estabelece os padrões éticos fundamentais para profissionais contábeis e processos de tratamento de descumprimento",
     "domain": "etica-profissional",
-    "keywords": ["etica", "padroes-profissionais", "integridade", "comportamento-profissional", "conflitos-eticos"],
+    "keywords": [
+      "etica",
+      "padroes-profissionais",
+      "integridade",
+      "comportamento-profissional",
+      "conflitos-eticos"
+    ],
     "language": "pt-BR",
     "created_at": "2025-11-13T17:00:00Z",
     "updated_at": "2025-11-13T17:00:00Z",
     "author": "firma-contabil",
     "source": "Manual de Qualidade e Procedimentos Internos",
     "section": "requisitos-eticos",
-    "target_audience": ["profissionais-contabeis", "socios", "gestores"],
+    "target_audience": [
+      "profissionais-contabeis",
+      "socios",
+      "gestores"
+    ],
     "reading_level": "tecnico",
     "estimated_reading_time_minutes": 2
   },
@@ -39,8 +49,8 @@
     "issues": []
   },
   "quality_metrics": {
-    "word_count": 129,
-    "character_count": 918,
+    "word_count": 136,
+    "character_count": 1010,
     "readability_score": 52.1,
     "avg_sentence_length": 32.3,
     "avg_word_length": 6.5,
@@ -52,7 +62,10 @@
   "relationships": {
     "references": [],
     "referenced_by": [],
-    "related_fragments": ["016-requisitos-eticos-obrigatorios-50f4", "019-detalhamento-principios-etica-0cd9"]
+    "related_fragments": [
+      "016-requisitos-eticos-obrigatorios-50f4",
+      "019-detalhamento-principios-etica-0cd9"
+    ]
   },
   "warnings": [],
   "review_status": {

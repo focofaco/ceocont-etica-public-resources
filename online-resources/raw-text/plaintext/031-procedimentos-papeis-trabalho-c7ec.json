@@ -2,20 +2,28 @@
   "version": "1.0.0",
   "content_id": "031-procedimentos-papeis-trabalho-c7ec",
   "component": "plaintext",
-  "original_text": "Procedimentos de documentação\n\nPara garantir a integridade dos trabalhos executados, cada profissional da ${razao-social} executa procedimentos e testes para obter evidências que sustentem as decisões e conclusões alcançadas. Todo o processo é formalmente documentado em papéis de trabalho com identificação dos autores e revisores e respectivas datas.\n\nOs papéis de trabalho são arquivados em ${sistema-arquivo} sob identificação do cliente. Os documentos fornecidos pelo cliente são mantidos separados dos documentos elaborados pela equipe responsável pelos serviços, devendo estes últimos conter a referência ${codigo-referencia}.",
-  "transformed_text": "Procedimentos de documentação\n\nPara garantir a integridade dos trabalhos executados, cada profissional da ${razao-social} executa procedimentos e testes para obter evidências que sustentem as decisões e conclusões alcançadas. Todo o processo é formalmente documentado em papéis de trabalho com identificação dos autores e revisores e respectivas datas.\n\nOs papéis de trabalho são arquivados em ${sistema-arquivo} sob identificação do cliente. Os documentos fornecidos pelo cliente são mantidos separados dos documentos elaborados pela equipe responsável pelos serviços, devendo estes últimos conter a referência ${codigo-referencia}.",
+  "original_text": "Para garantir a integridade dos trabalhos executados, cada profissional da ${razao-social} executa procedimentos e testes para obter evidências que sustentem as decisões e conclusões alcançadas. Todo o processo é formalmente documentado em papéis de trabalho com identificação dos autores e revisores e respectivas datas.\n\nOs papéis de trabalho são arquivados em ${sistema-arquivo} sob identificação do cliente. Os documentos fornecidos pelo cliente são mantidos separados dos documentos elaborados pela equipe responsável pelos serviços, devendo estes últimos conter a referência ${codigo-referencia}.\n",
+  "transformed_text": "Para garantir a integridade dos trabalhos executados, cada profissional da ${razao-social} executa procedimentos e testes para obter evidências que sustentem as decisões e conclusões alcançadas. Todo o processo é formalmente documentado em papéis de trabalho com identificação dos autores e revisores e respectivas datas.\n\nOs papéis de trabalho são arquivados em ${sistema-arquivo} sob identificação do cliente. Os documentos fornecidos pelo cliente são mantidos separados dos documentos elaborados pela equipe responsável pelos serviços, devendo estes últimos conter a referência ${codigo-referencia}.\n",
   "metadata": {
     "title": "Procedimentos de Documentação",
     "description": "Procedimentos para documentação formal de trabalhos contábeis em papéis de trabalho com identificação e arquivamento adequado",
     "domain": "procedimentos-documentacao",
-    "keywords": ["papeis-trabalho", "documentacao", "evidencias", "arquivamento", "integridade"],
+    "keywords": [
+      "papeis-trabalho",
+      "documentacao",
+      "evidencias",
+      "arquivamento",
+      "integridade"
+    ],
     "language": "pt-BR",
     "created_at": "2025-11-13T18:30:00Z",
     "updated_at": "2025-11-13T18:30:00Z",
     "author": "firma-contabil",
     "source": "Manual de Qualidade e Procedimentos Internos",
     "section": "procedimentos-documentacao",
-    "target_audience": ["profissionais-contabeis"],
+    "target_audience": [
+      "profissionais-contabeis"
+    ],
     "reading_level": "tecnico",
     "estimated_reading_time_minutes": 1
   },
@@ -58,8 +66,8 @@
     "issues": []
   },
   "quality_metrics": {
-    "word_count": 89,
-    "character_count": 666,
+    "word_count": 78,
+    "character_count": 620,
     "readability_score": 41.5,
     "avg_sentence_length": 29.7,
     "avg_word_length": 6.8,
@@ -71,7 +79,9 @@
   "relationships": {
     "references": [],
     "referenced_by": [],
-    "related_fragments": ["028-integridade-profissional-ceticismo-7278"]
+    "related_fragments": [
+      "028-integridade-profissional-ceticismo-7278"
+    ]
   },
   "warnings": [],
   "review_status": {

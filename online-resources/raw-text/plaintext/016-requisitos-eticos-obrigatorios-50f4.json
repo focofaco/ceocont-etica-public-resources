@@ -2,20 +2,28 @@
   "version": "1.0.0",
   "content_id": "016-requisitos-eticos-obrigatorios-50f4",
   "component": "plaintext",
-  "original_text": "Requisitos éticos obrigatórios\n\nPara os serviços contábeis prestados, os requisitos éticos relevantes são estabelecidos no Código de Ética Profissional do Contador e nas normas profissionais aplicáveis emitidas pelo Conselho Federal de Contabilidade.\n\nO cumprimento desses requisitos é obrigatório para todos os profissionais que atuam na prestação de serviços contábeis. A inobservância pode resultar em sanções disciplinares e responsabilização profissional.",
-  "transformed_text": "Requisitos éticos obrigatórios\n\nPara os serviços contábeis prestados, os requisitos éticos relevantes são estabelecidos no Código de Ética Profissional do Contador e nas normas profissionais aplicáveis emitidas pelo Conselho Federal de Contabilidade.\n\nO cumprimento desses requisitos é obrigatório para todos os profissionais que atuam na prestação de serviços contábeis. A inobservância pode resultar em sanções disciplinares e responsabilização profissional.",
+  "original_text": "Para os serviços contábeis prestados, os requisitos éticos relevantes são estabelecidos no Código de Ética Profissional do Contador e nas normas profissionais aplicáveis emitidas pelo Conselho Federal de Contabilidade.\n\nO cumprimento desses requisitos é obrigatório para todos os profissionais que atuam na prestação de serviços contábeis. A inobservância pode resultar em sanções disciplinares e responsabilização profissional.\n",
+  "transformed_text": "Para os serviços contábeis prestados, os requisitos éticos relevantes são estabelecidos no Código de Ética Profissional do Contador e nas normas profissionais aplicáveis emitidas pelo Conselho Federal de Contabilidade.\n\nO cumprimento desses requisitos é obrigatório para todos os profissionais que atuam na prestação de serviços contábeis. A inobservância pode resultar em sanções disciplinares e responsabilização profissional.\n",
   "metadata": {
     "title": "Requisitos Éticos Obrigatórios",
     "description": "Documento que estabelece os requisitos éticos obrigatórios baseados no CFC e consequências do descumprimento",
     "domain": "etica-profissional",
-    "keywords": ["requisitos-eticos", "codigo-etica-cfc", "obrigacoes-profissionais", "sancoes-disciplinares"],
+    "keywords": [
+      "requisitos-eticos",
+      "codigo-etica-cfc",
+      "obrigacoes-profissionais",
+      "sancoes-disciplinares"
+    ],
     "language": "pt-BR",
     "created_at": "2025-11-13T17:00:00Z",
     "updated_at": "2025-11-13T17:00:00Z",
     "author": "firma-contabil",
     "source": "Manual de Qualidade e Procedimentos Internos",
     "section": "requisitos-eticos",
-    "target_audience": ["profissionais-contabeis", "gestores"],
+    "target_audience": [
+      "profissionais-contabeis",
+      "gestores"
+    ],
     "reading_level": "tecnico",
     "estimated_reading_time_minutes": 1
   },
@@ -40,7 +48,7 @@
   },
   "quality_metrics": {
     "word_count": 55,
-    "character_count": 432,
+    "character_count": 447,
     "readability_score": 42.8,
     "avg_sentence_length": 27.5,
     "avg_word_length": 7.3,
@@ -52,7 +60,11 @@
   "relationships": {
     "references": [],
     "referenced_by": [],
-    "related_fragments": ["014-exigencias-eticas-relevantes-7453", "017-principios-fundamentais-etica", "019-detalhamento-principios-etica-0cd9"]
+    "related_fragments": [
+      "014-exigencias-eticas-relevantes-7453",
+      "017-principios-fundamentais-etica",
+      "019-detalhamento-principios-etica-0cd9"
+    ]
   },
   "warnings": [],
   "review_status": {

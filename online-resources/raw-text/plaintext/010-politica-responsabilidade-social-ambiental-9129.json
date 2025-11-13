@@ -2,20 +2,31 @@
   "version": "1.0.0",
   "content_id": "010-politica-responsabilidade-social-ambiental-9129",
   "component": "plaintext",
-  "original_text": "Política de Responsabilidade Social, Ambiental e Climática\n\nA Política de Responsabilidade Social, Ambiental e Climática (PRSAC) da ${razao-social} está fundamentada na valorização e na garantia de integração das dimensões social, ambiental e climática em sua estratégia. A política se aplica às práticas, normas, procedimentos e processos adotados pela firma, em todas as atividades gerenciais e operacionais, e no relacionamento com seus públicos.\n\nA PRSAC contém princípios e diretrizes que norteiam as ações de natureza socioambiental e climática nos negócios, na governança, no gerenciamento de riscos e na relação com as partes interessadas.\n\nA ausência de gerenciamento desses riscos pode resultar em perdas de imagem, perdas legais e diminuição de receitas, aspectos considerados pela ${razao-social}.\n\nA ${razao-social} observa em sua PRSAC os seguintes princípios de proporcionalidade e adequação:\n\n- Proporcionalidade: ao modelo de negócio, à natureza das operações e à complexidade dos serviços, das atividades e dos processos da firma\n- Adequação: à dimensão e relevância do grau de exposição ao risco social, ambiental e climático nas atividades e operações\n\nA ${razao-social} observa e cumpre, no exercício de suas atividades, a legislação e regulamentação ambiental, climática e trabalhista em vigor no Brasil, especialmente, mas não se limitando, as normas relativas à saúde, meio ambiente, segurança ocupacional e à inexistência de trabalho análogo ao escravo e uso de mão-de-obra infantil.",
-  "transformed_text": "Política de Responsabilidade Social, Ambiental e Climática\n\nA Política de Responsabilidade Social, Ambiental e Climática (PRSAC) da ${razao-social} está fundamentada na valorização e na garantia de integração das dimensões social, ambiental e climática em sua estratégia. A política se aplica às práticas, normas, procedimentos e processos adotados pela firma, em todas as atividades gerenciais e operacionais, e no relacionamento com seus públicos.\n\nA PRSAC contém princípios e diretrizes que norteiam as ações de natureza socioambiental e climática nos negócios, na governança, no gerenciamento de riscos e na relação com as partes interessadas.\n\nA ausência de gerenciamento desses riscos pode resultar em perdas de imagem, perdas legais e diminuição de receitas, aspectos considerados pela ${razao-social}.\n\nA ${razao-social} observa em sua PRSAC os seguintes princípios de proporcionalidade e adequação:\n\n- Proporcionalidade: ao modelo de negócio, à natureza das operações e à complexidade dos serviços, das atividades e dos processos da firma\n- Adequação: à dimensão e relevância do grau de exposição ao risco social, ambiental e climático nas atividades e operações\n\nA ${razao-social} observa e cumpre, no exercício de suas atividades, a legislação e regulamentação ambiental, climática e trabalhista em vigor no Brasil, especialmente, mas não se limitando, as normas relativas à saúde, meio ambiente, segurança ocupacional e à inexistência de trabalho análogo ao escravo e uso de mão-de-obra infantil.",
+  "original_text": "A Política de Responsabilidade Social, Ambiental e Climática (PRSAC) da ${razao-social} está fundamentada na valorização e na garantia de integração das dimensões social, ambiental e climática em sua estratégia. A política se aplica às práticas, normas, procedimentos e processos adotados pela firma, em todas as atividades gerenciais e operacionais, e no relacionamento com seus públicos.\n\nA PRSAC contém princípios e diretrizes que norteiam as ações de natureza socioambiental e climática nos negócios, na governança, no gerenciamento de riscos e na relação com as partes interessadas.\n\nA ausência de gerenciamento desses riscos pode resultar em perdas de imagem, perdas legais e diminuição de receitas, aspectos considerados pela ${razao-social}.\n\nA ${razao-social} observa em sua PRSAC os seguintes princípios de proporcionalidade e adequação:\n\n- Proporcionalidade: ao modelo de negócio, à natureza das operações e à complexidade dos serviços, das atividades e dos processos da firma\n- Adequação: à dimensão e relevância do grau de exposição ao risco social, ambiental e climático nas atividades e operações\n\nA ${razao-social} observa e cumpre, no exercício de suas atividades, a legislação e regulamentação ambiental, climática e trabalhista em vigor no Brasil, especialmente, mas não se limitando, as normas relativas à saúde, meio ambiente, segurança ocupacional e à inexistência de trabalho análogo ao escravo e uso de mão-de-obra infantil.\n",
+  "transformed_text": "A Política de Responsabilidade Social, Ambiental e Climática (PRSAC) da ${razao-social} está fundamentada na valorização e na garantia de integração das dimensões social, ambiental e climática em sua estratégia. A política se aplica às práticas, normas, procedimentos e processos adotados pela firma, em todas as atividades gerenciais e operacionais, e no relacionamento com seus públicos.\n\nA PRSAC contém princípios e diretrizes que norteiam as ações de natureza socioambiental e climática nos negócios, na governança, no gerenciamento de riscos e na relação com as partes interessadas.\n\nA ausência de gerenciamento desses riscos pode resultar em perdas de imagem, perdas legais e diminuição de receitas, aspectos considerados pela ${razao-social}.\n\nA ${razao-social} observa em sua PRSAC os seguintes princípios de proporcionalidade e adequação:\n\n- Proporcionalidade: ao modelo de negócio, à natureza das operações e à complexidade dos serviços, das atividades e dos processos da firma\n- Adequação: à dimensão e relevância do grau de exposição ao risco social, ambiental e climático nas atividades e operações\n\nA ${razao-social} observa e cumpre, no exercício de suas atividades, a legislação e regulamentação ambiental, climática e trabalhista em vigor no Brasil, especialmente, mas não se limitando, as normas relativas à saúde, meio ambiente, segurança ocupacional e à inexistência de trabalho análogo ao escravo e uso de mão-de-obra infantil.\n",
   "metadata": {
     "title": "Política de Responsabilidade Social, Ambiental e Climática",
     "description": "PRSAC estabelece princípios e diretrizes para integração de dimensões social, ambiental e climática na estratégia da firma",
     "domain": "responsabilidade-social-ambiental",
-    "keywords": ["prsac", "responsabilidade-social", "ambiental", "climatica", "sustentabilidade", "esg"],
+    "keywords": [
+      "prsac",
+      "responsabilidade-social",
+      "ambiental",
+      "climatica",
+      "sustentabilidade",
+      "esg"
+    ],
     "language": "pt-BR",
     "created_at": "2025-11-13T17:10:00Z",
     "updated_at": "2025-11-13T17:10:00Z",
     "author": "firma-contabil",
     "source": "Manual de Qualidade e Procedimentos Internos",
     "section": "politicas-socioambientais",
-    "target_audience": ["gestores", "socios", "profissionais-contabeis"],
+    "target_audience": [
+      "gestores",
+      "socios",
+      "profissionais-contabeis"
+    ],
     "reading_level": "tecnico",
     "estimated_reading_time_minutes": 2
   },
@@ -46,8 +57,8 @@
     "issues": []
   },
   "quality_metrics": {
-    "word_count": 213,
-    "character_count": 1570,
+    "word_count": 206,
+    "character_count": 1508,
     "readability_score": 38.2,
     "avg_sentence_length": 30.4,
     "avg_word_length": 6.7,
