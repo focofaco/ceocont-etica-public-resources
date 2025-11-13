@@ -9,6 +9,37 @@ Format based on Keep a Changelog. Project adheres to Semantic Versioning.
 
 ================================================================================
 
+[2.3.0] - 2025-11-13
+
+Added:
+- .github/workflows/commit-validator-agent.yml for enforcing conventional commits
+- .github/workflows/auto-label-agent.yml for auto-labeling issues by keywords
+- .github/workflows/pr-size-labeler-agent.yml for labeling PRs by size (XS/S/M/L/XL)
+- .github/workflows/growth-tracker-agent.yml for tracking repository growth metrics
+- .github/workflows/readme-updater-agent.yml for auto-updating README.md statistics
+- .github/workflows/changelog-formatter-agent.yml for validating CHANGELOG.txt format
+- .github/workflows/unused-deps-agent.yml for detecting unused Python dependencies
+- .github/workflows/outdated-deps-agent.yml for reporting outdated packages & security issues
+- .github/workflows/dep-graph-agent.yml for generating visual dependency graphs
+- .github/workflows/breaking-change-agent.yml for detecting breaking changes in dep updates
+
+Features:
+- Quality & Validation Agents (4): commit format, changelog format, PR size, auto-labels
+- Maintenance & Tracking Agents (2): growth tracking, README auto-updates
+- Dependency Management Agents (4): unused/outdated detection, graphs, breaking changes
+- All agents run autonomously via cron schedules + workflow_dispatch for manual testing
+- Comprehensive reporting with GitHub issues, PR comments, and workflow summaries
+- Least-privilege permission model for security
+
+Note:
+- Total workflow count: 20 autonomous agents (3 basic + 5 specialized + 2 advanced + 10 new)
+- All 10 workflows are YAML-validated and production-ready
+- Agents generate actionable reports with task checklists
+- Breaking change detector labels PRs and fails on major version bumps
+- Growth tracker commits weekly metrics to .github/metrics/growth.csv
+
+================================================================================
+
 [2.2.0] - 2025-11-13
 
 Added:
