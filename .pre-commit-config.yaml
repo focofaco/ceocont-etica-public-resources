@@ -71,7 +71,24 @@ repos:
         entry: python .claude/hooks/validate_audit_json.py
         language: python
         files: ^\.claude/ingestion-audit\.json$
-        additional_dependencies: ['jsonschema>=4.20.0']
+        additional_dependencies: ['pydantic>=2.9.0']
+
+      # Validate metadata twin JSONs with Pydantic
+      - id: validate-metadata-twin-json
+        name: Validate metadata twin JSON files
+        entry: python .claude/hooks/validate_metadata_twin_pydantic.py
+        language: python
+        files: ^online-resources/raw-text/.*\.json$
+        pass_filenames: true
+        additional_dependencies: ['pydantic>=2.9.0']
+
+      # Validate chunks.json with Pydantic
+      - id: validate-chunks-json
+        name: Validate chunks.json manifest
+        entry: python .claude/hooks/validate_chunks_pydantic.py
+        language: python
+        files: ^chunks\.json$
+        additional_dependencies: ['pydantic>=2.9.0']
 
       # Check for forbidden HTML/JS/CSS in raw-text
       - id: forbid-html-js-css
@@ -96,3 +113,11 @@ repos:
         language: system
         files: ^online-resources/raw-text/(?!meta/).*\.txt$
         pass_filenames: true
+
+      # Validate metadata twins (every .txt has .json)
+      - id: validate-metadata-twins
+        name: Validate .txt files have .json metadata twins
+        entry: .claude/hooks/validate_metadata_twins.sh
+        language: system
+        files: ^online-resources/raw-text/.*\.(txt|json)$
+        pass_filenames: false

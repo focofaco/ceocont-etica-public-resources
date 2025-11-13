@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-11-13T03:00:00Z",
+  "total_chunks": 1,
+  "total_fragments": 1,
+  "chunks": [
+    {
+      "chunk_id": "chunk_01",
+      "status": "completed",
+      "ingested_at": "2025-11-13T00:03:00Z",
+      "source_document": "Manual Qualidade - Contra Capa",
+      "source_metadata": {
+        "extraction_method": "copy_paste",
+        "page_number": 1,
+        "source_format": "pdf"
+      },
+      "fragments_generated": 1,
+      "fragments": [
+        {
+          "fragment_id": "chunk_01_frag_001",
+          "seq": 1,
+          "component": "plaintext",
+          "content_id": "001-politica-controle-qualidade-contabil-41f5",
+          "title": "Política de Controle da Qualidade",
+          "path_txt": "online-resources/raw-text/plaintext/001-politica-controle-qualidade-contabil-41f5.txt",
+          "path_json": "online-resources/raw-text/plaintext/001-politica-controle-qualidade-contabil-41f5.json",
+          "sha256_txt": "41f5bfaaff5dee1e10520e90c0df497bbde3a549714c593b96b13585240fe2ad",
+          "word_count": 165,
+          "character_count": 1307,
+          "transformations_applied": ["deduplication"],
+          "review_status": "approved"
+        }
+      ]
+    }
+  ],
+  "component_distribution": {
+    "plaintext": 1,
+    "callouts": 0,
+    "docks": 0,
+    "tradeoffs": 0,
+    "tables": 0,
+    "data": 0,
+    "faqs": 0,
+    "diagrams": 0,
+    "disclaimers": 0,
+    "others": 0,
+    "header_h1": 0,
+    "header_h2": 0,
+    "header_h3": 0
+  },
+  "component_distribution_percentage": {
+    "plaintext": 100.0,
+    "callouts": 0.0,
+    "docks": 0.0,
+    "tradeoffs": 0.0,
+    "tables": 0.0,
+    "data": 0.0,
+    "faqs": 0.0,
+    "diagrams": 0.0,
+    "disclaimers": 0.0,
+    "others": 0.0,
+    "header_h1": 0.0,
+    "header_h2": 0.0,
+    "header_h3": 0.0
+  },
+  "_distribution_note": "Headers (header_h1, header_h2, header_h3) are structural elements and do NOT count towards the 70-80% plaintext / 20-30% others baseline.",
+  "target_distribution": {
+    "plaintext": {
+      "min": 70.0,
+      "max": 80.0
+    },
+    "others_combined": {
+      "min": 20.0,
+      "max": 30.0
+    }
+  },
+  "saturation_warnings": [
+    "Current plaintext: 100.0% exceeds maximum target of 80.0%. Need to add other components."
+  ],
+  "placeholders_inventory": [
+    "${razao-social}",
+    "${responsavel-qualidade}",
+    "${data-atualizacao}",
+    "${numero-atualizacoes}"
+  ]
+}

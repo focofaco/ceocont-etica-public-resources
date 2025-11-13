@@ -1,0 +1,9 @@
+# Pydantic v2 - Data validation
+pydantic>=2.9.0
+pydantic-settings>=2.5.0
+
+# JSON Schema validation
+jsonschema>=4.20.0
+
+# Pre-commit hooks
+pre-commit>=4.0.0

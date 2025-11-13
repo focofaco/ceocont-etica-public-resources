@@ -10,19 +10,24 @@ Entregar **texto puro**, versionado por **tag imutável**, com **integridade ras
 **Fora:** qualquer lógica de cliente, renderização, UI, paginação ou estilos.
 
 ## 3) Conteúdo permitido
-Formato **único**: arquivos `.txt` em **UTF‑8** com **LF**, **sem BOM**.  
+Formato **único**: arquivos `.txt` em **UTF‑8** com **LF**, **sem BOM**.
 Subtipos (sempre `.txt`), todos dentro de `online-resources/raw-text/`:
-- `plaintext/` — texto corrido por box.  
-- `callouts/` — mensagens destacadas.  
-- `docks/` — notas laterais editoriais.  
-- `tradeoffs/` — listas `+`/`-` (prós/cons).  
-- `tables/` — `*.tsv.txt` (1ª linha = cabeçalho).  
-- `data/` — `*.tsv.txt` usados para gráficos baseados em tabela.  
-- `faqs/` — pares `q.txt` e `a.txt`.  
-- `diagrams/` — `*.dot.txt` (Graphviz).  
-- `disclaimers/` — avisos legais/risco.  
-- `others/` — conteúdo textual genérico.  
+- `plaintext/` — texto corrido por box.
+- `callouts/` — mensagens destacadas.
+- `docks/` — notas laterais editoriais.
+- `tradeoffs/` — listas `+`/`-` (prós/cons).
+- `tables/` — `*.tsv.txt` (1ª linha = cabeçalho).
+- `data/` — `*.tsv.txt` usados para gráficos baseados em tabela.
+- `faqs/` — pares `q.txt` e `a.txt`.
+- `diagrams/` — `*.dot.txt` (Graphviz).
+- `disclaimers/` — avisos legais/risco.
+- `others/` — conteúdo textual genérico.
+- `header_h1/` — cabeçalhos nível 1 (títulos principais).
+- `header_h2/` — cabeçalhos nível 2 (subtítulos).
+- `header_h3/` — cabeçalhos nível 3 (sub-subtítulos).
 - `meta/` — `glossario.json.txt`, `abbr.json.txt`, `integrity.txt`, `TREE.txt`.
+
+**Nota:** Headers (`header_h1`, `header_h2`, `header_h3`) são elementos estruturais e **não contam** para a baseline de distribuição 70-80% plaintext / 20-30% outros.
 
 **Proibido no repo:** HTML, JS, CSS, imagens (SVG/PNG/JPG/WebP), PDFs, binários, áudio/vídeo, links remotos embutidos como “conteúdo”.
 

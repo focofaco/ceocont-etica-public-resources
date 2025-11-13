@@ -1,4 +1,66 @@
 {
   "version": "1.0.0",
-  "abbreviations": {}
+  "abbreviations": {
+    "CFC": {
+      "full": "Conselho Federal de Contabilidade",
+      "context": "Órgão regulador da profissão contábil no Brasil",
+      "note": "Também pode referir-se aos Conselhos Regionais de Contabilidade nos estados (CRC)"
+    },
+    "NBC": {
+      "full": "Normas Brasileiras de Contabilidade",
+      "context": "Conjunto de normas técnicas e profissionais emitidas pelo CFC"
+    },
+    "NBC-TG": {
+      "full": "Normas Brasileiras de Contabilidade - Técnicas Gerais",
+      "context": "Normas técnicas convergentes aos padrões internacionais IFRS"
+    },
+    "NBC-TA": {
+      "full": "Normas Brasileiras de Contabilidade - Técnicas de Auditoria",
+      "context": "Normas técnicas de auditoria convergentes aos padrões internacionais ISA"
+    },
+    "NBC-PG": {
+      "full": "Normas Brasileiras de Contabilidade - Profissionais Gerais",
+      "context": "Normas profissionais de conduta e ética"
+    },
+    "CRC": {
+      "full": "Conselho Regional de Contabilidade",
+      "context": "Órgão regional do CFC responsável por registro e fiscalização nos estados"
+    },
+    "IFRS": {
+      "full": "International Financial Reporting Standards",
+      "context": "Normas internacionais de contabilidade emitidas pelo IASB"
+    },
+    "IASB": {
+      "full": "International Accounting Standards Board",
+      "context": "Organismo internacional emissor de normas contábeis"
+    },
+    "ISA": {
+      "full": "International Standards on Auditing",
+      "context": "Normas internacionais de auditoria emitidas pela IFAC"
+    },
+    "IFAC": {
+      "full": "International Federation of Accountants",
+      "context": "Federação internacional de contadores"
+    },
+    "DCTF": {
+      "full": "Declaração de Débitos e Créditos Tributários Federais",
+      "context": "Obrigação acessória federal"
+    },
+    "ECD": {
+      "full": "Escrituração Contábil Digital",
+      "context": "Obrigação acessória do SPED"
+    },
+    "ECF": {
+      "full": "Escrituração Contábil Fiscal",
+      "context": "Obrigação acessória do SPED"
+    },
+    "SPED": {
+      "full": "Sistema Público de Escrituração Digital",
+      "context": "Sistema de obrigações acessórias digitais da Receita Federal"
+    },
+    "RFB": {
+      "full": "Receita Federal do Brasil",
+      "context": "Órgão federal de arrecadação e fiscalização tributária"
+    }
+  }
 }

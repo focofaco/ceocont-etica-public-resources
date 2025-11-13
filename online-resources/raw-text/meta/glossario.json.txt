@@ -1,4 +1,53 @@
 {
   "version": "1.0.0",
-  "terms": {}
+  "terms": {
+    "controle-qualidade": {
+      "term": "Controle de Qualidade",
+      "definition": "Conjunto de políticas, procedimentos e controles internos documentados para assegurar que os serviços contábeis prestados observam as normas profissionais e técnicas aplicáveis.",
+      "domain": "contabilidade",
+      "related": ["auditoria", "conformidade", "cfc"]
+    },
+    "cfc": {
+      "term": "CFC",
+      "definition": "Conselho Federal de Contabilidade. Órgão regulador da profissão contábil no Brasil, responsável por emitir normas profissionais e técnicas.",
+      "domain": "regulatorio",
+      "related": ["normas-tecnicas", "normas-profissionais"]
+    },
+    "normas-tecnicas": {
+      "term": "Normas Técnicas",
+      "definition": "Conjunto de regras e procedimentos técnicos emitidos pelo CFC que regulamentam a execução dos serviços contábeis.",
+      "domain": "contabilidade",
+      "related": ["cfc", "controle-qualidade"]
+    },
+    "normas-profissionais": {
+      "term": "Normas Profissionais",
+      "definition": "Conjunto de regras de conduta e ética profissional emitidas pelo CFC que regem o exercício da profissão contábil.",
+      "domain": "regulatorio",
+      "related": ["cfc", "etica-profissional"]
+    },
+    "manual-qualidade": {
+      "term": "Manual de Qualidade e Procedimentos Internos",
+      "definition": "Documento que define as políticas do sistema de controle de qualidade da firma contábil, estabelecendo práticas, etapas e controles internos.",
+      "domain": "gestao-qualidade",
+      "related": ["controle-qualidade", "procedimentos-internos"]
+    },
+    "servicos-contabeis": {
+      "term": "Serviços Contábeis",
+      "definition": "Conjunto de atividades profissionais relacionadas à escrituração, demonstrações financeiras, auditoria, perícia e consultoria contábil.",
+      "domain": "contabilidade",
+      "related": ["profissional-contabil", "normas-tecnicas"]
+    },
+    "conformidade": {
+      "term": "Conformidade",
+      "definition": "Estado de aderência às normas, regulamentos e políticas estabelecidas pelos órgãos reguladores e pela própria firma.",
+      "domain": "gestao-qualidade",
+      "related": ["controle-qualidade", "auditoria"]
+    },
+    "responsavel-qualidade": {
+      "term": "Responsável pela Qualidade",
+      "definition": "Profissional designado pela firma para coordenar, atualizar e monitorar o sistema de controle de qualidade.",
+      "domain": "gestao-qualidade",
+      "related": ["controle-qualidade", "manual-qualidade"]
+    }
+  }
 }
