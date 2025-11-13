@@ -1,0 +1,235 @@
+name: "Link Checker & Validator"
+
+# Validates internal file references and detects broken links
+# Runs daily + on PRs that modify content
+
+on:
+  schedule:
+    # Daily at 11:00 BRT (14:00 UTC)
+    - cron: '0 14 * * *'
+  pull_request:
+    paths:
+      - 'online-resources/raw-text/**/*.txt'
+      - 'online-resources/raw-text/**/*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  check-links:
+    name: Check Internal Links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check internal file references
+        id: internal-links
+        run: |
+          python3 << 'EOF'
+          import os
+          import re
+          import json
+          from pathlib import Path
+
+          print("## Internal Link Validation\n")
+
+          raw_text = Path("online-resources/raw-text")
+          broken_links = []
+          total_refs = 0
+
+          # Pattern to detect .txt file references
+          # Matches: "001-file.txt", "../file.txt", "directory/file.txt"
+          txt_pattern = re.compile(r'([a-z0-9_/-]+\.(?:txt|tsv\.txt|dot\.txt))', re.IGNORECASE)
+
+          for txt_file in raw_text.rglob("*.txt"):
+              if "meta/" in str(txt_file):
+                  continue
+
+              with open(txt_file, 'r', encoding='utf-8') as f:
+                  content = f.read()
+
+              # Find all .txt references
+              matches = txt_pattern.findall(content)
+
+              for match in matches:
+                  total_refs += 1
+                  # Resolve relative to current file
+                  ref_path = (txt_file.parent / match).resolve()
+
+                  # Check if file exists
+                  if not ref_path.exists():
+                      # Also try relative to raw-text root
+                      ref_path_alt = (raw_text / match).resolve()
+                      if not ref_path_alt.exists():
+                          broken_links.append({
+                              'source': str(txt_file.relative_to(Path.cwd())),
+                              'reference': match,
+                              'line': 'unknown'
+                          })
+
+          print(f"**Total file references checked**: {total_refs}\n")
+          print(f"**Broken links found**: {len(broken_links)}\n")
+
+          if broken_links:
+              print("### Broken Links\n")
+              for link in broken_links[:20]:  # Limit to 20
+                  print(f"- `{link['source']}` → ❌ `{link['reference']}`")
+
+              # Save to file for PR comment
+              with open('broken-links.json', 'w') as f:
+                  json.dump(broken_links, f, indent=2)
+
+              exit(1 if len(broken_links) > 0 else 0)
+          else:
+              print("✅ All internal file references are valid!\n")
+          EOF
+        continue-on-error: true
+
+      - name: Check metadata twin references
+        id: metadata-twins
+        run: |
+          python3 << 'EOF'
+          import json
+          from pathlib import Path
+
+          print("\n## Metadata Twin Validation\n")
+
+          raw_text = Path("online-resources/raw-text")
+          missing_twins = []
+          orphaned_json = []
+
+          # Check .txt files have .json twins
+          for txt_file in raw_text.rglob("*.txt"):
+              if "meta/" in str(txt_file):
+                  continue
+
+              json_twin = txt_file.with_suffix(".json")
+              if not json_twin.exists():
+                  missing_twins.append(str(txt_file.relative_to(Path.cwd())))
+
+          # Check .json files have .txt twins
+          for json_file in raw_text.rglob("*.json"):
+              if "meta/" in str(json_file):
+                  continue
+
+              txt_twin = json_file.with_suffix(".txt")
+              if not txt_twin.exists():
+                  orphaned_json.append(str(json_file.relative_to(Path.cwd())))
+
+          if missing_twins:
+              print("### Missing JSON Twins\n")
+              for txt in missing_twins[:10]:
+                  print(f"- ❌ `{txt}` (no .json)")
+
+          if orphaned_json:
+              print("\n### Orphaned JSON Files\n")
+              for json_f in orphaned_json[:10]:
+                  print(f"- ❌ `{json_f}` (no .txt)")
+
+          if not missing_twins and not orphaned_json:
+              print("✅ All metadata twins are properly paired!\n")
+
+          # Save counts
+          with open('twin-report.json', 'w') as f:
+              json.dump({
+                  'missing_twins': len(missing_twins),
+                  'orphaned_json': len(orphaned_json)
+              }, f)
+
+          exit(1 if (missing_twins or orphaned_json) else 0)
+          EOF
+        continue-on-error: true
+
+      - name: Validate chunks.json references
+        id: chunks-validation
+        run: |
+          python3 << 'EOF'
+          import json
+          from pathlib import Path
+
+          print("\n## chunks.json Validation\n")
+
+          if not Path("chunks.json").exists():
+              print("⚠️ chunks.json not found")
+              exit(0)
+
+          with open("chunks.json", 'r') as f:
+              chunks = json.load(f)
+
+          missing_files = []
+          if "chunks" in chunks:
+              for chunk in chunks["chunks"]:
+                  file_path = chunk.get("file_path", "")
+                  if file_path and not Path(file_path).exists():
+                      missing_files.append(file_path)
+
+          if missing_files:
+              print("### Files referenced in chunks.json but missing:\n")
+              for file in missing_files[:10]:
+                  print(f"- ❌ `{file}`")
+              exit(1)
+          else:
+              print("✅ All files in chunks.json exist!\n")
+          EOF
+        continue-on-error: true
+
+      - name: Comment on PR with results
+        if: github.event_name == 'pull_request' && (steps.internal-links.outcome == 'failure' || steps.metadata-twins.outcome == 'failure')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            let comment = '## 🔗 Link Checker Results\n\n';
+
+            if (fs.existsSync('broken-links.json')) {
+              const brokenLinks = JSON.parse(fs.readFileSync('broken-links.json', 'utf8'));
+              comment += `⚠️ **${brokenLinks.length} broken internal link(s) found**\n\n`;
+              comment += '### Broken Links\n';
+              brokenLinks.slice(0, 10).forEach(link => {
+                comment += `- \`${link.source}\` → ❌ \`${link.reference}\`\n`;
+              });
+            }
+
+            if (fs.existsSync('twin-report.json')) {
+              const twinReport = JSON.parse(fs.readFileSync('twin-report.json', 'utf8'));
+              if (twinReport.missing_twins > 0 || twinReport.orphaned_json > 0) {
+                comment += `\n⚠️ **Metadata twin issues**:\n`;
+                comment += `- Missing JSON twins: ${twinReport.missing_twins}\n`;
+                comment += `- Orphaned JSON files: ${twinReport.orphaned_json}\n`;
+              }
+            }
+
+            comment += '\n---\n*Fix these issues before merging*';
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment,
+            });
+
+      - name: Upload link report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-checker-report
+          path: |
+            broken-links.json
+            twin-report.json
+          retention-days: 30
+
+      - name: Fail if broken links found
+        if: steps.internal-links.outcome == 'failure' || steps.metadata-twins.outcome == 'failure'
+        run: |
+          echo "::error::Broken links or metadata twin issues detected"
+          exit 1

@@ -9,6 +9,30 @@ Format based on Keep a Changelog. Project adheres to Semantic Versioning.
 
 ================================================================================
 
+[2.2.0] - 2025-11-13
+
+Added:
+- .github/workflows/stale-content-detector.yml for identifying outdated content
+- .github/workflows/link-checker.yml for validating internal file references
+- .github/workflows/changelog-auto.yml for generating changelog from commits
+
+Changed:
+- Pre-commit CI: Auto-fix ENABLED (commits fixes to PRs automatically)
+- Dependabot: Weekly → Daily updates (09:00/10:00 BRT)
+
+Features:
+- Stale Content Detector: Monthly cron to find files >180 days old
+- Link Checker: Validates .txt references, metadata twins, and chunks.json
+- Changelog Auto: Parses conventional commits and suggests version bumps
+
+Note:
+- All 3 workflows are YAML-validated and production-ready
+- Stale detector creates/updates GitHub issues automatically
+- Link checker fails pipeline if broken links detected
+- Changelog generator produces Keep a Changelog format
+
+================================================================================
+
 [2.1.0] - 2025-11-13
 
 Added:
