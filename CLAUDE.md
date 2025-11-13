@@ -1,13 +1,23 @@
 # CLAUDE.md — AI Agent Operational Rules
 
+## 🤖 AI Agent Ownership & Review Process
+
+This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
+development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
+which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
+recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
+actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
+consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
+agent. **Work resumes only after all pending Pull Requests have been merged; no new commits or PRs are created while any
+PR remains unmerged.**
+
 ## META-INSTRUCTIONS
 
-**TARGET**: Claude AI Sonnet 4.5 autonomous operation on text-only content repository
-**AUTHORITY**: This document is NORMATIVE for AI agent behavior
-**PRIORITY**: Deterministic, zero-ambiguity, explicit boundaries
-**LANGUAGE**: English (project contracts are multilingual: PT-BR, Latin)
+**TARGET**: Claude AI Sonnet 4.5 autonomous operation on text-only content repository **AUTHORITY**: This document is
+NORMATIVE for AI agent behavior **PRIORITY**: Deterministic, zero-ambiguity, explicit boundaries **LANGUAGE**: English
+(project contracts are multilingual: PT-BR, Latin)
 
----
+______________________________________________________________________
 
 ## PROJECT IDENTITY
 
@@ -27,7 +37,7 @@
 - NOT a documentation wiki
 - NOT a binary/media storage
 
----
+______________________________________________________________________
 
 ## CORE CONSTRAINTS (ABSOLUTE)
 
@@ -112,7 +122,7 @@ Examples: ✓ intro-to-topic.txt
   ✗ ../other/file.txt
 ```
 
----
+______________________________________________________________________
 
 ## AI AGENT BEHAVIOR RULES
 
@@ -290,7 +300,7 @@ def determine_version_bump(changes):
         return "NONE"  # No version bump needed
 ```
 
----
+______________________________________________________________________
 
 ## WORKFLOW PROCEDURES
 
@@ -442,7 +452,7 @@ git add "${FAQ_DIR}/"
 git commit -m "feat(faqs): add topic-question FAQ pair"
 ```
 
----
+______________________________________________________________________
 
 ## DECISION TREES
 
@@ -538,7 +548,7 @@ Did I:
 └─ Add/update tests?                        → test
 ```
 
----
+______________________________________________________________________
 
 ## ERROR HANDLING
 
@@ -601,7 +611,7 @@ ACTION: 1. NEVER commit CRLF
   5. Inform user of normalization
 ```
 
----
+______________________________________________________________________
 
 ## VALIDATION CHECKLIST
 
@@ -649,7 +659,7 @@ Before creating release tag:
   - [ ] Tag message is descriptive
 ```
 
----
+______________________________________________________________________
 
 ## FORBIDDEN OPERATIONS
 
@@ -677,7 +687,7 @@ FORBIDDEN_OPERATIONS:
   - Create tag without v prefix
 ```
 
----
+______________________________________________________________________
 
 ## COMMUNICATION PROTOCOLS
 
@@ -733,7 +743,7 @@ FORMAT: "✓ Task completed:
   Next: Push to remote branch"
 ```
 
----
+______________________________________________________________________
 
 ## EDGE CASES
 
@@ -788,7 +798,7 @@ DECISION:
   - Consider if category is deprecated
 ```
 
----
+______________________________________________________________________
 
 ## PRIORITY MATRIX
 
@@ -809,7 +819,7 @@ RESOLUTION:
     → Reject file even if name is perfect
 ```
 
----
+______________________________________________________________________
 
 ## EXECUTION CHECKLIST (EVERY OPERATION)
 
@@ -837,7 +847,7 @@ AFTER_EXECUTION:
   - [ ] Report completion to user
 ```
 
----
+______________________________________________________________________
 
 ## REFERENCE QUICK LINKS
 
@@ -861,12 +871,12 @@ AFTER_EXECUTION:
 - Structure: contract.schema (Structura)
 - Workflow: contract.schema (Gradus Operis)
 
----
+______________________________________________________________________
 
 ## VERSION HISTORY
 
 - v1.0.0 (2025-11-12): Initial AI agent operational rules
 
----
+______________________________________________________________________
 
 **END OF CLAUDE.md - NORMATIVE FOR AI AGENT OPERATION**

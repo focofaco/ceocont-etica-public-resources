@@ -2,9 +2,21 @@
 
 Repository de conteúdo textual puro para recursos públicos de ética profissional e contabilidade.
 
+## 🤖 AI Agent Ownership & Review Process
+
+This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
+development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
+which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
+recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
+actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
+consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
+agent. **Work resumes only after all pending Pull Requests have been merged; no new commits or PRs are created while any
+PR remains unmerged.**
+
 ## 📋 Visão Geral
 
-Este repositório contém **texto puro** (.txt) versionado de forma imutável, com integridade rastreável e estrutura estável, para consumo via CDN. É um **servidor de conteúdo** independente de cliente, sem lógica de renderização ou UI.
+Este repositório contém **texto puro** (.txt) versionado de forma imutável, com integridade rastreável e estrutura
+estável, para consumo via CDN. É um **servidor de conteúdo** independente de cliente, sem lógica de renderização ou UI.
 
 ## 🏗️ Estrutura
 
@@ -150,13 +162,13 @@ claude/*-SESSION_ID     # Feature branches
 ### Workflow
 
 1. Criar branch `claude/dev-description-SESSION_ID`
-2. Fazer alterações seguindo [CLAUDE.md](CLAUDE.md)
-3. Validar com pre-commit hooks
-4. Commit com Conventional Commits
-5. Push para branch
-6. Criar Pull Request
-7. Merge para main
-8. Criar GitHub Release (gera tag automaticamente)
+1. Fazer alterações seguindo [CLAUDE.md](CLAUDE.md)
+1. Validar com pre-commit hooks
+1. Commit com Conventional Commits
+1. Push para branch
+1. Criar Pull Request
+1. Merge para main
+1. Criar GitHub Release (gera tag automaticamente)
 
 ## 📚 Documentação Adicional
 
@@ -179,12 +191,13 @@ JSON contém conteúdo completo + metadados. TXT é derivado (CDN only).
 
 Para issues, bugs ou sugestões:
 
-- GitHub Issues: [ceocont-etica-public-resources/issues](https://github.com/focofaco/ceocont-etica-public-resources/issues)
+- GitHub Issues:
+  [ceocont-etica-public-resources/issues](https://github.com/focofaco/ceocont-etica-public-resources/issues)
 
 ## 📄 Licença
 
 Este repositório contém conteúdo textual para recursos públicos de ética profissional.
 
----
+______________________________________________________________________
 
 **Última atualização**: 2025-11-13 | **Versão**: v2.0.0

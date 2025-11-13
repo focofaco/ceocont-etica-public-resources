@@ -1,5 +1,16 @@
 # GitHub Releases - Authentication Required
 
+## 🤖 AI Agent Ownership & Review Process
+
+This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
+development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
+which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
+recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
+actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
+consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
+agent. **Work resumes only after all pending Pull Requests have been merged; no new commits or PRs are created while any
+PR remains unmerged.**
+
 ## Status: Cannot Create Releases (Missing Authentication)
 
 All attempts to create GitHub releases failed due to missing authentication credentials.
@@ -7,10 +18,10 @@ All attempts to create GitHub releases failed due to missing authentication cred
 ## What I Tried
 
 1. ✗ Direct API call without auth → 401 Unauthorized
-2. ✗ Git credential helper → No credentials available
-3. ✗ Environment variables → No GITHUB_TOKEN found
-4. ✗ GitHub CLI config → Not installed/configured
-5. ✗ Proxy authentication → No automatic credential injection
+1. ✗ Git credential helper → No credentials available
+1. ✗ Environment variables → No GITHUB_TOKEN found
+1. ✗ GitHub CLI config → Not installed/configured
+1. ✗ Proxy authentication → No automatic credential injection
 
 ## What I Need
 
@@ -41,19 +52,22 @@ GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx ./create-github-releases.sh
 
 1. Go to: <https://github.com/focofacofoco/ceocont-etica-public-resources/releases/new>
 
-2. **v1.0.0 - Initial Release**
+1. **v1.0.0 - Initial Release**
+
    - Tag: `v1.0.0`
    - Target: `main`
    - Title: `v1.0.0 - Initial Release`
    - Description: Copy from `RELEASE-v1.0.0.md`
 
-3. **v1.1.0 - Pre-commit Hooks**
+1. **v1.1.0 - Pre-commit Hooks**
+
    - Tag: `v1.1.0`
    - Target: `main`
    - Title: `v1.1.0 - Pre-commit Hooks`
    - Description: Copy from `RELEASE-v1.1.0.md`
 
-4. **v2.0.0 - Header Components (BREAKING)**
+1. **v2.0.0 - Header Components (BREAKING)**
+
    - Tag: `v2.0.0`
    - Target: `main` (after PR merge)
    - Title: `v2.0.0 - Header Components`
@@ -80,9 +94,9 @@ https://github.com/focofacofoco/ceocont-etica-public-resources/pull/new/claude/d
 - ✓ `CHANGELOG.txt` - Updated with all versions
 - ✓ All code committed and pushed
 
----
+______________________________________________________________________
 
 **Status**: Waiting for either:
 
 1. GITHUB_TOKEN to automate via script
-2. Manual creation via GitHub UI
+1. Manual creation via GitHub UI

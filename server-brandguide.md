@@ -1,14 +1,28 @@
 # server-brandguide.md — Guia de Marca Universal (server-side, raw-text)
 
-Este guia é obrigatório. Não há opcionais. Regula apenas o repositório público de conteúdo textual (online-resources/raw-text). É independente de cliente, versão e projeto. Sem decisões visuais.
+## 🤖 AI Agent Ownership & Review Process
 
-1. Propósito
-   Garantir texto cru consistente, legível e verificável. O repositório entrega somente .txt com voz e tom padronizados, prontos para consumo por qualquer cliente.
+This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
+development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
+which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
+recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
+actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
+consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
+agent. **Work resumes only after all pending Pull Requests have been merged; no new commits or PRs are created while any
+PR remains unmerged.**
 
-2. Alcance
-   Dentro: conteúdo sob online-resources/raw-text e subpastas. Fora: qualquer renderização, layout, UI, CSS, impressão ou paginação.
+______________________________________________________________________
 
-3. Princípios
+Este guia é obrigatório. Não há opcionais. Regula apenas o repositório público de conteúdo textual
+(online-resources/raw-text). É independente de cliente, versão e projeto. Sem decisões visuais.
+
+1. Propósito Garantir texto cru consistente, legível e verificável. O repositório entrega somente .txt com voz e tom
+   padronizados, prontos para consumo por qualquer cliente.
+
+1. Alcance Dentro: conteúdo sob online-resources/raw-text e subpastas. Fora: qualquer renderização, layout, UI, CSS,
+   impressão ou paginação.
+
+1. Princípios
 
 - Clareza sobre estética verbal.
 - Precisão sobre generalidade.
@@ -17,13 +31,11 @@ Este guia é obrigatório. Não há opcionais. Regula apenas o repositório púb
 - Acessibilidade textual e leitura rápida.
 - Minimalismo: apenas o necessário, sem floreio.
 
-4. Voz e Tom
-   Voz: impessoal, assertiva, direta.
-   Tom: normativo, técnico, autoritário, profissional e sério.
-   Modais permitidos: deve, é obrigatório, é vedado, proíbe-se, pode desde que, recomenda-se.
-   Modais proibidos: deveria, busca-se, pretende-se, espera-se, almeja-se, gostaríamos, desejamos, tentamos, procuramos.
+4. Voz e Tom Voz: impessoal, assertiva, direta. Tom: normativo, técnico, autoritário, profissional e sério. Modais
+   permitidos: deve, é obrigatório, é vedado, proíbe-se, pode desde que, recomenda-se. Modais proibidos: deveria,
+   busca-se, pretende-se, espera-se, almeja-se, gostaríamos, desejamos, tentamos, procuramos.
 
-5. Linguagem e Estilo
+1. Linguagem e Estilo
 
 - Texto cru UTF-8, LF, sem BOM. Sem HTML, tags, scripts ou shortcodes.
 - Frases curtas, verbo forte; voz ativa preferencial.
@@ -53,10 +65,10 @@ Este guia é obrigatório. Não há opcionais. Regula apenas o repositório púb
 - Prefira termos normativos consagrados; registre preferência quando houver sinônimos.
 - Evite neologismos e regionalismos quando houver termo padrão claro.
 
-8. Conformidade editorial
-   Publicação exige: voz e tom verificados; modais proibidos ausentes; texto cru e válido; categorias corretas; regras por categoria atendidas; tamanho e largura de linha dentro dos limites definidos pelo CI.
+8. Conformidade editorial Publicação exige: voz e tom verificados; modais proibidos ausentes; texto cru e válido;
+   categorias corretas; regras por categoria atendidas; tamanho e largura de linha dentro dos limites definidos pelo CI.
 
-9. Proibições
+1. Proibições
 
 - Qualquer HTML, CSS, script, imagem, PDF ou binário no repositório.
 - Placeholders não textuais, marcas visuais e símbolos decorativos sem função textual.

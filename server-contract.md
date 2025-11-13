@@ -1,20 +1,36 @@
 # CONTRACT.md — Server‑Side (online-resources/raw-text)
 
-Este contrato rege **apenas** o repositório público de conteúdo textual. É **autossuficiente** e **independente** do cliente. **Sem opcionais.**
+## 🤖 AI Agent Ownership & Review Process
+
+This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
+development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
+which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
+recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
+actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
+consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
+agent. **Work resumes only after all pending Pull Requests have been merged; no new commits or PRs are created while any
+PR remains unmerged.**
+
+______________________________________________________________________
+
+Este contrato rege **apenas** o repositório público de conteúdo textual. É **autossuficiente** e **independente** do
+cliente. **Sem opcionais.**
 
 ## 1) Propósito
 
-Entregar **texto puro**, versionado por **tag imutável**, com **integridade rastreável** e **estrutura estável** por versão, para consumo via CDN.
+Entregar **texto puro**, versionado por **tag imutável**, com **integridade rastreável** e **estrutura estável** por
+versão, para consumo via CDN.
 
 ## 2) Escopo
 
-**Dentro:** árvore `online-resources/raw-text/`, políticas de conteúdo, organização, integridade, releases, CI e segurança.  
+**Dentro:** árvore `online-resources/raw-text/`, políticas de conteúdo, organização, integridade, releases, CI e
+segurança.\
 **Fora:** qualquer lógica de cliente, renderização, UI, paginação ou estilos.
 
 ## 3) Conteúdo permitido
 
-Formato **único**: arquivos `.txt` em **UTF‑8** com **LF**, **sem BOM**.
-Subtipos (sempre `.txt`), todos dentro de `online-resources/raw-text/`:
+Formato **único**: arquivos `.txt` em **UTF‑8** com **LF**, **sem BOM**. Subtipos (sempre `.txt`), todos dentro de
+`online-resources/raw-text/`:
 
 - `plaintext/` — texto corrido por box.
 - `callouts/` — mensagens destacadas.
@@ -31,9 +47,11 @@ Subtipos (sempre `.txt`), todos dentro de `online-resources/raw-text/`:
 - `header_h3/` — cabeçalhos nível 3 (sub-subtítulos).
 - `meta/` — `glossario.json.txt`, `abbr.json.txt`, `integrity.txt`, `TREE.txt`.
 
-**Nota:** Headers (`header_h1`, `header_h2`, `header_h3`) são elementos estruturais e **não contam** para a baseline de distribuição 70-80% plaintext / 20-30% outros.
+**Nota:** Headers (`header_h1`, `header_h2`, `header_h3`) são elementos estruturais e **não contam** para a baseline de
+distribuição 70-80% plaintext / 20-30% outros.
 
-**Proibido no repo:** HTML, JS, CSS, imagens (SVG/PNG/JPG/WebP), PDFs, binários, áudio/vídeo, links remotos embutidos como “conteúdo”.
+**Proibido no repo:** HTML, JS, CSS, imagens (SVG/PNG/JPG/WebP), PDFs, binários, áudio/vídeo, links remotos embutidos
+como “conteúdo”.
 
 ## 4) Estrutura e nomes
 
@@ -45,12 +63,14 @@ Subtipos (sempre `.txt`), todos dentro de `online-resources/raw-text/`:
 ## 5) Identidade e estabilidade
 
 - O **identificador estável** de cada item é o **caminho completo** sob `raw-text/`.
-- Caminhos **não mudam** dentro da mesma **major**. Renomear/mover **exige** major **e** mapeamento em `DEPRECATIONS.txt`.
+- Caminhos **não mudam** dentro da mesma **major**. Renomear/mover **exige** major **e** mapeamento em
+  `DEPRECATIONS.txt`.
 
 ## 6) Qualidade do texto
 
 - Texto **puro**: sem tags HTML, scripts, shortcodes, placeholders não textuais.
-- Limites rígidos: **tamanho máximo por arquivo** e **largura máxima de linha** definidos no CI; violações **bloqueiam** merge.
+- Limites rígidos: **tamanho máximo por arquivo** e **largura máxima de linha** definidos no CI; violações **bloqueiam**
+  merge.
 - Normalização: UTF‑8 válido, LF, sem BOM/CRLF, sem caracteres de controle.
 
 ## 7) Dados tabulares (TSV)
@@ -88,7 +108,8 @@ Subtipos (sempre `.txt`), todos dentro de `online-resources/raw-text/`:
 ## 12) Segurança e entrada
 
 - **Text‑Only Gate** no CI: qualquer extensão ≠ `.txt` sob `raw-text/` é **recusada**.
-- Bloqueio de HTML embutido, CRLF/BOM, UTF‑8 inválido, arquivos fora dos limites e URLs externas não allowlisted (quando houver).
+- Bloqueio de HTML embutido, CRLF/BOM, UTF‑8 inválido, arquivos fora dos limites e URLs externas não allowlisted (quando
+  houver).
 - Secret‑scanning ativo; _hits_ **bloqueiam** o merge.
 
 ## 13) Depreciações
@@ -98,7 +119,8 @@ Subtipos (sempre `.txt`), todos dentro de `online-resources/raw-text/`:
 
 ## 14) Publicação
 
-- Uma release **só é publicada** se `integrity.txt`, `TREE.txt` e `CHANGELOG.txt` estiverem atualizados e coerentes com a tag.
+- Uma release **só é publicada** se `integrity.txt`, `TREE.txt` e `CHANGELOG.txt` estiverem atualizados e coerentes com
+  a tag.
 - O README expõe o **link CDN pinado** para `online-resources/raw-text/` daquela versão.
 
 **Este contrato é mandatório. Violou, não entra.**

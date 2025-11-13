@@ -1,5 +1,16 @@
 # Release Notes: v1.0.0
 
+## 🤖 AI Agent Ownership & Review Process
+
+This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
+development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
+which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
+recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
+actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
+consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
+agent. **Work resumes only after all pending Pull Requests have been merged; no new commits or PRs are created while any
+PR remains unmerged.**
+
 ## Status: Initial Release
 
 First public release of the text-only content repository.
@@ -87,11 +98,8 @@ First public release of the text-only content repository.
 
 ## Validation Status
 
-✓ Directory structure created
-✓ Contract files established
-✓ Brandguide documentation complete
-✓ Metadata infrastructure ready
-✓ No content files yet (empty categories)
+✓ Directory structure created ✓ Contract files established ✓ Brandguide documentation complete ✓ Metadata infrastructure
+ready ✓ No content files yet (empty categories)
 
 ## Commits Included
 
@@ -106,8 +114,7 @@ First public release of the text-only content repository.
 
 ## Migration Notes
 
-**From**: N/A (initial release)
-**To**: v1.0.0
+**From**: N/A (initial release) **To**: v1.0.0
 
 No migration needed - this is the first release.
 
@@ -119,16 +126,13 @@ https://github.com/focofacofoco/ceocont-etica-public-resources
 
 ## Tag Information
 
-**Tag**: `v1.0.0`
-**Target**: `main` branch
-**Date**: 2025-11-12
+**Tag**: `v1.0.0` **Target**: `main` branch **Date**: 2025-11-12
 
 ## Next Release
 
 See RELEASE-v1.1.0.md for pre-commit hooks and first content ingestion.
 
----
+______________________________________________________________________
 
-**Release prepared by**: Manual setup
-**Date**: 2025-11-12
-**Note**: This release documentation created retroactively on 2025-11-13
+**Release prepared by**: Manual setup **Date**: 2025-11-12 **Note**: This release documentation created retroactively on
+2025-11-13

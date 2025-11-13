@@ -1,5 +1,16 @@
 # Git Tag Push Workaround & Admin Privilege Guide
 
+## 🤖 AI Agent Ownership & Review Process
+
+This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
+development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
+which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
+recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
+actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
+consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
+agent. **Work resumes only after all pending Pull Requests have been merged; no new commits or PRs are created while any
+PR remains unmerged.**
+
 ## Problem: HTTP 403 on Tag Push
 
 **Symptom**: All attempts to push git tags fail with HTTP 403
@@ -65,10 +76,10 @@ git push -u origin claude/tag-v1.0.0-011CV4kf1V2XbPxRYPEA6QKV
 Since direct tag pushes are blocked, use **GitHub Release Workflow**:
 
 1. ✓ Push feature branch with all changes
-2. ✓ Create Pull Request via GitHub UI
-3. ✓ Merge PR to main
-4. ✓ Create GitHub Release from main branch
-5. ✓ GitHub automatically creates tag `vX.Y.Z`
+1. ✓ Create Pull Request via GitHub UI
+1. ✓ Merge PR to main
+1. ✓ Create GitHub Release from main branch
+1. ✓ GitHub automatically creates tag `vX.Y.Z`
 
 **Advantage**: No need for direct tag push permissions
 
@@ -101,13 +112,13 @@ User: local_proxy
 **Via GitHub Web UI** (Atomic, recommended):
 
 1. Go to: `https://github.com/focofacofoco/ceocont-etica-public-resources/settings/access`
-2. Click "Invite collaborator" or "Add people"
-3. Enter Claude Code Agent credentials (if exists) or add service account
-4. Select role: **Maintain** or **Admin**
+1. Click "Invite collaborator" or "Add people"
+1. Enter Claude Code Agent credentials (if exists) or add service account
+1. Select role: **Maintain** or **Admin**
    - **Maintain**: Can push to protected branches and tags
    - **Admin**: Full repository access
-5. Click "Add [username] to this repository"
-6. **Atomic**: Single UI action, immediate effect
+1. Click "Add [username] to this repository"
+1. **Atomic**: Single UI action, immediate effect
 
 **Via GitHub CLI** (if installed):
 
@@ -136,7 +147,7 @@ gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME 
    /opt/git-proxy/access-rules.json
    ```
 
-2. **Add tag push rule** (atomic edit):
+1. **Add tag push rule** (atomic edit):
 
    ```yaml
    # Example YAML config
@@ -148,7 +159,7 @@ gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME 
        user: local_proxy # ADD THIS LINE
    ```
 
-3. **Reload proxy** (atomic operation):
+1. **Reload proxy** (atomic operation):
 
    ```bash
    systemctl reload git-proxy
@@ -166,14 +177,14 @@ gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME 
    git remote add github-direct https://github.com/focofacofoco/ceocont-etica-public-resources.git
    ```
 
-2. **Configure credentials** (if needed):
+1. **Configure credentials** (if needed):
 
    ```bash
    git config credential.helper store
    # Will prompt for GitHub PAT on first push
    ```
 
-3. **Push tags to direct remote**:
+1. **Push tags to direct remote**:
 
    ```bash
    git push github-direct v1.0.0
@@ -181,7 +192,7 @@ gh api repos/focofacofoco/ceocont-etica-public-resources/collaborators/USERNAME 
    git push github-direct v2.0.0
    ```
 
-4. **Remove secondary remote** (cleanup):
+1. **Remove secondary remote** (cleanup):
 
    ```bash
    git remote remove github-direct
@@ -246,10 +257,8 @@ git tag -d v0.0.1-test
 
 - `claude/tag-v1.0.0-011CV4kf1V2XbPxRYPEA6QKV` ✓ (points to v1.0.0 commit)
 
-**Recommended action**:
-Use GitHub Release workflow after PR merge to main branch.
+**Recommended action**: Use GitHub Release workflow after PR merge to main branch.
 
----
+______________________________________________________________________
 
-**Document created**: 2025-11-13
-**Session ID**: 011CV4kf1V2XbPxRYPEA6QKV
+**Document created**: 2025-11-13 **Session ID**: 011CV4kf1V2XbPxRYPEA6QKV
