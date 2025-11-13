@@ -1,0 +1,154 @@
+name: "README Updater Agent"
+
+# Autonomous agent that keeps README.md fresh with latest stats
+# Updates file counts, version badges, and dynamic content
+
+on:
+  schedule:
+    # Weekly on Sunday at 14:00 BRT (17:00 UTC)
+    - cron: '0 17 * * 0'
+  push:
+    branches: [ main ]
+    paths:
+      - 'online-resources/raw-text/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    name: 📝 README Updater Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🤖 Agent Task - Update README Stats
+        id: update-stats
+        run: |
+          echo "🤖 Agent updating README.md statistics..."
+
+          # Count files
+          TXT_COUNT=$(find online-resources/raw-text -name "*.txt" ! -path "*/meta/*" | wc -l)
+          JSON_COUNT=$(find online-resources/raw-text -name "*.json" ! -path "*/meta/*" | wc -l)
+          TOTAL_SIZE=$(du -sh online-resources/raw-text | cut -f1)
+          COMMIT_COUNT=$(git rev-list --count HEAD)
+
+          # Count by category
+          PLAINTEXT_COUNT=$(find online-resources/raw-text/plaintext -name "*.txt" 2>/dev/null | wc -l)
+          CALLOUTS_COUNT=$(find online-resources/raw-text/callouts -name "*.txt" 2>/dev/null | wc -l)
+          TABLES_COUNT=$(find online-resources/raw-text/tables -name "*.tsv.txt" 2>/dev/null | wc -l)
+          FAQS_COUNT=$(find online-resources/raw-text/faqs -name "q.txt" 2>/dev/null | wc -l)
+          DIAGRAMS_COUNT=$(find online-resources/raw-text/diagrams -name "*.dot.txt" 2>/dev/null | wc -l)
+
+          # Get latest version tag
+          LATEST_VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+
+          # Get date
+          LAST_UPDATE=$(date +%Y-%m-%d)
+
+          echo "📊 Current stats:"
+          echo "- Text files: $TXT_COUNT"
+          echo "- JSON files: $JSON_COUNT"
+          echo "- Total size: $TOTAL_SIZE"
+          echo "- Commits: $COMMIT_COUNT"
+          echo "- Version: $LATEST_VERSION"
+          echo ""
+          echo "📁 By category:"
+          echo "- Plaintext: $PLAINTEXT_COUNT"
+          echo "- Callouts: $CALLOUTS_COUNT"
+          echo "- Tables: $TABLES_COUNT"
+          echo "- FAQs: $FAQS_COUNT"
+          echo "- Diagrams: $DIAGRAMS_COUNT"
+
+          # Check if README exists
+          if [ ! -f "README.md" ]; then
+            echo "⚠️ README.md not found, skipping update"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Update README.md (preserve structure, update stats section)
+          # Look for stats markers and update content between them
+          if grep -q "<!-- STATS-START -->" README.md; then
+            echo "Updating stats section..."
+
+            # Create new stats block
+            echo "<!-- STATS-START -->" > stats-temp.md
+            echo "## 📊 Repository Statistics" >> stats-temp.md
+            echo "" >> stats-temp.md
+            echo "- **Content Files**: $TXT_COUNT text files" >> stats-temp.md
+            echo "- **Metadata Files**: $JSON_COUNT JSON files" >> stats-temp.md
+            echo "- **Total Size**: $TOTAL_SIZE" >> stats-temp.md
+            echo "- **Commits**: $COMMIT_COUNT" >> stats-temp.md
+            echo "- **Latest Version**: $LATEST_VERSION" >> stats-temp.md
+            echo "- **Last Updated**: $LAST_UPDATE" >> stats-temp.md
+            echo "" >> stats-temp.md
+            echo "### By Category" >> stats-temp.md
+            echo "" >> stats-temp.md
+            echo "| Category | Count |" >> stats-temp.md
+            echo "|----------|-------|" >> stats-temp.md
+            echo "| Plaintext | $PLAINTEXT_COUNT |" >> stats-temp.md
+            echo "| Callouts | $CALLOUTS_COUNT |" >> stats-temp.md
+            echo "| Tables | $TABLES_COUNT |" >> stats-temp.md
+            echo "| FAQs | $FAQS_COUNT |" >> stats-temp.md
+            echo "| Diagrams | $DIAGRAMS_COUNT |" >> stats-temp.md
+            echo "" >> stats-temp.md
+            echo "<!-- STATS-END -->" >> stats-temp.md
+
+            # Replace stats section
+            awk '
+              /<!-- STATS-START -->/ {
+                system("cat stats-temp.md")
+                skip=1
+                next
+              }
+              /<!-- STATS-END -->/ {
+                skip=0
+                next
+              }
+              !skip
+            ' README.md > README.md.tmp
+
+            mv README.md.tmp README.md
+            rm stats-temp.md
+
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "⚠️ Stats markers not found in README.md"
+            echo "💡 Add <!-- STATS-START --> and <!-- STATS-END --> markers to enable auto-update"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit README updates
+        if: steps.update-stats.outputs.has_changes == 'true'
+        run: |
+          git config user.name "readme-updater[bot]"
+          git config user.email "readme-updater[bot]@users.noreply.github.com"
+
+          git add README.md
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "$(cat <<'EOF'
+          docs(readme): update repository statistics
+
+          Auto-updated by README Updater Agent
+          EOF
+          )"
+            git push || echo "Push failed, will retry on next run"
+          fi
+
+      - name: ✅ Agent Task Complete
+        run: |
+          echo "🤖 README updater agent completed!"
+          if [ "${{ steps.update-stats.outputs.has_changes }}" == "true" ]; then
+            echo "✅ README.md updated with latest stats"
+          else
+            echo "⏭️ No updates needed"
+          fi

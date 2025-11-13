@@ -1,0 +1,247 @@
+name: "Outdated Dependency Reporter Agent"
+
+# Autonomous agent that checks for outdated Python dependencies
+# Reports available updates and security advisories
+
+on:
+  schedule:
+    # Weekly on Monday at 11:00 BRT (14:00 UTC)
+    - cron: '0 14 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  outdated-deps:
+    name: 📦 Outdated Dependency Reporter Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pip-audit
+        run: |
+          pip install pip-audit
+
+      - name: 🤖 Agent Task - Check Outdated Dependencies
+        id: check-outdated
+        run: |
+          python3 << 'EOF'
+          import subprocess
+          import json
+          import sys
+          from pathlib import Path
+
+          print("🤖 Agent checking for outdated dependencies...")
+
+          requirements_files = [
+              'requirements.txt',
+              'requirements-dev.txt'
+          ]
+
+          outdated_deps = []
+          security_issues = []
+
+          for req_file in requirements_files:
+              req_path = Path(req_file)
+              if not req_path.exists():
+                  print(f"⚠️ {req_file} not found, skipping")
+                  continue
+
+              print(f"\n📄 Checking {req_file}...")
+
+              # Check for outdated packages using pip list --outdated
+              try:
+                  # First install the requirements
+                  subprocess.run(
+                      ['pip', 'install', '-r', req_file],
+                      capture_output=True,
+                      timeout=120
+                  )
+
+                  # Check outdated
+                  result = subprocess.run(
+                      ['pip', 'list', '--outdated', '--format=json'],
+                      capture_output=True,
+                      text=True,
+                      timeout=60
+                  )
+
+                  if result.returncode == 0 and result.stdout:
+                      packages = json.loads(result.stdout)
+                      for pkg in packages:
+                          outdated_deps.append({
+                              'file': req_file,
+                              'name': pkg['name'],
+                              'current': pkg['version'],
+                              'latest': pkg['latest_version'],
+                              'type': pkg.get('latest_filetype', 'wheel')
+                          })
+
+              except subprocess.TimeoutExpired:
+                  print(f"⚠️ Timeout checking {req_file}")
+              except Exception as e:
+                  print(f"⚠️ Error checking {req_file}: {e}")
+
+              # Check for security vulnerabilities using pip-audit
+              try:
+                  result = subprocess.run(
+                      ['pip-audit', '-r', req_file, '--format=json'],
+                      capture_output=True,
+                      text=True,
+                      timeout=120
+                  )
+
+                  if result.returncode != 0 and result.stdout:
+                      try:
+                          audit_data = json.loads(result.stdout)
+                          if 'dependencies' in audit_data:
+                              for dep in audit_data['dependencies']:
+                                  for vuln in dep.get('vulns', []):
+                                      security_issues.append({
+                                          'file': req_file,
+                                          'package': dep['name'],
+                                          'version': dep['version'],
+                                          'vulnerability': vuln.get('id', 'Unknown'),
+                                          'description': vuln.get('description', 'No description'),
+                                          'fix_versions': vuln.get('fix_versions', [])
+                                      })
+                      except json.JSONDecodeError:
+                          pass
+
+              except subprocess.TimeoutExpired:
+                  print(f"⚠️ Timeout auditing {req_file}")
+              except Exception as e:
+                  print(f"⚠️ Error auditing {req_file}: {e}")
+
+          # Generate report
+          print("\n# 📦 Outdated Dependencies Report\n")
+          print(f"**Date**: $(date +%Y-%m-%d)")
+          print("**Agent**: Outdated Dependency Reporter 🤖\n")
+
+          if outdated_deps:
+              print(f"## 📊 Outdated Packages ({len(outdated_deps)})\n")
+              print("| Package | Current | Latest | File |")
+              print("|---------|---------|--------|------|")
+              for dep in outdated_deps:
+                  print(f"| {dep['name']} | {dep['current']} | **{dep['latest']}** | {dep['file']} |")
+              print()
+          else:
+              print("## ✅ All Packages Up to Date!\n")
+
+          if security_issues:
+              print(f"## 🚨 Security Vulnerabilities ({len(security_issues)})\n")
+              for issue in security_issues:
+                  print(f"### {issue['package']} {issue['version']}")
+                  print(f"- **Vulnerability**: {issue['vulnerability']}")
+                  print(f"- **File**: {issue['file']}")
+                  print(f"- **Description**: {issue['description']}")
+                  if issue['fix_versions']:
+                      print(f"- **Fix versions**: {', '.join(issue['fix_versions'])}")
+                  print()
+
+          # Save report
+          with open('outdated-deps-report.md', 'w') as f:
+              f.write("# 📦 Outdated Dependencies Report\n\n")
+
+              if outdated_deps:
+                  f.write(f"## 📊 Outdated Packages ({len(outdated_deps)})\n\n")
+                  f.write("| Package | Current | Latest | File |\n")
+                  f.write("|---------|---------|--------|------|\n")
+                  for dep in outdated_deps:
+                      f.write(f"| {dep['name']} | {dep['current']} | **{dep['latest']}** | {dep['file']} |\n")
+                  f.write("\n")
+
+              if security_issues:
+                  f.write(f"## 🚨 Security Vulnerabilities ({len(security_issues)})\n\n")
+                  for issue in security_issues:
+                      f.write(f"### {issue['package']} {issue['version']}\n")
+                      f.write(f"- **Vulnerability**: {issue['vulnerability']}\n")
+                      f.write(f"- **File**: {issue['file']}\n")
+                      f.write(f"- **Description**: {issue['description']}\n")
+                      if issue['fix_versions']:
+                          f.write(f"- **Fix versions**: {', '.join(issue['fix_versions'])}\n")
+                      f.write("\n")
+
+          # Set outputs
+          has_outdated = len(outdated_deps) > 0
+          has_security = len(security_issues) > 0
+
+          with open('GITHUB_OUTPUT', 'a') as f:
+              f.write(f"has_outdated={str(has_outdated).lower()}\n")
+              f.write(f"has_security={str(has_security).lower()}\n")
+              f.write(f"outdated_count={len(outdated_deps)}\n")
+              f.write(f"security_count={len(security_issues)}\n")
+
+          EOF
+
+      - name: Create issue for outdated dependencies
+        if: steps.check-outdated.outputs.has_outdated == 'true' || steps.check-outdated.outputs.has_security == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('outdated-deps-report.md', 'utf8');
+
+            const hasOutdated = '${{ steps.check-outdated.outputs.has_outdated }}' === 'true';
+            const hasSecurity = '${{ steps.check-outdated.outputs.has_security }}' === 'true';
+
+            let title = '📦 Outdated Dependencies Report';
+            let labels = ['dependencies', 'bot'];
+
+            if (hasSecurity) {
+              title = '🚨 Security Vulnerabilities in Dependencies';
+              labels.push('security');
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: report + '\n\n' +
+                    '**Automated Detection**: This issue was created by the Outdated Dependency Reporter Agent.\n\n' +
+                    (hasSecurity ? '**⚠️ SECURITY ALERT**: This report contains security vulnerabilities that should be addressed immediately!\n\n' : '') +
+                    '**Action Items**:\n' +
+                    (hasSecurity ? '- [ ] Review and fix security vulnerabilities\n' : '') +
+                    '- [ ] Review outdated packages\n' +
+                    '- [ ] Test compatibility with new versions\n' +
+                    '- [ ] Update requirements files\n' +
+                    '- [ ] Run tests to ensure no breaking changes',
+              labels: labels
+            });
+
+      - name: Upload report
+        if: steps.check-outdated.outputs.has_outdated == 'true' || steps.check-outdated.outputs.has_security == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: outdated-deps-report
+          path: outdated-deps-report.md
+          retention-days: 30
+
+      - name: Display report in summary
+        run: |
+          if [ -f "outdated-deps-report.md" ]; then
+            cat outdated-deps-report.md >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ All dependencies are up to date!" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: ✅ Agent Task Complete
+        run: |
+          echo "🤖 Outdated dependency reporter agent completed!"
+          if [ "${{ steps.check-outdated.outputs.has_security }}" == "true" ]; then
+            echo "🚨 Found ${{ steps.check-outdated.outputs.security_count }} security vulnerabilities!"
+          fi
+          if [ "${{ steps.check-outdated.outputs.has_outdated }}" == "true" ]; then
+            echo "📦 Found ${{ steps.check-outdated.outputs.outdated_count }} outdated packages"
+          else
+            echo "✅ All packages up to date!"
+          fi

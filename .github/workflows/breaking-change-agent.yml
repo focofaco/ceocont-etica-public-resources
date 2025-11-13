@@ -1,0 +1,287 @@
+name: "Breaking Change Detector Agent"
+
+# Autonomous agent that detects breaking changes in dependency updates
+# Alerts on major version bumps and potential breaking changes
+
+on:
+  pull_request:
+    paths:
+      - 'requirements.txt'
+      - 'requirements-dev.txt'
+      - 'pyproject.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  detect-breaking:
+    name: ⚠️ Breaking Change Detector Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Get base requirements
+        run: |
+          git show origin/${{ github.base_ref }}:requirements.txt > requirements.base.txt 2>/dev/null || touch requirements.base.txt
+          git show origin/${{ github.base_ref }}:requirements-dev.txt > requirements-dev.base.txt 2>/dev/null || touch requirements-dev.base.txt
+
+      - name: 🤖 Agent Task - Detect Breaking Changes
+        id: detect
+        run: |
+          python3 << 'EOF'
+          import re
+          import sys
+          from pathlib import Path
+          from packaging import version as pkg_version
+
+          print("🤖 Agent detecting breaking changes in dependencies...")
+
+          def parse_requirement(line):
+              """Parse a requirement line and extract package name and version."""
+              line = line.strip()
+              if not line or line.startswith('#'):
+                  return None, None
+
+              # Match: package==version, package>=version, etc.
+              match = re.match(r'^([a-zA-Z0-9_-]+)\s*([=><]+)\s*([0-9.]+.*?)$', line)
+              if match:
+                  return match.group(1).lower(), match.group(3)
+
+              return None, None
+
+          def get_major_version(ver_string):
+              """Extract major version number."""
+              try:
+                  ver = pkg_version.parse(ver_string)
+                  if hasattr(ver, 'major'):
+                      return ver.major
+                  # Fallback for older versions
+                  return int(str(ver).split('.')[0])
+              except:
+                  return None
+
+          breaking_changes = []
+          major_bumps = []
+          all_changes = []
+
+          files_to_check = [
+              ('requirements.txt', 'requirements.base.txt'),
+              ('requirements-dev.txt', 'requirements-dev.base.txt')
+          ]
+
+          for current_file, base_file in files_to_check:
+              if not Path(current_file).exists():
+                  continue
+
+              print(f"\n📄 Checking {current_file}...")
+
+              # Parse current requirements
+              current_deps = {}
+              with open(current_file, 'r') as f:
+                  for line in f:
+                      pkg, ver = parse_requirement(line)
+                      if pkg:
+                          current_deps[pkg] = ver
+
+              # Parse base requirements (if exists)
+              base_deps = {}
+              if Path(base_file).exists():
+                  with open(base_file, 'r') as f:
+                      for line in f:
+                          pkg, ver = parse_requirement(line)
+                          if pkg:
+                              base_deps[pkg] = ver
+
+              # Compare versions
+              for pkg, current_ver in current_deps.items():
+                  if pkg not in base_deps:
+                      all_changes.append({
+                          'type': 'added',
+                          'package': pkg,
+                          'version': current_ver,
+                          'file': current_file
+                      })
+                      continue
+
+                  base_ver = base_deps[pkg]
+
+                  if current_ver != base_ver:
+                      current_major = get_major_version(current_ver)
+                      base_major = get_major_version(base_ver)
+
+                      change = {
+                          'type': 'updated',
+                          'package': pkg,
+                          'from': base_ver,
+                          'to': current_ver,
+                          'file': current_file
+                      }
+
+                      all_changes.append(change)
+
+                      # Check for major version bump
+                      if current_major is not None and base_major is not None:
+                          if current_major > base_major:
+                              major_bumps.append(change)
+                              breaking_changes.append({
+                                  **change,
+                                  'reason': f'Major version bump: {base_major}.x → {current_major}.x'
+                              })
+
+              # Check for removed packages
+              for pkg in base_deps:
+                  if pkg not in current_deps:
+                      all_changes.append({
+                          'type': 'removed',
+                          'package': pkg,
+                          'version': base_deps[pkg],
+                          'file': current_file
+                      })
+
+          # Generate report
+          print("\n# ⚠️ Breaking Change Detection Report\n")
+          print(f"**Total changes**: {len(all_changes)}")
+          print(f"**Major version bumps**: {len(major_bumps)}")
+          print(f"**Potential breaking changes**: {len(breaking_changes)}\n")
+
+          if breaking_changes:
+              print("## 🚨 Potential Breaking Changes\n")
+              for change in breaking_changes:
+                  print(f"### {change['package']}")
+                  print(f"- **From**: {change['from']}")
+                  print(f"- **To**: {change['to']}")
+                  print(f"- **File**: {change['file']}")
+                  print(f"- **Reason**: {change['reason']}")
+                  print()
+
+              print("**⚠️ Action Required**:")
+              print("- Review CHANGELOG/release notes for each package")
+              print("- Check for API changes and deprecations")
+              print("- Update code to handle breaking changes")
+              print("- Run full test suite before merging\n")
+
+          if all_changes and not breaking_changes:
+              print("## ✅ No Breaking Changes Detected\n")
+              print("All dependency updates appear to be non-breaking (minor/patch versions).\n")
+
+          if all_changes:
+              print("## 📊 All Changes\n")
+              print("| Package | Change | From | To | File |")
+              print("|---------|--------|------|----|----- |")
+              for change in all_changes:
+                  if change['type'] == 'updated':
+                      print(f"| {change['package']} | Updated | {change['from']} | {change['to']} | {change['file']} |")
+                  elif change['type'] == 'added':
+                      print(f"| {change['package']} | Added | - | {change['version']} | {change['file']} |")
+                  elif change['type'] == 'removed':
+                      print(f"| {change['package']} | Removed | {change['version']} | - | {change['file']} |")
+              print()
+
+          # Save report
+          with open('breaking-changes-report.md', 'w') as f:
+              f.write("# ⚠️ Breaking Change Detection Report\n\n")
+
+              if breaking_changes:
+                  f.write("## 🚨 Potential Breaking Changes\n\n")
+                  for change in breaking_changes:
+                      f.write(f"### {change['package']}\n")
+                      f.write(f"- **From**: {change['from']}\n")
+                      f.write(f"- **To**: {change['to']}\n")
+                      f.write(f"- **File**: {change['file']}\n")
+                      f.write(f"- **Reason**: {change['reason']}\n\n")
+
+              if all_changes:
+                  f.write("## 📊 All Changes\n\n")
+                  f.write("| Package | Change | From | To | File |\n")
+                  f.write("|---------|--------|------|----|----- |\n")
+                  for change in all_changes:
+                      if change['type'] == 'updated':
+                          f.write(f"| {change['package']} | Updated | {change['from']} | {change['to']} | {change['file']} |\n")
+                      elif change['type'] == 'added':
+                          f.write(f"| {change['package']} | Added | - | {change['version']} | {change['file']} |\n")
+                      elif change['type'] == 'removed':
+                          f.write(f"| {change['package']} | Removed | {change['version']} | - | {change['file']} |\n")
+
+          # Set outputs
+          has_breaking = len(breaking_changes) > 0
+          has_changes = len(all_changes) > 0
+
+          with open('GITHUB_OUTPUT', 'a') as f:
+              f.write(f"has_breaking={str(has_breaking).lower()}\n")
+              f.write(f"has_changes={str(has_changes).lower()}\n")
+              f.write(f"breaking_count={len(breaking_changes)}\n")
+              f.write(f"change_count={len(all_changes)}\n")
+
+          EOF
+
+      - name: Comment on PR with breaking changes
+        if: steps.detect.outputs.has_changes == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('breaking-changes-report.md', 'utf8');
+
+            const hasBreaking = '${{ steps.detect.outputs.has_breaking }}' === 'true';
+
+            let emoji = hasBreaking ? '🚨' : '✅';
+            let title = hasBreaking ? 'Potential Breaking Changes Detected' : 'No Breaking Changes Detected';
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '## ' + emoji + ' ' + title + '\n\n' +
+                    report + '\n\n' +
+                    (hasBreaking ? '**⚠️ Please review carefully before merging!**' : '✅ Safe to proceed with standard testing.') + '\n\n' +
+                    '*Automated detection by Breaking Change Detector Agent*'
+            });
+
+            // Add label if breaking changes detected
+            if (hasBreaking) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['breaking-change', 'needs-review']
+              });
+            }
+
+      - name: Upload report
+        if: steps.detect.outputs.has_changes == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: breaking-changes-report
+          path: breaking-changes-report.md
+          retention-days: 30
+
+      - name: Display report in summary
+        run: |
+          if [ -f "breaking-changes-report.md" ]; then
+            cat breaking-changes-report.md >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No dependency changes detected" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: ✅ Agent Task Complete
+        run: |
+          echo "🤖 Breaking change detector agent completed!"
+          if [ "${{ steps.detect.outputs.has_breaking }}" == "true" ]; then
+            echo "🚨 Found ${{ steps.detect.outputs.breaking_count }} potential breaking changes"
+            exit 1
+          elif [ "${{ steps.detect.outputs.has_changes }}" == "true" ]; then
+            echo "✅ Found ${{ steps.detect.outputs.change_count }} changes, no breaking changes"
+          else
+            echo "✅ No dependency changes detected"
+          fi

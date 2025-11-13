@@ -1,0 +1,56 @@
+name: "PR Size Labeler Agent"
+
+on:
+  pull_request:
+    types: [ opened, synchronize ]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  label-size:
+    name: 📏 PR Size Agent
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const additions = pr.additions;
+            const deletions = pr.deletions;
+            const changes = additions + deletions;
+
+            let size;
+            if (changes < 10) size = 'size/XS';
+            else if (changes < 50) size = 'size/S';
+            else if (changes < 200) size = 'size/M';
+            else if (changes < 500) size = 'size/L';
+            else size = 'size/XL';
+
+            // Remove old size labels
+            const labels = await github.rest.issues.listLabelsOnIssue({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number
+            });
+
+            for (const label of labels.data) {
+              if (label.name.startsWith('size/')) {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  name: label.name
+                });
+              }
+            }
+
+            // Add new size label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              labels: [size]
+            });
+
+            console.log(`📏 Labeled as ${size} (${changes} changes)`);
