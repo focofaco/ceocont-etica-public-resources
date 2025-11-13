@@ -12,7 +12,6 @@ online-resources/raw-text/
 │   └── integrity.txt
 ├── others/
 ├── plaintext/
-│   ├── 001-politica-controle-qualidade-contabil-41f5.txt
-│   └── 002-introducao-manual-controle-qualidade-15ba.txt
+│   └── 001-politica-controle-qualidade-contabil-41f5.txt
 ├── tables/
 └── tradeoffs/

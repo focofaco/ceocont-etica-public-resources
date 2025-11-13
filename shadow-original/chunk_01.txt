@@ -1,0 +1,16 @@
+Política de controle da qualidade
+
+A ${razao-social}, doravante "a firma", estabelece controles de qualidade para os serviços contábeis prestados. A qualidade resulta de políticas, procedimentos e controles internos documentados e comunicados a todos os profissionais. Esses controles devem ser revisados periodicamente para garantir conformidade.
+
+Este Manual de Qualidade e Procedimentos Internos (doravante "Manual") define as políticas do sistema de controle da qualidade. O objetivo é assegurar que os profissionais e os serviços prestados observam as normas profissionais e técnicas aplicáveis, emitidas pelo Conselho Federal de Contabilidade (CFC).
+
+O Manual estabelece as práticas, etapas e controles internos adotados pela firma para monitorar os padrões de qualidade dos serviços contábeis.
+
+A firma disponibiliza este Manual a todos os profissionais e estagiários. É obrigatória a leitura. Dúvidas devem ser direcionadas ao ${responsavel-qualidade}.
+
+O Manual é atualizado pelo ${responsavel-qualidade} sempre que ocorram alterações relevantes nas normas técnicas e profissionais aplicáveis ou em regulamentos que impactem os serviços contábeis prestados. A versão atualizada é disponibilizada na rede corporativa.
+
+O Manual é atualizado conforme necessário.
+
+Última atualização: ${data-atualizacao}
+Número de atualizações: ${numero-atualizacoes}
