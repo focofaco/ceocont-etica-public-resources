@@ -2,9 +2,9 @@
   "metadata": {
     "schema_version": "1.0.0",
     "created_at": "2025-11-13T00:49:00Z",
-    "last_updated": "2025-11-13T00:55:00Z",
-    "total_chunks": 2,
-    "total_fragments": 2,
+    "last_updated": "2025-11-13T01:15:00Z",
+    "total_chunks": 1,
+    "total_fragments": 1,
     "component_stats": {
       "current_distribution": {
         "plaintext": {"count": 1, "percentage": 100.0},
@@ -103,25 +103,6 @@
           "final_sha256": "41f5bfaaff5dee1e10520e90c0df497bbde3a549714c593b96b13585240fe2ad"
         }
       ]
-    },
-    {
-      "chunk_id": "chunk_02",
-      "ingested_at": "2025-11-13T00:30:00Z",
-      "source_description": "Manual quality control - introduction section (needs fragmentation)",
-      "original_text": "[PENDING FRAGMENTATION - stored in shadow-original/chunk_02.txt]",
-      "sha256_original": "15ba21608459aa71122fcb9da468a7eb5fedf5b8ac26608ca204f0f428723111",
-      "word_count": 450,
-      "char_count": 3500,
-      "placeholders_detected": [
-        "${razao-social}",
-        "${tipo-servico}",
-        "${tipo-irregularidade}",
-        "${responsavel-tecnico}",
-        "${objetivo-correcao}",
-        "${diagrama-piramide}",
-        "${responsavel-qualidade}"
-      ],
-      "fragments": []
     }
   ]
 }
