@@ -1,38 +1,34 @@
-# header_h1/
-
-## 🤖 AI Agent Ownership & Review Process
-
-This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
-development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
-which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
-recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
-actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
-consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
-agent. **Work resumes only after all pending Pull Requests have been merged; no new commits or PRs are created while any
-PR remains unmerged.**
-
-Cabeçalhos de nível 1 (títulos principais de seção).
+# header_h1 (Cabeçalho Nível 1)
 
 ## Propósito
 
-Títulos de primeiro nível que marcam divisões principais do conteúdo, equivalente a `<h1>` em HTML ou `# Título` em
-Markdown.
+Títulos de nível 1 para estruturação hierárquica do conteúdo. Representam divisões principais do manual.
 
-## Regras
+## Características
 
-- Extensão: `.txt`
-- UTF-8, LF, sem BOM
-- Nomenclatura: `NNN-slug-HHHH.txt`
-- Cada `.txt` DEVE ter `.json` metadata twin
-- Conteúdo: texto curto, geralmente uma linha
-- Uso: títulos principais de capítulos ou seções de topo
+- **Não usa metadata twin**: Headers são elementos estruturais puros
+- **Conteúdo**: Apenas o texto do título (geralmente 1-5 palavras)
+- **Encoding**: UTF-8, LF line endings, no BOM
+- **Naming**: `NNN-titulo-secao-XXXX.txt` onde XXXX = SHA256 (4 chars)
 
-## Exemplos
+## Uso
+
+Headers h1 marcam seções principais como "Política de Controle da Qualidade", "Requisitos Éticos", "Sistema de Controle".
+
+## Hierarquia
+
+- **h1**: Seções principais do documento ← VOCÊ ESTÁ AQUI
+- **h2**: Subseções dentro de h1
+- **h3**: Subseções dentro de h2
+
+## Exemplo
 
 ```
-Fundamentos da Contabilidade
-Sistema de Controle de Qualidade
-Normas Técnicas Aplicáveis
+Requisitos Éticos Fundamentais
 ```
 
-Consulte `server-contract.md` §3 e §6.
+## Validação
+
+- Não há metadata twin (.json)
+- Conteúdo deve ser breve (tipicamente < 100 caracteres)
+- Não deve conter formatação especial

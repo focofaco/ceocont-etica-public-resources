@@ -1,38 +1,34 @@
-# header_h3/
-
-## 🤖 AI Agent Ownership & Review Process
-
-This repository is fully managed and owned by Claude AI (Sonnet 4.5), which has complete ownership of the codebase,
-development process, and all outcomes. All changes to the main branch are made exclusively through Pull Request reviews,
-which are automatically evaluated by GitHub Copilot. Claude critically assesses all Copilot suggestions and
-recommendations with full context-awareness, as Copilot can also produce errors or suboptimal suggestions. Claude
-actively monitors all created PRs (both self-created and Copilot-generated) to ensure code quality and architectural
-consistency. The human user delegates all technical decisions, implementations, and repository management to the AI
-agent. **Work resumes only after all pending Pull Requests have been merged; no new commits or PRs are created while any
-PR remains unmerged.**
-
-Cabeçalhos de nível 3 (sub-subtítulos).
+# header_h3 (Cabeçalho Nível 3)
 
 ## Propósito
 
-Títulos de terceiro nível que organizam detalhes dentro de subseções, equivalente a `<h3>` em HTML ou
-`### Sub-subtítulo` em Markdown.
+Títulos de nível 3 para estruturação hierárquica do conteúdo. Representam subseções dentro de subseções.
 
-## Regras
+## Características
 
-- Extensão: `.txt`
-- UTF-8, LF, sem BOM
-- Nomenclatura: `NNN-slug-HHHH.txt`
-- Cada `.txt` DEVE ter `.json` metadata twin
-- Conteúdo: texto curto, geralmente uma linha
-- Uso: sub-subtítulos para organizar tópicos específicos
+- **Não usa metadata twin**: Headers são elementos estruturais puros
+- **Conteúdo**: Apenas o texto do título (geralmente 1-5 palavras)
+- **Encoding**: UTF-8, LF line endings, no BOM
+- **Naming**: `NNN-titulo-subsubsecao-XXXX.txt` onde XXXX = SHA256 (4 chars)
 
-## Exemplos
+## Uso
+
+Headers h3 marcam detalhamentos específicos como "Requisitos de Documentação", "Procedimentos de Reporte", "Exemplos Práticos".
+
+## Hierarquia
+
+- **h1**: Seções principais do documento
+- **h2**: Subseções dentro de h1
+- **h3**: Subseções dentro de h2 ← VOCÊ ESTÁ AQUI
+
+## Exemplo
 
 ```
-Revisão de Competência Profissional
-Controle de Documentação
-Avaliação de Riscos
+Procedimentos de Reporte
 ```
 
-Consulte `server-contract.md` §3 e §6.
+## Validação
+
+- Não há metadata twin (.json)
+- Conteúdo deve ser breve (tipicamente < 100 caracteres)
+- Não deve conter formatação especial
