@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "content_id": "004-sistema-controle-qualidade-documentacao-7eff",
+  "component": "plaintext",
+  "original_text": "Sistema de controle de qualidade\n\nDocumentação para planejamento, operação e controle\n\nO sistema de controle de qualidade de uma firma é implementado por meio de procedimentos e registros documentados. A política de qualidade estabelece o compromisso da firma com os padrões de qualidade a serem observados, enquanto os objetivos especificam as metas a serem alcançadas para que esse compromisso seja cumprido. Esses elementos devem ser claramente documentados e implementados por meio de procedimentos escritos e sistemas de manutenção de registros. Isso assegura que todos os profissionais estejam cientes do compromisso da firma com a qualidade e que esse compromisso seja cumprido de forma consistente em todas as áreas de atuação.\n\nA correlação entre as estruturas e as práticas-chave do sistema de controle de qualidade pode ser demonstrada conforme a representação a seguir:\n\n${diagrama-piramide}\n\nOs procedimentos documentados são instruções escritas que detalham como cada tarefa deve ser executada. Devem ser concisos e de fácil compreensão, e sua implementação deve ser registrada por meio de sistemas de manutenção de registros. Isso assegura que as tarefas sejam executadas de forma consistente e que eventuais problemas ou discrepâncias possam ser rastreados com facilidade.\n\nOs registros obrigatórios são documentos que devem ser mantidos para demonstrar conformidade com as exigências regulamentares aplicáveis. Podem incluir relatórios de execução dos trabalhos, registros de revisão técnica, resultados de verificações realizadas, entre outros. A manutenção atualizada desses registros permite que a firma demonstre aderência a todos os regulamentos aplicáveis aos serviços prestados.\n\nO Manual de Qualidade é documento central no sistema de controle de qualidade da firma. O Manual documenta as políticas e procedimentos relativos à qualidade dos serviços prestados, devendo ser claro e conciso. A implementação das políticas e procedimentos documentados deve ocorrer por meio de procedimentos operacionais específicos e sistemas de manutenção de registros. Isso assegura que o sistema de controle de qualidade seja eficaz para atender às exigências dos clientes, bem como às exigências das agências reguladoras aplicáveis.\n\nA política de qualidade estabelece o compromisso da firma com os padrões de qualidade, e os objetivos especificam as metas a serem alcançadas. Esses elementos devem ser claramente documentados e implementados de forma consistente em todas as áreas de atuação da firma.",
+  "transformed_text": "Sistema de controle de qualidade\n\nDocumentação para planejamento, operação e controle\n\nO sistema de controle de qualidade de uma firma é implementado por meio de procedimentos e registros documentados. A política de qualidade estabelece o compromisso da firma com os padrões de qualidade a serem observados, enquanto os objetivos especificam as metas a serem alcançadas para que esse compromisso seja cumprido. Esses elementos devem ser claramente documentados e implementados por meio de procedimentos escritos e sistemas de manutenção de registros. Isso assegura que todos os profissionais estejam cientes do compromisso da firma com a qualidade e que esse compromisso seja cumprido de forma consistente em todas as áreas de atuação.\n\nA correlação entre as estruturas e as práticas-chave do sistema de controle de qualidade pode ser demonstrada conforme a representação a seguir:\n\n${diagrama-piramide}\n\nOs procedimentos documentados são instruções escritas que detalham como cada tarefa deve ser executada. Devem ser concisos e de fácil compreensão, e sua implementação deve ser registrada por meio de sistemas de manutenção de registros. Isso assegura que as tarefas sejam executadas de forma consistente e que eventuais problemas ou discrepâncias possam ser rastreados com facilidade.\n\nOs registros obrigatórios são documentos que devem ser mantidos para demonstrar conformidade com as exigências regulamentares aplicáveis. Podem incluir relatórios de execução dos trabalhos, registros de revisão técnica, resultados de verificações realizadas, entre outros. A manutenção atualizada desses registros permite que a firma demonstre aderência a todos os regulamentos aplicáveis aos serviços prestados.\n\nO Manual de Qualidade é documento central no sistema de controle de qualidade da firma. O Manual documenta as políticas e procedimentos relativos à qualidade dos serviços prestados, devendo ser claro e conciso. A implementação das políticas e procedimentos documentados deve ocorrer por meio de procedimentos operacionais específicos e sistemas de manutenção de registros. Isso assegura que o sistema de controle de qualidade seja eficaz para atender às exigências dos clientes, bem como às exigências das agências reguladoras aplicáveis.\n\nA política de qualidade estabelece o compromisso da firma com os padrões de qualidade, e os objetivos especificam as metas a serem alcançadas. Esses elementos devem ser claramente documentados e implementados de forma consistente em todas as áreas de atuação da firma.",
+  "metadata": {
+    "title": "Sistema de controle de qualidade - Documentação",
+    "description": "Descrição do sistema de controle de qualidade, incluindo documentação de procedimentos, registros obrigatórios e estrutura hierárquica do sistema",
+    "domain": "gestao-qualidade",
+    "keywords": ["sistema-controle-qualidade", "documentacao", "procedimentos", "registros", "manual-qualidade"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T07:30:00Z",
+    "updated_at": "2025-11-13T07:30:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "sistema-controle",
+    "target_audience": ["profissionais-contabeis", "gestores", "estagiarios"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 3
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Introdução e Sistema de Controle",
+    "extraction_method": "copy_paste",
+    "page_number": 3,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${diagrama-piramide}",
+      "description": "Placeholder for future diagram showing quality control system structure hierarchy. Should be implemented as diagrams/quality-control-pyramid.dot.txt",
+      "type": "reference",
+      "required": false
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 0.95,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 360,
+    "character_count": 2579,
+    "readability_score": 48.5,
+    "avg_sentence_length": 30.0,
+    "avg_word_length": 6.8,
+    "technical_term_density": 0.25,
+    "passive_voice_ratio": 0.35,
+    "flesch_reading_ease": 48.5,
+    "gunning_fog_index": 14.2
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": []
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T07:30:00Z",
+    "review_notes": "Auto-approved: brandguide compliance 0.95. Note: contains placeholder for future diagram."
+  },
+  "audit": {
+    "fragment_id": "chunk_02_frag_003",
+    "chunk_id": "chunk_02",
+    "ingestion_date": "2025-11-13T07:30:00Z",
+    "sha256_original": "7eff94c1ba8b0644abdd51988c96d3aa6cf48fc1104ba2bc02bf186d90cd49a1",
+    "sha256_transformed": "7eff94c1ba8b0644abdd51988c96d3aa6cf48fc1104ba2bc02bf186d90cd49a1",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Flowing narrative text explaining quality control system documentation. Multiple paragraphs of explanatory content without special formatting markers. Main educational content.",
+    "alternative_components": []
+  }
+}

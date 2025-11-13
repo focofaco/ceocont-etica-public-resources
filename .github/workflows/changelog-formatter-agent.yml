@@ -1,0 +1,179 @@
+name: "Changelog Formatter Agent"
+
+# Autonomous agent that ensures CHANGELOG.txt follows Keep a Changelog format
+# Validates structure, formatting, and consistency
+
+on:
+  schedule:
+    # Weekly on Monday at 10:00 BRT (13:00 UTC)
+    - cron: '0 13 * * 1'
+  pull_request:
+    paths:
+      - 'CHANGELOG.txt'
+  push:
+    branches: [ main ]
+    paths:
+      - 'CHANGELOG.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  format-changelog:
+    name: 📋 Changelog Formatter Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 🤖 Agent Task - Validate Changelog Format
+        id: validate
+        run: |
+          python3 << 'EOF'
+          import re
+          import sys
+          from pathlib import Path
+
+          print("🤖 Agent validating CHANGELOG.txt format...")
+
+          changelog = Path("CHANGELOG.txt")
+
+          if not changelog.exists():
+              print("⚠️ CHANGELOG.txt not found")
+              sys.exit(0)
+
+          with open(changelog, 'r', encoding='utf-8') as f:
+              content = f.read()
+
+          issues = []
+          warnings = []
+
+          # Check 1: Has proper header
+          if not content.startswith("# Changelog") and not content.startswith("# CHANGELOG"):
+              issues.append("Missing '# Changelog' header at start")
+
+          # Check 2: Version format [X.Y.Z] - YYYY-MM-DD
+          version_pattern = re.compile(r'^\[(\d+\.\d+\.\d+)\]\s*-\s*(\d{4}-\d{2}-\d{2})', re.MULTILINE)
+          versions = version_pattern.findall(content)
+
+          if not versions:
+              warnings.append("No version entries found")
+
+          # Check 3: Section headers (Added, Changed, Deprecated, Removed, Fixed, Security)
+          valid_sections = ['Added', 'Changed', 'Deprecated', 'Removed', 'Fixed', 'Security']
+          section_pattern = re.compile(r'^### (Added|Changed|Deprecated|Removed|Fixed|Security)$', re.MULTILINE)
+          sections = section_pattern.findall(content)
+
+          # Check 4: List items under sections
+          list_pattern = re.compile(r'^- .+$', re.MULTILINE)
+          list_items = list_pattern.findall(content)
+
+          # Check 5: Empty lines consistency
+          # Should have: ## [version], blank, ### Section, items, blank, next version
+          lines = content.split('\n')
+          for i, line in enumerate(lines):
+              # Check for trailing whitespace
+              if line.endswith(' ') or line.endswith('\t'):
+                  warnings.append(f"Line {i+1}: Trailing whitespace detected")
+
+          # Check 6: Unreleased section
+          if '[Unreleased]' not in content and 'Unreleased' not in content:
+              warnings.append("No [Unreleased] section found")
+
+          # Generate report
+          print("\n# 📋 Changelog Format Report\n")
+          print(f"**Versions found**: {len(versions)}")
+          print(f"**Sections found**: {len(sections)}")
+          print(f"**List items**: {len(list_items)}\n")
+
+          if issues:
+              print("## ❌ Issues (Must Fix)\n")
+              for issue in issues:
+                  print(f"- {issue}")
+              print()
+
+          if warnings:
+              print("## ⚠️ Warnings (Should Fix)\n")
+              for warning in warnings:
+                  print(f"- {warning}")
+              print()
+
+          if not issues and not warnings:
+              print("## ✅ Changelog Format Valid!\n")
+              print("All formatting checks passed.")
+          else:
+              print("## 📝 Keep a Changelog Format:\n")
+              print("```")
+              print("# Changelog")
+              print("")
+              print("## [Unreleased]")
+              print("")
+              print("### Added")
+              print("- New feature")
+              print("")
+              print("## [1.0.0] - 2025-11-13")
+              print("")
+              print("### Added")
+              print("- Initial release")
+              print("```")
+
+          # Set output
+          has_issues = len(issues) > 0
+          print(f"\nhas_issues={has_issues}", file=sys.stderr)
+
+          with open('GITHUB_OUTPUT', 'a') as f:
+              f.write(f"has_issues={str(has_issues).lower()}\n")
+              f.write(f"issue_count={len(issues)}\n")
+              f.write(f"warning_count={len(warnings)}\n")
+
+          sys.exit(1 if has_issues else 0)
+          EOF
+
+      - name: Comment on PR with results
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '## ❌ Changelog Format Issues\n\n' +
+                    'The changelog agent found formatting issues in CHANGELOG.txt.\n\n' +
+                    'Please ensure your changelog follows [Keep a Changelog](https://keepachangelog.com/) format:\n\n' +
+                    '```\n' +
+                    '# Changelog\n\n' +
+                    '## [Unreleased]\n\n' +
+                    '### Added\n' +
+                    '- New features\n\n' +
+                    '## [1.0.0] - 2025-11-13\n\n' +
+                    '### Added\n' +
+                    '- Initial release\n' +
+                    '```\n\n' +
+                    'Check the workflow logs for detailed issues.'
+            });
+
+      - name: Display report in summary
+        if: always()
+        run: |
+          if [ -f "changelog-report.md" ]; then
+            cat changelog-report.md >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: ✅ Agent Task Complete
+        if: always()
+        run: |
+          echo "🤖 Changelog formatter agent completed!"
+          if [ "${{ steps.validate.outputs.has_issues }}" == "true" ]; then
+            echo "⚠️ Found ${{ steps.validate.outputs.issue_count }} issue(s)"
+          else
+            echo "✅ Changelog format is valid!"
+          fi

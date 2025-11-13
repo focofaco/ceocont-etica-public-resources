@@ -1,0 +1,36 @@
+name: "Commit Message Validator Agent"
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate-commits:
+    name: ✅ Commit Validator Agent
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🤖 Validate Conventional Commits
+        run: |
+          echo "🤖 Agent validating commit messages..."
+
+          # Conventional commit pattern: type(scope): description
+          PATTERN='^(feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert)(\(.+\))?!?: .{1,100}$'
+
+          INVALID=0
+          git log origin/main..HEAD --format=%s | while read -r msg; do
+            if ! echo "$msg" | grep -Eq "$PATTERN"; then
+              echo "❌ Invalid: $msg"
+              INVALID=$((INVALID + 1))
+            fi
+          done
+
+          [ $INVALID -eq 0 ] && echo "✅ All commits follow conventional format"

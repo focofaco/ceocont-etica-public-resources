@@ -1,0 +1,50 @@
+name: "Content Growth Tracker Agent"
+
+on:
+  schedule:
+    - cron: '0 15 * * 0'  # Sunday 12:00 BRT
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  track-growth:
+    name: 📈 Growth Tracker Agent
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🤖 Track Content Growth
+        run: |
+          mkdir -p .github/metrics
+          DATE=$(date +%Y-%m-%d)
+
+          # Count metrics
+          TXT_COUNT=$(find online-resources/raw-text -name "*.txt" ! -path "*/meta/*" | wc -l)
+          JSON_COUNT=$(find online-resources/raw-text -name "*.json" ! -path "*/meta/*" | wc -l)
+          TOTAL_SIZE=$(du -sh online-resources/raw-text | cut -f1)
+          COMMIT_COUNT=$(git rev-list --count HEAD)
+
+          # Save metrics
+          echo "$DATE,$TXT_COUNT,$JSON_COUNT,$TOTAL_SIZE,$COMMIT_COUNT" >> .github/metrics/growth.csv
+
+          # Generate report
+          echo "# 📈 Growth Report - $DATE" > growth-report.md
+          echo "" >> growth-report.md
+          echo "- .txt files: **$TXT_COUNT**" >> growth-report.md
+          echo "- .json files: **$JSON_COUNT**" >> growth-report.md
+          echo "- Total size: **$TOTAL_SIZE**" >> growth-report.md
+          echo "- Commits: **$COMMIT_COUNT**" >> growth-report.md
+
+          cat growth-report.md
+
+      - name: Commit metrics
+        run: |
+          git config user.name "growth-tracker[bot]"
+          git config user.email "growth-tracker[bot]@users.noreply.github.com"
+          git add .github/metrics/growth.csv
+          git diff --staged --quiet || git commit -m "chore(metrics): update growth metrics"
+          git push || echo "No changes to push"

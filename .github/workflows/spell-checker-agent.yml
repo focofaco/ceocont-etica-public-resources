@@ -1,0 +1,107 @@
+name: "Spell Checker Agent"
+
+# Autonomous agent that detects typos and spelling errors in content
+# Runs on PRs and daily to maintain content quality
+
+on:
+  schedule:
+    # Daily at 09:00 BRT (12:00 UTC)
+    - cron: '0 12 * * *'
+  pull_request:
+    paths:
+      - 'online-resources/raw-text/**/*.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  spell-check:
+    name: 🔤 Spell Checker Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install spell checker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y aspell aspell-pt-br aspell-en
+
+      - name: 🤖 Agent Task - Check Spelling
+        id: spell-check
+        run: |
+          echo "🤖 Agent checking spelling in Portuguese and English..."
+
+          # Create report file
+          echo "# 🔤 Spell Check Report" > spelling-report.md
+          echo "" >> spelling-report.md
+          echo "**Date**: $(date +%Y-%m-%d)" >> spelling-report.md
+          echo "**Agent**: Spell Checker Bot 🤖" >> spelling-report.md
+          echo "" >> spelling-report.md
+
+          TYPO_COUNT=0
+          FILES_CHECKED=0
+
+          # Check Portuguese content
+          find online-resources/raw-text -name "*.txt" -type f ! -path "*/meta/*" | while read -r file; do
+            FILES_CHECKED=$((FILES_CHECKED + 1))
+
+            # Check spelling (Portuguese)
+            TYPOS=$(aspell list --lang=pt_BR < "$file" | sort -u)
+
+            if [ -n "$TYPOS" ]; then
+              echo "## 📄 $file" >> spelling-report.md
+              echo "" >> spelling-report.md
+              echo "**Possible typos (PT-BR)**:" >> spelling-report.md
+              echo '```' >> spelling-report.md
+              echo "$TYPOS" >> spelling-report.md
+              echo '```' >> spelling-report.md
+              echo "" >> spelling-report.md
+              TYPO_COUNT=$((TYPO_COUNT + $(echo "$TYPOS" | wc -l)))
+            fi
+          done
+
+          echo "---" >> spelling-report.md
+          echo "" >> spelling-report.md
+          echo "**Summary**:" >> spelling-report.md
+          echo "- Files checked: $FILES_CHECKED" >> spelling-report.md
+          echo "- Potential typos found: $TYPO_COUNT" >> spelling-report.md
+          echo "" >> spelling-report.md
+          echo "*Note: Some words may be technical terms or proper nouns*" >> spelling-report.md
+
+          cat spelling-report.md
+          echo "typo_count=$TYPO_COUNT" >> $GITHUB_OUTPUT
+
+      - name: Comment on PR with results
+        if: github.event_name == 'pull_request' && steps.spell-check.outputs.typo_count > 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('spelling-report.md', 'utf8');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## 🔤 Spell Check Results\n\n${report}\n\n⚠️ Please review these potential spelling errors.`
+            });
+
+      - name: Upload spell check report
+        uses: actions/upload-artifact@v4
+        with:
+          name: spelling-report
+          path: spelling-report.md
+          retention-days: 30
+
+      - name: Display report in summary
+        run: |
+          cat spelling-report.md >> $GITHUB_STEP_SUMMARY
+
+      - name: ✅ Agent Task Complete
+        run: |
+          echo "🤖 Spell check agent completed!"
+          echo "Found ${{ steps.spell-check.outputs.typo_count }} potential typo(s)"

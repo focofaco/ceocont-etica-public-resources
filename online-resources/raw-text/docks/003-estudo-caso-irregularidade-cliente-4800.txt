@@ -1,0 +1,11 @@
+Estudo de caso
+
+Cenário: Um cliente solicita ${tipo-servico} e, durante a execução dos trabalhos, o profissional responsável identifica ${tipo-irregularidade} nos registros contábeis apresentados.
+
+Comportamento: O profissional responsável informa imediatamente o ${responsavel-tecnico} sobre a situação identificada.
+
+Solução: O ${responsavel-tecnico} e o profissional responsável avaliam a situação e definem os procedimentos aplicáveis. O cliente é informado das irregularidades identificadas e adota as medidas corretivas necessárias para que os registros contábeis reflitam adequadamente ${objetivo-correcao}.
+
+O Manual não substitui a leitura e a observância das normas profissionais e técnicas aplicáveis emitidas pelo Conselho Federal de Contabilidade, mas deve ser utilizado como referência complementar para auxiliar os profissionais na compreensão e aplicação consistente dos padrões estabelecidos.
+
+Dúvidas sobre o conteúdo deste Manual devem ser direcionadas ao ${responsavel-qualidade}.

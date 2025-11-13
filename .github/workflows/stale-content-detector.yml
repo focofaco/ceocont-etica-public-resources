@@ -1,0 +1,178 @@
+name: "Stale Content Detector"
+
+# Identifies outdated content that may need review
+# Runs monthly to detect content not updated in 180+ days
+
+on:
+  schedule:
+    # Run on 1st day of month at 10:00 BRT
+    - cron: '0 13 0 1 * *'  # UTC 13:00 = BRT 10:00
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  detect-stale:
+    name: Detect Stale Content
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for git log
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Detect files not modified in 180+ days
+        id: old-files
+        run: |
+          echo "## Stale Files (>180 days)" > stale-report.md
+          echo "" >> stale-report.md
+
+          CUTOFF_DATE=$(date -d '180 days ago' +%Y-%m-%d)
+          echo "Checking files not modified since: $CUTOFF_DATE"
+
+          STALE_COUNT=0
+          find online-resources/raw-text -name "*.txt" -type f ! -path "*/meta/*" | while read -r file; do
+            LAST_MODIFIED=$(git log -1 --format=%cd --date=short -- "$file" 2>/dev/null || echo "unknown")
+
+            if [ "$LAST_MODIFIED" != "unknown" ] && [ "$LAST_MODIFIED" \< "$CUTOFF_DATE" ]; then
+              echo "- \`$file\` (last modified: $LAST_MODIFIED)" >> stale-report.md
+              STALE_COUNT=$((STALE_COUNT + 1))
+            fi
+          done
+
+          echo "" >> stale-report.md
+          echo "**Total stale files**: $STALE_COUNT" >> stale-report.md
+          echo "stale_count=$STALE_COUNT" >> $GITHUB_OUTPUT
+
+      - name: Detect outdated year references
+        id: old-years
+        run: |
+          echo "" >> stale-report.md
+          echo "## Outdated Year References" >> stale-report.md
+          echo "" >> stale-report.md
+
+          CURRENT_YEAR=$(date +%Y)
+          LAST_YEAR=$((CURRENT_YEAR - 1))
+
+          # Search for old year references (2022, 2023, etc. but not current/last year)
+          grep -r -n "202[0-9]" online-resources/raw-text --include="*.txt" | \
+            grep -v "$CURRENT_YEAR" | \
+            grep -v "$LAST_YEAR" | \
+            head -20 | \
+            while IFS=: read -r file line content; do
+              echo "- \`$file:$line\`: $content" >> stale-report.md
+            done || echo "No outdated years found" >> stale-report.md
+
+      - name: Check DEPRECATIONS.txt for removals due
+        id: deprecations
+        run: |
+          echo "" >> stale-report.md
+          echo "## Deprecation Removals Due" >> stale-report.md
+          echo "" >> stale-report.md
+
+          if [ -f "DEPRECATIONS.txt" ]; then
+            # Extract removal versions and check if they match current version
+            grep "removed in v" DEPRECATIONS.txt | head -10 >> stale-report.md || \
+              echo "No pending deprecations" >> stale-report.md
+          else
+            echo "No DEPRECATIONS.txt file found" >> stale-report.md
+          fi
+
+      - name: Analyze content freshness
+        run: |
+          echo "" >> stale-report.md
+          echo "## Freshness Statistics" >> stale-report.md
+          echo "" >> stale-report.md
+
+          TOTAL_FILES=$(find online-resources/raw-text -name "*.txt" -type f ! -path "*/meta/*" | wc -l)
+          RECENT_FILES=$(find online-resources/raw-text -name "*.txt" -type f ! -path "*/meta/*" -mtime -90 | wc -l)
+          OLD_FILES=$(find online-resources/raw-text -name "*.txt" -type f ! -path "*/meta/*" -mtime +180 | wc -l)
+
+          echo "- **Total content files**: $TOTAL_FILES" >> stale-report.md
+          echo "- **Modified in last 90 days**: $RECENT_FILES" >> stale-report.md
+          echo "- **Not modified in 180+ days**: $OLD_FILES" >> stale-report.md
+
+          if [ "$TOTAL_FILES" -gt 0 ]; then
+            RECENT_PERCENT=$((RECENT_FILES * 100 / TOTAL_FILES))
+            echo "- **Freshness score**: ${RECENT_PERCENT}%" >> stale-report.md
+          fi
+
+      - name: Generate recommendations
+        run: |
+          echo "" >> stale-report.md
+          echo "## Recommendations" >> stale-report.md
+          echo "" >> stale-report.md
+          echo "1. Review stale files for accuracy and relevance" >> stale-report.md
+          echo "2. Update year references to current year where applicable" >> stale-report.md
+          echo "3. Execute deprecation removals if version matches" >> stale-report.md
+          echo "4. Consider archiving content that is no longer relevant" >> stale-report.md
+          echo "5. Add \`Last reviewed: YYYY-MM-DD\` to metadata twins" >> stale-report.md
+
+      - name: Create or update GitHub issue
+        if: steps.old-files.outputs.stale_count > 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('stale-report.md', 'utf8');
+
+            const title = '🕰️ Stale Content Review Needed';
+            const body = `## Monthly Stale Content Report
+
+            ${report}
+
+            ---
+
+            **Generated by**: Stale Content Detector workflow
+            **Date**: ${new Date().toISOString().split('T')[0]}
+            **Next review**: ${new Date(Date.now() + 30*24*60*60*1000).toISOString().split('T')[0]}`;
+
+            // Check if issue already exists
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'stale-content',
+            });
+
+            if (issues.data.length > 0) {
+              // Update existing issue
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues.data[0].number,
+                body: body,
+              });
+              core.notice(`Updated existing issue #${issues.data[0].number}`);
+            } else {
+              // Create new issue
+              const issue = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['stale-content', 'content-quality'],
+              });
+              core.notice(`Created issue #${issue.data.number}`);
+            }
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: stale-content-report
+          path: stale-report.md
+          retention-days: 90
+
+      - name: Summary
+        run: |
+          cat stale-report.md >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Stale content analysis complete!" >> $GITHUB_STEP_SUMMARY
