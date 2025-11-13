@@ -13,11 +13,33 @@ PR remains unmerged.**
 
 Componente: data
 
+## Propósito
+
+Dados estruturados em formato TSV destinados a gráficos e visualizações. Diferente de 'tables/', este diretório contém dados para processamento visual (charts, graphs).
+
+## Quando Usar
+
+- Dados para gráficos de linha, barra, pizza
+- Séries temporais para visualização
+- Dados estatísticos para charts
+- Datasets para visualizações interativas
+
 ## Regras
 
-- Extensão: .txt (ou subtipos)
+- Extensão: .tsv.txt (OBRIGATÓRIO)
 - UTF-8, LF, sem BOM
-- Nomenclatura: NNN-slug-HHHH.txt
-- Cada .txt DEVE ter .json metadata twin
+- Nomenclatura: NNN-slug-HHHH.tsv.txt
+- **Cada .txt DEVE ter .json metadata twin**
+- Primeira linha é header com nomes de colunas
+- Separador: TAB (\t)
+- Decimal: ponto (.)
+- Sem separador de milhares
+- Conta para baseline de distribuição de componentes
 
 Consulte server-contract.md §3.
+
+## Fragmentos Existentes
+
+Total: 0 fragmentos
+
+(Nenhum fragmento criado ainda)

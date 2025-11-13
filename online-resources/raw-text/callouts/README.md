@@ -13,11 +13,30 @@ PR remains unmerged.**
 
 Componente: callouts
 
+## Propósito
+
+Mensagens destacadas (alertas, avisos, destaques) que requerem atenção especial do leitor. Usado para informações importantes que devem se sobressair do texto principal.
+
+## Quando Usar
+
+- Avisos de segurança ou compliance
+- Princípios fundamentais que devem ser destacados
+- Alertas sobre requisitos obrigatórios
+- Informações críticas que não devem passar despercebidas
+
 ## Regras
 
 - Extensão: .txt (ou subtipos)
 - UTF-8, LF, sem BOM
 - Nomenclatura: NNN-slug-HHHH.txt
-- Cada .txt DEVE ter .json metadata twin
+- **Cada .txt DEVE ter .json metadata twin**
+- Conta para baseline de distribuição de componentes
 
 Consulte server-contract.md §3.
+
+## Fragmentos Existentes
+
+Total: 2 fragmentos
+
+- `008-principios-seguranca-informacao-1fcc.txt`
+- `027-atitudes-eticas-obrigatorias-125f.txt`

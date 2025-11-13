@@ -13,11 +13,31 @@ PR remains unmerged.**
 
 Componente: disclaimers
 
+## Propósito
+
+Avisos legais, advertências de risco e disclaimers formais. Usado para comunicar proibições, limitações legais e responsabilidades.
+
+## Quando Usar
+
+- Avisos legais obrigatórios
+- Proibições e vedações normativas
+- Limitações de responsabilidade
+- Advertências de compliance
+- Declarações de risco
+
 ## Regras
 
 - Extensão: .txt (ou subtipos)
 - UTF-8, LF, sem BOM
 - Nomenclatura: NNN-slug-HHHH.txt
-- Cada .txt DEVE ter .json metadata twin
+- **Cada .txt DEVE ter .json metadata twin**
+- Conteúdo deve ser claro e formal
+- Conta para baseline de distribuição de componentes
 
 Consulte server-contract.md §3.
+
+## Fragmentos Existentes
+
+Total: 1 fragmento
+
+- `029-proibicoes-integridade-57f6.txt`

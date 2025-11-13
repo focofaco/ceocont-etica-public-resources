@@ -13,11 +13,36 @@ PR remains unmerged.**
 
 Componente: docks
 
+## Propósito
+
+Notas editoriais laterais, comentários explicativos e observações complementares. Usado para informações que enriquecem o conteúdo principal sem interrompê-lo.
+
+## Quando Usar
+
+- Estudos de caso práticos
+- Exemplos ilustrativos
+- Contexto histórico ou regulatório
+- Observações do editor
+- Notas explicativas adicionais
+- Citações e referências contextuais
+
 ## Regras
 
 - Extensão: .txt (ou subtipos)
 - UTF-8, LF, sem BOM
 - Nomenclatura: NNN-slug-HHHH.txt
-- Cada .txt DEVE ter .json metadata twin
+- **Cada .txt DEVE ter .json metadata twin**
+- Conteúdo complementa mas não substitui texto principal
+- Conta para baseline de distribuição de componentes
 
 Consulte server-contract.md §3.
+
+## Fragmentos Existentes
+
+Total: 5 fragmentos
+
+- `003-estudo-caso-irregularidade-cliente-4800.txt`
+- `006-estudo-caso-ausencia-responsavel-c717.txt`
+- `015-estudo-caso-comportamento-antietico-a0e9.txt`
+- `020-estudo-caso-relacionamento-cliente-401c.txt`
+- `030-estudo-caso-venda-empresa-cliente-bb26.txt`

@@ -7,6 +7,7 @@ Títulos de nível 2 para estruturação hierárquica do conteúdo. Representam 
 ## Características
 
 - **Não usa metadata twin**: Headers são elementos estruturais puros
+- **Não conta para baseline**: Headers são componentes de estrutura, não de conteúdo
 - **Conteúdo**: Apenas o texto do título (geralmente 1-5 palavras)
 - **Encoding**: UTF-8, LF line endings, no BOM
 - **Naming**: `NNN-titulo-subsecao-XXXX.txt` onde XXXX = SHA256 (4 chars)
@@ -39,5 +40,9 @@ Objetividade
 
 ## Fragmentos Existentes
 
-- `025-integridade-9730.txt` (chunk_06)
-- `032-objetividade-994b.txt` (chunk_06)
+Total: 4 fragmentos
+
+- `002-manual-controle-qualidade-cb38.txt`
+- `004-documentacao-planejamento-operacao-controle-24c0.txt`
+- `025-integridade-9730.txt`
+- `032-objetividade-994b.txt`

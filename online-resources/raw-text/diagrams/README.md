@@ -13,11 +13,31 @@ PR remains unmerged.**
 
 Componente: diagrams
 
+## Propósito
+
+Diagramas e fluxogramas em formato Graphviz DOT. Usado para representar processos, fluxos de trabalho, arquiteturas e relacionamentos complexos.
+
+## Quando Usar
+
+- Fluxogramas de processos
+- Diagramas de decisão
+- Mapas de relacionamentos
+- Arquiteturas de sistemas
+- Workflows e procedimentos
+
 ## Regras
 
-- Extensão: .txt (ou subtipos)
+- Extensão: .dot.txt (OBRIGATÓRIO)
 - UTF-8, LF, sem BOM
-- Nomenclatura: NNN-slug-HHHH.txt
-- Cada .txt DEVE ter .json metadata twin
+- Nomenclatura: NNN-slug-HHHH.dot.txt
+- **Cada .txt DEVE ter .json metadata twin**
+- Conteúdo deve ser DOT válido (digraph ou graph)
+- Conta para baseline de distribuição de componentes
 
 Consulte server-contract.md §3.
+
+## Fragmentos Existentes
+
+Total: 0 fragmentos
+
+(Nenhum fragmento criado ainda)

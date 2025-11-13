@@ -13,11 +13,29 @@ PR remains unmerged.**
 
 Componente: others
 
+## Propósito
+
+Conteúdo textual genérico que não se encaixa em nenhuma outra categoria específica. Use como fallback para tipos de conteúdo únicos ou experimentais.
+
+## Quando Usar
+
+- Conteúdo que não se encaixa em outras categorias
+- Tipos experimentais de fragmentos
+- Casos especiais não previstos
+- Elementos únicos sem categoria própria
+
 ## Regras
 
 - Extensão: .txt (ou subtipos)
 - UTF-8, LF, sem BOM
 - Nomenclatura: NNN-slug-HHHH.txt
-- Cada .txt DEVE ter .json metadata twin
+- **Cada .txt DEVE ter .json metadata twin**
+- Conta para baseline de distribuição de componentes
 
 Consulte server-contract.md §3.
+
+## Fragmentos Existentes
+
+Total: 0 fragmentos
+
+(Nenhum fragmento criado ainda)

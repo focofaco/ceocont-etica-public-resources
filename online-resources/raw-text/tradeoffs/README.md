@@ -13,11 +13,37 @@ PR remains unmerged.**
 
 Componente: tradeoffs
 
+## Propósito
+
+Listas de prós e contras (vantagens/desvantagens) formatadas com + e - no início de cada linha. Usado para apresentar análises comparativas e decisões balanceadas.
+
+## Quando Usar
+
+- Análise de vantagens e desvantagens
+- Comparação de abordagens
+- Prós e contras de decisões
+- Trade-offs de implementações
+- Análise de riscos vs benefícios
+
+## Formato Especial
+
+Cada linha DEVE começar com:
+- `+` para vantagens/prós
+- `-` para desvantagens/contras
+
 ## Regras
 
 - Extensão: .txt (ou subtipos)
 - UTF-8, LF, sem BOM
 - Nomenclatura: NNN-slug-HHHH.txt
-- Cada .txt DEVE ter .json metadata twin
+- **Cada .txt DEVE ter .json metadata twin**
+- **Cada linha DEVE começar com + ou -**
+- Conta para baseline de distribuição de componentes
 
 Consulte server-contract.md §3.
+
+## Fragmentos Existentes
+
+Total: 1 fragmento
+
+- `009-monitoramento-sistemas-931f.txt`

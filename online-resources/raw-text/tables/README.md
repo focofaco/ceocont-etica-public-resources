@@ -13,11 +13,34 @@ PR remains unmerged.**
 
 Componente: tables
 
+## Propósito
+
+Tabelas em formato TSV para apresentação visual de dados tabulares. Diferente de 'data/', estas tabelas são destinadas à leitura direta pelo usuário, não para processamento em gráficos.
+
+## Quando Usar
+
+- Tabelas de referência
+- Comparações lado a lado
+- Listas estruturadas com múltiplas colunas
+- Matrizes de informação
+- Dados tabulares para leitura humana
+
 ## Regras
 
-- Extensão: .txt (ou subtipos)
+- Extensão: .tsv.txt (OBRIGATÓRIO)
 - UTF-8, LF, sem BOM
-- Nomenclatura: NNN-slug-HHHH.txt
-- Cada .txt DEVE ter .json metadata twin
+- Nomenclatura: NNN-slug-HHHH.tsv.txt
+- **Cada .txt DEVE ter .json metadata twin**
+- Primeira linha é header com nomes de colunas
+- Separador: TAB (\t)
+- Decimal: ponto (.)
+- Sem separador de milhares
+- Conta para baseline de distribuição de componentes
 
 Consulte server-contract.md §3.
+
+## Fragmentos Existentes
+
+Total: 1 fragmento
+
+- `017-principios-fundamentais-etica.tsv.txt`
