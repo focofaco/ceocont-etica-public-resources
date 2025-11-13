@@ -1,0 +1,105 @@
+{
+  "version": "1.0.0",
+  "content_id": "003-estudo-caso-irregularidade-cliente-4800",
+  "component": "docks",
+  "original_text": "Estudo de caso\n\nCenário: Um cliente solicita ${tipo-servico} e, durante a execução dos trabalhos, o profissional responsável identifica ${tipo-irregularidade} nos registros contábeis apresentados.\n\nComportamento: O profissional responsável informa imediatamente o ${responsavel-tecnico} sobre a situação identificada.\n\nSolução: O ${responsavel-tecnico} e o profissional responsável avaliam a situação e definem os procedimentos aplicáveis. O cliente é informado das irregularidades identificadas e adota as medidas corretivas necessárias para que os registros contábeis reflitam adequadamente ${objetivo-correcao}.\n\nO Manual não substitui a leitura e a observância das normas profissionais e técnicas aplicáveis emitidas pelo Conselho Federal de Contabilidade, mas deve ser utilizado como referência complementar para auxiliar os profissionais na compreensão e aplicação consistente dos padrões estabelecidos.\n\nDúvidas sobre o conteúdo deste Manual devem ser direcionadas ao ${responsavel-qualidade}.",
+  "transformed_text": "Estudo de caso\n\nCenário: Um cliente solicita ${tipo-servico} e, durante a execução dos trabalhos, o profissional responsável identifica ${tipo-irregularidade} nos registros contábeis apresentados.\n\nComportamento: O profissional responsável informa imediatamente o ${responsavel-tecnico} sobre a situação identificada.\n\nSolução: O ${responsavel-tecnico} e o profissional responsável avaliam a situação e definem os procedimentos aplicáveis. O cliente é informado das irregularidades identificadas e adota as medidas corretivas necessárias para que os registros contábeis reflitam adequadamente ${objetivo-correcao}.\n\nO Manual não substitui a leitura e a observância das normas profissionais e técnicas aplicáveis emitidas pelo Conselho Federal de Contabilidade, mas deve ser utilizado como referência complementar para auxiliar os profissionais na compreensão e aplicação consistente dos padrões estabelecidos.\n\nDúvidas sobre o conteúdo deste Manual devem ser direcionadas ao ${responsavel-qualidade}.",
+  "metadata": {
+    "title": "Estudo de caso - Irregularidade identificada em cliente",
+    "description": "Exemplo prático de situação onde profissional identifica irregularidade durante execução de trabalhos contábeis, demonstrando comportamento correto e procedimentos aplicáveis",
+    "domain": "gestao-qualidade",
+    "keywords": ["estudo-caso", "irregularidade", "procedimentos", "cliente", "controle-qualidade"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T07:30:00Z",
+    "updated_at": "2025-11-13T07:30:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "exemplos-praticos",
+    "target_audience": ["profissionais-contabeis", "estagiarios"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 1
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Introdução e Sistema de Controle",
+    "extraction_method": "copy_paste",
+    "page_number": 2,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${tipo-servico}",
+      "description": "Tipo de serviço contábil solicitado pelo cliente",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${tipo-irregularidade}",
+      "description": "Tipo de irregularidade identificada nos registros contábeis",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${responsavel-tecnico}",
+      "description": "Nome do responsável técnico da firma",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${objetivo-correcao}",
+      "description": "Objetivo das medidas corretivas a serem adotadas",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${responsavel-qualidade}",
+      "description": "Nome do responsável pelo sistema de controle de qualidade",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 0.95,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 121,
+    "character_count": 1029,
+    "readability_score": 52.8,
+    "avg_sentence_length": 24.2,
+    "avg_word_length": 6.8,
+    "technical_term_density": 0.20,
+    "passive_voice_ratio": 0.33,
+    "flesch_reading_ease": 52.8,
+    "gunning_fog_index": 13.5
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": []
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T07:30:00Z",
+    "review_notes": "Auto-approved: brandguide compliance 0.95. First dock component in repository."
+  },
+  "audit": {
+    "fragment_id": "chunk_02_frag_002",
+    "chunk_id": "chunk_02",
+    "ingestion_date": "2025-11-13T07:30:00Z",
+    "sha256_original": "4800f24488acf53cefaba78ed9386e444e17b4d0a02f5b6ef10a2daee1021625",
+    "sha256_transformed": "4800f24488acf53cefaba78ed9386e444e17b4d0a02f5b6ef10a2daee1021625",
+    "classification_confidence": 0.90,
+    "classification_reasoning": "Structured case study with explicit markers (Cenário, Comportamento, Solução). Provides contextual/illustrative information as editorial side note. Word count ~120 words fits dock length range (20-500). Editorial nature with structured format suggests dock classification. Alternative: plaintext (0.10 confidence) - could be main content but markers favor dock.",
+    "alternative_components": ["plaintext"]
+  }
+}
