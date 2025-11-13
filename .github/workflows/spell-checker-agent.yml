@@ -91,7 +91,7 @@ jobs:
             });
 
       - name: Upload spell check report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: spelling-report
           path: spelling-report.md
