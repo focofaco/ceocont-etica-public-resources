@@ -1,0 +1,270 @@
+name: "Changelog Auto-Generator"
+
+# Generates CHANGELOG entries from conventional commits
+# Suggests semantic version bump based on commit types
+
+on:
+  workflow_dispatch:
+    inputs:
+      since_tag:
+        description: 'Generate changelog since tag (e.g., v1.2.0)'
+        required: false
+        type: string
+      create_pr:
+        description: 'Create PR with changes?'
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-changelog:
+    name: Generate Changelog
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for git log
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Determine version range
+        id: version-range
+        run: |
+          if [ -n "${{ github.event.inputs.since_tag }}" ]; then
+            SINCE_TAG="${{ github.event.inputs.since_tag }}"
+          else
+            # Find last tag
+            SINCE_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          fi
+
+          if [ -z "$SINCE_TAG" ]; then
+            echo "No previous tag found, generating changelog from first commit"
+            SINCE_REF=$(git rev-list --max-parents=0 HEAD)
+          else
+            SINCE_REF="$SINCE_TAG"
+          fi
+
+          echo "since_ref=$SINCE_REF" >> $GITHUB_OUTPUT
+          echo "since_tag=$SINCE_TAG" >> $GITHUB_OUTPUT
+          echo "Generating changelog since: $SINCE_REF"
+
+      - name: Parse conventional commits
+        id: parse-commits
+        run: |
+          python3 << 'EOF'
+          import subprocess
+          import re
+          import json
+          from collections import defaultdict
+
+          since_ref = "${{ steps.version-range.outputs.since_ref }}"
+
+          # Get commits since last tag
+          result = subprocess.run(
+              ['git', 'log', f'{since_ref}..HEAD', '--pretty=format:%H|%s|%b|%an'],
+              capture_output=True,
+              text=True
+          )
+
+          commits = result.stdout.strip().split('\n')
+
+          # Parse conventional commits
+          # Format: type(scope): description
+          commit_pattern = re.compile(r'^(\w+)(\(([^)]+)\))?(!)?:\s*(.+)$')
+
+          grouped = defaultdict(list)
+          breaking_changes = []
+          version_bump = "PATCH"  # Default
+
+          for commit in commits:
+              if not commit:
+                  continue
+
+              parts = commit.split('|', 3)
+              if len(parts) < 2:
+                  continue
+
+              sha, subject, body, author = parts[0], parts[1], parts[2] if len(parts) > 2 else "", parts[3] if len(parts) > 3 else ""
+
+              match = commit_pattern.match(subject.strip())
+              if not match:
+                  grouped['other'].append({
+                      'sha': sha[:7],
+                      'subject': subject,
+                      'author': author
+                  })
+                  continue
+
+              commit_type, _, scope, breaking_marker, description = match.groups()
+              scope = scope or ""
+
+              # Check for breaking changes
+              is_breaking = (breaking_marker == '!') or ('BREAKING CHANGE' in body)
+
+              if is_breaking:
+                  breaking_changes.append({
+                      'sha': sha[:7],
+                      'type': commit_type,
+                      'scope': scope,
+                      'description': description,
+                      'body': body
+                  })
+                  version_bump = "MAJOR"
+
+              # Determine version bump
+              if commit_type == 'feat' and version_bump != "MAJOR":
+                  version_bump = "MINOR"
+
+              # Group by type
+              grouped[commit_type].append({
+                  'sha': sha[:7],
+                  'scope': scope,
+                  'description': description,
+                  'author': author
+              })
+
+          # Save to files
+          with open('grouped-commits.json', 'w') as f:
+              json.dump(dict(grouped), f, indent=2)
+
+          with open('breaking-changes.json', 'w') as f:
+              json.dump(breaking_changes, f, indent=2)
+
+          with open('version-bump.txt', 'w') as f:
+              f.write(version_bump)
+
+          print(f"Commits processed: {len(commits)}")
+          print(f"Version bump suggested: {version_bump}")
+          print(f"Breaking changes: {len(breaking_changes)}")
+          EOF
+
+      - name: Generate CHANGELOG entry
+        id: generate-entry
+        run: |
+          python3 << 'EOF'
+          import json
+          from datetime import date
+
+          # Load parsed commits
+          with open('grouped-commits.json', 'r') as f:
+              grouped = json.load(f)
+
+          with open('breaking-changes.json', 'r') as f:
+              breaking = json.load(f)
+
+          with open('version-bump.txt', 'r') as f:
+              version_bump = f.read().strip()
+
+          # Map commit types to changelog sections
+          type_headers = {
+              'feat': 'Added',
+              'fix': 'Fixed',
+              'docs': 'Documentation',
+              'refactor': 'Changed',
+              'perf': 'Performance',
+              'test': 'Tests',
+              'chore': 'Chore',
+              'ci': 'CI/CD',
+              'build': 'Build'
+          }
+
+          # Generate changelog entry
+          changelog = []
+          changelog.append(f"[Unreleased] - {date.today().isoformat()}\n")
+
+          # Breaking changes first (if any)
+          if breaking:
+              changelog.append("BREAKING CHANGES:")
+              for item in breaking:
+                  scope_str = f"({item['scope']})" if item['scope'] else ""
+                  changelog.append(f"- **{item['type']}{scope_str}**: {item['description']} ({item['sha']})")
+              changelog.append("")
+
+          # Group by type
+          for commit_type, header in type_headers.items():
+              if commit_type in grouped and grouped[commit_type]:
+                  changelog.append(f"{header}:")
+                  for commit in grouped[commit_type]:
+                      scope_str = f"({commit['scope']})" if commit['scope'] else ""
+                      changelog.append(f"- {commit['description']}{scope_str} ({commit['sha']})")
+                  changelog.append("")
+
+          # Add version bump suggestion
+          changelog.append(f"Suggested version bump: **{version_bump}**")
+
+          # Save
+          with open('changelog-entry.md', 'w') as f:
+              f.write('\n'.join(changelog))
+
+          print('\n'.join(changelog))
+          EOF
+
+      - name: Update CHANGELOG.txt
+        id: update-changelog
+        run: |
+          if [ ! -f "CHANGELOG.txt" ]; then
+            echo "CHANGELOG.txt not found, skipping update"
+            exit 0
+          fi
+
+          # Read new entry
+          NEW_ENTRY=$(cat changelog-entry.md)
+
+          # Insert after [Unreleased] section
+          # This is a simple approach - in production, use more robust parsing
+          echo "New changelog entry ready for manual insertion"
+          cat changelog-entry.md
+
+      - name: Create PR with changelog
+        if: github.event.inputs.create_pr == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            const changelogEntry = fs.readFileSync('changelog-entry.md', 'utf8');
+            const versionBump = fs.readFileSync('version-bump.txt', 'utf8').trim();
+
+            const branchName = `changelog-auto-${Date.now()}`;
+
+            // Note: This is a simplified version
+            // In production, you'd need to:
+            // 1. Create branch via API
+            // 2. Commit changes via API
+            // 3. Create PR
+
+            core.notice('Changelog entry generated successfully!');
+            core.notice(`Suggested version bump: ${versionBump}`);
+            core.notice('Review changelog-entry.md artifact for details');
+
+      - name: Upload changelog artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: changelog-artifacts
+          path: |
+            changelog-entry.md
+            grouped-commits.json
+            breaking-changes.json
+            version-bump.txt
+          retention-days: 90
+
+      - name: Summary
+        run: |
+          echo "## 📝 Changelog Generation Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat changelog-entry.md >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Next steps**:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Download \`changelog-entry.md\` from artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "2. Manually insert into CHANGELOG.txt" >> $GITHUB_STEP_SUMMARY
+          echo "3. Update version number based on suggestion" >> $GITHUB_STEP_SUMMARY
+          echo "4. Create release" >> $GITHUB_STEP_SUMMARY

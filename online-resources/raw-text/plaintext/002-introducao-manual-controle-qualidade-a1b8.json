@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "content_id": "002-introducao-manual-controle-qualidade-a1b8",
+  "component": "plaintext",
+  "original_text": "Introdução\n\nManual de controle de qualidade\n\nA ${razao-social} é firma de contabilidade com experiência nos serviços contábeis prestados. As orientações deste Manual observam os requisitos regulamentares aplicáveis aos serviços contábeis e os procedimentos internos estabelecidos pela firma. Os regulamentos foram definidos considerando o porte da firma, a natureza dos serviços prestados e o perfil da carteira de clientes.\n\nO Manual de Políticas Internas define a metodologia de trabalho adotada, as responsabilidades atribuídas a cada profissional, os requisitos éticos aplicáveis e os procedimentos-chave a serem observados. O Manual documenta o sistema de controle de qualidade utilizado pela firma na execução dos serviços contábeis.\n\nA qualidade dos serviços prestados impacta diretamente os resultados dos clientes e a reputação da firma. Por essa razão, a firma revisa periodicamente os processos de trabalho e atualiza o conhecimento técnico dos profissionais para manter os padrões de qualidade estabelecidos.\n\nEste Manual estabelece as diretrizes que devem ser observadas na execução dos serviços contábeis prestados pela firma, de forma a manter o padrão de qualidade exigido. O Manual também tem por objetivo auxiliar os profissionais a compreender as obrigações, deveres e responsabilidades aplicáveis tanto à firma quanto aos colaboradores.",
+  "transformed_text": "Introdução\n\nManual de controle de qualidade\n\nA ${razao-social} é firma de contabilidade com experiência nos serviços contábeis prestados. As orientações deste Manual observam os requisitos regulamentares aplicáveis aos serviços contábeis e os procedimentos internos estabelecidos pela firma. Os regulamentos foram definidos considerando o porte da firma, a natureza dos serviços prestados e o perfil da carteira de clientes.\n\nO Manual de Políticas Internas define a metodologia de trabalho adotada, as responsabilidades atribuídas a cada profissional, os requisitos éticos aplicáveis e os procedimentos-chave a serem observados. O Manual documenta o sistema de controle de qualidade utilizado pela firma na execução dos serviços contábeis.\n\nA qualidade dos serviços prestados impacta diretamente os resultados dos clientes e a reputação da firma. Por essa razão, a firma revisa periodicamente os processos de trabalho e atualiza o conhecimento técnico dos profissionais para manter os padrões de qualidade estabelecidos.\n\nEste Manual estabelece as diretrizes que devem ser observadas na execução dos serviços contábeis prestados pela firma, de forma a manter o padrão de qualidade exigido. O Manual também tem por objetivo auxiliar os profissionais a compreender as obrigações, deveres e responsabilidades aplicáveis tanto à firma quanto aos colaboradores.",
+  "metadata": {
+    "title": "Introdução - Manual de controle de qualidade",
+    "description": "Introdução ao Manual de Qualidade e Procedimentos Internos, estabelecendo contexto, objetivos e escopo do sistema de controle de qualidade",
+    "domain": "gestao-qualidade",
+    "keywords": ["introducao", "manual-qualidade", "procedimentos-internos", "controle-qualidade", "regulamentos"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T07:30:00Z",
+    "updated_at": "2025-11-13T07:30:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "introducao",
+    "target_audience": ["profissionais-contabeis", "estagiarios", "gestores"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 2
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Introdução e Sistema de Controle",
+    "extraction_method": "copy_paste",
+    "page_number": 2,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 0.95,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 190,
+    "character_count": 1393,
+    "readability_score": 55.2,
+    "avg_sentence_length": 23.8,
+    "avg_word_length": 6.5,
+    "technical_term_density": 0.22,
+    "passive_voice_ratio": 0.30,
+    "flesch_reading_ease": 55.2,
+    "gunning_fog_index": 13.1
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": []
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T07:30:00Z",
+    "review_notes": "Auto-approved: brandguide compliance 0.95, no critical issues detected"
+  },
+  "audit": {
+    "fragment_id": "chunk_02_frag_001",
+    "chunk_id": "chunk_02",
+    "ingestion_date": "2025-11-13T07:30:00Z",
+    "sha256_original": "a1b884a569bc4a8fe5d252bdc18059cc486383cbd113dbcc3fcab1babef81864",
+    "sha256_transformed": "a1b884a569bc4a8fe5d252bdc18059cc486383cbd113dbcc3fcab1babef81864",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Flowing narrative text explaining quality manual introduction. Multiple paragraphs of explanatory content without special formatting markers. Main educational content.",
+    "alternative_components": []
+  }
+}

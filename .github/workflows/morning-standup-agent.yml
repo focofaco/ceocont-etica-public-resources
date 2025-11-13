@@ -1,0 +1,106 @@
+name: "Morning Standup Agent"
+
+# Dead-simple agent that creates daily standup tracking
+# Task: Post good morning message with daily goals
+
+on:
+  schedule:
+    # Every weekday at 09:00 BRT (12:00 UTC)
+    - cron: '0 12 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  standup-agent:
+    name: 🌅 Morning Standup Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🤖 Agent Task - Generate Daily Standup
+        id: standup
+        run: |
+          echo "🤖 Agent generating morning standup..."
+
+          TODAY=$(date +%Y-%m-%d)
+          DAY_NAME=$(date +%A)
+
+          # Count open PRs and issues
+          cat > standup.md << 'EOF'
+          # 🌅 Good Morning! Daily Standup
+
+          **Date**: $(date +"%Y-%m-%d (%A)")
+          **Agent**: Morning Standup Bot 🤖
+
+          ## 📋 Today's Focus
+
+          Let's make today productive! Here's what we can work on:
+
+          ### 🎯 Quick Wins
+          - [ ] Review open pull requests
+          - [ ] Check dependency updates from Dependabot
+          - [ ] Review stale content (if any)
+          - [ ] Validate link checker results
+
+          ### 🚀 Progress Tracking
+          - **Repository**: ceocont-etica-public-resources
+          - **Current version**: Check CHANGELOG.txt
+          - **Content files**: $(find online-resources/raw-text -name "*.txt" ! -path "*/meta/*" | wc -l)
+
+          ### 💡 Today's Tip
+
+          $(if [ $(date +%u) -eq 1 ]; then
+              echo "Monday: Great time to plan the week's content updates!"
+          elif [ $(date +%u) -eq 2 ]; then
+              echo "Tuesday: Review last week's metrics and adjust."
+          elif [ $(date +%u) -eq 3 ]; then
+              echo "Wednesday: Mid-week check - are we on track?"
+          elif [ $(date +%u) -eq 4 ]; then
+              echo "Thursday: Prep for end-of-week release if needed."
+          else
+              echo "Friday: Wrap up loose ends and document progress!"
+          fi)
+
+          ### 🤝 Action Items
+
+          Check these automated reports:
+          - Daily Health Check (runs at 08:00 BRT)
+          - Link Checker (runs daily at 11:00 BRT)
+          - Stale Content Detector (monthly on 1st)
+
+          ---
+
+          **Have a great day! 🎉**
+
+          *Posted by Morning Standup Agent*
+          EOF
+
+          cat standup.md
+
+      - name: 📊 Display Standup in Summary
+        run: |
+          cat standup.md >> $GITHUB_STEP_SUMMARY
+
+      - name: 💬 Post to Discussions (if enabled)
+        if: false  # Set to true to enable
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const standup = fs.readFileSync('standup.md', 'utf8');
+
+            // Note: Requires GitHub Discussions to be enabled
+            // This is a placeholder - actual implementation would use Discussions API
+
+            core.notice('📢 Daily standup ready!');
+            core.notice('Enable discussions to auto-post daily standups');
+
+      - name: ✅ Agent Task Complete
+        run: |
+          echo "🤖 Morning standup agent completed!"
+          echo "🌅 Have a productive day!"

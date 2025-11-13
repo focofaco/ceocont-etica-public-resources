@@ -1,0 +1,246 @@
+name: "Unused Dependency Cleaner Agent"
+
+# Autonomous agent that detects and removes unused Python dependencies
+# Scans imports in Python files and compares against requirements
+
+on:
+  schedule:
+    # Monthly on 1st at 10:00 BRT (13:00 UTC)
+    - cron: '0 13 1 * *'
+  pull_request:
+    paths:
+      - 'requirements.txt'
+      - 'requirements-dev.txt'
+      - 'pyproject.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  unused-deps:
+    name: 🧹 Unused Dependency Cleaner Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install analysis tools
+        run: |
+          pip install pipreqs pip-autoremove 2>/dev/null || echo "Tools not available, using manual analysis"
+
+      - name: 🤖 Agent Task - Detect Unused Dependencies
+        id: detect
+        run: |
+          python3 << 'EOF'
+          import re
+          import sys
+          from pathlib import Path
+          from collections import defaultdict
+
+          print("🤖 Agent scanning for unused dependencies...")
+
+          # Find all Python files
+          py_files = list(Path('.').rglob('*.py'))
+
+          if not py_files:
+              print("⚠️ No Python files found in repository")
+              sys.exit(0)
+
+          # Extract all imports
+          imports_used = set()
+
+          for py_file in py_files:
+              if '.venv' in str(py_file) or 'venv' in str(py_file):
+                  continue
+
+              try:
+                  with open(py_file, 'r', encoding='utf-8') as f:
+                      content = f.read()
+
+                  # Find imports
+                  import_patterns = [
+                      r'^import\s+(\w+)',
+                      r'^from\s+(\w+)',
+                  ]
+
+                  for pattern in import_patterns:
+                      matches = re.findall(pattern, content, re.MULTILINE)
+                      imports_used.update(matches)
+
+              except Exception as e:
+                  print(f"⚠️ Error reading {py_file}: {e}")
+
+          print(f"\n📦 Found {len(imports_used)} unique imports used in code:")
+          for imp in sorted(imports_used):
+              print(f"  - {imp}")
+
+          # Check requirements files
+          requirements_files = [
+              'requirements.txt',
+              'requirements-dev.txt',
+              'pyproject.toml'
+          ]
+
+          declared_deps = set()
+          unused_deps = []
+
+          for req_file in requirements_files:
+              req_path = Path(req_file)
+              if not req_path.exists():
+                  continue
+
+              print(f"\n📄 Checking {req_file}...")
+
+              with open(req_path, 'r', encoding='utf-8') as f:
+                  lines = f.readlines()
+
+              for line in lines:
+                  line = line.strip()
+
+                  # Skip comments and empty lines
+                  if not line or line.startswith('#'):
+                      continue
+
+                  # Extract package name (before ==, >=, etc.)
+                  match = re.match(r'^([a-zA-Z0-9_-]+)', line)
+                  if match:
+                      pkg_name = match.group(1).lower().replace('-', '_')
+                      declared_deps.add(pkg_name)
+
+                      # Check if used
+                      pkg_variants = [
+                          pkg_name,
+                          pkg_name.replace('_', '-'),
+                          pkg_name.replace('-', '_')
+                      ]
+
+                      is_used = any(
+                          variant in [imp.lower() for imp in imports_used]
+                          for variant in pkg_variants
+                      )
+
+                      if not is_used:
+                          # Check common exceptions
+                          exceptions = ['pip', 'setuptools', 'wheel', 'pre_commit']
+                          if pkg_name not in exceptions:
+                              unused_deps.append((req_file, line.strip()))
+
+          # Generate report
+          print("\n# 🧹 Unused Dependencies Report\n")
+          print(f"**Python files scanned**: {len(py_files)}")
+          print(f"**Imports found**: {len(imports_used)}")
+          print(f"**Dependencies declared**: {len(declared_deps)}")
+          print(f"**Potentially unused**: {len(unused_deps)}\n")
+
+          if unused_deps:
+              print("## ⚠️ Potentially Unused Dependencies\n")
+
+              by_file = defaultdict(list)
+              for file, dep in unused_deps:
+                  by_file[file].append(dep)
+
+              for file, deps in by_file.items():
+                  print(f"### {file}\n")
+                  for dep in deps:
+                      print(f"- `{dep}`")
+                  print()
+
+              print("**Note**: These dependencies may be:")
+              print("- Used indirectly as sub-dependencies")
+              print("- Used in CI/CD workflows")
+              print("- Used in external scripts")
+              print("- Actually needed despite no direct import\n")
+
+              print("Please review before removing!\n")
+          else:
+              print("## ✅ All Dependencies Used!\n")
+              print("All declared dependencies appear to be in use.")
+
+          # Save report
+          with open('unused-deps-report.md', 'w') as f:
+              f.write("# 🧹 Unused Dependencies Report\n\n")
+              if unused_deps:
+                  for file, deps in by_file.items():
+                      f.write(f"## {file}\n\n")
+                      for dep in deps:
+                          f.write(f"- `{dep}`\n")
+                      f.write("\n")
+
+          # Set output
+          with open('GITHUB_OUTPUT', 'a') as f:
+              f.write(f"unused_count={len(unused_deps)}\n")
+              f.write(f"has_unused={str(len(unused_deps) > 0).lower()}\n")
+
+          EOF
+
+      - name: Create issue for unused dependencies
+        if: steps.detect.outputs.has_unused == 'true' && github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('unused-deps-report.md', 'utf8');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🧹 Unused Dependencies Detected',
+              body: report + '\n\n' +
+                    '**Automated Detection**: This issue was created by the Unused Dependency Cleaner Agent.\n\n' +
+                    'Please review these dependencies and remove if truly unused.\n\n' +
+                    '**Action Items**:\n' +
+                    '- [ ] Review each dependency\n' +
+                    '- [ ] Check if used indirectly\n' +
+                    '- [ ] Remove confirmed unused dependencies\n' +
+                    '- [ ] Update requirements files',
+              labels: ['dependencies', 'cleanup', 'bot']
+            });
+
+      - name: Comment on PR with results
+        if: github.event_name == 'pull_request' && steps.detect.outputs.has_unused == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('unused-deps-report.md', 'utf8');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## 🧹 Unused Dependencies Detected\n\n${report}\n\nPlease review these dependencies before merging.`
+            });
+
+      - name: Upload report
+        if: steps.detect.outputs.has_unused == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: unused-deps-report
+          path: unused-deps-report.md
+          retention-days: 30
+
+      - name: Display report in summary
+        run: |
+          if [ -f "unused-deps-report.md" ]; then
+            cat unused-deps-report.md >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: ✅ Agent Task Complete
+        run: |
+          echo "🤖 Unused dependency cleaner agent completed!"
+          if [ "${{ steps.detect.outputs.has_unused }}" == "true" ]; then
+            echo "⚠️ Found ${{ steps.detect.outputs.unused_count }} potentially unused dependencies"
+          else
+            echo "✅ All dependencies appear to be in use!"
+          fi

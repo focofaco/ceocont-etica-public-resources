@@ -1,0 +1,250 @@
+name: "Dependency Graph Generator Agent"
+
+# Autonomous agent that generates visual dependency graphs
+# Creates DOT format graphs showing package relationships
+
+on:
+  schedule:
+    # Monthly on 1st at 15:00 BRT (18:00 UTC)
+    - cron: '0 18 1 * *'
+  pull_request:
+    paths:
+      - 'requirements.txt'
+      - 'requirements-dev.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-graph:
+    name: 📊 Dependency Graph Generator Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install graphviz and tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+          pip install pipdeptree
+
+      - name: 🤖 Agent Task - Generate Dependency Graph
+        id: generate
+        run: |
+          python3 << 'EOF'
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          print("🤖 Agent generating dependency graph...")
+
+          requirements_files = [
+              'requirements.txt',
+              'requirements-dev.txt'
+          ]
+
+          graphs_generated = []
+
+          for req_file in requirements_files:
+              req_path = Path(req_file)
+              if not req_path.exists():
+                  print(f"⚠️ {req_file} not found, skipping")
+                  continue
+
+              print(f"\n📄 Processing {req_file}...")
+
+              # Install dependencies
+              try:
+                  subprocess.run(
+                      ['pip', 'install', '-r', req_file],
+                      capture_output=True,
+                      timeout=120,
+                      check=True
+                  )
+              except Exception as e:
+                  print(f"⚠️ Error installing {req_file}: {e}")
+                  continue
+
+              # Generate dependency tree
+              base_name = req_file.replace('.txt', '')
+              output_file = f'.github/docs/{base_name}-graph.txt'
+
+              # Create docs directory if it doesn't exist
+              Path('.github/docs').mkdir(parents=True, exist_ok=True)
+
+              try:
+                  # Generate tree format
+                  result = subprocess.run(
+                      ['pipdeptree', '--packages', '-f'],
+                      capture_output=True,
+                      text=True,
+                      timeout=60
+                  )
+
+                  if result.returncode == 0:
+                      with open(output_file, 'w') as f:
+                          f.write(f"# Dependency Tree - {req_file}\n\n")
+                          f.write(f"Generated: $(date)\n\n")
+                          f.write("```\n")
+                          f.write(result.stdout)
+                          f.write("\n```\n")
+
+                      print(f"✅ Generated: {output_file}")
+                      graphs_generated.append(output_file)
+
+                  # Generate DOT format for visualization
+                  dot_file = f'.github/docs/{base_name}-graph.dot.txt'
+                  result_json = subprocess.run(
+                      ['pipdeptree', '--graph-output', 'dot'],
+                      capture_output=True,
+                      text=True,
+                      timeout=60
+                  )
+
+                  if result_json.returncode == 0:
+                      with open(dot_file, 'w') as f:
+                          f.write(result_json.stdout)
+
+                      print(f"✅ Generated: {dot_file}")
+                      graphs_generated.append(dot_file)
+
+                      # Try to render as SVG (optional)
+                      svg_file = f'.github/docs/{base_name}-graph.svg'
+                      try:
+                          subprocess.run(
+                              ['dot', '-Tsvg', dot_file, '-o', svg_file],
+                              timeout=30,
+                              check=True
+                          )
+                          print(f"✅ Generated: {svg_file}")
+                          graphs_generated.append(svg_file)
+                      except Exception as e:
+                          print(f"⚠️ Could not generate SVG: {e}")
+
+              except subprocess.TimeoutExpired:
+                  print(f"⚠️ Timeout generating graph for {req_file}")
+              except Exception as e:
+                  print(f"⚠️ Error generating graph for {req_file}: {e}")
+
+          # Generate summary
+          print("\n# 📊 Dependency Graph Report\n")
+          print(f"**Graphs generated**: {len(graphs_generated)}\n")
+
+          if graphs_generated:
+              print("## Generated Files\n")
+              for graph in graphs_generated:
+                  print(f"- `{graph}`")
+              print()
+          else:
+              print("⚠️ No graphs generated\n")
+
+          # Set output
+          has_graphs = len(graphs_generated) > 0
+
+          with open('GITHUB_OUTPUT', 'a') as f:
+              f.write(f"has_graphs={str(has_graphs).lower()}\n")
+              f.write(f"graph_count={len(graphs_generated)}\n")
+
+          EOF
+
+      - name: Commit dependency graphs
+        if: steps.generate.outputs.has_graphs == 'true'
+        run: |
+          git config user.name "dep-graph[bot]"
+          git config user.email "dep-graph[bot]@users.noreply.github.com"
+
+          git add .github/docs/*-graph.*
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "$(cat <<'EOF'
+          docs(deps): update dependency graphs
+
+          Auto-generated by Dependency Graph Generator Agent
+          EOF
+          )"
+
+            # Only push on main branch (not on PRs)
+            if [ "${{ github.event_name }}" != "pull_request" ]; then
+              git push || echo "Push failed, will retry on next run"
+            fi
+          fi
+
+      - name: Comment on PR with graph
+        if: github.event_name == 'pull_request' && steps.generate.outputs.has_graphs == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            let comment = '## 📊 Dependency Graph Generated\n\n';
+            comment += 'The dependency graph has been updated.\n\n';
+
+            // Try to read tree file
+            const treeFiles = [
+              '.github/docs/requirements-graph.txt',
+              '.github/docs/requirements-dev-graph.txt'
+            ];
+
+            for (const file of treeFiles) {
+              try {
+                const content = fs.readFileSync(file, 'utf8');
+                comment += `### ${file}\n\n`;
+                comment += '<details>\n<summary>View dependency tree</summary>\n\n';
+                comment += content;
+                comment += '\n</details>\n\n';
+              } catch (e) {
+                // File doesn't exist
+              }
+            }
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
+
+      - name: Upload graphs as artifacts
+        if: steps.generate.outputs.has_graphs == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-graphs
+          path: |
+            .github/docs/*-graph.*
+          retention-days: 90
+
+      - name: Display summary
+        run: |
+          echo "# 📊 Dependency Graph Generator" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.generate.outputs.has_graphs }}" == "true" ]; then
+            echo "✅ Generated ${{ steps.generate.outputs.graph_count }} graph file(s)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+
+            if [ -f ".github/docs/requirements-graph.txt" ]; then
+              echo "## Requirements Graph" >> $GITHUB_STEP_SUMMARY
+              cat .github/docs/requirements-graph.txt >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "⚠️ No graphs generated" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: ✅ Agent Task Complete
+        run: |
+          echo "🤖 Dependency graph generator agent completed!"
+          if [ "${{ steps.generate.outputs.has_graphs }}" == "true" ]; then
+            echo "✅ Generated ${{ steps.generate.outputs.graph_count }} graph file(s)"
+          else
+            echo "⚠️ No graphs generated"
+          fi

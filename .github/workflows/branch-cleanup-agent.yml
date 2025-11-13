@@ -1,0 +1,78 @@
+name: "Branch Cleanup Agent"
+
+# Dead-simple agent that cleans up merged branches
+# Task: Delete branches that have been merged to main
+
+on:
+  schedule:
+    # Every Sunday at 10:00 BRT (13:00 UTC)
+    - cron: '0 13 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup-agent:
+    name: 🧹 Cleanup Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history
+
+      - name: 🤖 Agent Task - Find Merged Branches
+        id: find-branches
+        run: |
+          echo "🤖 Agent scanning for merged branches..."
+
+          git fetch --all --prune
+
+          # Find branches merged into main
+          MERGED_BRANCHES=$(git branch -r --merged origin/main | \
+            grep -v "HEAD" | \
+            grep -v "main" | \
+            sed 's|origin/||' | \
+            grep "^claude/" || echo "")
+
+          if [ -z "$MERGED_BRANCHES" ]; then
+            echo "✅ No merged branches to clean up"
+            echo "branches_found=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "Found merged branches:"
+          echo "$MERGED_BRANCHES"
+
+          # Save to file
+          echo "$MERGED_BRANCHES" > merged-branches.txt
+          BRANCH_COUNT=$(echo "$MERGED_BRANCHES" | wc -l)
+          echo "branches_found=true" >> $GITHUB_OUTPUT
+          echo "branch_count=$BRANCH_COUNT" >> $GITHUB_OUTPUT
+
+      - name: 🗑️ Delete Merged Branches
+        if: steps.find-branches.outputs.branches_found == 'true'
+        run: |
+          echo "🤖 Agent deleting merged branches..."
+
+          while read -r branch; do
+            if [ -n "$branch" ]; then
+              echo "Deleting: $branch"
+              git push origin --delete "$branch" || echo "Failed to delete $branch"
+            fi
+          done < merged-branches.txt
+
+      - name: ✅ Agent Task Complete
+        run: |
+          if [ "${{ steps.find-branches.outputs.branches_found }}" == "true" ]; then
+            echo "🤖 Agent cleaned up ${{ steps.find-branches.outputs.branch_count }} branch(es)"
+            echo "## 🧹 Cleanup Report" >> $GITHUB_STEP_SUMMARY
+            echo "**Branches deleted**: ${{ steps.find-branches.outputs.branch_count }}" >> $GITHUB_STEP_SUMMARY
+            cat merged-branches.txt >> $GITHUB_STEP_SUMMARY
+          else
+            echo "🤖 Agent found no branches to clean up"
+            echo "## 🧹 Cleanup Report" >> $GITHUB_STEP_SUMMARY
+            echo "✅ No merged branches found - repository is clean!" >> $GITHUB_STEP_SUMMARY
+          fi

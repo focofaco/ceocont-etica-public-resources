@@ -1,0 +1,150 @@
+name: "Translation Memory Agent"
+
+# Autonomous agent that suggests translations based on previously translated terms
+# Builds a translation memory from existing content
+
+on:
+  schedule:
+    # Weekly on Monday at 10:00 BRT (13:00 UTC)
+    - cron: '0 13 * * 1'
+  pull_request:
+    paths:
+      - 'online-resources/raw-text/**/*.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  translation-memory:
+    name: 🌐 Translation Memory Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for translation memory
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 🤖 Agent Task - Build Translation Memory
+        id: build-tm
+        run: |
+          python3 << 'EOF'
+          import re
+          import json
+          from pathlib import Path
+          from collections import defaultdict
+
+          print("🤖 Agent building translation memory...")
+
+          # Common accounting/ethics terms (PT-BR → EN)
+          # This can be expanded over time
+          glossary = {
+              "contabilidade": "accounting",
+              "ética": "ethics",
+              "auditoria": "audit",
+              "balanço": "balance sheet",
+              "demonstração": "statement",
+              "receita": "revenue",
+              "despesa": "expense",
+              "ativo": "asset",
+              "passivo": "liability",
+              "patrimônio": "equity"
+          }
+
+          # Build translation memory from content
+          translation_memory = defaultdict(list)
+          term_frequency = defaultdict(int)
+
+          raw_text = Path("online-resources/raw-text")
+
+          for txt_file in raw_text.rglob("*.txt"):
+              if "meta/" in str(txt_file):
+                  continue
+
+              with open(txt_file, 'r', encoding='utf-8') as f:
+                  content = f.read().lower()
+
+              # Find glossary terms
+              for pt_term, en_term in glossary.items():
+                  if pt_term in content:
+                      term_frequency[pt_term] += content.count(pt_term)
+                      if str(txt_file) not in translation_memory[pt_term]:
+                          translation_memory[pt_term].append(str(txt_file.relative_to(Path.cwd())))
+
+          # Generate report
+          report = []
+          report.append("# 🌐 Translation Memory Report\n")
+          report.append(f"**Date**: {Path('').resolve().as_posix()}\n")
+          report.append("**Agent**: Translation Memory Bot 🤖\n\n")
+
+          report.append("## 📊 Term Frequency\n\n")
+          report.append("| Portuguese Term | English | Occurrences | Files |\n")
+          report.append("|----------------|---------|-------------|-------|\n")
+
+          for pt_term in sorted(term_frequency.keys(), key=lambda x: term_frequency[x], reverse=True):
+              en_term = glossary[pt_term]
+              freq = term_frequency[pt_term]
+              files = len(translation_memory[pt_term])
+              report.append(f"| {pt_term} | {en_term} | {freq} | {files} |\n")
+
+          report.append("\n## 💡 Translation Suggestions\n\n")
+          report.append("When adding new content, consider these common translations:\n\n")
+
+          for pt_term, en_term in sorted(glossary.items()):
+              if pt_term in term_frequency:
+                  report.append(f"- **{pt_term}** → {en_term} (used {term_frequency[pt_term]}x)\n")
+
+          # Save reports
+          with open('translation-memory.md', 'w') as f:
+              f.write(''.join(report))
+
+          with open('translation-memory.json', 'w') as f:
+              json.dump({
+                  'glossary': glossary,
+                  'frequency': dict(term_frequency),
+                  'memory': {k: v for k, v in translation_memory.items()}
+              }, f, indent=2, ensure_ascii=False)
+
+          print(f"Found {len(term_frequency)} terms in translation memory")
+          print(''.join(report))
+          EOF
+
+      - name: Comment on PR with suggestions
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('translation-memory.md', 'utf8');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## 🌐 Translation Memory\n\n${report}\n\n💡 These translations are based on existing content patterns.`
+            });
+
+      - name: Upload translation memory
+        uses: actions/upload-artifact@v4
+        with:
+          name: translation-memory
+          path: |
+            translation-memory.md
+            translation-memory.json
+          retention-days: 90
+
+      - name: Display report in summary
+        run: |
+          cat translation-memory.md >> $GITHUB_STEP_SUMMARY
+
+      - name: ✅ Agent Task Complete
+        run: |
+          echo "🤖 Translation memory agent completed!"
+          echo "Translation memory built and saved"

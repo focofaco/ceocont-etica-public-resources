@@ -1,0 +1,175 @@
+name: "Locale Validator Agent"
+
+# Autonomous agent that validates locale-specific formats (dates, numbers, currency)
+# Ensures Brazilian Portuguese formatting standards
+
+on:
+  schedule:
+    # Weekly on Wednesday at 11:00 BRT (14:00 UTC)
+    - cron: '0 14 * * 3'
+  pull_request:
+    paths:
+      - 'online-resources/raw-text/**/*.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  locale-validation:
+    name: 🌍 Locale Validator Agent
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 🤖 Agent Task - Validate Locale Formats
+        id: locale-check
+        run: |
+          python3 << 'EOF'
+          import re
+          from pathlib import Path
+          from datetime import datetime
+
+          print("🤖 Agent validating locale-specific formats...")
+
+          # Brazilian Portuguese locale rules
+          locale_rules = {
+              'date_format': {
+                  'correct': r'\d{2}/\d{2}/\d{4}',  # DD/MM/YYYY
+                  'incorrect': r'\d{4}-\d{2}-\d{2}',  # YYYY-MM-DD (ISO, not BR)
+                  'name': 'Date format'
+              },
+              'decimal_separator': {
+                  'correct': r'\d+,\d+',  # 1.234,56 (Brazilian)
+                  'incorrect': r'\d+\.\d+(?!\d)',  # 1234.56 (US format)
+                  'name': 'Decimal separator'
+              },
+              'currency': {
+                  'correct': r'R\$\s*\d+[.,]\d+',  # R$ 1.234,56
+                  'incorrect': r'\$\d+[.,]\d+',  # $1234.56 (not Brazilian)
+                  'name': 'Currency format'
+              }
+          }
+
+          issues = []
+          files_checked = 0
+          total_issues = 0
+
+          raw_text = Path("online-resources/raw-text")
+
+          for txt_file in raw_text.rglob("*.txt"):
+              if "meta/" in str(txt_file):
+                  continue
+
+              files_checked += 1
+              file_str = str(txt_file.relative_to(Path.cwd()))
+
+              with open(txt_file, 'r', encoding='utf-8') as f:
+                  content = f.read()
+
+              file_issues = []
+
+              # Check for incorrect date format (ISO)
+              iso_dates = re.findall(r'\d{4}-\d{2}-\d{2}', content)
+              if iso_dates:
+                  file_issues.append(f"ISO date format found (use DD/MM/YYYY): {iso_dates[:3]}")
+                  total_issues += len(iso_dates)
+
+              # Check for US decimal separator in numbers
+              # (more sophisticated check to avoid false positives)
+              us_decimals = re.findall(r'\d{1,3}\.\d{3}(?!\d)', content)
+              if us_decimals:
+                  file_issues.append(f"Possible US decimal format: {us_decimals[:3]}")
+                  total_issues += len(us_decimals)
+
+              # Check for currency without R$
+              dollar_signs = re.findall(r'\$\s*\d+', content)
+              if dollar_signs:
+                  file_issues.append(f"Currency without R$ prefix: {dollar_signs[:3]}")
+                  total_issues += len(dollar_signs)
+
+              if file_issues:
+                  issues.append({
+                      'file': file_str,
+                      'issues': file_issues
+                  })
+
+          # Generate report
+          report = []
+          report.append("# 🌍 Locale Validation Report\n")
+          report.append(f"**Date**: {datetime.now().strftime('%Y-%m-%d')}\n")
+          report.append("**Agent**: Locale Validator Bot 🤖\n")
+          report.append("**Locale**: Brazilian Portuguese (pt-BR)\n\n")
+
+          report.append("## Summary\n\n")
+          report.append(f"- Files checked: **{files_checked}**\n")
+          report.append(f"- Files with issues: **{len(issues)}**\n")
+          report.append(f"- Total issues: **{total_issues}**\n\n")
+
+          if issues:
+              report.append("## ⚠️ Locale Format Issues\n\n")
+              for item in issues[:20]:  # Limit to 20 files
+                  report.append(f"### 📄 `{item['file']}`\n\n")
+                  for issue in item['issues']:
+                      report.append(f"- {issue}\n")
+                  report.append("\n")
+
+              report.append("## 📝 Brazilian Portuguese Format Rules\n\n")
+              report.append("| Format | Correct (pt-BR) | Incorrect |\n")
+              report.append("|--------|-----------------|------------|\n")
+              report.append("| Date | DD/MM/YYYY (31/12/2025) | YYYY-MM-DD (2025-12-31) |\n")
+              report.append("| Decimal | Comma (1.234,56) | Period (1234.56) |\n")
+              report.append("| Currency | R$ 1.234,56 | $1234.56 |\n")
+              report.append("| Thousands | Period (1.234.567) | Comma (1,234,567) |\n")
+          else:
+              report.append("## ✅ All Formats Valid!\n\n")
+              report.append("All content follows Brazilian Portuguese locale standards.\n")
+
+          report_text = ''.join(report)
+          print(report_text)
+
+          with open('locale-report.md', 'w') as f:
+              f.write(report_text)
+
+          with open('GITHUB_OUTPUT', 'a') as f:
+              f.write(f"total_issues={total_issues}\n")
+          EOF
+
+      - name: Comment on PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('locale-report.md', 'utf8');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## 🌍 Locale Validation Results\n\n${report}\n\n💡 Please follow Brazilian Portuguese formatting standards.`
+            });
+
+      - name: Upload locale report
+        uses: actions/upload-artifact@v4
+        with:
+          name: locale-validation-report
+          path: locale-report.md
+          retention-days: 30
+
+      - name: Display report in summary
+        run: |
+          cat locale-report.md >> $GITHUB_STEP_SUMMARY
+
+      - name: ✅ Agent Task Complete
+        run: |
+          echo "🤖 Locale validator agent completed!"
+          echo "Checked Brazilian Portuguese formatting standards"

@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-11-13T03:00:00Z",
-  "total_chunks": 1,
-  "total_fragments": 1,
+  "last_updated": "2025-11-13T07:30:00Z",
+  "total_chunks": 2,
+  "total_fragments": 4,
   "chunks": [
     {
       "chunk_id": "chunk_01",
@@ -31,12 +31,69 @@
           "review_status": "approved"
         }
       ]
+    },
+    {
+      "chunk_id": "chunk_02",
+      "status": "completed",
+      "ingested_at": "2025-11-13T07:30:00Z",
+      "source_document": "Manual Qualidade - Introdução e Sistema de Controle",
+      "source_metadata": {
+        "extraction_method": "copy_paste",
+        "page_number": 2,
+        "sections": ["Introdução", "Estudo de caso", "Sistema de controle de qualidade"],
+        "source_format": "text"
+      },
+      "fragments_generated": 3,
+      "fragments": [
+        {
+          "fragment_id": "chunk_02_frag_001",
+          "seq": 1,
+          "component": "plaintext",
+          "content_id": "002-introducao-manual-controle-qualidade-a1b8",
+          "title": "Introdução - Manual de controle de qualidade",
+          "path_txt": "online-resources/raw-text/plaintext/002-introducao-manual-controle-qualidade-a1b8.txt",
+          "path_json": "online-resources/raw-text/plaintext/002-introducao-manual-controle-qualidade-a1b8.json",
+          "sha256_txt": "a1b884a569bc4a8fe5d252bdc18059cc486383cbd113dbcc3fcab1babef81864",
+          "word_count": 190,
+          "character_count": 1393,
+          "transformations_applied": [],
+          "review_status": "approved"
+        },
+        {
+          "fragment_id": "chunk_02_frag_002",
+          "seq": 2,
+          "component": "docks",
+          "content_id": "003-estudo-caso-irregularidade-cliente-4800",
+          "title": "Estudo de caso - Irregularidade identificada em cliente",
+          "path_txt": "online-resources/raw-text/docks/003-estudo-caso-irregularidade-cliente-4800.txt",
+          "path_json": "online-resources/raw-text/docks/003-estudo-caso-irregularidade-cliente-4800.json",
+          "sha256_txt": "4800f24488acf53cefaba78ed9386e444e17b4d0a02f5b6ef10a2daee1021625",
+          "word_count": 121,
+          "character_count": 1029,
+          "transformations_applied": [],
+          "review_status": "approved"
+        },
+        {
+          "fragment_id": "chunk_02_frag_003",
+          "seq": 3,
+          "component": "plaintext",
+          "content_id": "004-sistema-controle-qualidade-documentacao-7eff",
+          "title": "Sistema de controle de qualidade - Documentação",
+          "path_txt": "online-resources/raw-text/plaintext/004-sistema-controle-qualidade-documentacao-7eff.txt",
+          "path_json": "online-resources/raw-text/plaintext/004-sistema-controle-qualidade-documentacao-7eff.json",
+          "sha256_txt": "7eff94c1ba8b0644abdd51988c96d3aa6cf48fc1104ba2bc02bf186d90cd49a1",
+          "word_count": 360,
+          "character_count": 2579,
+          "transformations_applied": [],
+          "review_status": "approved"
+        }
+      ]
     }
   ],
   "component_distribution": {
-    "plaintext": 1,
+    "plaintext": 3,
     "callouts": 0,
-    "docks": 0,
+    "docks": 1,
     "tradeoffs": 0,
     "tables": 0,
     "data": 0,
@@ -49,9 +106,9 @@
     "header_h3": 0
   },
   "component_distribution_percentage": {
-    "plaintext": 100.0,
+    "plaintext": 75.0,
     "callouts": 0.0,
-    "docks": 0.0,
+    "docks": 25.0,
     "tradeoffs": 0.0,
     "tables": 0.0,
     "data": 0.0,
@@ -74,13 +131,16 @@
       "max": 30.0
     }
   },
-  "saturation_warnings": [
-    "Current plaintext: 100.0% exceeds maximum target of 80.0%. Need to add other components."
-  ],
+  "saturation_warnings": [],
   "placeholders_inventory": [
     "${razao-social}",
     "${responsavel-qualidade}",
     "${data-atualizacao}",
-    "${numero-atualizacoes}"
+    "${numero-atualizacoes}",
+    "${tipo-servico}",
+    "${tipo-irregularidade}",
+    "${responsavel-tecnico}",
+    "${objetivo-correcao}",
+    "${diagrama-piramide}"
   ]
 }
