@@ -1,0 +1,92 @@
+{
+  "version": "1.0.0",
+  "content_id": "010-politica-responsabilidade-social-ambiental-9129",
+  "component": "plaintext",
+  "original_text": "A Política de Responsabilidade Social, Ambiental e Climática (PRSAC) da ${razao-social} está fundamentada na valorização e na garantia de integração das dimensões social, ambiental e climática em sua estratégia. A política se aplica às práticas, normas, procedimentos e processos adotados pela firma, em todas as atividades gerenciais e operacionais, e no relacionamento com seus públicos.\n\nA PRSAC contém princípios e diretrizes que norteiam as ações de natureza socioambiental e climática nos negócios, na governança, no gerenciamento de riscos e na relação com as partes interessadas.\n\nA ausência de gerenciamento desses riscos pode resultar em perdas de imagem, perdas legais e diminuição de receitas, aspectos considerados pela ${razao-social}.\n\nA ${razao-social} observa em sua PRSAC os seguintes princípios de proporcionalidade e adequação:\n\n- Proporcionalidade: ao modelo de negócio, à natureza das operações e à complexidade dos serviços, das atividades e dos processos da firma\n- Adequação: à dimensão e relevância do grau de exposição ao risco social, ambiental e climático nas atividades e operações\n\nA ${razao-social} observa e cumpre, no exercício de suas atividades, a legislação e regulamentação ambiental, climática e trabalhista em vigor no Brasil, especialmente, mas não se limitando, as normas relativas à saúde, meio ambiente, segurança ocupacional e à inexistência de trabalho análogo ao escravo e uso de mão-de-obra infantil.\n",
+  "transformed_text": "A Política de Responsabilidade Social, Ambiental e Climática (PRSAC) da ${razao-social} está fundamentada na valorização e na garantia de integração das dimensões social, ambiental e climática em sua estratégia. A política se aplica às práticas, normas, procedimentos e processos adotados pela firma, em todas as atividades gerenciais e operacionais, e no relacionamento com seus públicos.\n\nA PRSAC contém princípios e diretrizes que norteiam as ações de natureza socioambiental e climática nos negócios, na governança, no gerenciamento de riscos e na relação com as partes interessadas.\n\nA ausência de gerenciamento desses riscos pode resultar em perdas de imagem, perdas legais e diminuição de receitas, aspectos considerados pela ${razao-social}.\n\nA ${razao-social} observa em sua PRSAC os seguintes princípios de proporcionalidade e adequação:\n\n- Proporcionalidade: ao modelo de negócio, à natureza das operações e à complexidade dos serviços, das atividades e dos processos da firma\n- Adequação: à dimensão e relevância do grau de exposição ao risco social, ambiental e climático nas atividades e operações\n\nA ${razao-social} observa e cumpre, no exercício de suas atividades, a legislação e regulamentação ambiental, climática e trabalhista em vigor no Brasil, especialmente, mas não se limitando, as normas relativas à saúde, meio ambiente, segurança ocupacional e à inexistência de trabalho análogo ao escravo e uso de mão-de-obra infantil.\n",
+  "metadata": {
+    "title": "Política de Responsabilidade Social, Ambiental e Climática",
+    "description": "PRSAC estabelece princípios e diretrizes para integração de dimensões social, ambiental e climática na estratégia da firma",
+    "domain": "responsabilidade-social-ambiental",
+    "keywords": [
+      "prsac",
+      "responsabilidade-social",
+      "ambiental",
+      "climatica",
+      "sustentabilidade",
+      "esg"
+    ],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T17:10:00Z",
+    "updated_at": "2025-11-13T17:10:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "politicas-socioambientais",
+    "target_audience": [
+      "gestores",
+      "socios",
+      "profissionais-contabeis"
+    ],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 2
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Políticas de Segurança e Responsabilidade",
+    "extraction_method": "copy_paste",
+    "page_number": 4,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 0.95,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 206,
+    "character_count": 1508,
+    "readability_score": 38.2,
+    "avg_sentence_length": 30.4,
+    "avg_word_length": 6.7,
+    "technical_term_density": 0.32,
+    "passive_voice_ratio": 0.25,
+    "flesch_reading_ease": 38.2,
+    "gunning_fog_index": 16.5
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": []
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T17:10:00Z",
+    "review_notes": "Auto-approved: brandguide compliance 0.95"
+  },
+  "audit": {
+    "fragment_id": "chunk_04_frag_003",
+    "chunk_id": "chunk_04",
+    "ingestion_date": "2025-11-13T17:10:00Z",
+    "sha256_original": "912923e368ad5bb48a563d1cf4c58ab19eb5787e3386ad8861b93e4b7d6c1ff2",
+    "sha256_transformed": "912923e368ad5bb48a563d1cf4c58ab19eb5787e3386ad8861b93e4b7d6c1ff2",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Flowing narrative text about social and environmental responsibility policy. Main educational content.",
+    "alternative_components": []
+  }
+}

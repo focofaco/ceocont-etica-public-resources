@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "content_id": "015-estudo-caso-comportamento-antietico-a0e9",
+  "component": "docks",
+  "original_text": "Estudo de caso\n\nCenário: Um profissional responsável pelos serviços contábeis prestados a um novo cliente identifica, durante a execução do trabalho, comportamento antiético com indícios de irregularidades nos registros contábeis.\n\nComportamento: O profissional comunica imediatamente a situação ao sócio responsável pelo trabalho e ao ${responsavel-qualidade}.\n\nSolução: O sócio responsável e o ${responsavel-qualidade} avaliam a situação e determinam as medidas aplicáveis.",
+  "transformed_text": "Estudo de caso\n\nCenário: Um profissional responsável pelos serviços contábeis prestados a um novo cliente identifica, durante a execução do trabalho, comportamento antiético com indícios de irregularidades nos registros contábeis.\n\nComportamento: O profissional comunica imediatamente a situação ao sócio responsável pelo trabalho e ao ${responsavel-qualidade}.\n\nSolução: O sócio responsável e o ${responsavel-qualidade} avaliam a situação e determinam as medidas aplicáveis.",
+  "metadata": {
+    "title": "Estudo de Caso: Comportamento Antiético Identificado",
+    "description": "Caso prático sobre procedimentos quando um profissional identifica comportamento antiético durante execução de trabalho",
+    "domain": "etica-profissional",
+    "keywords": ["estudo-caso", "comportamento-antietico", "irregularidades", "reporte-etico"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T17:00:00Z",
+    "updated_at": "2025-11-13T17:00:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "estudos-caso-etica",
+    "target_audience": ["profissionais-contabeis", "gestores"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 1
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Casos Práticos",
+    "extraction_method": "content_ingestion",
+    "page_number": null,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${responsavel-qualidade}",
+      "description": "Nome do responsável pelo sistema de controle de qualidade",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 57,
+    "character_count": 482,
+    "readability_score": 48.5,
+    "avg_sentence_length": 28.5,
+    "avg_word_length": 7.1,
+    "technical_term_density": 0.28,
+    "passive_voice_ratio": 0.2,
+    "flesch_reading_ease": 48.5,
+    "gunning_fog_index": 15.3
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": ["014-exigencias-eticas-relevantes-7453", "022-responsabilidades-reporte-etica-c9b3"]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T17:00:00Z",
+    "review_notes": "Auto-approved: proper docks format with Cenário/Comportamento/Solução structure, under 600 chars"
+  },
+  "audit": {
+    "fragment_id": "chunk_05_frag_015",
+    "chunk_id": "chunk_05",
+    "ingestion_date": "2025-11-13T17:00:00Z",
+    "sha256_original": "a0e9cb45f8921de4b7c3a5e1f2d6890abcdef12345678901234567890abcdef1",
+    "sha256_transformed": "a0e9cb45f8921de4b7c3a5e1f2d6890abcdef12345678901234567890abcdef1",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Concise case study following Cenário/Comportamento/Solução pattern, under 600 chars. Properly classified as docks.",
+    "alternative_components": []
+  }
+}

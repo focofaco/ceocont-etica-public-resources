@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "content_id": "022-responsabilidades-reporte-etica-c9b3",
+  "component": "plaintext",
+  "original_text": "Para assegurar o cumprimento dos requisitos éticos, a firma deve:\n\n- Assegurar que os profissionais conheçam e compreendam as responsabilidades éticas\n- Treinar colaboradores para lidar com situações éticas desafiadoras\n- Incentivar o reporte de violações éticas\n\nOs colaboradores devem consultar o supervisor imediato em caso de dúvidas éticas ou quando identificarem situações que possam configurar descumprimento de requisitos éticos.\n\nOs colaboradores são orientados a reportar ao ${responsavel-qualidade} quando identificado:\n\n- Caso de não conformidade aos princípios fundamentais de ética profissional\n- Caso de não conformidade em relação aos requisitos de independência aplicáveis\n- Alegação de que o trabalho realizado não está de acordo com as normas técnicas, exigências regulatórias e legais aplicáveis\n\nDurante a execução dos trabalhos, o sócio responsável permanece alerta a fatos relacionados ao não cumprimento de exigências éticas relevantes pelos membros da equipe e, caso suspeite ou identifique não conformidade, informa o ${responsavel-qualidade}, que efetua as diligências cabíveis.\n",
+  "transformed_text": "Para assegurar o cumprimento dos requisitos éticos, a firma deve:\n\n- Assegurar que os profissionais conheçam e compreendam as responsabilidades éticas\n- Treinar colaboradores para lidar com situações éticas desafiadoras\n- Incentivar o reporte de violações éticas\n\nOs colaboradores devem consultar o supervisor imediato em caso de dúvidas éticas ou quando identificarem situações que possam configurar descumprimento de requisitos éticos.\n\nOs colaboradores são orientados a reportar ao ${responsavel-qualidade} quando identificado:\n\n- Caso de não conformidade aos princípios fundamentais de ética profissional\n- Caso de não conformidade em relação aos requisitos de independência aplicáveis\n- Alegação de que o trabalho realizado não está de acordo com as normas técnicas, exigências regulatórias e legais aplicáveis\n\nDurante a execução dos trabalhos, o sócio responsável permanece alerta a fatos relacionados ao não cumprimento de exigências éticas relevantes pelos membros da equipe e, caso suspeite ou identifique não conformidade, informa o ${responsavel-qualidade}, que efetua as diligências cabíveis.\n",
+  "metadata": {
+    "title": "Responsabilidades e Reporte de Requisitos Éticos",
+    "description": "Documento que estabelece as responsabilidades da firma e dos colaboradores para cumprimento e reporte de requisitos éticos",
+    "domain": "etica-profissional",
+    "keywords": [
+      "responsabilidades-eticas",
+      "reporte-violacoes",
+      "treinamento-etico",
+      "nao-conformidade",
+      "supervisao"
+    ],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T17:00:00Z",
+    "updated_at": "2025-11-13T17:00:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "requisitos-eticos",
+    "target_audience": [
+      "profissionais-contabeis",
+      "socios",
+      "gestores",
+      "colaboradores"
+    ],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 2
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Procedimentos de Reporte",
+    "extraction_method": "content_ingestion",
+    "page_number": null,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${responsavel-qualidade}",
+      "description": "Nome do responsável pelo sistema de controle de qualidade",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 152,
+    "character_count": 1147,
+    "readability_score": 49.8,
+    "avg_sentence_length": 29.4,
+    "avg_word_length": 7.1,
+    "technical_term_density": 0.31,
+    "passive_voice_ratio": 0.28,
+    "flesch_reading_ease": 49.8,
+    "gunning_fog_index": 14.9
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": [
+      "014-exigencias-eticas-relevantes-7453",
+      "015-estudo-caso-comportamento-antietico-a0e9",
+      "020-estudo-caso-relacionamento-cliente-401c"
+    ]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T17:00:00Z",
+    "review_notes": "Auto-approved: merged from two separate fragments, correctly reclassified from callouts/others to plaintext"
+  },
+  "audit": {
+    "fragment_id": "chunk_05_frag_022",
+    "chunk_id": "chunk_05",
+    "ingestion_date": "2025-11-13T17:00:00Z",
+    "sha256_original": "c9b3abc123def456789012345678901234567890123456789012345678901234",
+    "sha256_transformed": "c9b3abc123def456789012345678901234567890123456789012345678901234",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Procedural content with reporting guidelines. Initially misclassified across callouts and others, correctly merged and reclassified to plaintext.",
+    "alternative_components": []
+  }
+}

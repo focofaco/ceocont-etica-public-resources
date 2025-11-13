@@ -1,0 +1,21 @@
+Todos os sócios e profissionais da firma têm responsabilidades relativas ao controle de qualidade, ética e independência profissional. Essas responsabilidades incluem a compreensão e o cumprimento do Código de Ética Profissional do Contador, a observância das políticas e procedimentos de independência estabelecidos pela firma, e a manutenção de registros precisos das interações com os clientes. Adicionalmente, todos os sócios e profissionais devem salvaguardar os recursos da firma (equipamentos, rede e sistemas de comunicação), manter a confidencialidade dos dados, relatar violações significativas observadas nos controles de qualidade ou nos requisitos éticos, e documentar todos os contatos relevantes com os clientes.
+
+Os aspectos mencionados cobrem as responsabilidades mais importantes de sócios e profissionais em uma firma de contabilidade. Dependendo do porte e da estrutura organizacional, podem existir responsabilidades adicionais atribuídas a sócios ou profissionais específicos. Todos devem estar cientes das responsabilidades gerais relacionadas ao controle de qualidade, ética e independência profissional.
+
+A qualidade dos serviços prestados é responsabilidade primária dos sócios e profissionais da firma. O cumprimento das normas profissionais e técnicas emitidas pelo Conselho Federal de Contabilidade é obrigatório. Para atender a esses requisitos, os profissionais recebem treinamento contínuo em ${areas-treinamento}. A firma mantém programa de monitoramento contínuo da qualidade dos serviços prestados, o que inclui supervisão interna, avaliações periódicas e revisões de trabalhos específicos.
+
+A firma estabelece os seguintes compromissos para manter padrões elevados de qualidade:
+
+- Metas anuais de qualidade
+- Desenvolvimento e manutenção de Sistema de Gestão de Qualidade abrangente
+- Auditorias internas periódicas do Sistema de Gestão da Qualidade
+- Formação técnica e capacitação contínua dos profissionais
+- Inovação e melhoria contínua em todas as áreas
+
+O ${responsavel-qualidade} foi designado como gestor da qualidade dos processos da ${razao-social}. Em sua ausência, a firma designa substituto com as competências, aptidões e conhecimentos técnicos necessários, além de independência suficiente para exercer plenamente as funções de gestão da qualidade.
+
+O responsável pelo controle de qualidade registra, em documento digital, todos os eventos relacionados à qualidade da firma e os trabalhos realizados na Lista de Eventos de Controle de Qualidade. São realizadas reuniões regulares com os profissionais, enfatizando a necessidade de cumprimento das políticas, procedimentos e controles de qualidade estabelecidos, bem como a utilização das ferramentas disponibilizadas pela firma.
+
+Os membros da equipe de trabalho, incluindo o sócio responsável pelo serviço prestado, são os principais responsáveis pela qualidade do trabalho atribuído. Dessa forma, devem comunicar-se adequadamente com os demais membros da equipe e compreender a importância de aderir às políticas e procedimentos internos para garantir serviços de qualidade.
+
+A liderança da firma é responsável por assegurar que o Sistema de Gestão da Qualidade funcione conforme planejado e seja aplicado de forma consistente em todas as áreas da firma.

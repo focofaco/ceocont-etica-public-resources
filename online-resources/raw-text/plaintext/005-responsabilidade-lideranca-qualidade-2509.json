@@ -1,0 +1,108 @@
+{
+  "version": "1.0.0",
+  "content_id": "005-responsabilidade-lideranca-qualidade-2509",
+  "component": "plaintext",
+  "original_text": "Todos os sócios e profissionais da firma têm responsabilidades relativas ao controle de qualidade, ética e independência profissional. Essas responsabilidades incluem a compreensão e o cumprimento do Código de Ética Profissional do Contador, a observância das políticas e procedimentos de independência estabelecidos pela firma, e a manutenção de registros precisos das interações com os clientes. Adicionalmente, todos os sócios e profissionais devem salvaguardar os recursos da firma (equipamentos, rede e sistemas de comunicação), manter a confidencialidade dos dados, relatar violações significativas observadas nos controles de qualidade ou nos requisitos éticos, e documentar todos os contatos relevantes com os clientes.\n\nOs aspectos mencionados cobrem as responsabilidades mais importantes de sócios e profissionais em uma firma de contabilidade. Dependendo do porte e da estrutura organizacional, podem existir responsabilidades adicionais atribuídas a sócios ou profissionais específicos. Todos devem estar cientes das responsabilidades gerais relacionadas ao controle de qualidade, ética e independência profissional.\n\nA qualidade dos serviços prestados é responsabilidade primária dos sócios e profissionais da firma. O cumprimento das normas profissionais e técnicas emitidas pelo Conselho Federal de Contabilidade é obrigatório. Para atender a esses requisitos, os profissionais recebem treinamento contínuo em ${areas-treinamento}. A firma mantém programa de monitoramento contínuo da qualidade dos serviços prestados, o que inclui supervisão interna, avaliações periódicas e revisões de trabalhos específicos.\n\nA firma estabelece os seguintes compromissos para manter padrões elevados de qualidade:\n\n- Metas anuais de qualidade\n- Desenvolvimento e manutenção de Sistema de Gestão de Qualidade abrangente\n- Auditorias internas periódicas do Sistema de Gestão da Qualidade\n- Formação técnica e capacitação contínua dos profissionais\n- Inovação e melhoria contínua em todas as áreas\n\nO ${responsavel-qualidade} foi designado como gestor da qualidade dos processos da ${razao-social}. Em sua ausência, a firma designa substituto com as competências, aptidões e conhecimentos técnicos necessários, além de independência suficiente para exercer plenamente as funções de gestão da qualidade.\n\nO responsável pelo controle de qualidade registra, em documento digital, todos os eventos relacionados à qualidade da firma e os trabalhos realizados na Lista de Eventos de Controle de Qualidade. São realizadas reuniões regulares com os profissionais, enfatizando a necessidade de cumprimento das políticas, procedimentos e controles de qualidade estabelecidos, bem como a utilização das ferramentas disponibilizadas pela firma.\n\nOs membros da equipe de trabalho, incluindo o sócio responsável pelo serviço prestado, são os principais responsáveis pela qualidade do trabalho atribuído. Dessa forma, devem comunicar-se adequadamente com os demais membros da equipe e compreender a importância de aderir às políticas e procedimentos internos para garantir serviços de qualidade.\n\nA liderança da firma é responsável por assegurar que o Sistema de Gestão da Qualidade funcione conforme planejado e seja aplicado de forma consistente em todas as áreas da firma.\n",
+  "transformed_text": "Todos os sócios e profissionais da firma têm responsabilidades relativas ao controle de qualidade, ética e independência profissional. Essas responsabilidades incluem a compreensão e o cumprimento do Código de Ética Profissional do Contador, a observância das políticas e procedimentos de independência estabelecidos pela firma, e a manutenção de registros precisos das interações com os clientes. Adicionalmente, todos os sócios e profissionais devem salvaguardar os recursos da firma (equipamentos, rede e sistemas de comunicação), manter a confidencialidade dos dados, relatar violações significativas observadas nos controles de qualidade ou nos requisitos éticos, e documentar todos os contatos relevantes com os clientes.\n\nOs aspectos mencionados cobrem as responsabilidades mais importantes de sócios e profissionais em uma firma de contabilidade. Dependendo do porte e da estrutura organizacional, podem existir responsabilidades adicionais atribuídas a sócios ou profissionais específicos. Todos devem estar cientes das responsabilidades gerais relacionadas ao controle de qualidade, ética e independência profissional.\n\nA qualidade dos serviços prestados é responsabilidade primária dos sócios e profissionais da firma. O cumprimento das normas profissionais e técnicas emitidas pelo Conselho Federal de Contabilidade é obrigatório. Para atender a esses requisitos, os profissionais recebem treinamento contínuo em ${areas-treinamento}. A firma mantém programa de monitoramento contínuo da qualidade dos serviços prestados, o que inclui supervisão interna, avaliações periódicas e revisões de trabalhos específicos.\n\nA firma estabelece os seguintes compromissos para manter padrões elevados de qualidade:\n\n- Metas anuais de qualidade\n- Desenvolvimento e manutenção de Sistema de Gestão de Qualidade abrangente\n- Auditorias internas periódicas do Sistema de Gestão da Qualidade\n- Formação técnica e capacitação contínua dos profissionais\n- Inovação e melhoria contínua em todas as áreas\n\nO ${responsavel-qualidade} foi designado como gestor da qualidade dos processos da ${razao-social}. Em sua ausência, a firma designa substituto com as competências, aptidões e conhecimentos técnicos necessários, além de independência suficiente para exercer plenamente as funções de gestão da qualidade.\n\nO responsável pelo controle de qualidade registra, em documento digital, todos os eventos relacionados à qualidade da firma e os trabalhos realizados na Lista de Eventos de Controle de Qualidade. São realizadas reuniões regulares com os profissionais, enfatizando a necessidade de cumprimento das políticas, procedimentos e controles de qualidade estabelecidos, bem como a utilização das ferramentas disponibilizadas pela firma.\n\nOs membros da equipe de trabalho, incluindo o sócio responsável pelo serviço prestado, são os principais responsáveis pela qualidade do trabalho atribuído. Dessa forma, devem comunicar-se adequadamente com os demais membros da equipe e compreender a importância de aderir às políticas e procedimentos internos para garantir serviços de qualidade.\n\nA liderança da firma é responsável por assegurar que o Sistema de Gestão da Qualidade funcione conforme planejado e seja aplicado de forma consistente em todas as áreas da firma.\n",
+  "metadata": {
+    "title": "Responsabilidade da liderança pela qualidade",
+    "description": "Define responsabilidades de sócios e profissionais no controle de qualidade, estabelece compromissos da firma e atribuições do responsável pelo controle de qualidade",
+    "domain": "gestao-qualidade",
+    "keywords": [
+      "responsabilidade",
+      "lideranca",
+      "controle-qualidade",
+      "socios",
+      "profissionais",
+      "sistema-gestao-qualidade"
+    ],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T16:00:00Z",
+    "updated_at": "2025-11-13T16:00:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "responsabilidade-lideranca",
+    "target_audience": [
+      "socios",
+      "profissionais-contabeis",
+      "gestores"
+    ],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 3
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Responsabilidade da Liderança",
+    "extraction_method": "copy_paste",
+    "page_number": 3,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${areas-treinamento}",
+      "description": "Áreas de treinamento contínuo dos profissionais",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${responsavel-qualidade}",
+      "description": "Nome do responsável pelo controle de qualidade",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 0.95,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 443,
+    "character_count": 3350,
+    "readability_score": 52.8,
+    "avg_sentence_length": 24.9,
+    "avg_word_length": 6.8,
+    "technical_term_density": 0.25,
+    "passive_voice_ratio": 0.28,
+    "flesch_reading_ease": 52.8,
+    "gunning_fog_index": 13.5
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": [
+      "001-politica-controle-qualidade-contabil-41f5",
+      "002-introducao-manual-controle-qualidade-a1b8",
+      "004-sistema-controle-qualidade-documentacao-7eff"
+    ]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T16:00:00Z",
+    "review_notes": "Auto-approved: brandguide compliance 0.95, no critical issues detected"
+  },
+  "audit": {
+    "fragment_id": "chunk_03_frag_001",
+    "chunk_id": "chunk_03",
+    "ingestion_date": "2025-11-13T16:00:00Z",
+    "sha256_original": "2509db05f299c1e36496d2b0177c05db71f3469e654b3b775cd9fd14619ceee9",
+    "sha256_transformed": "2509db05f299c1e36496d2b0177c05db71f3469e654b3b775cd9fd14619ceee9",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Flowing narrative text describing leadership responsibilities and quality commitments. Multiple paragraphs with explanatory content and structured list. Main educational content without special formatting markers.",
+    "alternative_components": []
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "content_id": "008-principios-seguranca-informacao-1fcc",
+  "component": "callouts",
+  "original_text": "Princípios de Segurança da Informação\n\nA ${razao-social} preserva as informações quanto à:\n\n- Integridade: garantia de que a informação seja mantida em seu estado original, protegendo-a contra alterações indevidas, intencionais ou acidentais, durante guarda ou transmissão\n\n- Confidencialidade: garantia de que o acesso à informação seja obtido somente por pessoas autorizadas\n\n- Disponibilidade: garantia de que os usuários autorizados obtenham acesso à informação e aos ativos correspondentes sempre que necessário",
+  "transformed_text": "Princípios de Segurança da Informação\n\nA ${razao-social} preserva as informações quanto à:\n\n- Integridade: garantia de que a informação seja mantida em seu estado original, protegendo-a contra alterações indevidas, intencionais ou acidentais, durante guarda ou transmissão\n\n- Confidencialidade: garantia de que o acesso à informação seja obtido somente por pessoas autorizadas\n\n- Disponibilidade: garantia de que os usuários autorizados obtenham acesso à informação e aos ativos correspondentes sempre que necessário",
+  "metadata": {
+    "title": "Princípios de Segurança da Informação",
+    "description": "Define os três princípios fundamentais de segurança da informação: integridade, confidencialidade e disponibilidade",
+    "domain": "seguranca-informacao",
+    "keywords": ["seguranca-informacao", "integridade", "confidencialidade", "disponibilidade", "protecao-dados"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T17:00:00Z",
+    "updated_at": "2025-11-13T17:00:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "seguranca-informacao",
+    "target_audience": ["profissionais-contabeis", "estagiarios", "gestores", "ti"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 1
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Políticas de Segurança",
+    "extraction_method": "copy_paste",
+    "page_number": 4,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 0.95,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 68,
+    "character_count": 537,
+    "readability_score": 42.5,
+    "avg_sentence_length": 34.0,
+    "avg_word_length": 7.1,
+    "technical_term_density": 0.35,
+    "passive_voice_ratio": 0.15,
+    "flesch_reading_ease": 42.5,
+    "gunning_fog_index": 15.8
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": []
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T17:00:00Z",
+    "review_notes": "Auto-approved: brandguide compliance 0.95, callout message clear and direct"
+  },
+  "audit": {
+    "fragment_id": "chunk_04_frag_001",
+    "chunk_id": "chunk_04",
+    "ingestion_date": "2025-11-13T17:00:00Z",
+    "sha256_original": "1fccfdaf46e27d4a4f677930da5126051eba8480cc5d16e32d9f6de6493b52b3",
+    "sha256_transformed": "1fccfdaf46e27d4a4f677930da5126051eba8480cc5d16e32d9f6de6493b52b3",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Highlighted message presenting fundamental security principles. Clear structure with bullet points. Callout format appropriate for emphasizing key concepts.",
+    "alternative_components": []
+  }
+}

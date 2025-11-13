@@ -1,7 +1,3 @@
-Sistema de controle de qualidade
-
-Documentação para planejamento, operação e controle
-
 O sistema de controle de qualidade de uma firma é implementado por meio de procedimentos e registros documentados. A política de qualidade estabelece o compromisso da firma com os padrões de qualidade a serem observados, enquanto os objetivos especificam as metas a serem alcançadas para que esse compromisso seja cumprido. Esses elementos devem ser claramente documentados e implementados por meio de procedimentos escritos e sistemas de manutenção de registros. Isso assegura que todos os profissionais estejam cientes do compromisso da firma com a qualidade e que esse compromisso seja cumprido de forma consistente em todas as áreas de atuação.
 
 A correlação entre as estruturas e as práticas-chave do sistema de controle de qualidade pode ser demonstrada conforme a representação a seguir:

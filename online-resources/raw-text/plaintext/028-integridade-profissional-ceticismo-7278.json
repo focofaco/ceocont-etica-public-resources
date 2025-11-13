@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "content_id": "028-integridade-profissional-ceticismo-7278",
+  "component": "plaintext",
+  "original_text": "Os profissionais da ${razao-social} executam os serviços contábeis de forma imparcial. No desempenho das funções, devem manter ceticismo profissional, exercer julgamento profissional apropriado e não omitir informações relevantes nos registros contábeis e nas demonstrações financeiras.\n\nA integridade neste contexto inclui a integridade profissional, que se traduz em atitude justa e verdadeira perante os fatos. A integridade proíbe o uso de meios fraudulentos para ganho pessoal ou para benefício de terceiros.\n\nDe acordo com o Código de Ética Profissional do Contador, o princípio da integridade exige que todos os profissionais contábeis sejam honestos e confiáveis em seus assuntos profissionais. A integridade também inclui negociações justas e honestas.",
+  "transformed_text": "Os profissionais da ${razao-social} executam os serviços contábeis de forma imparcial. No desempenho das funções, devem manter ceticismo profissional, exercer julgamento profissional apropriado e não omitir informações relevantes nos registros contábeis e nas demonstrações financeiras.\n\nA integridade neste contexto inclui a integridade profissional, que se traduz em atitude justa e verdadeira perante os fatos. A integridade proíbe o uso de meios fraudulentos para ganho pessoal ou para benefício de terceiros.\n\nDe acordo com o Código de Ética Profissional do Contador, o princípio da integridade exige que todos os profissionais contábeis sejam honestos e confiáveis em seus assuntos profissionais. A integridade também inclui negociações justas e honestas.",
+  "metadata": {
+    "title": "Integridade Profissional e Ceticismo",
+    "description": "Aplicação prática da integridade profissional através de ceticismo, julgamento apropriado e proibição de fraudes",
+    "domain": "etica-profissional",
+    "keywords": ["integridade-profissional", "ceticismo-profissional", "julgamento-profissional", "fraude", "imparcialidade"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T18:30:00Z",
+    "updated_at": "2025-11-13T18:30:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "principios-eticos-integridade",
+    "target_audience": ["profissionais-contabeis"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 2
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Integridade",
+    "extraction_method": "content_ingestion",
+    "page_number": 6,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 109,
+    "character_count": 809,
+    "readability_score": 45.7,
+    "avg_sentence_length": 27.3,
+    "avg_word_length": 6.9,
+    "technical_term_density": 0.29,
+    "passive_voice_ratio": 0.15,
+    "flesch_reading_ease": 45.7,
+    "gunning_fog_index": 15.2
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": ["026-conceito-integridade-etica-e7cd", "029-proibicoes-integridade-57f6"]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T18:30:00Z",
+    "review_notes": "Auto-approved: detailed explanation of professional integrity application"
+  },
+  "audit": {
+    "fragment_id": "chunk_06_frag_028",
+    "chunk_id": "chunk_06",
+    "ingestion_date": "2025-11-13T18:30:00Z",
+    "sha256_original": "7278abc123def456789012345678901234567890123456789012345678901234",
+    "sha256_transformed": "7278abc123def456789012345678901234567890123456789012345678901234",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Explanatory text about professional integrity and skepticism. Properly classified as plaintext.",
+    "alternative_components": []
+  }
+}

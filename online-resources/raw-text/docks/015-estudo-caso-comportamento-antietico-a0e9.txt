@@ -1,0 +1,7 @@
+Estudo de caso
+
+Cenário: Um profissional responsável pelos serviços contábeis prestados a um novo cliente identifica, durante a execução do trabalho, comportamento antiético com indícios de irregularidades nos registros contábeis.
+
+Comportamento: O profissional comunica imediatamente a situação ao sócio responsável pelo trabalho e ao ${responsavel-qualidade}.
+
+Solução: O sócio responsável e o ${responsavel-qualidade} avaliam a situação e determinam as medidas aplicáveis.

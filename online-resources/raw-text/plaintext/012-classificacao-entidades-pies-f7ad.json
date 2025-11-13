@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "content_id": "012-classificacao-entidades-pies-f7ad",
+  "component": "plaintext",
+  "metadata": {
+    "title": "Classificação de entidades",
+    "description": "Diferenciação entre empresas públicas, privadas e capital aberto, e conceito de PIE",
+    "domain": "classificacao-empresas",
+    "language": "pt-BR",
+    "reading_level": "tecnico"
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Classificação",
+    "page_number": 4
+  },
+  "placeholders": [],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 0.95
+  },
+  "quality_metrics": {
+    "word_count": 200,
+    "character_count": 1452
+  },
+  "review_status": {
+    "status": "approved"
+  },
+  "audit": {
+    "fragment_id": "chunk_04_frag_005",
+    "chunk_id": "chunk_04",
+    "sha256_original": "f7ad0d0be3e31526b3bd260d89a636984198701d2af020fd3aadbb56251ed1f1"
+  },
+  "original_text": "Há três tipos de empresas no Brasil: públicas, privadas e de capital aberto. As empresas públicas são consideradas entidades de interesse público (PIEs). Empresas de capital aberto que são negociadas em bolsa de valores também são consideradas PIEs.\n\nEntidades de interesse público são aquelas que:\n\n- Admitem controle acionário pelo Estado\n- Estão sob domínio do poder público\n- Possuem natureza ou objetivos essencialmente econômicos\n- Atendem a critérios relevantes de grandeza para fins de fiscalização e transparência\n\nCompanhias de capital aberto são consideradas entidades de interesse público e estão sujeitas à supervisão da Comissão de Valores Mobiliários (CVM). Essas companhias são obrigadas a seguir as regras da Lei das Sociedades Anônimas (Lei nº 6.404/76). A caracterização dessas companhias está relacionada aos critérios de divulgação e transparência da informação, bem como às obrigações assumidas perante o mercado.\n\nCompanhias de capital fechado não apresentam valores mobiliários para oferta pública e são negociadas apenas entre número restrito de investidores. Nesses casos, os critérios para negociação são menos rígidos do que no mercado de capitais aberto.\n\nAs entidades de interesse público estão sujeitas a maior nível de fiscalização e controle, o que implica maiores responsabilidades em relação à transparência das operações, aspectos sociais e ambientais.\n",
+  "transformed_text": "Há três tipos de empresas no Brasil: públicas, privadas e de capital aberto. As empresas públicas são consideradas entidades de interesse público (PIEs). Empresas de capital aberto que são negociadas em bolsa de valores também são consideradas PIEs.\n\nEntidades de interesse público são aquelas que:\n\n- Admitem controle acionário pelo Estado\n- Estão sob domínio do poder público\n- Possuem natureza ou objetivos essencialmente econômicos\n- Atendem a critérios relevantes de grandeza para fins de fiscalização e transparência\n\nCompanhias de capital aberto são consideradas entidades de interesse público e estão sujeitas à supervisão da Comissão de Valores Mobiliários (CVM). Essas companhias são obrigadas a seguir as regras da Lei das Sociedades Anônimas (Lei nº 6.404/76). A caracterização dessas companhias está relacionada aos critérios de divulgação e transparência da informação, bem como às obrigações assumidas perante o mercado.\n\nCompanhias de capital fechado não apresentam valores mobiliários para oferta pública e são negociadas apenas entre número restrito de investidores. Nesses casos, os critérios para negociação são menos rígidos do que no mercado de capitais aberto.\n\nAs entidades de interesse público estão sujeitas a maior nível de fiscalização e controle, o que implica maiores responsabilidades em relação à transparência das operações, aspectos sociais e ambientais.\n"
+}

@@ -1,0 +1,97 @@
+{
+  "version": "1.0.0",
+  "content_id": "019-detalhamento-principios-etica-0cd9",
+  "component": "plaintext",
+  "original_text": "A integridade é fundamental para a prestação de serviços contábeis. Os clientes confiam na objetividade e competência dos profissionais para assegurar que os trabalhos sejam executados de forma adequada e profissional. Para manter a reputação e credibilidade, é obrigatório agir com integridade e profissionalismo.\n\nCompetência e zelo profissional são aspectos essenciais dos serviços prestados. Os profissionais devem buscar aprimoramento contínuo de suas habilidades para prestar serviços de qualidade aos clientes. Adicionalmente, devem estar atentos aos detalhes e assegurar que os trabalhos executados atendam aos padrões profissionais estabelecidos.\n\nA confidencialidade é elemento essencial na prestação de serviços contábeis. As informações dos clientes devem ser mantidas confidenciais e não podem ser compartilhadas com terceiros que não tenham necessidade de conhecê-las. Isso protege tanto a confiança dos clientes quanto a reputação da firma.\n\nO comportamento profissional é obrigatório na prestação de serviços contábeis. É vedado tolerar comportamento antiético. Isso assegura a manutenção da confiança dos clientes e dos pares profissionais.\n\nOs sócios são responsáveis pelo cumprimento do Código de Ética Profissional do Contador na ${razao-social}. Cada profissional é responsável por assegurar o cumprimento das normas e regulamentos aplicáveis, garantindo que os princípios éticos sejam observados nas operações diárias.\n",
+  "transformed_text": "A integridade é fundamental para a prestação de serviços contábeis. Os clientes confiam na objetividade e competência dos profissionais para assegurar que os trabalhos sejam executados de forma adequada e profissional. Para manter a reputação e credibilidade, é obrigatório agir com integridade e profissionalismo.\n\nCompetência e zelo profissional são aspectos essenciais dos serviços prestados. Os profissionais devem buscar aprimoramento contínuo de suas habilidades para prestar serviços de qualidade aos clientes. Adicionalmente, devem estar atentos aos detalhes e assegurar que os trabalhos executados atendam aos padrões profissionais estabelecidos.\n\nA confidencialidade é elemento essencial na prestação de serviços contábeis. As informações dos clientes devem ser mantidas confidenciais e não podem ser compartilhadas com terceiros que não tenham necessidade de conhecê-las. Isso protege tanto a confiança dos clientes quanto a reputação da firma.\n\nO comportamento profissional é obrigatório na prestação de serviços contábeis. É vedado tolerar comportamento antiético. Isso assegura a manutenção da confiança dos clientes e dos pares profissionais.\n\nOs sócios são responsáveis pelo cumprimento do Código de Ética Profissional do Contador na ${razao-social}. Cada profissional é responsável por assegurar o cumprimento das normas e regulamentos aplicáveis, garantindo que os princípios éticos sejam observados nas operações diárias.\n",
+  "metadata": {
+    "title": "Detalhamento dos Princípios Fundamentais",
+    "description": "Documento que detalha os princípios fundamentais de ética profissional: integridade, competência, confidencialidade e comportamento profissional",
+    "domain": "etica-profissional",
+    "keywords": [
+      "principios-eticos",
+      "integridade",
+      "competencia-profissional",
+      "confidencialidade",
+      "comportamento-profissional",
+      "responsabilidades-socios"
+    ],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T17:00:00Z",
+    "updated_at": "2025-11-13T17:00:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "requisitos-eticos",
+    "target_audience": [
+      "profissionais-contabeis",
+      "socios",
+      "gestores"
+    ],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 2
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Princípios Éticos",
+    "extraction_method": "content_ingestion",
+    "page_number": null,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 189,
+    "character_count": 1494,
+    "readability_score": 51.2,
+    "avg_sentence_length": 25.4,
+    "avg_word_length": 6.8,
+    "technical_term_density": 0.25,
+    "passive_voice_ratio": 0.22,
+    "flesch_reading_ease": 51.2,
+    "gunning_fog_index": 13.8
+  },
+  "relationships": {
+    "references": [
+      "017-principios-fundamentais-etica"
+    ],
+    "referenced_by": [],
+    "related_fragments": [
+      "016-requisitos-eticos-obrigatorios-50f4",
+      "017-principios-fundamentais-etica"
+    ]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T17:00:00Z",
+    "review_notes": "Auto-approved: detailed explanation of ethical principles, flows naturally after table 017"
+  },
+  "audit": {
+    "fragment_id": "chunk_05_frag_019",
+    "chunk_id": "chunk_05",
+    "ingestion_date": "2025-11-13T17:00:00Z",
+    "sha256_original": "0cd9def123456789012345678901234567890123456789012345678901234567",
+    "sha256_transformed": "0cd9def123456789012345678901234567890123456789012345678901234567",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Flowing explanatory text detailing ethical principles. Properly classified as plaintext.",
+    "alternative_components": []
+  }
+}

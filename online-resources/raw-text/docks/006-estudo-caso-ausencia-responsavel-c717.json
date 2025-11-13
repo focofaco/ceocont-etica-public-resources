@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "content_id": "006-estudo-caso-ausencia-responsavel-c717",
+  "component": "docks",
+  "original_text": "Estudo de caso\n\nCenário: O responsável pelo controle de qualidade está ausente por período prolongado sem substituto designado.\n\nComportamento: Outra pessoa adequada assume o registro dos eventos de qualidade e cumprimento das políticas. Pode ser necessário treinamento adicional.\n\nSolução: O ${responsavel-tecnico} e o sócio líder atuam em conjunto para determinar procedimentos aplicáveis e designar responsável interino. ${acao-cliente}.",
+  "transformed_text": "Estudo de caso\n\nCenário: O responsável pelo controle de qualidade está ausente por período prolongado sem substituto designado.\n\nComportamento: Outra pessoa adequada assume o registro dos eventos de qualidade e cumprimento das políticas. Pode ser necessário treinamento adicional.\n\nSolução: O ${responsavel-tecnico} e o sócio líder atuam em conjunto para determinar procedimentos aplicáveis e designar responsável interino. ${acao-cliente}.",
+  "metadata": {
+    "title": "Estudo de caso - Ausência do responsável pelo controle de qualidade",
+    "description": "Exemplo prático de situação onde o responsável pelo controle de qualidade está ausente sem substituto, demonstrando comportamento correto e procedimentos aplicáveis",
+    "domain": "gestao-qualidade",
+    "keywords": ["estudo-caso", "ausencia", "responsavel-qualidade", "substituto", "continuidade"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T16:00:00Z",
+    "updated_at": "2025-11-13T16:00:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "exemplos-praticos",
+    "target_audience": ["socios", "profissionais-contabeis", "gestores"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 1
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Responsabilidade da Liderança",
+    "extraction_method": "copy_paste",
+    "page_number": 3,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${responsavel-tecnico}",
+      "description": "Nome do responsável técnico da firma",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "${acao-cliente}",
+      "description": "Ação a ser tomada em relação ao cliente durante ausência do responsável",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 0.95,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "max_docks_length_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 57,
+    "character_count": 453,
+    "readability_score": 58.5,
+    "avg_sentence_length": 19.0,
+    "avg_word_length": 7.2,
+    "technical_term_density": 0.18,
+    "passive_voice_ratio": 0.25,
+    "flesch_reading_ease": 58.5,
+    "gunning_fog_index": 12.2
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": ["005-responsabilidade-lideranca-qualidade-2509", "001-politica-controle-qualidade-contabil-41f5"]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T16:00:00Z",
+    "review_notes": "Auto-approved: brandguide compliance 0.95, no critical issues detected. Character count 453 < 600 limit for docks."
+  },
+  "audit": {
+    "fragment_id": "chunk_03_frag_002",
+    "chunk_id": "chunk_03",
+    "ingestion_date": "2025-11-13T16:00:00Z",
+    "sha256_original": "c717111279306aab95fd93d672bfc2fa3456441031e624feaabf6b3de2d4f294",
+    "sha256_transformed": "c717111279306aab95fd93d672bfc2fa3456441031e624feaabf6b3de2d4f294",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Practical case study demonstrating scenario-behavior-solution pattern. Concise editorial side note under 600 character limit. Educational example for specific quality control situation.",
+    "alternative_components": []
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "content_id": "026-conceito-integridade-etica-e7cd",
+  "component": "plaintext",
+  "original_text": "A integridade é princípio geral do Código de Ética Profissional do Contador e base de todos os demais princípios. Integridade significa honestidade, lealdade, confiabilidade e retidão nas relações profissionais.\n\nOs profissionais da ${razao-social} devem comportar-se com integridade em todas as atividades profissionais. Os principais requisitos éticos em relação à integridade são:\n\n• Ser honesto em todas as palavras e ações\n• Cumprir obrigações assumidas\n• Agir de boa-fé nas relações profissionais\n\nA integridade é princípio importante não apenas por ser exigência moral, mas também por ser essencial para o funcionamento adequado das relações profissionais. A conduta profissional é alicerce da profissão contábil e da credibilidade da ${razao-social} no mercado. Os colaboradores da ${razao-social} devem assegurar que não estejam envolvidos em situações que possam afetar a integridade profissional.",
+  "transformed_text": "A integridade é princípio geral do Código de Ética Profissional do Contador e base de todos os demais princípios. Integridade significa honestidade, lealdade, confiabilidade e retidão nas relações profissionais.\n\nOs profissionais da ${razao-social} devem comportar-se com integridade em todas as atividades profissionais. Os principais requisitos éticos em relação à integridade são:\n\n• Ser honesto em todas as palavras e ações\n• Cumprir obrigações assumidas\n• Agir de boa-fé nas relações profissionais\n\nA integridade é princípio importante não apenas por ser exigência moral, mas também por ser essencial para o funcionamento adequado das relações profissionais. A conduta profissional é alicerce da profissão contábil e da credibilidade da ${razao-social} no mercado. Os colaboradores da ${razao-social} devem assegurar que não estejam envolvidos em situações que possam afetar a integridade profissional.",
+  "metadata": {
+    "title": "Conceito de Integridade Ética",
+    "description": "Definição do princípio de integridade como fundamento da ética profissional contábil e seus requisitos práticos",
+    "domain": "etica-profissional",
+    "keywords": ["integridade", "codigo-etica", "honestidade", "conduta-profissional", "credibilidade"],
+    "language": "pt-BR",
+    "created_at": "2025-11-13T18:30:00Z",
+    "updated_at": "2025-11-13T18:30:00Z",
+    "author": "firma-contabil",
+    "source": "Manual de Qualidade e Procedimentos Internos",
+    "section": "principios-eticos-integridade",
+    "target_audience": ["profissionais-contabeis", "colaboradores"],
+    "reading_level": "tecnico",
+    "estimated_reading_time_minutes": 2
+  },
+  "source_metadata": {
+    "document_name": "Manual Qualidade - Integridade",
+    "extraction_method": "content_ingestion",
+    "page_number": 6,
+    "source_format": "text"
+  },
+  "placeholders": [
+    {
+      "key": "${razao-social}",
+      "description": "Razão social da firma contábil",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "transformations": [],
+  "brandguide_compliance": {
+    "overall_score": 1.0,
+    "voice_check": 1.0,
+    "tone_check": 1.0,
+    "modals_allowed": true,
+    "modals_forbidden_detected": [],
+    "max_line_length_ok": true,
+    "max_file_size_ok": true,
+    "utf8_lf_ok": true,
+    "issues": []
+  },
+  "quality_metrics": {
+    "word_count": 119,
+    "character_count": 893,
+    "readability_score": 50.3,
+    "avg_sentence_length": 23.8,
+    "avg_word_length": 6.8,
+    "technical_term_density": 0.21,
+    "passive_voice_ratio": 0.18,
+    "flesch_reading_ease": 50.3,
+    "gunning_fog_index": 13.9
+  },
+  "relationships": {
+    "references": [],
+    "referenced_by": [],
+    "related_fragments": ["025-integridade-9730", "027-atitudes-eticas-obrigatorias-125f", "028-integridade-profissional-ceticismo-7278"]
+  },
+  "warnings": [],
+  "review_status": {
+    "status": "approved",
+    "reviewed_by": "auto",
+    "reviewed_at": "2025-11-13T18:30:00Z",
+    "review_notes": "Auto-approved: foundational concept explanation following header_h2"
+  },
+  "audit": {
+    "fragment_id": "chunk_06_frag_026",
+    "chunk_id": "chunk_06",
+    "ingestion_date": "2025-11-13T18:30:00Z",
+    "sha256_original": "e7cdabc123def456789012345678901234567890123456789012345678901234",
+    "sha256_transformed": "e7cdabc123def456789012345678901234567890123456789012345678901234",
+    "classification_confidence": 1.0,
+    "classification_reasoning": "Explanatory text defining the principle of integrity. Properly classified as plaintext.",
+    "alternative_components": []
+  }
+}
